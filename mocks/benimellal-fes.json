@@ -1,0 +1,144 @@
+{
+  "stops": [
+    {
+      "title": "Beni Mellal",
+      "coordinates": "32.3392° N, 6.3606° W",
+      "address": "Beni Mellal, Morocco",
+      "details": "Beni Mellal is a city known for its agricultural productivity and the beautiful surrounding landscapes. It's the starting point of your adventure.",
+      "images": [
+        {
+          "url": "https://example.com/beni_mellal.jpg",
+          "description": "A scenic view of Beni Mellal city."
+        }
+      ],
+      "activities": [
+        {
+          "title": "Explore Ain Asserdoun",
+          "coordinates": "32.3360° N, 6.3570° W",
+          "details": "Visit the Ain Asserdoun spring and enjoy the surrounding gardens, perfect for an afternoon family stroll.",
+          "address": "Ain Asserdoun, Beni Mellal, Morocco",
+          "images": [
+            {
+              "url": "https://example.com/ain_asserdoun.jpg",
+              "description": "The picturesque Ain Asserdoun spring."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cascades d'Ouzoud",
+      "coordinates": "32.0074° N, 6.7169° W",
+      "address": "Cascades d'Ouzoud, Azilal, Morocco",
+      "details": "Experience the breathtaking views of the Ouzoud Waterfalls, one of Morocco's most famous natural attractions, offering great hiking trails.",
+      "images": [
+        {
+          "url": "https://example.com/cascades_ouzoud.jpg",
+          "description": "The stunning Ouzoud Waterfalls."
+        }
+      ],
+      "activities": [
+        {
+          "title": "Hiking Adventure",
+          "coordinates": "32.0025° N, 6.7187° W",
+          "details": "Family-friendly hiking trails offering beautiful scenery and opportunities to see local flora and fauna.",
+          "address": "Hiking Trails, Cascades d'Ouzoud, Morocco",
+          "images": [
+            {
+              "url": "https://example.com/hiking_trails.jpg",
+              "description": "Hiking trails around the waterfalls."
+            }
+          ]
+        },
+        {
+          "title": "Boat Ride Near the Falls",
+          "coordinates": "32.0080° N, 6.7159° W",
+          "details": "Enjoy a scenic boat ride that takes you close to the base of the falls.",
+          "address": "Boat Ride Dock, Cascades d'Ouzoud, Morocco",
+          "images": [
+            {
+              "url": "https://example.com/boat_ride.jpg",
+              "description": "A boat ride near the Ouzoud Waterfalls."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ifrane",
+      "coordinates": "33.5260° N, 5.1120° W",
+      "address": "Ifrane, Morocco",
+      "details": "Known as 'Little Switzerland', Ifrane is characterized by its alpine architecture and nearby forested areas.",
+      "images": [
+        {
+          "url": "https://example.com/ifrane.jpg",
+          "description": "Beautiful townscape of Ifrane, resembling a Swiss village."
+        }
+      ],
+      "activities": [
+        {
+          "title": "Visit to Michlifen Ski Resort",
+          "coordinates": "33.4000° N, 5.1614° W",
+          "details": "Although not the season for skiing, it's a great spot to enjoy breathtaking views and walk around the resort area.",
+          "address": "Michlifen, Ifrane, Morocco",
+          "images": [
+            {
+              "url": "https://example.com/michlifen.jpg",
+              "description": "Michlifen area with panoramic views."
+            }
+          ]
+        },
+        {
+          "title": "Explore Cedars Forest",
+          "coordinates": "33.4300° N, 5.2300° W",
+          "details": "Stroll through the famous Cedars forests of Ifrane, home to Barbary macaques.",
+          "address": "Cedars Forest, Ifrane National Park, Morocco",
+          "images": [
+            {
+              "url": "https://example.com/cedars.jpg",
+              "description": "Tall and ancient cedar trees at Ifrane National Park."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Fés",
+      "coordinates": "34.0181° N, 5.0078° W",
+      "address": "Fes, Morocco",
+      "details": "Fes is the cultural and spiritual center of Morocco, famous for its historic medina and vibrant souks.",
+      "images": [
+        {
+          "url": "https://example.com/fes.jpg",
+          "description": "A historic view of the ancient city of Fes."
+        }
+      ],
+      "activities": [
+        {
+          "title": "Explore Fes el Bali Medina",
+          "coordinates": "34.0659° N, 4.9739° W",
+          "details": "Navigate through one of the world's largest urban pedestrian zones filled with history, markets, and culinary delights.",
+          "address": "Fes el Bali, Fes, Morocco",
+          "images": [
+            {
+              "url": "https://example.com/fes_medina.jpg",
+              "description": "The bustling medina of Fes."
+            }
+          ]
+        },
+        {
+          "title": "Visit the Royal Palace of Fes",
+          "coordinates": "34.0436° N, 4.9860° W",
+          "details": "Marvel at the grandeur of the Royal Palace's gates, which stand as a testament to Moroccan artisanship.",
+          "address": "Fes, Morocco",
+          "images": [
+            {
+              "url": "https://example.com/royal_palace.jpg",
+              "description": "The impressive facade of the Royal Palace in Fes."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
