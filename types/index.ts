@@ -1,6 +1,7 @@
 export interface Activity {
   title: string;
-  coordinates: string;
+  lat: number;
+  lng: number;
   details: string;
   address: string;
   images: Array<{
@@ -11,7 +12,8 @@ export interface Activity {
 
 export interface Stop {
   title: string;
-  coordinates: string;
+  lat: number;
+  lng: number;
   address: string;
   details: string;
   activities: Activity[];
@@ -28,4 +30,21 @@ export interface SavedTrip {
   start: string;
   destination: string;
   stops: Stop[];
+}
+
+export interface SearchFormData {
+  start: string;
+  destination: string;
+  nbStops: number;
+}
+
+export interface Location {
+  formatted_address: string;
+  place_id: string;
+  geometry: {
+    location: {
+      lat: number;
+      lng: number;
+    };
+  };
 }

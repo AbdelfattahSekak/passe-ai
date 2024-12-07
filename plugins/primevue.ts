@@ -1,1 +1,0 @@
-// This plugin is no longer needed as PrimeVue is now configured through the module

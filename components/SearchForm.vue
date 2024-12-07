@@ -11,7 +11,7 @@
               placeholder="Where are you starting from?"
               :disabled="loading"
             />
-            
+
             <LocationInput
               id="destination"
               label="Destination"
@@ -19,27 +19,16 @@
               placeholder="Where are you heading?"
               :disabled="loading"
             />
-            
-            <StopsInput
-              v-model="form.stops"
-              :disabled="loading"
-            />
+
+            <StopsInput v-model="form.nbStops" :disabled="loading" />
 
             <Button
               type="submit"
               :loading="loading"
               :disabled="!isFormValid"
               class="h-[48px] w-full"
-            >
-              <template #loading>
-                <i class="pi pi-spin pi-spinner mr-2"></i>
-                Planning...
-              </template>
-              <template #default>
-                <i class="pi pi-search mr-2"></i>
-                Plan My Trip
-              </template>
-            </Button>
+              label="Plan My Trip"
+            />
           </div>
         </form>
       </template>
@@ -48,28 +37,27 @@
 </template>
 
 <script setup lang="ts">
-import type { SearchFormData } from '~/types/search'
+import type { SearchFormData } from "@/types";
 
-const emit = defineEmits(['submit'])
-const loading = ref(false)
+const emit = defineEmits(["submit"]);
+const loading = ref(false);
 
 const form = ref<SearchFormData>({
-  start: '',
-  destination: '',
-  stops: 3
-})
+  start: "",
+  destination: "",
+  nbStops: 3,
+});
 
 const isFormValid = computed(() => {
-  return form.value.stops >= 1 && 
-         form.value.stops <= 10
-})
+  return form.value.nbStops >= 1 && form.value.nbStops <= 10;
+});
 
 const handleSubmit = () => {
-  if (!isFormValid.value) return
-  
-  loading.value = true
-  emit('submit', { ...form.value })
-}
+  if (!isFormValid.value) return;
+
+  loading.value = true;
+  emit("submit", { ...form.value });
+};
 </script>
 
 <style scoped>

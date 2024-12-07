@@ -1,138 +1,184 @@
 <template>
-  <div 
-    ref="mapContainer" 
-    class="w-full h-full rounded-lg shadow-md"
-    role="region"
-    aria-label="Interactive Map"
-  >
-    <div v-if="!mapLoaded" class="w-full h-full flex items-center justify-center bg-gray-100 rounded-lg">
-      <ProgressSpinner aria-label="Loading map..." />
+  <div class="map-container">
+    <div
+      v-if="isCalculating"
+      class="w-full h-[500px] rounded-lg shadow-md bg-gray-100 flex items-center justify-center"
+    >
+      <div class="text-center">
+        <div
+          class="animate-spin h-10 w-10 border-4 border-blue-500 rounded-full border-t-transparent mx-auto mb-4"
+        ></div>
+        <p class="text-gray-600">Preparing your route...</p>
+      </div>
     </div>
+
+    <div
+      ref="mapContainer"
+      id="map"
+      class="w-full h-[500px] rounded-lg shadow-md"
+      role="region"
+      aria-label="Interactive Map"
+    ></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue';
-import { Loader } from '@googlemaps/js-api-loader';
+import { ref, onMounted, watch } from "vue";
+import type { Stop } from "~/types";
 
 const props = defineProps<{
-  stops: Array<{
-    title: string;
-    coordinates: string;
-    details: string;
-  }>;
+  stops: Stop[];
 }>();
 
-const config = useRuntimeConfig();
 const mapContainer = ref<HTMLElement | null>(null);
-const mapLoaded = ref(false);
-let map: google.maps.Map | null = null;
-let markers: google.maps.Marker[] = [];
-let directionsService: google.maps.DirectionsService | null = null;
-let directionsRenderer: google.maps.DirectionsRenderer | null = null;
+const map = ref<google.maps.Map | null>(null);
+const directionsService = ref<google.maps.DirectionsService | null>(null);
+const directionsRenderer = ref<google.maps.DirectionsRenderer | null>(null);
+const isCalculating = ref(false);
+const error = ref<string | null>(null);
+const markers = ref<google.maps.Marker[]>([]);
 
-onMounted(async () => {
-  const loader = new Loader({
-    apiKey: config.public.googleMapsApiKey,
-    libraries: ['places']
-  });
+function clearMarkers() {
+  markers.value.forEach((marker) => marker.setMap(null));
+  markers.value = [];
+}
 
-  await loader.load();
-  await initMap();
-  mapLoaded.value = true;
+function createMarkerLabel(index: number): google.maps.MarkerLabel {
+  return {
+    text: String(index + 1),
+    color: "#FFFFFF",
+    fontWeight: "bold",
+    fontSize: "14px",
+  };
+}
+
+function isValidCoordinate(num: any): boolean {
+  return typeof num === "number" && !isNaN(num) && isFinite(num);
+}
+
+function initMap(): void {
+  if (!mapContainer.value) {
+    error.value = "Required DOM elements not found";
+    return;
+  }
+
+  try {
+    map.value = new google.maps.Map(mapContainer.value, {
+      zoom: 7,
+      center: { lat: 41.85, lng: -87.65 },
+      disableDefaultUI: false,
+      mapTypeControl: true,
+      streetViewControl: true,
+      fullscreenControl: true,
+      zoomControl: true,
+    });
+
+    directionsRenderer.value = new google.maps.DirectionsRenderer({
+      suppressMarkers: true, // Suppress default markers
+      map: map.value,
+    });
+    directionsService.value = new google.maps.DirectionsService();
+
+    if (props.stops.length >= 2) {
+      calculateAndDisplayRoute();
+    }
+  } catch (e) {
+    console.error("Error initializing map:", e);
+    error.value = "Failed to initialize map";
+  }
+}
+
+async function calculateAndDisplayRoute(): Promise<void> {
+  if (
+    !directionsService.value ||
+    !directionsRenderer.value ||
+    props.stops.length < 2
+  ) {
+    return;
+  }
+
+  isCalculating.value = true;
+  error.value = null;
+
+  try {
+    const origin = props.stops[0].address;
+    const destination = props.stops[props.stops.length - 1].address;
+    const waypoints = props.stops.slice(1, -1).map((stop) => ({
+      location: stop.address,
+      stopover: true,
+    }));
+
+    const response = await directionsService.value.route({
+      origin,
+      destination,
+      waypoints,
+      optimizeWaypoints: true,
+      travelMode: google.maps.TravelMode.DRIVING,
+    });
+
+    directionsRenderer.value.setDirections(response);
+
+    // Clear existing markers
+    clearMarkers();
+
+    // Add custom markers for each stop with validation
+    props.stops.forEach((stop, index) => {
+      if (!isValidCoordinate(stop.lat) || !isValidCoordinate(stop.lng)) {
+        console.warn(`Invalid coordinates for stop ${index}:`, stop);
+        return;
+      }
+
+      const marker = new google.maps.Marker({
+        position: {
+          lat: Number(stop.lat),
+          lng: Number(stop.lng),
+        },
+        map: map.value,
+        title: createMarkerLabel(index).text,
+        label: createMarkerLabel(index),
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 12,
+          fillColor: "#FF5A5F",
+          fillOpacity: 1,
+          strokeColor: "#FFFFFF",
+          strokeWeight: 2,
+        },
+      });
+      markers.value.push(marker);
+    });
+
+    await new Promise((resolve) => setTimeout(resolve, 500)); // Add slight delay for smoother transition
+  } catch (e) {
+    console.error("Direction service error:", e);
+    error.value = "Failed to calculate route";
+  } finally {
+    isCalculating.value = false;
+  }
+}
+
+onMounted(() => {
+  console.log("Component mounted");
+  initMap();
 });
 
-const initMap = async () => {
-  if (!mapContainer.value) return;
-
-  map = new google.maps.Map(mapContainer.value, {
-    zoom: 4,
-    center: { lat: 39.8283, lng: -98.5795 },
-    styles: [
-      {
-        featureType: 'poi',
-        elementType: 'labels',
-        stylers: [{ visibility: 'off' }]
-      }
-    ],
-    mapTypeControl: true,
-    streetViewControl: true,
-    fullscreenControl: true,
-    zoomControl: true,
-    gestureHandling: 'cooperative'
-  });
-
-  directionsService = new google.maps.DirectionsService();
-  directionsRenderer = new google.maps.DirectionsRenderer({
-    map,
-    suppressMarkers: true
-  });
-};
-
-watch(() => props.stops, (newStops) => {
-  if (!map || !newStops.length) return;
-  
-  // Clear existing markers
-  markers.forEach(marker => marker.setMap(null));
-  markers = [];
-
-  // Add new markers and update route
-  newStops.forEach((stop, index) => {
-    const [lat, lng] = stop.coordinates.split(',').map(Number);
-    const marker = new google.maps.Marker({
-      position: { lat, lng },
-      map,
-      title: stop.title,
-      label: String(index + 1),
-      animation: google.maps.Animation.DROP
-    });
-    
-    // Add info window
-    const infoWindow = new google.maps.InfoWindow({
-      content: `
-        <div class="p-4">
-          <h3 class="font-bold mb-2">${stop.title}</h3>
-          <p>${stop.details}</p>
-        </div>
-      `
-    });
-
-    marker.addListener('click', () => {
-      infoWindow.open(map, marker);
-    });
-    
-    markers.push(marker);
-  });
-
-  updateRoute();
-}, { deep: true });
-
-const updateRoute = () => {
-  if (!directionsService || !directionsRenderer || props.stops.length < 2) return;
-
-  const origin = props.stops[0];
-  const destination = props.stops[props.stops.length - 1];
-  const waypoints = props.stops.slice(1, -1).map(stop => ({
-    location: new google.maps.LatLng(
-      ...stop.coordinates.split(',').map(Number)
-    ),
-    stopover: true
-  }));
-
-  directionsService.route({
-    origin: new google.maps.LatLng(
-      ...origin.coordinates.split(',').map(Number)
-    ),
-    destination: new google.maps.LatLng(
-      ...destination.coordinates.split(',').map(Number)
-    ),
-    waypoints,
-    optimizeWaypoints: true,
-    travelMode: google.maps.TravelMode.DRIVING
-  }, (result, status) => {
-    if (status === 'OK' && result) {
-      directionsRenderer?.setDirections(result);
+watch(
+  () => props.stops,
+  (newStops) => {
+    console.log("Stops changed:", newStops.length);
+    if (newStops.length >= 2) {
+      calculateAndDisplayRoute();
+    } else if (directionsRenderer.value) {
+      directionsRenderer.value.setDirections(null);
     }
-  });
-};
+  },
+  { deep: true }
+);
 </script>
+
+<style scoped>
+.map-container {
+  position: relative;
+  width: 100%;
+}
+</style>

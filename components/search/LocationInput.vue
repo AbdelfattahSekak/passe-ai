@@ -1,8 +1,12 @@
 <template>
   <div class="relative">
-    <label :for="id" class="block text-sm font-medium text-gray-700 mb-1">{{ label }}</label>
+    <label :for="id" class="block text-sm font-medium text-gray-700 mb-1">{{
+      label
+    }}</label>
     <div class="relative">
-      <i class="pi pi-map-marker absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 z-10"></i>
+      <i
+        class="pi pi-map-marker absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 z-10"
+      ></i>
       <AutoComplete
         :id="id"
         v-model="selectedLocation"
@@ -14,7 +18,9 @@
         class="w-full"
         :pt="{
           root: { class: 'w-full' },
-          input: { class: 'w-full pl-10 pr-4 py-2.5 rounded-lg border-gray-300' }
+          input: {
+            class: 'w-full pl-10 pr-4 py-2.5 rounded-lg border-gray-300',
+          },
         }"
       />
     </div>
@@ -22,9 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue';
-import { Loader } from '@googlemaps/js-api-loader';
-import type { Location } from '~/types/search';
+import { ref, watch, onMounted } from "vue";
 
 const props = defineProps<{
   id: string;
@@ -34,28 +38,27 @@ const props = defineProps<{
   disabled?: boolean;
 }>();
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(["update:modelValue"]);
 
-const selectedLocation = ref('');
+const selectedLocation = ref("");
 const suggestions = ref<string[]>([]);
-const autocompleteService = ref<google.maps.places.AutocompleteService | null>(null);
+const autocompleteService = ref<google.maps.places.AutocompleteService | null>(
+  null
+);
 
 onMounted(async () => {
-  const loader = new Loader({
-    apiKey: useRuntimeConfig().public.googleMapsApiKey,
-    libraries: ['places']
-  });
-  
-  await loader.load();
   autocompleteService.value = new google.maps.places.AutocompleteService();
 });
 
-watch(() => props.modelValue, (newValue) => {
-  selectedLocation.value = newValue;
-});
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    selectedLocation.value = newValue;
+  }
+);
 
 watch(selectedLocation, (newValue) => {
-  emit('update:modelValue', newValue);
+  emit("update:modelValue", newValue);
 });
 
 const search = async (event: { query: string }) => {
@@ -67,18 +70,18 @@ const search = async (event: { query: string }) => {
   try {
     const result = await autocompleteService.value.getPlacePredictions({
       input: event.query,
-      types: ['(cities)']
+      types: ["(cities)"],
     });
-    
-    suggestions.value = result.predictions.map(p => p.description);
+
+    suggestions.value = result.predictions.map((p) => p.description);
   } catch (error) {
-    console.error('Places API error:', error);
+    console.error("Places API error:", error);
     suggestions.value = [];
   }
 };
 
 const handleSelect = (event: { value: string }) => {
-  emit('update:modelValue', event.value);
+  emit("update:modelValue", event.value);
 };
 </script>
 
