@@ -7,8 +7,8 @@
       "details": "Beni Mellal is a city known for its agricultural productivity and the beautiful surrounding landscapes. It's the starting point of your adventure.",
       "images": [
         {
-          "url": "https://example.com/beni_mellal.jpg",
-          "description": "A scenic view of Beni Mellal city."
+          "url": "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?q=80&w=3276&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "description": "Scenic view of Beni Mellal with Atlas Mountains"
         }
       ],
       "activities": [
@@ -19,8 +19,8 @@
           "address": "Ain Asserdoun, Beni Mellal, Morocco",
           "images": [
             {
-              "url": "https://example.com/ain_asserdoun.jpg",
-              "description": "The picturesque Ain Asserdoun spring."
+              "url": "https://plus.unsplash.com/premium_photo-1719943510748-4b4354fbcf56?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "description": "The picturesque Ain Asserdoun gardens"
             }
           ]
         }
@@ -33,8 +33,8 @@
       "details": "Experience the breathtaking views of the Ouzoud Waterfalls, one of Morocco's most famous natural attractions, offering great hiking trails.",
       "images": [
         {
-          "url": "https://example.com/cascades_ouzoud.jpg",
-          "description": "The stunning Ouzoud Waterfalls."
+          "url": "https://plus.unsplash.com/premium_photo-1719943510748-4b4354fbcf56?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "description": "The stunning Ouzoud Waterfalls in full flow"
         }
       ],
       "activities": [
@@ -45,8 +45,8 @@
           "address": "Hiking Trails, Cascades d'Ouzoud, Morocco",
           "images": [
             {
-              "url": "https://example.com/hiking_trails.jpg",
-              "description": "Hiking trails around the waterfalls."
+              "url": "https://images.unsplash.com/photo-1564507004663-b6dfb3c824d4?auto=format&fit=crop&q=80",
+              "description": "Scenic hiking trails around the waterfalls"
             }
           ]
         },
@@ -57,8 +57,8 @@
           "address": "Boat Ride Dock, Cascades d'Ouzoud, Morocco",
           "images": [
             {
-              "url": "https://example.com/boat_ride.jpg",
-              "description": "A boat ride near the Ouzoud Waterfalls."
+              "url": "https://images.unsplash.com/photo-1564507004663-b6dfb3c824d4?auto=format&fit=crop&q=80",
+              "description": "View of the falls from the boat"
             }
           ]
         }
@@ -71,8 +71,8 @@
       "details": "Known as 'Little Switzerland', Ifrane is characterized by its alpine architecture and nearby forested areas.",
       "images": [
         {
-          "url": "https://example.com/ifrane.jpg",
-          "description": "Beautiful townscape of Ifrane, resembling a Swiss village."
+          "url": "https://plus.unsplash.com/premium_photo-1673697239981-389164b7b87f?q=80&w=3244&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "description": "Beautiful townscape of Ifrane"
         }
       ],
       "activities": [
@@ -83,8 +83,8 @@
           "address": "Michlifen, Ifrane, Morocco",
           "images": [
             {
-              "url": "https://example.com/michlifen.jpg",
-              "description": "Michlifen area with panoramic views."
+              "url": "https://plus.unsplash.com/premium_photo-1673697239981-389164b7b87f?q=80&w=3244&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "description": "Michlifen area panoramic views"
             }
           ]
         },
@@ -95,8 +95,8 @@
           "address": "Cedars Forest, Ifrane National Park, Morocco",
           "images": [
             {
-              "url": "https://example.com/cedars.jpg",
-              "description": "Tall and ancient cedar trees at Ifrane National Park."
+              "url": "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80",
+              "description": "Cedar trees in Ifrane National Park"
             }
           ]
         }
@@ -109,8 +109,8 @@
       "details": "Fes is the cultural and spiritual center of Morocco, famous for its historic medina and vibrant souks.",
       "images": [
         {
-          "url": "https://example.com/fes.jpg",
-          "description": "A historic view of the ancient city of Fes."
+          "url": "https://images.unsplash.com/photo-1548005139-1b0876ed8e38?auto=format&fit=crop&q=80",
+          "description": "View of the ancient medina of Fes"
         }
       ],
       "activities": [
@@ -121,8 +121,8 @@
           "address": "Fes el Bali, Fes, Morocco",
           "images": [
             {
-              "url": "https://example.com/fes_medina.jpg",
-              "description": "The bustling medina of Fes."
+              "url": "https://images.unsplash.com/photo-1548005139-1b0876ed8e38?auto=format&fit=crop&q=80",
+              "description": "The bustling streets of Fes medina"
             }
           ]
         },
@@ -133,8 +133,8 @@
           "address": "Fes, Morocco",
           "images": [
             {
-              "url": "https://example.com/royal_palace.jpg",
-              "description": "The impressive facade of the Royal Palace in Fes."
+              "url": "https://images.unsplash.com/photo-1548005139-1b0876ed8e38?auto=format&fit=crop&q=80",
+              "description": "The Royal Palace of Fes"
             }
           ]
         }
