@@ -1,20 +1,20 @@
 <template>
-  <div class="relative">
-    <label class="block text-sm font-medium text-gray-700 mb-1">Number of Stops</label>
-    <div class="relative border border-gray-300 rounded-lg hover:border-gray-400 transition-colors">
-      <div class="flex items-center h-[48px]">
+  <div class="relative flex flex-col items-start w-full">
+    <label class="block text-sm font-medium text-white mb-1">{{ label }}</label>
+    <div class="relative border border-gray-300 rounded-lg hover:border-gray-400 transition w-full">
+      <div class="flex items-center h-[45px]">
         <button 
           type="button"
           @click="decrementValue"
           :disabled="value <= 1 || disabled"
           class="flex-none w-12 h-full flex items-center justify-center text-gray-600 hover:text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <i class="pi pi-minus text-sm"></i>
+          <i class="pi pi-minus text-sm text-white"></i>
         </button>
         
         <div class="flex-1 flex flex-col items-center justify-center px-4">
-          <div class="text-base font-medium">{{ value }}</div>
-          <div class="text-xs text-gray-500">stops</div>
+          <div class="text-base font-medium text-white">{{ value }}</div>
+          <div class="text-xs text-white">stops</div>
         </div>
         
         <button 
@@ -23,7 +23,7 @@
           :disabled="value >= 10 || disabled"
           class="flex-none w-12 h-full flex items-center justify-center text-gray-600 hover:text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <i class="pi pi-plus text-sm"></i>
+          <i class="pi pi-plus text-sm text-white"></i>
         </button>
       </div>
     </div>
@@ -34,6 +34,7 @@
 const props = defineProps<{
   modelValue: number
   disabled?: boolean
+  label?: string
 }>()
 
 const emit = defineEmits(['update:modelValue'])

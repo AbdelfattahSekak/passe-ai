@@ -1,11 +1,11 @@
 <template>
-  <div class="relative">
-    <label :for="id" class="block text-sm font-medium text-gray-700 mb-1">{{
+  <div class="relative flex flex-col items-start w-full">
+    <label :for="id" class="block text-sm font-medium text-white mb-1">{{
       label
     }}</label>
     <div class="relative">
       <i
-        class="pi pi-map-marker absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 z-10"
+        class="pi pi-map-marker absolute left-3 top-1/2 -translate-y-1/2 z-10"
       ></i>
       <AutoComplete
         :id="id"
@@ -15,7 +15,7 @@
         @item-select="handleSelect"
         :placeholder="placeholder"
         :disabled="disabled"
-        class="w-full"
+        class="w-full text-sm h-[45px]"
         :pt="{
           root: { class: 'w-full' },
           input: {
