@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://passe.ai/sitemap.xml

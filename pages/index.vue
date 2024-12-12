@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TheHeader class="mt-16">
+    <TheHeader>
       <SearchForm @submit="handleSearch" />
     </TheHeader>
 

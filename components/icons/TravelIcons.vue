@@ -4,7 +4,7 @@
       <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
         <i :class="feature.icon" class="text-2xl text-primary"></i>
       </div>
-      <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ feature.title }}</h3>
+      <h3 class="text-lg font-semibold text-white mb-2">{{ feature.title }}</h3>
       <p class="text-gray-600">{{ feature.description }}</p>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="pt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 class="text-4xl font-bold text-gray-900 mb-8">About Passe.ai</h1>
+      <h1 class="text-4xl font-bold text-white mb-8">About Passe.ai</h1>
       
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div>
@@ -12,7 +12,7 @@
             Our mission is to make road trip planning effortless while helping you discover hidden gems and create lasting memories along the way.
           </p>
           <div class="space-y-4">
-            <h2 class="text-2xl font-semibold text-gray-900">Our Values</h2>
+            <h2 class="text-2xl font-semibold text-white">Our Values</h2>
             <ul class="space-y-4">
               <li class="flex items-start gap-3">
                 <i class="pi pi-compass text-primary mt-1"></i>

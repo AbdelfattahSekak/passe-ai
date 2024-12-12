@@ -1,30 +1,25 @@
 <template>
-  <div class="relative flex flex-col items-start w-full">
-    <label class="block text-sm font-medium text-white mb-1">{{ label }}</label>
-    <div class="relative border border-gray-300 rounded-lg hover:border-gray-400 transition w-full">
-      <div class="flex items-center h-[45px]">
-        <button 
-          type="button"
-          @click="decrementValue"
-          :disabled="value <= 1 || disabled"
-          class="flex-none w-12 h-full flex items-center justify-center text-gray-600 hover:text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <i class="pi pi-minus text-sm text-white"></i>
-        </button>
-        
-        <div class="flex-1 flex flex-col items-center justify-center px-4">
-          <div class="text-base font-medium text-white">{{ value }}</div>
-          <div class="text-xs text-white">stops</div>
+  <div class="relative flex items-center gap-6">
+    <i class="pi pi-calendar text-gray-900 border-[3px] rounded-full p-3"></i>
+    <div class="flex flex-col items-start w-full  border-r">
+      <label class="block text-sm text-gray-900 mt-2">{{ label }}</label>
+      <div class="relative  rounded-lg hover:border-gray-400 transition w-full">
+        <div class="flex items-center h-[45px] gap-12">
+          <button type="button" @click="decrementValue" :disabled="value <= 1 || disabled"
+            class="flex-none border rounded-full w-8 h-8 flex items-center justify-center text-gray-700 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed">
+            <i class="pi pi-minus text-sm text-gray-500"></i>
+          </button>
+
+          <div class="flex flex-col items-center justify-center">
+            <div class="text-base font-medium text-gray-700">{{ value }}</div>
+            <div class="text-xs text-gray-700">stops</div>
+          </div>
+
+          <button type="button" @click="incrementValue" :disabled="value >= 10 || disabled"
+            class="flex-none border mr-6 rounded-full w-8 h-8 flex items-center justify-center text-gray-700 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed">
+            <i class="pi pi-plus text-sm text-gray-700"></i>
+          </button>
         </div>
-        
-        <button 
-          type="button"
-          @click="incrementValue"
-          :disabled="value >= 10 || disabled"
-          class="flex-none w-12 h-full flex items-center justify-center text-gray-600 hover:text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <i class="pi pi-plus text-sm text-white"></i>
-        </button>
       </div>
     </div>
   </div>
@@ -62,7 +57,5 @@ const decrementValue = () => {
 </script>
 
 <style scoped>
-.pi {
-  font-size: 12px;
-}
+
 </style>

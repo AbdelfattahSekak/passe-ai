@@ -53,7 +53,9 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
-      "DM Sans": [400, 500, 600, 700],
+      "Inter": [400, 500, 600, 700],
+      "DM Sans": [400, 500, 600, 700],   
+      "Red Hat Display": [400, 500, 600, 700],
     },
     display: "swap",
   },

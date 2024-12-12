@@ -1,7 +1,7 @@
 <template>
   <section class="py-16 bg-white" aria-labelledby="suggested-trips">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 id="suggested-trips" class="text-3xl font-bold text-gray-900 mb-8">Popular Road Trips</h2>
+      <h2 id="suggested-trips" class="text-3xl font-bold text-white mb-8">Popular Road Trips</h2>
       
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <Card v-for="trip in trips" :key="trip.title" class="border-0">
@@ -13,7 +13,7 @@
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 loading="lazy"
               />
-              <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-medium text-gray-900">
+              <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-medium text-white">
                 {{ trip.duration }}
               </div>
             </div>
@@ -21,7 +21,7 @@
           
           <template #title>
             <div class="flex items-center justify-between">
-              <h3 class="text-xl font-semibold text-gray-900">{{ trip.title }}</h3>
+              <h3 class="text-xl font-semibold text-white">{{ trip.title }}</h3>
               <span class="text-primary font-medium">{{ trip.distance }}</span>
             </div>
           </template>

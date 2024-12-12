@@ -7,6 +7,7 @@
   --secondary-color: #00A699;
   --text-color: #484848;
   --text-color-secondary: #767676;
+  --tertiary-color: #645CBB;
 }
 
 * {
@@ -16,20 +17,11 @@
 }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Red Hat Display', sans-serif;
   color: var(--text-color);
   line-height: 1.6;
-}
-
-// PrimeVue Component Styles
-.p-button {
-  @apply bg-primary border-primary hover:bg-primary/90 hover:border-primary/90 flex items-center justify-center;
-  min-height: 48px;
-  
-  &:hover {
-    background: darken(#FF5A5F, 10%);
-    border-color: darken(#FF5A5F, 10%);
-  }
+  overflow-x: hidden;
+  width: 100vw;
 }
 
 .p-card {
@@ -38,13 +30,6 @@ body {
   .p-card-title {
     font-size: 1.5rem;
     color: var(--text-color);
-  }
-}
-
-.p-inputtext {
-  &:focus {
-    @apply border-primary ring-1 ring-primary;
-    box-shadow: 0 0 0 1px var(--primary-color);
   }
 }
 
@@ -62,7 +47,6 @@ body {
   }
 }
 
-// Dark mode support
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
