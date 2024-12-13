@@ -71,6 +71,25 @@ function initMap(): void {
       streetViewControl: true,
       fullscreenControl: true,
       zoomControl: true,
+      gestureHandling: "greedy", // Enables one-finger zoom on mobile
+      scrollwheel: true, // Enables mouse wheel zoom
+      zoomControlOptions: {
+        position: google.maps.ControlPosition.RIGHT_CENTER,
+      },
+    });
+
+    // Add smooth zoom behavior
+    map.value.addListener('wheel', (event: WheelEvent) => {
+      const delta = event.deltaY;
+      const currentZoom = map.value!.getZoom() || 7;
+      
+      // Smooth zoom calculation
+      const zoomDelta = -delta / 200; // Adjust divisor for zoom sensitivity
+      const newZoom = Math.min(Math.max(currentZoom + zoomDelta, 1), 20);
+      
+      if (newZoom !== currentZoom) {
+        map.value!.setZoom(newZoom);
+      }
     });
 
     directionsRenderer.value = new google.maps.DirectionsRenderer({
