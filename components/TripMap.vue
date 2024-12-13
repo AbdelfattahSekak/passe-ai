@@ -165,10 +165,13 @@ async function calculateAndDisplayRoute(): Promise<void> {
   error.value = null;
 
   try {
-    const origin = props.stops[0].address;
-    const destination = props.stops[props.stops.length - 1].address;
+    const origin = { lat: Number(props.stops[0].lat), lng: Number(props.stops[0].lng) };
+    const destination = { 
+      lat: Number(props.stops[props.stops.length - 1].lat), 
+      lng: Number(props.stops[props.stops.length - 1].lng) 
+    };
     const waypoints = props.stops.slice(1, -1).map((stop) => ({
-      location: stop.address,
+      location: { lat: Number(stop.lat), lng: Number(stop.lng) },
       stopover: true,
     }));
 
