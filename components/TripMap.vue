@@ -38,6 +38,49 @@ const isCalculating = ref(false);
 const error = ref<string | null>(null);
 const markers = ref<google.maps.Marker[]>([]);
 
+const mapStyles = [
+  {
+    featureType: "administrative",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#484848" }]
+  },
+  {
+    featureType: "landscape",
+    elementType: "all",
+    stylers: [{ color: "#f2f2f2" }]
+  },
+  {
+    featureType: "poi",
+    elementType: "all",
+    stylers: [{ visibility: "off" }]
+  },
+  {
+    featureType: "road",
+    elementType: "all",
+    stylers: [{ saturation: -100 }, { lightness: 45 }]
+  },
+  {
+    featureType: "road.highway",
+    elementType: "all",
+    stylers: [{ visibility: "simplified" }]
+  },
+  {
+    featureType: "road.arterial",
+    elementType: "labels.icon",
+    stylers: [{ visibility: "off" }]
+  },
+  {
+    featureType: "transit",
+    elementType: "all",
+    stylers: [{ visibility: "off" }]
+  },
+  {
+    featureType: "water",
+    elementType: "all",
+    stylers: [{ color: "#dbdbdb" }, { visibility: "on" }]
+  }
+];
+
 function clearMarkers() {
   markers.value.forEach((marker) => marker.setMap(null));
   markers.value = [];
@@ -67,12 +110,13 @@ function initMap(): void {
       zoom: 7,
       center: { lat: 41.85, lng: -87.65 },
       disableDefaultUI: false,
-      mapTypeControl: true,
-      streetViewControl: true,
-      fullscreenControl: true,
+      mapTypeControl: false, // Hide map type control for cleaner look
+      streetViewControl: false, // Hide street view for cleaner look
+      fullscreenControl: false, // Hide fullscreen control for cleaner look
       zoomControl: true,
       gestureHandling: "greedy", // Enables one-finger zoom on mobile
       scrollwheel: true, // Enables mouse wheel zoom
+      styles: mapStyles, // Apply custom styles
       zoomControlOptions: {
         position: google.maps.ControlPosition.RIGHT_CENTER,
       },
