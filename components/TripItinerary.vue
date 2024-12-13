@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-4 flex flex-col gap-6 max-h-screen overflow-y-auto"
+    class="p-4 flex flex-col gap-6 max-h-screen"
     role="list"
     aria-label="Trip Itinerary"
   >
@@ -16,7 +16,7 @@
               class="w-full h-full object-cover"
             />
             <div
-              class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2"
+              class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full w-8 h-8 flex items-center justify-center"
             >
               <i class="pi pi-camera text-primary"></i>
             </div>
