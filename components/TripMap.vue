@@ -2,13 +2,14 @@
   <div class="map-container">
     <div
       v-if="isCalculating"
-      class="w-full h-[500px] rounded-lg shadow-md bg-gray-100 flex items-center justify-center"
+      class="w-full h-[500px] rounded-lg shadow-md bg-gray-100 flex items-center justify-center absolute z-10"
     >
       <div class="text-center">
-        <div
-          class="animate-spin h-10 w-10 border-4 border-blue-500 rounded-full border-t-transparent mx-auto mb-4"
-        ></div>
-        <p class="text-gray-600">Preparing your route...</p>
+        <div class="dots-loader mb-4">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
       </div>
     </div>
 
@@ -42,43 +43,43 @@ const mapStyles = [
   {
     featureType: "administrative",
     elementType: "labels.text.fill",
-    stylers: [{ color: "#484848" }]
+    stylers: [{ color: "#484848" }],
   },
   {
     featureType: "landscape",
     elementType: "all",
-    stylers: [{ color: "#f2f2f2" }]
+    stylers: [{ color: "#f2f2f2" }],
   },
   {
     featureType: "poi",
     elementType: "all",
-    stylers: [{ visibility: "off" }]
+    stylers: [{ visibility: "off" }],
   },
   {
     featureType: "road",
     elementType: "all",
-    stylers: [{ saturation: -100 }, { lightness: 45 }]
+    stylers: [{ saturation: -100 }, { lightness: 45 }],
   },
   {
     featureType: "road.highway",
     elementType: "all",
-    stylers: [{ visibility: "simplified" }]
+    stylers: [{ visibility: "simplified" }],
   },
   {
     featureType: "road.arterial",
     elementType: "labels.icon",
-    stylers: [{ visibility: "off" }]
+    stylers: [{ visibility: "off" }],
   },
   {
     featureType: "transit",
     elementType: "all",
-    stylers: [{ visibility: "off" }]
+    stylers: [{ visibility: "off" }],
   },
   {
     featureType: "water",
     elementType: "all",
-    stylers: [{ color: "#dbdbdb" }, { visibility: "on" }]
-  }
+    stylers: [{ color: "#dbdbdb" }, { visibility: "on" }],
+  },
 ];
 
 function clearMarkers() {
@@ -123,14 +124,14 @@ function initMap(): void {
     });
 
     // Add smooth zoom behavior
-    map.value.addListener('wheel', (event: WheelEvent) => {
+    map.value.addListener("wheel", (event: WheelEvent) => {
       const delta = event.deltaY;
       const currentZoom = map.value!.getZoom() || 7;
-      
+
       // Smooth zoom calculation
       const zoomDelta = -delta / 200; // Adjust divisor for zoom sensitivity
       const newZoom = Math.min(Math.max(currentZoom + zoomDelta, 1), 20);
-      
+
       if (newZoom !== currentZoom) {
         map.value!.setZoom(newZoom);
       }
@@ -243,5 +244,40 @@ watch(
 .map-container {
   position: relative;
   width: 100%;
+}
+
+.dots-loader {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ff5a5f;
+  border-radius: 50%;
+  animation: dotBounce 1.4s infinite ease-in-out;
+}
+
+.dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes dotBounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 </style>
