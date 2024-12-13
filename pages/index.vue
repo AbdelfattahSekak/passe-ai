@@ -57,7 +57,7 @@ const handleSearch = async (formData: SearchFormData) => {
   // TODO: Replace with actual API call
   console.log(formData);
   itinerary.value = {
-    ...(dummyData as SavedTrip),
+    ...(dummyData as unknown as SavedTrip),
     start: formData.start,
     destination: formData.destination,
   };
@@ -66,7 +66,7 @@ const handleSearch = async (formData: SearchFormData) => {
 const handleTripSelect = (trip: SavedTrip) => {
   // TODO: Replace with actual API call to get trip details
   console.log("Selected trip:", trip);
-  itinerary.value = dummyData as SavedTrip;
+  itinerary.value = dummyData as unknown as SavedTrip;
 };
 
 const saveCurrentTrip = () => {
