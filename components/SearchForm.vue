@@ -60,7 +60,7 @@ const handleSubmit = () => {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 :deep(.p-card) {
   @apply border-0;
 }
