@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-white">
     <TheHeader>
       <SearchForm @submit="handleSearch" />
     </TheHeader>
