@@ -1,9 +1,8 @@
 <template>
   <div class="absolute inset-0 top-[360px] z-50">
-    <Card class="bg-white px-6 py-2" style="border-radius: 100px">
+    <Card class="bg-white px-6 py-2 mx-auto" style="border-radius: 100px; width: max-content;">
       <template #content>
-        <form @submit.prevent="handleSubmit" class="space-y-6 flex gap-4">
-          <div class="flex items-center gap-6">
+        <form @submit.prevent="handleSubmit" class="flex items-center gap-6">
             <LocationInput
               id="start"
               label="Starting Point"
@@ -25,16 +24,15 @@
               :disabled="loading"
               label="Number of Stops"
             />
-            <div class="flex -mr-3">
+            <div class="-mr-3">
               <Button
                 type="submit"
                 :loading="loading"
                 :disabled="!isFormValid"
-                class="bg-primary text-white w-[73px] h-[73px] rounded-full flex items-center justify-center"
+                class="bg-primary hover:bg-primary_dark text-white w-[73px] h-[73px] rounded-full flex items-center justify-center"
               >
                 <i class="pi pi-search text-white text-xl"></i>
               </Button>
-            </div>
           </div>
         </form>
       </template>

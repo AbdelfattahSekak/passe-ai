@@ -24,14 +24,20 @@ body {
   width: 100vw;
 }
 
-.p-card {
-  @apply rounded-xl shadow-md;
-  
-  .p-card-title {
-    font-size: 1.5rem;
-    color: var(--text-color);
-  }
+::-webkit-scrollbar {
+  width: 7px;
 }
+
+::-webkit-scrollbar-track {
+  height: 80%;
+  background: rgb(240, 240, 240)
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF5A5F;
+  border-radius: 10px;
+}
+
 
 .p-autocomplete {
   &-panel {

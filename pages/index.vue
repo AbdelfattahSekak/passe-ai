@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-white">
     <TheHeader>
       <SearchForm @submit="handleSearch" />
     </TheHeader>
@@ -12,11 +12,11 @@
     <template v-else>
       <main
         v-if="itinerary"
-        class="flex h-full md:flex-row flex-col gap-4 p-4"
+        class="flex h-full md:flex-row flex-col gap-4 p-4 mt-20"
         role="main"
       >
         <div
-          class="flex-1 min-h-[500px] md:h-[calc(100vh-600px)] bg-white shadow-lg overflow-y-auto rounded-lg"
+          class="flex-3 min-h-[500px] md:h-[calc(100vh-600px)] bg-white shadow-lg overflow-y-auto rounded-lg"
           role="complementary"
           aria-label="Trip Itinerary"
         >

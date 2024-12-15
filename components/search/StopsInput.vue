@@ -1,6 +1,5 @@
 <template>
   <div class="relative flex items-center gap-6">
-    <i class="pi pi-calendar text-gray-900 border-[3px] rounded-full p-3"></i>
     <div class="flex flex-col items-start w-full  border-r">
       <label class="block text-sm text-gray-900 mt-2">{{ label }}</label>
       <div class="relative  rounded-lg hover:border-gray-400 transition w-full">
