@@ -135,16 +135,16 @@ function createActivityMarker(activity: Activity, stopIndex: number): void {
   const infoWindow = new google.maps.InfoWindow({
     ariaLabel: activity.title,
     headerContent: activity.title,
-    content: `
-      <div>
-        <p class="text-sm">${activity.details}</p>
-        ${
-          activity.images.length
-            ? `<img src="${activity.images[0].url}" alt="${activity.images[0].description}" class="w-32 h-32 object-cover mt-2">`
-            : ""
-        }
-      </div>
-    `,
+    // content: `
+    //   <div>
+    //     <p class="text-sm">${activity.details}</p>
+    //     ${
+    //       activity.images.length
+    //         ? `<img src="${activity.images[0].url}" alt="${activity.images[0].description}" class="w-32 h-32 object-cover mt-2">`
+    //         : ""
+    //     }
+    //   </div>
+    // `,
   });
 
   marker.addListener("click", () => {

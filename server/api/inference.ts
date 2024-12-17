@@ -42,25 +42,7 @@ const responseFormat = {
                 type: "string",
                 description: "Additional details about the stop.",
               },
-              images: {
-                type: "array",
-                description: "Array of images associated with the activity.",
-                items: {
-                  type: "object",
-                  properties: {
-                    url: {
-                      type: "string",
-                      description: "URL of the image.",
-                    },
-                    description: {
-                      type: "string",
-                      description: "Description of the image.",
-                    },
-                  },
-                  required: ["url", "description"],
-                  additionalProperties: false,
-                },
-              },
+
               activities: {
                 type: "array",
                 description: "List of activities available at the stop.",
@@ -87,35 +69,8 @@ const responseFormat = {
                       type: "string",
                       description: "The physical address of the activity.",
                     },
-                    images: {
-                      type: "array",
-                      description:
-                        "Array of images associated with the activity.",
-                      items: {
-                        type: "object",
-                        properties: {
-                          url: {
-                            type: "string",
-                            description: "URL of the image.",
-                          },
-                          description: {
-                            type: "string",
-                            description: "Description of the image.",
-                          },
-                        },
-                        required: ["url", "description"],
-                        additionalProperties: false,
-                      },
-                    },
                   },
-                  required: [
-                    "title",
-                    "lat",
-                    "lng",
-                    "details",
-                    "address",
-                    "images",
-                  ],
+                  required: ["title", "lat", "lng", "details", "address"],
                   additionalProperties: false,
                 },
               },
@@ -127,7 +82,6 @@ const responseFormat = {
               "address",
               "details",
               "activities",
-              "images",
             ],
             additionalProperties: false,
           },
@@ -149,7 +103,7 @@ Activities Type: []
 Number of Stops: [${nbStops}]
 Transportation Mode: []
 Prefrences: []
-Provide a detailed itinerary with stops and activities, formatted as a JSON object
+Provide a detailed itinerary with stops ( including start and destination ) and activities, formatted as a JSON object.
 `;
 const getTripInference = async (body: SearchFormData) => {
   const response = await openai.chat.completions.create({
@@ -176,7 +130,7 @@ const getTripInference = async (body: SearchFormData) => {
     ],
     response_format: responseFormat,
     temperature: 1,
-    max_tokens: 966,
+    max_tokens: 2048,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
