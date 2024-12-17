@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 import type { ResponseFormatJSONSchema } from "openai/resources/shared.mjs";
-import type { SearchFormData } from "@/types";
+import type { SearchFormData, Stop } from "@/types";
 
 const config = useRuntimeConfig();
 
@@ -26,9 +26,13 @@ const responseFormat = {
                 type: "string",
                 description: "The title or name of the stop.",
               },
-              coordinates: {
+              lat: {
                 type: "string",
-                description: "The geographical coordinates of the stop.",
+                description: "The latitude of the stop.",
+              },
+              lng: {
+                type: "string",
+                description: "The longitude of the stop.",
               },
               address: {
                 type: "string",
@@ -67,10 +71,13 @@ const responseFormat = {
                       type: "string",
                       description: "The title or name of the activity.",
                     },
-                    coordinates: {
+                    lat: {
                       type: "string",
-                      description:
-                        "The geographical coordinates of the activity.",
+                      description: "The latitude of the activity.",
+                    },
+                    lng: {
+                      type: "string",
+                      description: "The longitude of the activity.",
                     },
                     details: {
                       type: "string",
@@ -103,7 +110,8 @@ const responseFormat = {
                   },
                   required: [
                     "title",
-                    "coordinates",
+                    "lat",
+                    "lng",
                     "details",
                     "address",
                     "images",
@@ -114,7 +122,8 @@ const responseFormat = {
             },
             required: [
               "title",
-              "coordinates",
+              "lat",
+              "lng",
               "address",
               "details",
               "activities",
@@ -174,10 +183,16 @@ const getTripInference = async (body: SearchFormData) => {
   });
   return response.choices[0].message.content;
 };
+
 export default defineEventHandler(async (event) => {
   const body = (await readBody(event)) as SearchFormData;
   try {
-    return await getTripInference(body);
+    const result = await getTripInference(body);
+    if (result) {
+      const tripData = JSON.parse(result) as { stops: Stop[] };
+      return tripData;
+    }
+    return new Response("Bad Request", { status: 400 });
   } catch (error) {
     console.error(error);
     return new Response("Internal Server Error", { status: 500 });

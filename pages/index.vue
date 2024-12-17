@@ -54,8 +54,11 @@ const itinerary = ref<SavedTrip | null>(null);
 const isSaving = ref(false);
 
 const handleSearch = async (formData: SearchFormData) => {
-  // TODO: Replace with actual API call
-  console.log(formData);
+  const result = await $fetch("/api/inference", {
+    method: "POST",
+    body: formData,
+  });
+  console.log({ result });
   itinerary.value = {
     ...(dummyData as unknown as SavedTrip),
     start: formData.start,
