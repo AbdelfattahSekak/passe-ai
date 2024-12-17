@@ -8,13 +8,12 @@
       <Card>
         <template #header>
           <div class="relative h-48 overflow-hidden rounded-t-lg">
-            <!-- <img
-              v-if="stop.images[0]"
-              :src="stop.images[0].url"
-              :alt="stop.images[0].description"
+            <img
+              v-if="stop.photos[0]"
+              :src="stop.photos[0].getURI({ maxHeight: 1000 })"
               loading="lazy"
               class="w-full h-full object-cover"
-            /> -->
+            />
             <div
               class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full w-8 h-8 flex items-center justify-center"
             >

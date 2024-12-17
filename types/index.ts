@@ -6,11 +6,6 @@ export interface Activity {
   address: string;
 }
 
-export type Media = {
-  url: string;
-  description: string;
-};
-
 export interface Stop {
   title: string;
   lat: number;
@@ -18,12 +13,14 @@ export interface Stop {
   address: string;
   details: string;
   activities: Activity[];
+  photos: google.maps.places.Photo[];
 }
 
 export interface SavedTrip {
   id: string;
   createdAt: string;
   start: string;
+  locationId?: string;
   destination: string;
   stops: Stop[];
 }

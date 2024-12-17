@@ -46,18 +46,35 @@
 <script setup lang="ts">
 import dummyData from "~/mocks/inference.json";
 import { generateMetaTags } from "~/utils/seo";
-import type {
-  SearchFormData,
-  SavedTrip,
-  Stop,
-  InferenceResponse,
-} from "~/types";
+import type { SearchFormData, SavedTrip, InferenceResponse } from "~/types";
 import { v4 as uuidv4 } from "uuid";
+import useLocationId from "~/composables/useLocationId";
 
 const route = useRoute();
 const { savedTrips, saveTrip } = useSavedTrips();
 const itinerary = ref<SavedTrip | null>(null);
 const isSaving = ref(false);
+
+const { getLocationInfo } = useLocationId();
+
+const enrichItineraryWithLocationIds = async (
+  itineraryData: InferenceResponse
+) => {
+  const enrichedStops = await Promise.all(
+    itineraryData.stops.map(async (stop) => {
+      const locationInfo = await getLocationInfo(stop.address);
+      return {
+        ...stop,
+        ...locationInfo,
+      };
+    })
+  );
+
+  return {
+    ...itineraryData,
+    stops: enrichedStops,
+  };
+};
 
 const handleSearch = async (formData: SearchFormData) => {
   try {
@@ -67,20 +84,28 @@ const handleSearch = async (formData: SearchFormData) => {
     // })) as {
     //   stops: Stop[];
     // };
+    const enrichedItinerary = await enrichItineraryWithLocationIds(
+      dummyData as unknown as InferenceResponse
+    );
     itinerary.value = {
       id: uuidv4(),
       createdAt: new Date().toISOString(),
       start: formData.start,
       destination: formData.destination,
-      ...(dummyData as unknown as InferenceResponse),
+      ...enrichedItinerary,
     };
-  } catch (error) {}
+    console.log(itinerary.value);
+  } catch (error) {
+    console.error("Error processing itinerary:", error);
+  }
 };
 
-const handleTripSelect = (trip: SavedTrip) => {
-  // TODO: Replace with actual API call to get trip details
+const handleTripSelect = async (trip: SavedTrip) => {
   console.log("Selected trip:", trip);
-  itinerary.value = dummyData as unknown as SavedTrip;
+  const enrichedItinerary = await enrichItineraryWithLocationIds(
+    dummyData as unknown as SavedTrip
+  );
+  itinerary.value = enrichedItinerary;
 };
 
 const saveCurrentTrip = () => {
