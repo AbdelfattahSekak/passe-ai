@@ -12,18 +12,18 @@
     <template v-else>
       <main
         v-if="itinerary"
-        class="flex h-full md:flex-row flex-col gap-4 p-4 mt-20"
+        class="flex flex-col sm:flex-col md:flex-row gap-4 p-4 mt-20"
         role="main"
       >
         <div
-          class="flex-3 min-h-[500px] md:h-[calc(100vh-600px)] bg-white shadow-lg overflow-y-auto rounded-lg"
+          class="w-full md:w-1/2 lg:w-2/3 min-h-[500px] bg-white order-2 sm:order-2 md:order-1"
           role="complementary"
           aria-label="Trip Itinerary"
         >
           <TripItinerary :stops="itinerary.stops" />
         </div>
         <div
-          class="flex-1 min-h-[500px] md:h-[calc(100vh-600px)]"
+          class="w-full md:w-1/2 lg:w-1/3 order-1 sm:order-1 md:order-2"
           role="complementary"
           aria-label="Trip Map"
         >

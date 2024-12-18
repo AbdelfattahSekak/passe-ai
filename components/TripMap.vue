@@ -2,7 +2,7 @@
   <div class="map-container">
     <div
       v-if="isCalculating"
-      class="w-full h-[500px] rounded-lg shadow-md bg-gray-100 flex items-center justify-center absolute z-10"
+      class="w-full h-full rounded-lg shadow-md bg-gray-100 flex items-center justify-center absolute z-10"
     >
       <div class="text-center">
         <div class="dots-loader mb-4">
@@ -16,7 +16,7 @@
     <div
       ref="mapContainer"
       id="map"
-      class="w-full h-[500px] rounded-lg shadow-md"
+      class="w-full h-full min-h-[700px] rounded-lg shadow-md"
       role="region"
       aria-label="Interactive Map"
     ></div>

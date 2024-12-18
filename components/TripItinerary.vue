@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="p-4 flex flex-col gap-6 max-h-screen"
-    role="list"
-    aria-label="Trip Itinerary"
-  >
+  <div class="p-4 flex flex-col gap-6" role="list" aria-label="Trip Itinerary">
     <div v-for="(stop, index) in stops" :key="index" role="listitem">
       <Card>
         <template #header>
