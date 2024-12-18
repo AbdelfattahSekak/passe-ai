@@ -18,7 +18,7 @@
           </div>
         </template>
         <template #title>
-          <div class="flex items-center gap-4">
+          <div class="flex items-center gap-4 p-2">
             <span
               class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full"
             >
@@ -28,7 +28,7 @@
           </div>
         </template>
         <template #content>
-          <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-4 p-2">
             <p class="text-sm text-text-secondary flex items-center gap-2">
               <i class="pi pi-map-marker text-primary"></i>
               {{ stop.address }}

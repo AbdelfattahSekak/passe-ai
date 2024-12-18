@@ -16,7 +16,7 @@
     <div
       ref="mapContainer"
       id="map"
-      class="w-full h-full min-h-[700px] rounded-lg shadow-md"
+      class="w-full h-full min-h-[700px] shadow-md"
       role="region"
       aria-label="Interactive Map"
     ></div>

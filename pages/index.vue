@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white">
+  <div class="bg-white flex flex-col">
     <TheHeader>
       <SearchForm @submit="handleSearch" />
     </TheHeader>
@@ -12,7 +12,7 @@
     <template v-else>
       <main
         v-if="itinerary"
-        class="flex flex-col sm:flex-col md:flex-row gap-4 p-4 mt-20"
+        class="flex flex-col sm:flex-col md:flex-row gap-4"
         role="main"
       >
         <div
@@ -30,7 +30,7 @@
           <TripMap :stops="itinerary.stops" />
         </div>
       </main>
-      <div class="fixed bottom-8 right-8">
+      <!-- <div class="fixed bottom-8 right-8">
         <Button
           @click="saveCurrentTrip"
           class="p-4 shadow-lg"
@@ -38,7 +38,7 @@
           :loading="isSaving"
           label="Save Trip"
         />
-      </div>
+      </div> -->
     </template>
   </div>
 </template>

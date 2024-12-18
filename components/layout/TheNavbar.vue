@@ -4,7 +4,7 @@
     role="navigation"
   >
     <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center h-[100px]">
+      <div class="flex items-center h-[60px]">
         <div class="flex-1">
           <NuxtLink
             to="/"

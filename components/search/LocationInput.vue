@@ -1,11 +1,15 @@
 <template>
-  <div class="relative flex items-center gap-6">
-    <i class="pi pi-map-marker text-gray-900 border-[3px] rounded-full p-3"></i>
-   <div class=" flex flex-col justify-center items-start w-full border-r ">
-    <label :for="id" class="block text-sm text-gray-900 mt-2">{{label}}</label>
-    <div class="relative">
+  <div class="flex items-center gap-6">
+    <i
+      class="pi pi-map-marker text-gray-900 border-[3px] rounded-full p-3 text-sm"
+    ></i>
+    <div class="flex flex-col justify-center items-start w-full border-r">
+      <label :for="id" class="block text-sm text-gray-900 mt-2">{{
+        label
+      }}</label>
+
       <AutoComplete
-        style="outline:none"
+        style="outline: none"
         :id="id"
         v-model="selectedLocation"
         :suggestions="suggestions"
@@ -13,16 +17,16 @@
         @item-select="handleSelect"
         :placeholder="placeholder"
         :disabled="disabled"
-        class="w-full text-sm h-[40px]"
+        class="w-full text-sm h-[30px]"
         :pt="{
           root: { class: 'w-full' },
           input: {
-            class: 'w-full outline-none bg-transparent rounded-lg shadow-none text-gray-900',
+            class:
+              'w-full outline-none bg-transparent rounded-lg shadow-none text-gray-900',
           },
         }"
       />
     </div>
-   </div>
   </div>
 </template>
 
