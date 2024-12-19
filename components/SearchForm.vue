@@ -1,5 +1,5 @@
 <template>
-  <Card class="bg-white h-[80px] px-4 py-1 rounded-full">
+  <Card class="bg-white max-w-[1000px] h-[70px] px-4 py-1 rounded-full">
     <template #content>
       <form
         @submit.prevent="handleSubmit"
@@ -33,11 +33,12 @@
         <div class="-mr-3">
           <Button
             type="submit"
+            size="small"
             :loading="loading"
             :disabled="!isFormValid"
-            class="bg-primary hover:bg-primary_dark text-white w-[73px] h-[73px] rounded-full flex items-center justify-center"
+            class="bg-primary hover:bg-primary_dark text-white w-[60px] h-[60px] rounded-full flex items-center justify-center"
           >
-            <i class="pi pi-search text-white text-xl"></i>
+            <i class="pi pi-search text-white text-lg"></i>
           </Button>
         </div>
       </form>

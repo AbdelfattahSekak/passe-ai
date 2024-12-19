@@ -51,14 +51,7 @@ export default defineNuxtConfig({
       include: ["ripple"],
     },
   },
-  googleFonts: {
-    families: {
-      "Inter": [400, 500, 600, 700],
-      "DM Sans": [400, 500, 600, 700],   
-      "Red Hat Display": [400, 500, 600, 700],
-    },
-    display: "swap",
-  },
+
   runtimeConfig: {
     public: {
       GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY || "",
