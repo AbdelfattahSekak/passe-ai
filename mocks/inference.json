@@ -2,29 +2,29 @@
   "stops": [
     {
       "title": "Tanger",
-      "lat": "35.7673",
-      "lng": "-5.7995",
+      "lat": 35.7673,
+      "lng": -5.7995,
       "address": "Tanger, Morocco",
       "details": "A vibrant coastal city known for its rich history and diverse culture. It is a great starting point for your journey to Agadir.",
       "activities": [
         {
           "title": "Explore the Kasbah",
-          "lat": "35.7912",
-          "lng": "-5.8057",
+          "lat": 35.7912,
+          "lng": -5.8057,
           "details": "Visit this historic fortress offering stunning views of the sea and city.",
           "address": "Kasbah, Tanger, Morocco"
         },
         {
           "title": "Visit the Caves of Hercules",
-          "lat": "35.7656",
-          "lng": "-5.7990",
+          "lat": 35.7656,
+          "lng": -5.7990,
           "details": "Legendary caves associated with Greek mythology, perfect for a short visit and photos.",
           "address": "Caves of Hercules, Tanger, Morocco"
         },
         {
           "title": "Stroll through the Medina",
-          "lat": "35.7750",
-          "lng": "-5.8135",
+          "lat": 35.7750,
+          "lng": -5.8135,
           "details": "Experience the vibrant souks and local craftsmanship in the heart of the city.",
           "address": "Medina, Tanger, Morocco"
         }
@@ -32,29 +32,29 @@
     },
     {
       "title": "Chefchaouen",
-      "lat": "35.1719",
-      "lng": "-5.2659",
+      "lat": 35.1719,
+      "lng": -5.2659,
       "address": "Chefchaouen, Morocco",
       "details": "Known as the Blue City, this picturesque town is famous for its blue-painted buildings and stunning mountain backdrop.",
       "activities": [
         {
           "title": "Walk in the Blue Streets",
-          "lat": "35.1710",
-          "lng": "-5.2711",
+          "lat": 35.1710,
+          "lng": -5.2711,
           "details": "Wander the iconic blue alleyways and take memorable photographs.",
           "address": "Chefchaouen, Morocco"
         },
         {
           "title": "Visit the Kasbah Museum",
-          "lat": "35.1712",
-          "lng": "-5.2712",
+          "lat": 35.1712,
+          "lng": -5.2712,
           "details": "Learn about the local history and culture in this charming museum.",
           "address": "Kasbah Museum, Chefchaouen, Morocco"
         },
         {
           "title": "Hike to the Spanish Mosque",
-          "lat": "35.1662",
-          "lng": "-5.2679",
+          "lat": 35.1662,
+          "lng": -5.2679,
           "details": "A scenic hike that offers a panoramic view of the blue town.",
           "address": "Near Chefchaouen, Morocco"
         }
@@ -62,29 +62,29 @@
     },
     {
       "title": "Marrakech",
-      "lat": "31.6295",
-      "lng": "-7.9811",
+      "lat": 31.6295,
+      "lng": -7.9811,
       "address": "Marrakech, Morocco",
       "details": "Known for its historic medina, vibrant souks, and the famous Jemaa El-Fnaa square.",
       "activities": [
         {
           "title": "Explore Jemaa El-Fnaa",
-          "lat": "31.6258",
-          "lng": "-7.9899",
+          "lat": 31.6258,
+          "lng": -7.9899,
           "details": "The bustling square filled with street performers, food stalls, and local shops.",
           "address": "Jemaa El-Fnaa, Marrakech, Morocco"
         },
         {
           "title": "Visit the Majorelle Garden",
-          "lat": "31.6295",
-          "lng": "-7.9932",
+          "lat": 31.6295,
+          "lng": -7.9932,
           "details": "A beautiful garden featuring exotic plants, fountains, and the Berber Museum.",
           "address": "Majorelle Garden, Marrakech, Morocco"
         },
         {
           "title": "Discover the Bahia Palace",
-          "lat": "31.6250",
-          "lng": "-7.9869",
+          "lat": 31.6250,
+          "lng": -7.9869,
           "details": "A stunning palace showcasing Moroccan architecture and beautiful gardens.",
           "address": "Bahia Palace, Marrakech, Morocco"
         }
@@ -92,29 +92,29 @@
     },
     {
       "title": "Agadir",
-      "lat": "30.4278",
-      "lng": "-9.5982",
+      "lat": 30.4278,
+      "lng": -9.5982,
       "address": "Agadir, Morocco",
       "details": "A modern resort city known for its beaches, surfing, and seafood restaurants.",
       "activities": [
         {
           "title": "Relax on Agadir Beach",
-          "lat": "30.4214",
-          "lng": "-9.5980",
+          "lat": 30.4214,
+          "lng": -9.5980,
           "details": "Enjoy the sun and surf on one of Morocco's best coastal beaches.",
           "address": "Agadir Beach, Agadir, Morocco"
         },
         {
           "title": "Visit the Agadir Oufella Ruins",
-          "lat": "30.4266",
-          "lng": "-9.6018",
+          "lat": 30.4266,
+          "lng": -9.6018,
           "details": "Explore the historical ruins that offer panoramic views of the city.",
           "address": "Agadir Oufella, Agadir, Morocco"
         },
         {
           "title": "Walk the Marina",
-          "lat": "30.4116",
-          "lng": "-9.5987",
+          "lat": 30.4116,
+          "lng": -9.5987,
           "details": "Stroll along the marina filled with cafes, shops, and views of the ocean.",
           "address": "Marina, Agadir, Morocco"
         }

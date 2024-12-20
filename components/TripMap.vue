@@ -37,61 +37,18 @@ const directionsService = ref<google.maps.DirectionsService | null>(null);
 const directionsRenderer = ref<google.maps.DirectionsRenderer | null>(null);
 const isCalculating = ref(false);
 const error = ref<string | null>(null);
-const markers = ref<google.maps.Marker[]>([]);
-const activityMarkers = ref<google.maps.Marker[]>([]);
+const markers = ref<google.maps.marker.AdvancedMarkerElement[]>([]);
+const activityMarkers = ref<google.maps.marker.AdvancedMarkerElement[]>([]);
 const infoWindows = ref<google.maps.InfoWindow[]>([]);
 
-const mapStyles = [
-  {
-    featureType: "administrative",
-    elementType: "labels.text.fill",
-    stylers: [{ color: "#484848" }],
-  },
-  {
-    featureType: "landscape",
-    elementType: "all",
-    stylers: [{ color: "#f2f2f2" }],
-  },
-  {
-    featureType: "poi",
-    elementType: "all",
-    stylers: [{ visibility: "off" }],
-  },
-  {
-    featureType: "road",
-    elementType: "all",
-    stylers: [{ saturation: -100 }, { lightness: 45 }],
-  },
-  {
-    featureType: "road.highway",
-    elementType: "all",
-    stylers: [{ visibility: "simplified" }],
-  },
-  {
-    featureType: "road.arterial",
-    elementType: "labels.icon",
-    stylers: [{ visibility: "off" }],
-  },
-  {
-    featureType: "transit",
-    elementType: "all",
-    stylers: [{ visibility: "off" }],
-  },
-  {
-    featureType: "water",
-    elementType: "all",
-    stylers: [{ color: "#dbdbdb" }, { visibility: "on" }],
-  },
-];
-
 function clearMarkers() {
-  markers.value.forEach((marker) => marker.setMap(null));
+  markers.value.forEach((marker) => marker.remove());
   markers.value = [];
 }
 
 function clearAllMarkers() {
   clearMarkers();
-  activityMarkers.value.forEach((marker) => marker.setMap(null));
+  activityMarkers.value.forEach((marker) => marker.remove());
   activityMarkers.value = [];
   infoWindows.value.forEach((window) => window.close());
   infoWindows.value = [];
@@ -110,41 +67,42 @@ function isValidCoordinate(num: any): boolean {
   return typeof num === "number" && !isNaN(num) && isFinite(num);
 }
 
-function createActivityMarker(activity: Activity, stopIndex: number): void {
+async function createActivityMarker(activity: Activity, stopIndex: number) {
+  const { AdvancedMarkerElement, PinElement } =
+    (await google.maps.importLibrary("marker")) as google.maps.MarkerLibrary;
   if (!isValidCoordinate(activity.lat) || !isValidCoordinate(activity.lng)) {
     console.warn("Invalid coordinates for activity:", activity);
     return;
   }
 
-  const marker = new google.maps.Marker({
+  const icon = document.createElement("div");
+  icon.innerHTML = '<i class="pi pi-map-marker"></i>';
+  const faPin = new PinElement({
+    glyph: icon,
+    glyphColor: "#FFFFFF",
+    background: "#4CAF50",
+    borderColor: "#388E3C",
+    scale: 1.2,
+  });
+
+  const marker = new AdvancedMarkerElement({
     position: {
       lat: Number(activity.lat),
       lng: Number(activity.lng),
     },
     map: map.value,
-    icon: {
-      path: google.maps.SymbolPath.CIRCLE,
-      scale: 8,
-      fillColor: "#4CAF50",
-      fillOpacity: 1,
-      strokeColor: "#FFFFFF",
-      strokeWeight: 2,
-    },
+    content: faPin.element,
+    title: activity.title,
   });
 
   const infoWindow = new google.maps.InfoWindow({
     ariaLabel: activity.title,
     headerContent: activity.title,
-    // content: `
-    //   <div>
-    //     <p class="text-sm">${activity.details}</p>
-    //     ${
-    //       activity.images.length
-    //         ? `<img src="${activity.images[0].url}" alt="${activity.images[0].description}" class="w-32 h-32 object-cover mt-2">`
-    //         : ""
-    //     }
-    //   </div>
-    // `,
+    content: `
+      <div>
+        <p class="text-sm">${activity.details}</p>
+      </div>
+    `,
   });
 
   marker.addListener("click", () => {
@@ -164,6 +122,7 @@ function initMap(): void {
 
   try {
     map.value = new google.maps.Map(mapContainer.value, {
+      mapId: "main-map",
       zoom: 7,
       center: { lat: 41.85, lng: -87.65 },
       disableDefaultUI: false,
@@ -173,10 +132,6 @@ function initMap(): void {
       zoomControl: true,
       gestureHandling: "greedy", // Enables one-finger zoom on mobile
       scrollwheel: true, // Enables mouse wheel zoom
-      styles: mapStyles, // Apply custom styles
-      zoomControlOptions: {
-        position: google.maps.ControlPosition.RIGHT_CENTER,
-      },
     });
 
     // Add smooth zoom behavior
@@ -209,6 +164,9 @@ function initMap(): void {
 }
 
 async function calculateAndDisplayRoute(): Promise<void> {
+  const { AdvancedMarkerElement } = (await google.maps.importLibrary(
+    "marker"
+  )) as google.maps.MarkerLibrary;
   if (
     !directionsService.value ||
     !directionsRenderer.value ||
@@ -253,23 +211,17 @@ async function calculateAndDisplayRoute(): Promise<void> {
         console.warn(`Invalid coordinates for stop ${index}:`, stop);
         return;
       }
-
-      const marker = new google.maps.Marker({
+      const priceTag = document.createElement("div");
+      priceTag.className = "price-tag";
+      priceTag.textContent = "$2.5M";
+      const marker = new AdvancedMarkerElement({
         position: {
           lat: Number(stop.lat),
           lng: Number(stop.lng),
         },
         map: map.value,
         title: createMarkerLabel(index).text,
-        label: createMarkerLabel(index),
-        icon: {
-          path: google.maps.SymbolPath.CIRCLE,
-          scale: 12,
-          fillColor: "#FF5A5F",
-          fillOpacity: 1,
-          strokeColor: "#FFFFFF",
-          strokeWeight: 2,
-        },
+        content: priceTag,
       });
       markers.value.push(marker);
 

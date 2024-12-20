@@ -10,7 +10,7 @@
             id="start"
             label="Starting Point"
             v-model="form.start"
-            placeholder="Where are you starting from?"
+            placeholder="Paris, France"
             :disabled="loading"
           />
         </div>
@@ -20,7 +20,7 @@
             id="destination"
             label="Destination"
             v-model="form.destination"
-            placeholder="Where are you heading?"
+            placeholder="Marakech, Morocco"
             :disabled="loading"
           />
         </div>

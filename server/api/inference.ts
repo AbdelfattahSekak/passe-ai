@@ -27,11 +27,11 @@ const responseFormat = {
                 description: "The title or name of the stop.",
               },
               lat: {
-                type: "string",
+                type: "number",
                 description: "The latitude of the stop.",
               },
               lng: {
-                type: "string",
+                type: "number",
                 description: "The longitude of the stop.",
               },
               address: {
@@ -54,11 +54,11 @@ const responseFormat = {
                       description: "The title or name of the activity.",
                     },
                     lat: {
-                      type: "string",
+                      type: "number",
                       description: "The latitude of the activity.",
                     },
                     lng: {
-                      type: "string",
+                      type: "number",
                       description: "The longitude of the activity.",
                     },
                     details: {

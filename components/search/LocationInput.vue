@@ -1,14 +1,17 @@
 <template>
-  <div class="flex items-center gap-6">
+  <div class="flex items-center gap-6 cursor-pointer" @click="focusInput">
     <i
       class="pi pi-map-marker text-gray-900 border-[3px] rounded-full p-3 text-sm"
     ></i>
     <div class="flex flex-col justify-center items-start w-full border-r">
-      <label :for="id" class="block text-sm text-gray-900 mt-2">{{
-        label
-      }}</label>
+      <label
+        :for="id"
+        class="block text-sm text-gray-900 mt-2 cursor-pointer"
+        >{{ label }}</label
+      >
 
       <AutoComplete
+        ref="autoComplete"
         style="outline: none"
         :id="id"
         v-model="selectedLocation"
@@ -48,6 +51,12 @@ const suggestions = ref<string[]>([]);
 const autocompleteService = ref<google.maps.places.AutocompleteService | null>(
   null
 );
+
+const autoComplete = ref();
+
+const focusInput = () => {
+  autoComplete.value?.$el.querySelector("input").focus();
+};
 
 onMounted(async () => {
   autocompleteService.value = new google.maps.places.AutocompleteService();
