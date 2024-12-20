@@ -54,15 +54,6 @@ function clearAllMarkers() {
   infoWindows.value = [];
 }
 
-function createMarkerLabel(index: number): google.maps.MarkerLabel {
-  return {
-    text: String(index + 1),
-    color: "#FFFFFF",
-    fontWeight: "bold",
-    fontSize: "14px",
-  };
-}
-
 function isValidCoordinate(num: any): boolean {
   return typeof num === "number" && !isNaN(num) && isFinite(num);
 }
@@ -70,6 +61,9 @@ function isValidCoordinate(num: any): boolean {
 async function createActivityMarker(activity: Activity, stopIndex: number) {
   const { AdvancedMarkerElement, PinElement } =
     (await google.maps.importLibrary("marker")) as google.maps.MarkerLibrary;
+  const { InfoWindow } = (await google.maps.importLibrary(
+    "maps"
+  )) as google.maps.MapsLibrary;
   if (!isValidCoordinate(activity.lat) || !isValidCoordinate(activity.lng)) {
     console.warn("Invalid coordinates for activity:", activity);
     return;
@@ -95,7 +89,7 @@ async function createActivityMarker(activity: Activity, stopIndex: number) {
     title: activity.title,
   });
 
-  const infoWindow = new google.maps.InfoWindow({
+  const infoWindow = new InfoWindow({
     ariaLabel: activity.title,
     headerContent: activity.title,
     content: `
@@ -114,14 +108,23 @@ async function createActivityMarker(activity: Activity, stopIndex: number) {
   infoWindows.value.push(infoWindow);
 }
 
-function initMap(): void {
+async function initMap() {
+  const { Map } = (await google.maps.importLibrary(
+    "maps"
+  )) as google.maps.MapsLibrary;
+  const { DirectionsRenderer } = (await google.maps.importLibrary(
+    "routes"
+  )) as google.maps.RoutesLibrary;
+  const { DirectionsService } = (await google.maps.importLibrary(
+    "routes"
+  )) as google.maps.RoutesLibrary;
   if (!mapContainer.value) {
     error.value = "Required DOM elements not found";
     return;
   }
 
   try {
-    map.value = new google.maps.Map(mapContainer.value, {
+    map.value = new Map(mapContainer.value, {
       mapId: "main-map",
       zoom: 7,
       center: { lat: 41.85, lng: -87.65 },
@@ -148,11 +151,11 @@ function initMap(): void {
       }
     });
 
-    directionsRenderer.value = new google.maps.DirectionsRenderer({
+    directionsRenderer.value = new DirectionsRenderer({
       suppressMarkers: true, // Suppress default markers
       map: map.value,
     });
-    directionsService.value = new google.maps.DirectionsService();
+    directionsService.value = new DirectionsService();
 
     if (props.stops.length >= 2) {
       calculateAndDisplayRoute();
@@ -211,17 +214,18 @@ async function calculateAndDisplayRoute(): Promise<void> {
         console.warn(`Invalid coordinates for stop ${index}:`, stop);
         return;
       }
-      const priceTag = document.createElement("div");
-      priceTag.className = "price-tag";
-      priceTag.textContent = "$2.5M";
+      const markerElement = document.createElement("div");
+      markerElement.className = "marker-label";
+      markerElement.textContent = String(index + 1);
+
       const marker = new AdvancedMarkerElement({
         position: {
           lat: Number(stop.lat),
           lng: Number(stop.lng),
         },
         map: map.value,
-        title: createMarkerLabel(index).text,
-        content: priceTag,
+        title: `Stop ${index + 1}`,
+        content: markerElement,
       });
       markers.value.push(marker);
 
@@ -302,5 +306,20 @@ watch(
     transform: scale(1);
     opacity: 1;
   }
+}
+
+.marker-label {
+  background-color: #4caf50;
+  border-radius: 50%;
+  color: white;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 </style>

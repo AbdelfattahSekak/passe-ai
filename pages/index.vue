@@ -54,7 +54,7 @@ const route = useRoute();
 const { savedTrips, saveTrip } = useSavedTrips();
 const itinerary = ref<SavedTrip | null>(null);
 const isSaving = ref(false);
-
+const config = useRuntimeConfig();
 const { getLocationInfo } = useLocationId();
 
 const enrichItineraryWithLocationIds = async (
@@ -172,6 +172,10 @@ useHead({
           url: "https://passe.ai",
         },
       }),
+    },
+    {
+      async: true,
+      src: `https://maps.googleapis.com/maps/api/js?key=${config.public.GOOGLE_MAPS_API_KEY}&libraries=places`,
     },
   ],
 });

@@ -59,7 +59,10 @@ const focusInput = () => {
 };
 
 onMounted(async () => {
-  autocompleteService.value = new google.maps.places.AutocompleteService();
+  const { AutocompleteService } = (await google.maps.importLibrary(
+    "places"
+  )) as google.maps.PlacesLibrary;
+  autocompleteService.value = new AutocompleteService();
 });
 
 watch(
