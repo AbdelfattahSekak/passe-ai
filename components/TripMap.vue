@@ -1,18 +1,6 @@
 <template>
   <div class="map-container">
-    <div
-      v-if="isCalculating"
-      class="w-full h-full rounded-lg shadow-md bg-gray-100 flex items-center justify-center absolute z-10"
-    >
-      <div class="text-center">
-        <div class="dots-loader mb-4">
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-        </div>
-      </div>
-    </div>
-
+    <LoadingOverlay v-if="isCalculating" />
     <div
       ref="mapContainer"
       id="map"
