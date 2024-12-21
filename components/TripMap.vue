@@ -69,23 +69,22 @@ async function createActivityMarker(activity: Activity, stopIndex: number) {
     return;
   }
 
-  const icon = document.createElement("div");
-  icon.innerHTML = '<i class="pi pi-map-marker"></i>';
-  const faPin = new PinElement({
-    glyph: icon,
-    glyphColor: "#FFFFFF",
-    background: "#4CAF50",
-    borderColor: "#388E3C",
-    scale: 1.2,
-  });
+  // Create a styled container for the marker
+  const markerContainer = document.createElement("div");
+  markerContainer.className = "activity-marker";
+  markerContainer.innerHTML = `
+    <div class="activity-marker-inner">
+        <i class="pi pi-star"></i>
+    </div>
+`;
 
   const marker = new AdvancedMarkerElement({
     position: {
       lat: Number(activity.lat),
       lng: Number(activity.lng),
     },
-    map: map.value,
-    content: faPin.element,
+    map: toRaw(map.value),
+    content: markerContainer,
     title: activity.title,
   });
 
@@ -223,13 +222,13 @@ async function calculateAndDisplayRoute(): Promise<void> {
           lat: Number(stop.lat),
           lng: Number(stop.lng),
         },
-        map: map.value,
+        map: toRaw(map.value),
         title: `Stop ${index + 1}`,
         content: markerElement,
       });
       markers.value.push(marker);
 
-      // Add activity markers for each stop
+      //   Add activity markers for each stop
       stop.activities.forEach((activity) => {
         createActivityMarker(activity, index);
       });
@@ -309,17 +308,49 @@ watch(
 }
 
 .marker-label {
-  background-color: #4caf50;
+  background-color: #ff5a5f;
   border-radius: 50%;
   color: white;
-  width: 24px;
-  height: 24px;
+  width: 34px;
+  height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   border: 2px solid white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.activity-marker {
+  transform: scale(0);
+  animation: popIn 0.3s ease-out forwards;
+}
+.activity-marker-inner {
+  background: #2196f3;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border: 2px solid white;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.activity-marker-inner:hover {
+  transform: scale(1.1);
+  background: #1976d2;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+@keyframes popIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 </style>
