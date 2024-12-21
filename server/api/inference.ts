@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 import type { ResponseFormatJSONSchema } from "openai/resources/shared.mjs";
-import type { SearchFormData } from "@/types";
+import type { SearchFormData, Stop } from "@/types";
 
 const config = useRuntimeConfig();
 
@@ -26,9 +26,13 @@ const responseFormat = {
                 type: "string",
                 description: "The title or name of the stop.",
               },
-              coordinates: {
-                type: "string",
-                description: "The geographical coordinates of the stop.",
+              lat: {
+                type: "number",
+                description: "The latitude of the stop.",
+              },
+              lng: {
+                type: "number",
+                description: "The longitude of the stop.",
               },
               address: {
                 type: "string",
@@ -38,25 +42,7 @@ const responseFormat = {
                 type: "string",
                 description: "Additional details about the stop.",
               },
-              images: {
-                type: "array",
-                description: "Array of images associated with the activity.",
-                items: {
-                  type: "object",
-                  properties: {
-                    url: {
-                      type: "string",
-                      description: "URL of the image.",
-                    },
-                    description: {
-                      type: "string",
-                      description: "Description of the image.",
-                    },
-                  },
-                  required: ["url", "description"],
-                  additionalProperties: false,
-                },
-              },
+
               activities: {
                 type: "array",
                 description: "List of activities available at the stop.",
@@ -67,10 +53,13 @@ const responseFormat = {
                       type: "string",
                       description: "The title or name of the activity.",
                     },
-                    coordinates: {
-                      type: "string",
-                      description:
-                        "The geographical coordinates of the activity.",
+                    lat: {
+                      type: "number",
+                      description: "The latitude of the activity.",
+                    },
+                    lng: {
+                      type: "number",
+                      description: "The longitude of the activity.",
                     },
                     details: {
                       type: "string",
@@ -80,45 +69,19 @@ const responseFormat = {
                       type: "string",
                       description: "The physical address of the activity.",
                     },
-                    images: {
-                      type: "array",
-                      description:
-                        "Array of images associated with the activity.",
-                      items: {
-                        type: "object",
-                        properties: {
-                          url: {
-                            type: "string",
-                            description: "URL of the image.",
-                          },
-                          description: {
-                            type: "string",
-                            description: "Description of the image.",
-                          },
-                        },
-                        required: ["url", "description"],
-                        additionalProperties: false,
-                      },
-                    },
                   },
-                  required: [
-                    "title",
-                    "coordinates",
-                    "details",
-                    "address",
-                    "images",
-                  ],
+                  required: ["title", "lat", "lng", "details", "address"],
                   additionalProperties: false,
                 },
               },
             },
             required: [
               "title",
-              "coordinates",
+              "lat",
+              "lng",
               "address",
               "details",
               "activities",
-              "images",
             ],
             additionalProperties: false,
           },
@@ -140,7 +103,7 @@ Activities Type: []
 Number of Stops: [${nbStops}]
 Transportation Mode: []
 Prefrences: []
-Provide a detailed itinerary with stops and activities, formatted as a JSON object
+Provide a detailed itinerary with stops ( including start and destination ) and activities, formatted as a JSON object.
 `;
 const getTripInference = async (body: SearchFormData) => {
   const response = await openai.chat.completions.create({
@@ -167,17 +130,23 @@ const getTripInference = async (body: SearchFormData) => {
     ],
     response_format: responseFormat,
     temperature: 1,
-    max_tokens: 966,
+    max_tokens: 2048,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
   });
   return response.choices[0].message.content;
 };
+
 export default defineEventHandler(async (event) => {
   const body = (await readBody(event)) as SearchFormData;
   try {
-    return await getTripInference(body);
+    const result = await getTripInference(body);
+    if (result) {
+      const tripData = JSON.parse(result) as { stops: Stop[] };
+      return tripData;
+    }
+    return new Response("Bad Request", { status: 400 });
   } catch (error) {
     console.error(error);
     return new Response("Internal Server Error", { status: 500 });

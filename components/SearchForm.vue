@@ -1,52 +1,57 @@
 <template>
-  <div class="absolute inset-0 top-[360px] z-50">
-    <Card class="bg-white px-6 py-2 mx-auto" style="border-radius: 100px; width: max-content;">
-      <template #content>
-        <form @submit.prevent="handleSubmit" class="flex items-center gap-6">
-            <LocationInput
-              id="start"
-              label="Starting Point"
-              v-model="form.start"
-              placeholder="Where are you starting from?"
-              :disabled="loading"
-            />
+  <Card class="bg-white max-w-[1000px] h-[70px] px-4 py-1 rounded-full">
+    <template #content>
+      <form
+        @submit.prevent="handleSubmit"
+        class="flex flex-col md:flex-row items-center gap-4 md:gap-6"
+      >
+        <div class="w-full md:flex-1">
+          <LocationInput
+            id="start"
+            label="Starting Point"
+            v-model="form.start"
+            placeholder="Paris, France"
+            :disabled="loading"
+          />
+        </div>
 
-            <LocationInput
-              id="destination"
-              label="Destination"
-              v-model="form.destination"
-              placeholder="Where are you heading?"
-              :disabled="loading"
-            />
+        <div class="w-full md:flex-1">
+          <LocationInput
+            id="destination"
+            label="Destination"
+            v-model="form.destination"
+            placeholder="Marakech, Morocco"
+            :disabled="loading"
+          />
+        </div>
 
-            <StopsInput
-              v-model="form.nbStops"
-              :disabled="loading"
-              label="Number of Stops"
-            />
-            <div class="-mr-3">
-              <Button
-                type="submit"
-                :loading="loading"
-                :disabled="!isFormValid"
-                class="bg-primary hover:bg-primary_dark text-white w-[73px] h-[73px] rounded-full flex items-center justify-center"
-              >
-                <i class="pi pi-search text-white text-xl"></i>
-              </Button>
-          </div>
-        </form>
-      </template>
-    </Card>
-  </div>
+        <StopsInput
+          v-model="form.nbStops"
+          :disabled="loading"
+          class="w-full md:w-auto"
+        />
+        <div class="-mr-3">
+          <Button
+            type="submit"
+            size="small"
+            :loading="loading"
+            :disabled="!isFormValid"
+            class="bg-primary hover:bg-primary_dark text-white w-[60px] h-[60px] rounded-full flex items-center justify-center"
+          >
+            <i class="pi pi-search text-white text-lg"></i>
+          </Button>
+        </div>
+      </form>
+    </template>
+  </Card>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ref, computed } from "vue";
 import type { SearchFormData } from "@/types";
 
 const emit = defineEmits(["submit"]);
 const loading = ref(false);
-// const isFixed = ref(false);
 
 const form = ref<SearchFormData>({
   start: "",
@@ -63,5 +68,6 @@ const handleSubmit = () => {
 
   loading.value = true;
   emit("submit", { ...form.value });
+  loading.value = false;
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white">
+  <div class="bg-white flex flex-col">
     <TheHeader>
       <SearchForm @submit="handleSearch" />
     </TheHeader>
@@ -12,25 +12,25 @@
     <template v-else>
       <main
         v-if="itinerary"
-        class="flex h-full md:flex-row flex-col gap-4 p-4 mt-20"
+        class="flex flex-col sm:flex-col md:flex-row gap-4"
         role="main"
       >
         <div
-          class="flex-3 min-h-[500px] md:h-[calc(100vh-600px)] bg-white shadow-lg overflow-y-auto rounded-lg"
+          class="w-full md:w-1/2 min-h-[500px] bg-white order-2 sm:order-2 md:order-1"
           role="complementary"
           aria-label="Trip Itinerary"
         >
           <TripItinerary :stops="itinerary.stops" />
         </div>
         <div
-          class="flex-1 min-h-[500px] md:h-[calc(100vh-600px)]"
+          class="w-full md:w-1/2 order-1 sm:order-1 md:order-2"
           role="complementary"
           aria-label="Trip Map"
         >
           <TripMap :stops="itinerary.stops" />
         </div>
       </main>
-      <div class="fixed bottom-8 right-8">
+      <!-- <div class="fixed bottom-8 right-8">
         <Button
           @click="saveCurrentTrip"
           class="p-4 shadow-lg"
@@ -38,35 +38,74 @@
           :loading="isSaving"
           label="Save Trip"
         />
-      </div>
+      </div> -->
     </template>
   </div>
 </template>
 
 <script setup lang="ts">
-import dummyData from "@/mocks/beni-fes.json";
+import dummyData from "~/mocks/inference.json";
 import { generateMetaTags } from "~/utils/seo";
-import type { SearchFormData, SavedTrip } from "~/types";
+import type { SearchFormData, SavedTrip, InferenceResponse } from "~/types";
+import { v4 as uuidv4 } from "uuid";
+import useLocationId from "~/composables/useLocationId";
 
 const route = useRoute();
 const { savedTrips, saveTrip } = useSavedTrips();
 const itinerary = ref<SavedTrip | null>(null);
 const isSaving = ref(false);
+const config = useRuntimeConfig();
+const { getLocationInfo } = useLocationId();
 
-const handleSearch = async (formData: SearchFormData) => {
-  // TODO: Replace with actual API call
-  console.log(formData);
-  itinerary.value = {
-    ...(dummyData as unknown as SavedTrip),
-    start: formData.start,
-    destination: formData.destination,
+const enrichItineraryWithLocationIds = async (
+  itineraryData: InferenceResponse
+) => {
+  const enrichedStops = await Promise.all(
+    itineraryData.stops.map(async (stop) => {
+      const locationInfo = await getLocationInfo(stop.address);
+      return {
+        ...stop,
+        ...locationInfo,
+      };
+    })
+  );
+
+  return {
+    ...itineraryData,
+    stops: enrichedStops,
   };
 };
 
-const handleTripSelect = (trip: SavedTrip) => {
-  // TODO: Replace with actual API call to get trip details
+const handleSearch = async (formData: SearchFormData) => {
+  try {
+    // const result = (await $fetch("/api/inference", {
+    //   method: "POST",
+    //   body: formData,
+    // })) as {
+    //   stops: Stop[];
+    // };
+    const enrichedItinerary = await enrichItineraryWithLocationIds(
+      dummyData as unknown as InferenceResponse
+    );
+    itinerary.value = {
+      id: uuidv4(),
+      createdAt: new Date().toISOString(),
+      start: formData.start,
+      destination: formData.destination,
+      ...enrichedItinerary,
+    };
+    console.log(itinerary.value);
+  } catch (error) {
+    console.error("Error processing itinerary:", error);
+  }
+};
+
+const handleTripSelect = async (trip: SavedTrip) => {
   console.log("Selected trip:", trip);
-  itinerary.value = dummyData as unknown as SavedTrip;
+  const enrichedItinerary = await enrichItineraryWithLocationIds(
+    dummyData as unknown as SavedTrip
+  );
+  itinerary.value = enrichedItinerary;
 };
 
 const saveCurrentTrip = () => {
@@ -133,6 +172,11 @@ useHead({
           url: "https://passe.ai",
         },
       }),
+    },
+    {
+      async: true,
+      children:
+        '(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({key: "AIzaSyDIjoG678cuWVehcMzTaOeM_qPPKdBc5tQ", v: "weekly"});',
     },
   ],
 });

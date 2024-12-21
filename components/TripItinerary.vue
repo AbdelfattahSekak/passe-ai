@@ -1,17 +1,12 @@
 <template>
-  <div
-    class="p-4 flex flex-col gap-6 max-h-screen"
-    role="list"
-    aria-label="Trip Itinerary"
-  >
+  <div class="p-4 flex flex-col gap-6" role="list" aria-label="Trip Itinerary">
     <div v-for="(stop, index) in stops" :key="index" role="listitem">
       <Card>
         <template #header>
           <div class="relative h-48 overflow-hidden rounded-t-lg">
             <img
-              v-if="stop.images[0]"
-              :src="stop.images[0].url"
-              :alt="stop.images[0].description"
+              v-if="stop.photos[0]"
+              :src="stop.photos[0].getURI({ maxHeight: 1000 })"
               loading="lazy"
               class="w-full h-full object-cover"
             />
@@ -23,7 +18,7 @@
           </div>
         </template>
         <template #title>
-          <div class="flex items-center gap-4">
+          <div class="flex items-center gap-4 p-2">
             <span
               class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full"
             >
@@ -33,7 +28,7 @@
           </div>
         </template>
         <template #content>
-          <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-4 p-2">
             <p class="text-sm text-text-secondary flex items-center gap-2">
               <i class="pi pi-map-marker text-primary"></i>
               {{ stop.address }}
