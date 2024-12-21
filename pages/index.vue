@@ -16,14 +16,14 @@
         role="main"
       >
         <div
-          class="w-full md:w-1/2 lg:w-2/3 min-h-[500px] bg-white order-2 sm:order-2 md:order-1"
+          class="w-full md:w-1/2 min-h-[500px] bg-white order-2 sm:order-2 md:order-1"
           role="complementary"
           aria-label="Trip Itinerary"
         >
           <TripItinerary :stops="itinerary.stops" />
         </div>
         <div
-          class="w-full md:w-1/2 lg:w-1/3 order-1 sm:order-1 md:order-2"
+          class="w-full md:w-1/2 order-1 sm:order-1 md:order-2"
           role="complementary"
           aria-label="Trip Map"
         >
