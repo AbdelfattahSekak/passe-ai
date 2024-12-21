@@ -56,13 +56,39 @@ export function useMapMarkers() {
 
     const infoWindow = new InfoWindow({
       ariaLabel: activity.title,
-      headerContent: activity.title,
-      content: `<div><p class="text-sm">${activity.details}</p></div>`,
+      content: `
+        <div class="info-window-content">
+          <h3>${activity.title}</h3>
+          <p>${activity.details}</p>
+        </div>
+      `,
+      pixelOffset: new google.maps.Size(0, -10),
     });
+
+    let isOpen = false;
 
     marker.addListener("click", () => {
       infoWindows.value.forEach((window) => window.close());
       infoWindow.open(map, marker);
+      isOpen = true;
+      markerContainer.classList.add("pulse");
+    });
+
+    marker.addListener("mouseenter", () => {
+      if (!isOpen) {
+        markerContainer.classList.add("pulse");
+      }
+    });
+
+    marker.addListener("mouseleave", () => {
+      if (!isOpen) {
+        markerContainer.classList.remove("pulse");
+      }
+    });
+
+    infoWindow.addListener("closeclick", () => {
+      isOpen = false;
+      markerContainer.classList.remove("pulse");
     });
 
     activityMarkers.value.push(marker);
@@ -94,7 +120,22 @@ export function useMapMarkers() {
       map,
       title: `Stop ${index + 1}`,
       content: markerElement,
+      zIndex: 100, // Ensure stop markers are above activity markers
     });
+
+    let activityMarkersVisible = true;
+
+    marker.addListener("click", () => {
+      activityMarkersVisible = !activityMarkersVisible;
+      stop.activities.forEach((_, i) => {
+        const activityMarker = activityMarkers.value[index * stop.activities.length + i];
+        if (activityMarker) {
+          activityMarker.map = activityMarkersVisible ? map : null;
+        }
+      });
+      markerElement.style.transform = activityMarkersVisible ? "scale(1.1)" : "scale(1)";
+    });
+
     markers.value.push(marker);
 
     // Add activity markers

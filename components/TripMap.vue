@@ -132,46 +132,118 @@ watch(
   background-color: #ff5a5f;
   border-radius: 50%;
   color: white;
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   font-size: 16px;
-  border: 2px solid white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border: 3px solid white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  }
 }
 
 .activity-marker {
   transform: scale(0);
-  animation: popIn 0.3s ease-out forwards;
+  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  
+  &.pulse {
+    animation: pulse 2s infinite;
+  }
 }
+
 .activity-marker-inner {
   background: #2196f3;
   color: white;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
   border: 2px solid white;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-}
-.activity-marker-inner:hover {
-  transform: scale(1.1);
-  background: #1976d2;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-@keyframes popIn {
-  from {
-    transform: scale(0);
+
+  &:hover {
+    transform: scale(1.15);
+    background: #1976d2;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   }
-  to {
+
+  i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover i {
+    transform: rotate(72deg);
+  }
+}
+
+// Custom InfoWindow styles
+.gm-style .gm-style-iw-c {
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  
+  .gm-style-iw-d {
+    overflow: hidden !important;
+  }
+}
+
+.info-window-content {
+  min-width: 200px;
+  
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+  }
+  
+  p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #4a4a4a;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
     transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 </style>
