@@ -25,233 +25,66 @@
 
 <script setup lang="ts">
 import { ref, onMounted, watch } from "vue";
-import type { Activity, Stop } from "~/types";
+import type { Stop } from "~/types";
+import { useMapInit } from "~/composables/useMapInit";
+import { useMapMarkers } from "~/composables/useMapMarkers";
+import { useMapRoutes } from "~/composables/useMapRoutes";
 
 const props = defineProps<{
   stops: Stop[];
 }>();
 
 const mapContainer = ref<HTMLElement | null>(null);
-const map = ref<google.maps.Map | null>(null);
-const directionsService = ref<google.maps.DirectionsService | null>(null);
-const directionsRenderer = ref<google.maps.DirectionsRenderer | null>(null);
-const isCalculating = ref(false);
-const error = ref<string | null>(null);
-const markers = ref<google.maps.marker.AdvancedMarkerElement[]>([]);
-const activityMarkers = ref<google.maps.marker.AdvancedMarkerElement[]>([]);
-const infoWindows = ref<google.maps.InfoWindow[]>([]);
-
-function clearMarkers() {
-  markers.value.forEach((marker) => marker.remove());
-  markers.value = [];
-}
-
-function clearAllMarkers() {
-  clearMarkers();
-  activityMarkers.value.forEach((marker) => marker.remove());
-  activityMarkers.value = [];
-  infoWindows.value.forEach((window) => window.close());
-  infoWindows.value = [];
-}
-
-function isValidCoordinate(num: any): boolean {
-  return typeof num === "number" && !isNaN(num) && isFinite(num);
-}
-
-async function createActivityMarker(activity: Activity, stopIndex: number) {
-  const { AdvancedMarkerElement, PinElement } =
-    (await google.maps.importLibrary("marker")) as google.maps.MarkerLibrary;
-  const { InfoWindow } = (await google.maps.importLibrary(
-    "maps"
-  )) as google.maps.MapsLibrary;
-  if (!isValidCoordinate(activity.lat) || !isValidCoordinate(activity.lng)) {
-    console.warn("Invalid coordinates for activity:", activity);
-    return;
-  }
-
-  // Create a styled container for the marker
-  const markerContainer = document.createElement("div");
-  markerContainer.className = "activity-marker";
-  markerContainer.innerHTML = `
-    <div class="activity-marker-inner">
-        <i class="pi pi-star"></i>
-    </div>
-`;
-
-  const marker = new AdvancedMarkerElement({
-    position: {
-      lat: Number(activity.lat),
-      lng: Number(activity.lng),
-    },
-    map: toRaw(map.value),
-    content: markerContainer,
-    title: activity.title,
-  });
-
-  const infoWindow = new InfoWindow({
-    ariaLabel: activity.title,
-    headerContent: activity.title,
-    content: `
-      <div>
-        <p class="text-sm">${activity.details}</p>
-      </div>
-    `,
-  });
-
-  marker.addListener("click", () => {
-    infoWindows.value.forEach((window) => window.close());
-    infoWindow.open(map.value, marker);
-  });
-
-  activityMarkers.value.push(marker);
-  infoWindows.value.push(infoWindow);
-}
-
-async function initMap() {
-  const { Map } = (await google.maps.importLibrary(
-    "maps"
-  )) as google.maps.MapsLibrary;
-  const { DirectionsRenderer } = (await google.maps.importLibrary(
-    "routes"
-  )) as google.maps.RoutesLibrary;
-  const { DirectionsService } = (await google.maps.importLibrary(
-    "routes"
-  )) as google.maps.RoutesLibrary;
-  if (!mapContainer.value) {
-    error.value = "Required DOM elements not found";
-    return;
-  }
-
-  try {
-    map.value = new Map(mapContainer.value, {
-      mapId: "main-map",
-      zoom: 7,
-      center: { lat: 41.85, lng: -87.65 },
-      disableDefaultUI: false,
-      mapTypeControl: false, // Hide map type control for cleaner look
-      streetViewControl: false, // Hide street view for cleaner look
-      fullscreenControl: false, // Hide fullscreen control for cleaner look
-      zoomControl: true,
-      gestureHandling: "greedy", // Enables one-finger zoom on mobile
-      scrollwheel: true, // Enables mouse wheel zoom
-    });
-
-    // Add smooth zoom behavior
-    map.value.addListener("wheel", (event: WheelEvent) => {
-      const delta = event.deltaY;
-      const currentZoom = map.value!.getZoom() || 7;
-
-      // Smooth zoom calculation
-      const zoomDelta = -delta / 200; // Adjust divisor for zoom sensitivity
-      const newZoom = Math.min(Math.max(currentZoom + zoomDelta, 1), 20);
-
-      if (newZoom !== currentZoom) {
-        map.value!.setZoom(newZoom);
-      }
-    });
-
-    directionsRenderer.value = new DirectionsRenderer({
-      suppressMarkers: true, // Suppress default markers
-      map: map.value,
-    });
-    directionsService.value = new DirectionsService();
-
-    if (props.stops.length >= 2) {
-      calculateAndDisplayRoute();
-    }
-  } catch (e) {
-    console.error("Error initializing map:", e);
-    error.value = "Failed to initialize map";
-  }
-}
+const { map, error: mapError, initMap } = useMapInit();
+const { createStopMarkers, clearAllMarkers } = useMapMarkers();
+const {
+  directionsRenderer,
+  isCalculating,
+  error: routeError,
+  initDirections,
+  calculateRoute,
+} = useMapRoutes();
 
 async function calculateAndDisplayRoute(): Promise<void> {
-  const { AdvancedMarkerElement } = (await google.maps.importLibrary(
-    "marker"
-  )) as google.maps.MarkerLibrary;
-  if (
-    !directionsService.value ||
-    !directionsRenderer.value ||
-    props.stops.length < 2
-  ) {
-    return;
-  }
+  if (props.stops.length < 2) return;
 
   isCalculating.value = true;
-  error.value = null;
 
   try {
-    const origin = {
-      lat: Number(props.stops[0].lat),
-      lng: Number(props.stops[0].lng),
-    };
-    const destination = {
-      lat: Number(props.stops[props.stops.length - 1].lat),
-      lng: Number(props.stops[props.stops.length - 1].lng),
-    };
-    const waypoints = props.stops.slice(1, -1).map((stop) => ({
-      location: { lat: Number(stop.lat), lng: Number(stop.lng) },
-      stopover: true,
-    }));
-
-    const response = await directionsService.value.route({
-      origin,
-      destination,
-      waypoints,
-      optimizeWaypoints: true,
-      travelMode: google.maps.TravelMode.DRIVING,
-    });
+    const response = await calculateRoute(props.stops);
+    if (!response || !directionsRenderer.value) return;
 
     directionsRenderer.value.setDirections(response);
-
-    // Clear all existing markers and info windows
     clearAllMarkers();
 
-    // Add stop markers
     props.stops.forEach((stop, index) => {
-      if (!isValidCoordinate(stop.lat) || !isValidCoordinate(stop.lng)) {
-        console.warn(`Invalid coordinates for stop ${index}:`, stop);
-        return;
-      }
-      const markerElement = document.createElement("div");
-      markerElement.className = "marker-label";
-      markerElement.textContent = String(index + 1);
-
-      const marker = new AdvancedMarkerElement({
-        position: {
-          lat: Number(stop.lat),
-          lng: Number(stop.lng),
-        },
-        map: toRaw(map.value),
-        title: `Stop ${index + 1}`,
-        content: markerElement,
-      });
-      markers.value.push(marker);
-
-      //   Add activity markers for each stop
-      stop.activities.forEach((activity) => {
-        createActivityMarker(activity, index);
-      });
+      createStopMarkers(stop, index, toRaw(map.value!));
     });
 
-    await new Promise((resolve) => setTimeout(resolve, 500)); // Add slight delay for smoother transition
+    await new Promise((resolve) => setTimeout(resolve, 500));
   } catch (e) {
-    console.error("Direction service error:", e);
-    error.value = "Failed to calculate route";
+    console.error("Route calculation error:", e);
   } finally {
     isCalculating.value = false;
   }
 }
 
-onMounted(() => {
-  console.log("Component mounted");
-  initMap();
+onMounted(async () => {
+  if (!mapContainer.value) return;
+
+  const mapInstance = await initMap(mapContainer.value);
+  if (!mapInstance) return;
+
+  await initDirections(mapInstance);
+
+  if (props.stops.length >= 2) {
+    calculateAndDisplayRoute();
+  }
 });
 
 watch(
   () => props.stops,
   (newStops) => {
-    console.log("Stops changed:", newStops.length);
     if (newStops.length >= 2) {
       calculateAndDisplayRoute();
     } else if (directionsRenderer.value) {
