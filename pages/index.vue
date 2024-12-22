@@ -23,11 +23,13 @@
           <TripItinerary :stops="itinerary.stops" />
         </div>
         <div
-          class="w-full md:w-1/2 order-1 sm:order-1 md:order-2"
+          class="w-full md:w-1/2 order-1 sm:order-1 md:order-2 relative"
           role="complementary"
           aria-label="Trip Map"
         >
+        <div class="sticky top-14">
           <TripMap :stops="itinerary.stops" />
+        </div>
         </div>
       </main>
       <!-- <div class="fixed bottom-8 right-8">
