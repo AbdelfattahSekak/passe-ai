@@ -11,7 +11,7 @@
     </div>
 
     <!-- Main content with adjusted spacing -->
-    <div class="mt-[calc(30vh+60px)]">
+    <div class="mt-[calc(20vh+60px)]">
       <!-- Offset for fixed header + navbar height -->
       <template v-if="!itinerary">
         <TripSuggestions @select="handleTripSelect" />
@@ -38,7 +38,7 @@
             role="complementary"
             aria-label="Trip Map"
           >
-            <div class="sticky top-[calc(30vh+60px)]">
+            <div class="sticky top-[calc(20vh+60px)]">
               <!-- Adjusted offset -->
               <TripMap :stops="itinerary.stops" />
             </div>
