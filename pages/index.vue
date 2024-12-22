@@ -29,7 +29,7 @@
             role="complementary"
             aria-label="Trip Itinerary"
           >
-            <TripItinerary :stops="itinerary.stops" />
+            <TripItinerary title="Your dream trip" :stops="itinerary.stops" />
           </div>
 
           <!-- Fixed map section -->
@@ -46,8 +46,6 @@
         </main>
       </template>
     </div>
-
-    <TheFooter />
   </div>
 </template>
 
@@ -56,21 +54,19 @@ import dummyData from "~/mocks/inference.json";
 import { generateMetaTags } from "~/utils/seo";
 import type { SearchFormData, SavedTrip, InferenceResponse } from "~/types";
 import { v4 as uuidv4 } from "uuid";
-import useLocationId from "~/composables/useLocationId";
+import getGoogleLocationInfo from "~/components/utils/getGoogleLocationInfo";
 
 const route = useRoute();
 const { savedTrips, saveTrip } = useSavedTrips();
 const itinerary = ref<SavedTrip | null>(null);
 const isSaving = ref(false);
-const config = useRuntimeConfig();
-const { getLocationInfo } = useLocationId();
 
 const enrichItineraryWithLocationIds = async (
   itineraryData: InferenceResponse
 ) => {
   const enrichedStops = await Promise.all(
     itineraryData.stops.map(async (stop) => {
-      const locationInfo = await getLocationInfo(stop.address);
+      const locationInfo = await getGoogleLocationInfo(stop.address);
       return {
         ...stop,
         ...locationInfo,
