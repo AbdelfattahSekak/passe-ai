@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm h-[60px]"
+    class="fixed top-0 left-0 right-0 z-50 h-[60px] bg-slate-50"
     role="navigation"
   >
     <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
