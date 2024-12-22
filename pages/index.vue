@@ -1,45 +1,53 @@
 <template>
-  <div class="bg-white flex flex-col">
-    <TheHeader>
-      <SearchForm @submit="handleSearch" />
-    </TheHeader>
+  <div class="bg-white flex flex-col min-h-screen">
+    <!-- Navbar is now outside the header container -->
+    <TheNavbar />
 
-    <template v-if="!itinerary">
-      <TripSuggestions @select="handleTripSelect" />
-      <TravelIcons />
-    </template>
+    <!-- Fixed header with lower z-index -->
+    <div class="fixed top-[60px] left-0 right-0 z-40">
+      <TheHeader>
+        <SearchForm @submit="handleSearch" />
+      </TheHeader>
+    </div>
 
-    <template v-else>
-      <main
-        v-if="itinerary"
-        class="flex flex-col sm:flex-col md:flex-row gap-4"
-        role="main"
-      >
-        <div
-          class="w-full md:w-1/2 min-h-[500px] bg-white order-2 sm:order-2 md:order-1"
-          role="complementary"
-          aria-label="Trip Itinerary"
+    <!-- Main content with adjusted spacing -->
+    <div class="mt-[calc(30vh+60px)]">
+      <!-- Offset for fixed header + navbar height -->
+      <template v-if="!itinerary">
+        <TripSuggestions @select="handleTripSelect" />
+        <TravelIcons />
+      </template>
+
+      <template v-else>
+        <main
+          class="relative flex flex-col sm:flex-col md:flex-row gap-4"
+          role="main"
         >
-          <TripItinerary :stops="itinerary.stops" />
-        </div>
-        <div
-          class="w-full md:w-1/2 order-1 sm:order-1 md:order-2"
-          role="complementary"
-          aria-label="Trip Map"
-        >
-          <TripMap :stops="itinerary.stops" />
-        </div>
-      </main>
-      <!-- <div class="fixed bottom-8 right-8">
-        <Button
-          @click="saveCurrentTrip"
-          class="p-4 shadow-lg"
-          :disabled="isSaving"
-          :loading="isSaving"
-          label="Save Trip"
-        />
-      </div> -->
-    </template>
+          <!-- Scrollable itinerary section -->
+          <div
+            class="w-full md:w-1/2 bg-white order-2 sm:order-2 md:order-1"
+            role="complementary"
+            aria-label="Trip Itinerary"
+          >
+            <TripItinerary :stops="itinerary.stops" />
+          </div>
+
+          <!-- Fixed map section -->
+          <div
+            class="w-full md:w-1/2 order-1 sm:order-1 md:order-2"
+            role="complementary"
+            aria-label="Trip Map"
+          >
+            <div class="sticky top-[calc(30vh+60px)]">
+              <!-- Adjusted offset -->
+              <TripMap :stops="itinerary.stops" />
+            </div>
+          </div>
+        </main>
+      </template>
+    </div>
+
+    <TheFooter />
   </div>
 </template>
 
@@ -181,3 +189,10 @@ useHead({
   ],
 });
 </script>
+
+<style>
+.sticky {
+  position: sticky;
+  transition: all 0.3s ease;
+}
+</style>

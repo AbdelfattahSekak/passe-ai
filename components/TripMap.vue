@@ -4,7 +4,7 @@
     <div
       ref="mapContainer"
       id="map"
-      class="w-full h-full min-h-[700px] shadow-md"
+      class="w-full h-[calc(100vh-30vh)] shadow-md rounded-lg"
       role="region"
       aria-label="Interactive Map"
     ></div>
@@ -87,6 +87,10 @@ watch(
 .map-container {
   position: relative;
   width: 100%;
+  height: 100%;
+
+  // Add a subtle transition for smoother position changes
+  transition: transform 0.3s ease;
 }
 
 .dots-loader {
@@ -159,7 +163,7 @@ watch(
 .activity-marker {
   transform: scale(0);
   animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  
+
   &.pulse {
     animation: pulse 2s infinite;
   }
@@ -200,7 +204,7 @@ watch(
   padding: 16px;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  
+
   .gm-style-iw-d {
     overflow: hidden !important;
   }
@@ -208,14 +212,14 @@ watch(
 
 .info-window-content {
   min-width: 200px;
-  
+
   h3 {
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 8px;
     color: #1a1a1a;
   }
-  
+
   p {
     font-size: 0.95rem;
     line-height: 1.5;
@@ -264,7 +268,7 @@ watch(
       padding: 6px 0;
       font-size: 0.9rem;
       color: #666;
-      
+
       &:hover {
         color: #2196f3;
       }
@@ -284,7 +288,7 @@ watch(
   height: 24px !important;
   background-color: white !important;
   border-radius: 50% !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
   transform: translate(50%, -50%) !important;
 
   &:hover {
