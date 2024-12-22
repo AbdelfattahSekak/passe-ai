@@ -40,28 +40,45 @@
                 <p class="text-text-primary">{{ slotProps.item.details }}</p>
 
                 <div class="mt-4">
-                  <h3 class="font-semibold mb-2 flex items-center gap-2">
+                  <h3 class="font-semibold mb-4 flex items-center gap-2">
                     <i class="pi pi-list text-primary"></i>
                     Activities
                   </h3>
-                  <ul class="space-y-4" role="list">
-                    <li
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" role="list">
+                    <button
                       v-for="activity in slotProps.item.activities"
                       :key="activity.title"
                       role="listitem"
-                      class="flex items-start gap-3"
+                      class="block w-full text-left transition-transform hover:scale-102 focus:scale-102"
                     >
-                      <i class="pi pi-star-fill text-primary mt-1"></i>
-                      <div>
-                        <strong class="block text-text-primary">{{
-                          activity.title
-                        }}</strong>
-                        <p class="text-sm text-text-secondary mt-1">
-                          {{ activity.details }}
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
+                      <Card class="h-full">
+                        <template #header>
+                          <div class="relative h-24 overflow-hidden rounded-t-lg">
+                            <img
+                              v-if="activity.image"
+                              :src="activity.image"
+                              :alt="activity.title"
+                              loading="lazy"
+                              class="w-full h-full object-cover"
+                            />
+                            <div v-else class="w-full h-full bg-gray-100 flex items-center justify-center">
+                              <i class="pi pi-image text-gray-400 text-xl"></i>
+                            </div>
+                          </div>
+                        </template>
+                        <template #content>
+                          <div class="p-2">
+                            <h4 class="font-medium text-base text-text-primary mb-1 line-clamp-1">
+                              {{ activity.title }}
+                            </h4>
+                            <p class="text-xs text-text-secondary line-clamp-2">
+                              {{ activity.details }}
+                            </p>
+                          </div>
+                        </template>
+                      </Card>
+                    </button>
+                  </div>
                 </div>
               </div>
             </template>
@@ -88,5 +105,12 @@ defineProps<{
 
 .customized-timeline .p-timeline-event-content {
   margin-left: 1rem;
+}
+
+.hover\:scale-102:hover {
+  transform: scale(1.02);
+}
+.focus\:scale-102:focus {
+  transform: scale(1.02);
 }
 </style>
