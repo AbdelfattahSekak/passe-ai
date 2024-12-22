@@ -4,8 +4,8 @@
     role="navigation"
   >
     <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center h-[60px]">
-        <div class="flex-1">
+      <div class="flex items-center justify-between h-[60px]">
+        <div class="w-1/3">
           <NuxtLink
             to="/"
             class="flex mt-3 items-center"
@@ -18,7 +18,7 @@
           </NuxtLink>
         </div>
 
-        <div class="hidden md:flex items-center gap-12 flex-1">
+        <div class="hidden md:flex items-center justify-center gap-12 w-1/3">
           <NuxtLink
             to="/"
             class="font-medium text-base text-gray-900 hover:text-gray-700"
@@ -45,6 +45,7 @@
             Contact
           </NuxtLink>
         </div>
+        <div class="w-1/3"></div>
       </div>
     </div>
   </nav>
