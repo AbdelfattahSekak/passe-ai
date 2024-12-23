@@ -11,7 +11,7 @@ export function useMapInit() {
 
     try {
       map.value = new Map(mapContainer, {
-        mapId: "main-map",
+        mapId: "2b29b215e8e5f5ee",
         zoom: 7,
         center: { lat: 41.85, lng: -87.65 },
         disableDefaultUI: false,

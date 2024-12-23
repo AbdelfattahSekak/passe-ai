@@ -54,95 +54,28 @@ import dummyData from "~/mocks/inference.json";
 import { generateMetaTags } from "~/utils/seo";
 import type { SearchFormData, SavedTrip, InferenceResponse } from "~/types";
 import { v4 as uuidv4 } from "uuid";
-import getGoogleLocationInfo from "~/components/utils/getGoogleLocationInfo";
 
-const route = useRoute();
-const { savedTrips, saveTrip } = useSavedTrips();
 const itinerary = ref<SavedTrip | null>(null);
-const isSaving = ref(false);
-
-const enrichItineraryWithLocationIds = async (
-  itineraryData: InferenceResponse
-) => {
-  const enrichedStops = await Promise.all(
-    itineraryData.stops.map(async (stop) => {
-      const locationInfo = await getGoogleLocationInfo(stop.address);
-      return {
-        ...stop,
-        ...locationInfo,
-      };
-    })
-  );
-
-  return {
-    ...itineraryData,
-    stops: enrichedStops,
-  };
-};
 
 const handleSearch = async (formData: SearchFormData) => {
   try {
     // const result = (await $fetch("/api/inference", {
     //   method: "POST",
     //   body: formData,
-    // })) as {
-    //   stops: Stop[];
-    // };
-    const enrichedItinerary = await enrichItineraryWithLocationIds(
-      dummyData as unknown as InferenceResponse
-    );
+    // })) as InferenceResponse;
     itinerary.value = {
       id: uuidv4(),
       createdAt: new Date().toISOString(),
       start: formData.start,
       destination: formData.destination,
-      ...enrichedItinerary,
+      ...dummyData,
     };
-    console.log(itinerary.value);
   } catch (error) {
     console.error("Error processing itinerary:", error);
   }
 };
 
-const handleTripSelect = async (trip: SavedTrip) => {
-  console.log("Selected trip:", trip);
-  const enrichedItinerary = await enrichItineraryWithLocationIds(
-    dummyData as unknown as SavedTrip
-  );
-  itinerary.value = enrichedItinerary;
-};
-
-const saveCurrentTrip = () => {
-  if (!itinerary.value) return;
-
-  isSaving.value = true;
-  try {
-    saveTrip({
-      name: `${itinerary.value.start} to ${itinerary.value.destination}`,
-      start: itinerary.value.start,
-      destination: itinerary.value.destination,
-      stops: itinerary.value.stops,
-    } as Omit<SavedTrip, "id" | "createdAt">);
-
-    // Show success message
-  } catch (error) {
-    console.error("Error saving trip:", error);
-    // Show error message
-  } finally {
-    isSaving.value = false;
-  }
-};
-
-// Load saved trip if tripId is present in URL
-onMounted(() => {
-  const tripId = route.query.tripId as string;
-  if (tripId) {
-    const trip = savedTrips.value.find((t) => t.id === tripId);
-    if (trip) {
-      itinerary.value = trip;
-    }
-  }
-});
+const handleTripSelect = async (trip: SavedTrip) => {};
 
 useHead(
   generateMetaTags({

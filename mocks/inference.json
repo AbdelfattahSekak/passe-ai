@@ -2,123 +2,730 @@
   "stops": [
     {
       "title": "Tanger",
-      "lat": 35.7673,
-      "lng": -5.7995,
+      "lat": 35.772,
+      "lng": -5.789,
       "address": "Tanger, Morocco",
-      "details": "A vibrant coastal city known for its rich history and diverse culture. It is a great starting point for your journey to Agadir.",
+      "details": "Tanger is a beautiful port city located in northern Morocco with stunning views of the Mediterranean.",
       "activities": [
         {
-          "title": "Explore the Kasbah",
-          "lat": 35.7912,
-          "lng": -5.8057,
-          "details": "Visit this historic fortress offering stunning views of the sea and city.",
-          "address": "Kasbah, Tanger, Morocco"
+          "title": "Visit the Kasbah",
+          "lat": 35.7838,
+          "lng": -5.8016,
+          "details": "Explore the historic Kasbah of Tanger with its winding alleys, traditional architecture, and the stunning views from its walls.",
+          "address": "Kasbah, Tanger, Morocco",
+          "locationInfo": {
+            "id": "ChIJZQVN_Ex_DA0RADPqLuzPrqo",
+            "photos": [
+              {
+                "id": "places/ChIJZQVN_Ex_DA0RADPqLuzPrqo/photos/AWYs27w-Px7wqEfoesYhQQzSgYZg9kx_ATDTgs2qy2u9c1_z3FS-oFUIzlo-avxSij2BQAm5c9XfqyGs_eZCovHa58sPpbDYSnM2nfYNmiXxYjTUepGosNzWxKKwC-Dremh_XCD6MwPOBgHZfBaZmnfVYo14b_RT_z0t2yIR",
+                "width": 4000,
+                "height": 1800
+              },
+              {
+                "id": "places/ChIJZQVN_Ex_DA0RADPqLuzPrqo/photos/AWYs27ywU7JzFP1VuCDfz3oAJliz2V1kUcZFcnHkx9wllZpmpKoyAVXfNww7dca8IJT_chf26y1F09EBszrorrVNUkrTXtg-jF5-DcUTh-pc8rHo8c30FHeKR-i4roz8uDygmySIUvJ9wOjU_wewXKwON1C8YCrz8dlkWlVx",
+                "width": 1800,
+                "height": 4000
+              },
+              {
+                "id": "places/ChIJZQVN_Ex_DA0RADPqLuzPrqo/photos/AWYs27wxEmuvqevxWd1AKygogEWJnrchEuSpAO3ssA_DHm1KzDhW6qB3hsE6ZaVGAlJnpGkE-9DtbsHOByI-kgz8PPsCrBHcEzkh7QEdtbQdGH4gpzhrHXa0wATsqjTRClcvreaROy3Ptj9-nrxz5cdJJ-LaFgM4tav3jqi9",
+                "width": 3120,
+                "height": 4160
+              },
+              {
+                "id": "places/ChIJZQVN_Ex_DA0RADPqLuzPrqo/photos/AWYs27waYy_b4ixlPH6YHuJTrPkUIra0SURq3nw_qJ6guMJYwTaNSYNvr1zpvzN8B5lSwcabVLwTteL1ty-Z6CNCDCmSHfAODMQn364xeLGDjwiPHLim1FmFfqzzoogLu9PgXmXxU6XXB3vO6gE3dScALrXpQHqgl9ecooed",
+                "width": 3120,
+                "height": 4160
+              },
+              {
+                "id": "places/ChIJZQVN_Ex_DA0RADPqLuzPrqo/photos/AWYs27wo9fgd52gJJEscEDSLHfuyZ0na63KUGAWs4N4gBkSxGhunAp9lyp5iJqzxDxVcSvWLMx_Bxd2V4cepLB2yWnoUCDv-fMmRJ4yT2f2OHDWEQY3P3br3pvB7G-lUlRKPt-B1ZC_qt89OVwuFKIlOIwzygYnNtE7sghhe",
+                "width": 3120,
+                "height": 4160
+              }
+            ]
+          }
         },
         {
-          "title": "Visit the Caves of Hercules",
-          "lat": 35.7656,
-          "lng": -5.7990,
-          "details": "Legendary caves associated with Greek mythology, perfect for a short visit and photos.",
-          "address": "Caves of Hercules, Tanger, Morocco"
-        },
-        {
-          "title": "Stroll through the Medina",
-          "lat": 35.7750,
-          "lng": -5.8135,
-          "details": "Experience the vibrant souks and local craftsmanship in the heart of the city.",
-          "address": "Medina, Tanger, Morocco"
+          "title": "Beach Day at Plage de Tanger",
+          "lat": 35.7679,
+          "lng": -5.8045,
+          "details": "Relax at the beautiful beach of Tanger, perfect for sunbathing and swimming.",
+          "address": "Plage de Tanger, Morocco",
+          "locationInfo": {
+            "id": "ChIJ4xt8iayJCw0R4pyuOiK5JeA",
+            "photos": [
+              {
+                "id": "places/ChIJ4xt8iayJCw0R4pyuOiK5JeA/photos/AWYs27w2lyybm121IJP-MHxU6ZQ9Oizf9F1jJSqQW2iYUCXKRhQWoQ2oHBziRMcdk1vU8TNeW4ZiG7fB5woZO6io2RfCuABtlopTICJke3-xaerzNRAAq0djVxxNhgNEW94LxCchXgYVUjNQ0AeA_VyYM8tWScKJmsC-fy8B",
+                "width": 4032,
+                "height": 1860
+              },
+              {
+                "id": "places/ChIJ4xt8iayJCw0R4pyuOiK5JeA/photos/AWYs27wR9JOaq3L1K1D_gaE3jWhY9Xon7RbQdBuDtMEE6BXWR6ZvDwmLFkkYDe3Lri80My0noO0hElRUn6e1uH2i0-llNT6XEGE5bhXzcdyshYX-rfR5ZjfGthQkQ0wrUhuE9QW175Ji2JTsXttEx5nIG55p-0-c2UOCuC45",
+                "width": 1024,
+                "height": 681
+              },
+              {
+                "id": "places/ChIJ4xt8iayJCw0R4pyuOiK5JeA/photos/AWYs27ypocKZ5wmE2Q-Ab7lQ9GNW6ZaXCLJKlP8PrMRz0ihjrkfcZIfeOi9bllzp-l4By_QXpRnNXbcos3yNLhJpSHRYdVGMLsGGWynXeckQrV-jlYnmSC70366g8Dp0l1hCzaLgZA_a9a4M4MpKRk_X0mqG-AW1zpuIYgAz",
+                "width": 2048,
+                "height": 1152
+              },
+              {
+                "id": "places/ChIJ4xt8iayJCw0R4pyuOiK5JeA/photos/AWYs27xxDzd1W72e7S1OKJvH_IabvZf4ZC7Uq1jN4L5nRqo8qyb93u9B087zgc0Djy97iyVv8FYhzrTou2bnMgRceb9IYHNAhLqtf4Efm8RM7XaMbO5a4UVDhc58QIzLgF08-7Euq1oZx87eEwhhyvKwKv34-W8w-JSRacHz",
+                "width": 4032,
+                "height": 3024
+              },
+              {
+                "id": "places/ChIJ4xt8iayJCw0R4pyuOiK5JeA/photos/AWYs27wejNPqQvYw84HPaIkjPMZB9zGMtCiQJBoQtkaKRfNeW4BYh2EAgQbMlwxVG_fj87s_b1PWeoPEsNrO-x-TDkgyihkXZmk8nJv0G6fZOKKpC621XIl4Ry4sT1q7-REUH0ejZMV0Er-bqvAU5q8I6qh3sxUlRNQsphM",
+                "width": 1920,
+                "height": 1080
+              },
+              {
+                "id": "places/ChIJ4xt8iayJCw0R4pyuOiK5JeA/photos/AWYs27wEUBAVPzZ7p7nVjMLTCLnOb7coM9Kj2NPgVsIDGH9xpOBRsYmV4y8smcQmEp_Y67wODfn8KTXCyut2l6HRRVOridRb58PPxJzaVpk4iNwmjBNiEQFc7uyiLqMuaHodH12TdQ0Q3YTEHhOYkDiYg4qv-XLB15m_YwOo",
+                "width": 1600,
+                "height": 900
+              },
+              {
+                "id": "places/ChIJ4xt8iayJCw0R4pyuOiK5JeA/photos/AWYs27yX26Az6EnwiBxvWfBAZkWO2CUREJbcU0DP7TOq49OR2VfDgq2PlzTiOYV2Ugtm5RNxqQ2Ld-nbWTVsM0GfT_16j1TvqA7_SljsB8k4kQHNLLs_YaijsAXV63VyLiHHBjI8HYc5kYKbtkQb1c3GzT_bH2czWn0E6aYs",
+                "width": 4128,
+                "height": 2322
+              },
+              {
+                "id": "places/ChIJ4xt8iayJCw0R4pyuOiK5JeA/photos/AWYs27w58Jhn1-Mix34DzsICQCX7HjoyqbToXUnXDDQ6q2lfPlQig7YoQma14jMU26-EZqDfS9T5S_-H17aHZKVm5XqSKofL2udldHIZ33E56SzADwQsAE4PTwxF28Bf73iSM7OTxaG_MMDKi-fkv4LWVYhgspavgS_duIGH",
+                "width": 2048,
+                "height": 1152
+              },
+              {
+                "id": "places/ChIJ4xt8iayJCw0R4pyuOiK5JeA/photos/AWYs27wrc6dmNFrRoFJhsBjdzhUJpktloUKA97aej06cM0d04uOVZOMtPxMF8PFIumnnHQaI7uIIeXjRcQAtOgY8dw46Zxck8KIVgZhyohE3KQRsKIomVpuZQiFMKHgKnRwPWY6QxBaPZ6fofxOtsyHCXHUnAcSnL2Z_8xFQ",
+                "width": 4000,
+                "height": 3000
+              },
+              {
+                "id": "places/ChIJ4xt8iayJCw0R4pyuOiK5JeA/photos/AWYs27z4_VrSYbgTcQV7LICevNMLNlpfivy-XxLZz1fF9in9Cq1VwNDY95nPiLlG35jbgENHnMGYoqrj52UuaCgOj6O7zPWHCYsujXo8TzD-VWukZLBzcZOGijQIWUsDhpzb6z95iGtCN-KJzT3if50_ry4qFrCnSj2YrdeV",
+                "width": 960,
+                "height": 1280
+              }
+            ]
+          }
         }
-      ]
+      ],
+      "locationInfo": {
+        "id": "ChIJLRNM8FyHCw0ReuG0v3HFv3Y",
+        "photos": [
+          {
+            "id": "places/ChIJLRNM8FyHCw0ReuG0v3HFv3Y/photos/AWYs27w92qDx2jyKlnztY9PCtNYhx9sqKIbAAKK8mY2f7XbjBqEwCZ5E0MTibcqkevEyFylDX1tQNxBIRnM_P6YNldLhtiu0OJIxJpduxTpByWIHBcKMmQs4CUl4Kk8LMZu-QXyhlSbG8B5Rvg-OoKhGexvewsV7Brp2uV8M",
+            "width": 736,
+            "height": 981
+          },
+          {
+            "id": "places/ChIJLRNM8FyHCw0ReuG0v3HFv3Y/photos/AWYs27w54KH4K-n-8uukAEe6D8vHOuncCn8y-QB3F7M4shJbrW5HnwMnP0lbGqcGGxmR_7O-nBjX_n7Q_8OnTXd7WmdKzpUV9eMB70mEJMIML2jCL_fYNFQDdhkUNj1oLZzS6oQfbu_4ZPaKXlQ4SkjY7wWBh2Hc9H3TjK9q",
+            "width": 3280,
+            "height": 1476
+          },
+          {
+            "id": "places/ChIJLRNM8FyHCw0ReuG0v3HFv3Y/photos/AWYs27zKmZlfmpm5YNmBZDOFuV5ctQ8YhJnD69PwEKilDEQTc-eeSujQiVNmHYHwo5eIQBMyC803A6-9vA_mvMQsu_MWCj32yCPNNfswL4ORyGqQE6AQUgbbAsLwGv5UdyfjA79JEBipkKrhCSKIlm-9x-9xRxTCeZy-kgCj",
+            "width": 720,
+            "height": 486
+          },
+          {
+            "id": "places/ChIJLRNM8FyHCw0ReuG0v3HFv3Y/photos/AWYs27xU_eJSTWNNszOoA2Th6WfX_GzOoLVFfj6SHncJZcm8M-j9CWAYUKgkdp4Sg0uu8NxUA2lKnBqUSKvlOhMitJ-aqgvTkEsspxdfmhrkelyikzOS1FbG0sJAE-zafu70qN_i1ea0cvAITCawUctFiZPAqYKD6qzTQLTr",
+            "width": 3096,
+            "height": 3096
+          },
+          {
+            "id": "places/ChIJLRNM8FyHCw0ReuG0v3HFv3Y/photos/AWYs27z1vj2-bRFOlCHzMwY24UeVQg6xob5V2RSIrDqLf79BPjh5kzao94wWZgKoLVxFmxONBuzEJ29M8LvZyenrjy8VBV7hLUDxSsp9L317sQiu_XHFzDnjYFoauncJohhG9_DACN-rsnrhyOX-VjXcqX5Zv5dsD8dEldrd",
+            "width": 512,
+            "height": 290
+          },
+          {
+            "id": "places/ChIJLRNM8FyHCw0ReuG0v3HFv3Y/photos/AWYs27yq1cKThmbKeHRt0CeJVfbY0yPvwN9KSXRuutI4TJxXKsGcdd58p7QHktdN8Ei39N9gnCcXSbnt52V3vXfEpzKK7QMAar5bMmhd7LHpNMl5Z9-TgdcNP_2TUNSkQwu3DSKE1SFsSCkQpx6rHCl8T72OfyWTr056v9cC",
+            "width": 1542,
+            "height": 1157
+          },
+          {
+            "id": "places/ChIJLRNM8FyHCw0ReuG0v3HFv3Y/photos/AWYs27yweDAtUPTz-jqm7SbdikLKZce-hZRd0E-TDh2qF8hKg4TorWjrpk6l8rRVuqgOJ3WRwfjlhUu7pPiG9oHu0vJD6vd97FGwSxsyd05djPhpiRnKmbWVQb8BqfJDK-R5fMZkmcgtroY4PvnKTlQGLkh7Fkv2zV0NyAyW",
+            "width": 720,
+            "height": 900
+          },
+          {
+            "id": "places/ChIJLRNM8FyHCw0ReuG0v3HFv3Y/photos/AWYs27yPQzsE4ord69-spqAZgozhjmX9I52nMtt1sIfrMjqoNyn8MCQnonc5KKcRm1x5pvh708E9dHHXffiVJyLjFHTT3EFKaMCGxck5d2jNOERVXM5wi_ezfLIeXhZ59ph8nzPCjH1vRg0ixkMEGMQpXIVShJfR1ySX-Rcr",
+            "width": 1280,
+            "height": 800
+          },
+          {
+            "id": "places/ChIJLRNM8FyHCw0ReuG0v3HFv3Y/photos/AWYs27wgE5D91nnYZWm0Yk7NNp5lqIIyH_TK5exDAfyLJ09U-A_jME72FwaUbk8J486P10e-Xq6qrheNvh-1U_tgggxgSOjxwGONeetRqJpAp9ozzLXkxbXjT2f5bAeyIP0adWbps9wWcoEyZYIsQqcUSTqvFX3BEtdxRyav",
+            "width": 2560,
+            "height": 1152
+          },
+          {
+            "id": "places/ChIJLRNM8FyHCw0ReuG0v3HFv3Y/photos/AWYs27wgf3dm51A6Qvx_whlXAYEKPa_ysm64086dNP8QiQ2ewSxosMqB9nhSOTWdYK2gelV33Yb2GTg0aa-dNJilU15zR_wXzU9KLhZYTOjdDkst-2BVZfY8KeHO5J4830FJtcvgfMMGeEqGQ9tuhPUV3FIM2uAr9zlhPHDo",
+            "width": 720,
+            "height": 897
+          }
+        ]
+      }
     },
     {
       "title": "Chefchaouen",
-      "lat": 35.1719,
-      "lng": -5.2659,
+      "lat": 35.173,
+      "lng": -5.2663,
       "address": "Chefchaouen, Morocco",
-      "details": "Known as the Blue City, this picturesque town is famous for its blue-painted buildings and stunning mountain backdrop.",
+      "details": "Known for its blue-painted buildings, Chefchaouen is a charming mountain town perfect for exploring.",
       "activities": [
         {
-          "title": "Walk in the Blue Streets",
-          "lat": 35.1710,
-          "lng": -5.2711,
-          "details": "Wander the iconic blue alleyways and take memorable photographs.",
-          "address": "Chefchaouen, Morocco"
-        },
-        {
-          "title": "Visit the Kasbah Museum",
+          "title": "Explore the Medina",
           "lat": 35.1712,
-          "lng": -5.2712,
-          "details": "Learn about the local history and culture in this charming museum.",
-          "address": "Kasbah Museum, Chefchaouen, Morocco"
+          "lng": -5.2735,
+          "details": "Wander through the winding streets of the medina, discovering unique shops and cafes.",
+          "address": "Medina, Chefchaouen, Morocco",
+          "locationInfo": {
+            "id": "ChIJsySgGR8nCw0R5rJN505n31Y",
+            "photos": [
+              {
+                "id": "places/ChIJsySgGR8nCw0R5rJN505n31Y/photos/AWYs27ykQ6VZLwiJwtYkpxG9i6lTh_DWaBGEbKx1DMN6Qgt1Egifk3XIZ7G3LBpyrt50SfJg1aKhVEXn5dA3m8m6OkaVEp7oRwtAcmd8QNp1UZYOVNXYH7L083yJV-GkTpvmHkK6xwahm6AWHT0rFYj1V3jYEBoVREqDK4iv",
+                "width": 1536,
+                "height": 1024
+              },
+              {
+                "id": "places/ChIJsySgGR8nCw0R5rJN505n31Y/photos/AWYs27wN_Sb4wQujYnCiKrcq0DkUciZw9aR-f_auaECjzTyaKw8_IVsY_QPEUwwMh62A7Cdzod0rJGMkbWUpCt33DmPV885HTUd43AghR9_VloJuvqNchSiijQv4hNLtLe0BJqJ2YZmGeXbh2i4BPANwTP5JcWTJn_WT63nV",
+                "width": 4032,
+                "height": 3024
+              },
+              {
+                "id": "places/ChIJsySgGR8nCw0R5rJN505n31Y/photos/AWYs27wSxN1Y68CCdfXqUKP70tyPALJNPl4x4ZONaxIW6rXb_DqVyP8IaWi-nzaj7sagCM3gOcw3CSeRw14aOGZU1e3n_AxSFkB1aCaH3OsGQR4exKXFClJiiWcE_s2uv1Qg53wUEiyZTv78NPpZFixiRtX1kGaVBW2fE9Gb",
+                "width": 3947,
+                "height": 2950
+              },
+              {
+                "id": "places/ChIJsySgGR8nCw0R5rJN505n31Y/photos/AWYs27xZ2XHGNORZJafWunGkgYSzUIZ9pEYiPhznqOdO0KF9OobUd79CtryEua3cS02Ai3mBWiQmfJUUFVLHLoY9vw3FDzRbzk_fzVSOd9sc2dpJrsV5jYeCPGUTGn7Maszv5biAc54kN-s1Nw1TKJN1P1oJ8hJa0EmZZj-y",
+                "width": 2048,
+                "height": 1365
+              },
+              {
+                "id": "places/ChIJsySgGR8nCw0R5rJN505n31Y/photos/AWYs27zZar7MmlmazDNbxc4YNRv0fuLPT5XURAB0A2agbFBK2wImiL9nVcen_nYWEGiCuJp9G8uRwi5tp6am805Ila8A-wlfhctD0kw5AqkhNrbhTnAGhFOTuk-C4CzyQU4Df7ZmWqr16N8ZzjrfSV5CdA-w3eRs8ZiEY8i0",
+                "width": 4032,
+                "height": 3024
+              },
+              {
+                "id": "places/ChIJsySgGR8nCw0R5rJN505n31Y/photos/AWYs27zz8k4ixvv72XCixVgIV8LmQ2YyjOVCkM-yp-LaKoN6sYkm2DPHkkNFBlYp3Iqm7C0aXJ5RPBCCYpzSZ2wYKPkAHggISa5Tetii-T00roRVfCd1ZhUVTLMpzu1OrZ4sL598cQnfsAuM0fSs66H-8_Cspf-ChPijsi8y",
+                "width": 4032,
+                "height": 3024
+              },
+              {
+                "id": "places/ChIJsySgGR8nCw0R5rJN505n31Y/photos/AWYs27x61YZrII_C44uRTVgKj9Yc6GP0-mqI7qOh-0kf3HMQf4sKWOg-8ZBzOiRuUraT3_OeI_DS43drcCd2ccnBcOQjbxruJEwQUaymk5FJPeUvz-C6OiE0Grv4xiP0PvMb8qqQKXmNnXUgbjaTwHW6AdvULQZ_RdsqhyXG",
+                "width": 4032,
+                "height": 3024
+              },
+              {
+                "id": "places/ChIJsySgGR8nCw0R5rJN505n31Y/photos/AWYs27xtTiiXfW9-SQSzQpy2kFqc5iCFqk8uuWiB0hbKltP2mYqTT80ZhOjmefj9pr6Ikv0E1nC3dsom4wGmXnQkyxPgtJPueO9e3Mv6dXREGt9qFYnPD9KqTmtqjOLq6tviWMk1bKfH2tjggY8Z9Adl70__2KC9Dsr1M8fN",
+                "width": 3600,
+                "height": 4800
+              },
+              {
+                "id": "places/ChIJsySgGR8nCw0R5rJN505n31Y/photos/AWYs27wr7yPkCatLhtqbMmjGSgwswcgqCfwt7OfUFBbX8PDPgmqno5p7Vrq1kP6BYrRhGO7t40n2Pvz69HUiEzvPPOd7XP5Pj2CkNaa92llzhoAS5TZT5HTws37TksM2LkvfND2zddBfmyFU0g-Z3JbvvELfw8HBjGrXZixd",
+                "width": 3472,
+                "height": 4624
+              },
+              {
+                "id": "places/ChIJsySgGR8nCw0R5rJN505n31Y/photos/AWYs27xO6h0PKJ-JycmJMZMjUhxooAj0jQHwYyCFubSbmoI7x_LRoMy2n3ehp7xjlMwXPGe1CVkIeoIRym8js7s0giPEOWiJvofVObc1f_nJZovLLZpsXjGhA2sgGm37nyp5oPRHpvXgheiax83TQ1yv9jDKvEzA-oBMsA4L",
+                "width": 3024,
+                "height": 4032
+              }
+            ]
+          }
         },
         {
-          "title": "Hike to the Spanish Mosque",
-          "lat": 35.1662,
-          "lng": -5.2679,
-          "details": "A scenic hike that offers a panoramic view of the blue town.",
-          "address": "Near Chefchaouen, Morocco"
+          "title": "Hike to God’s Bridge",
+          "lat": 35.154,
+          "lng": -5.265,
+          "details": "Take a scenic hike to God's Bridge, a beautiful natural rock formation located outside of town.",
+          "address": "God's Bridge, Chefchaouen, Morocco",
+          "locationInfo": {
+            "id": "ChIJZ0fwevouCw0RzpW7WXHDp3s",
+            "photos": [
+              {
+                "id": "places/ChIJZ0fwevouCw0RzpW7WXHDp3s/photos/AWYs27xN05A8LLYOh8gpZqqgasTJwg3UQL994AZFERJ6sLdbmgY7mWwaJpN9KV_ZhYCuyRbmLHZe9ad9MdGPtjvvvQmM6y0ArTUxabEDdjImoglgnH9FPGhcQsGvJZaNadBNrIaOTpjVSXnQL_5_DmL0n5FVpBmi46kibow2",
+                "width": 958,
+                "height": 1280
+              },
+              {
+                "id": "places/ChIJZ0fwevouCw0RzpW7WXHDp3s/photos/AWYs27yk193DCF3aZpMPJhXKaIoMwdy096jdqYlnEB2TnDrXBa4yx_35dVl6VasELflqoBaW3Ej3q6PyL7by03jI2HfvndrbkpqXRAFC8d1vuJ6R3UkRCaUdlHo6W2ZywfcaSXbszgnCki8uHVma-zkHtn-bziEnhdMn-XBq",
+                "width": 3472,
+                "height": 3472
+              },
+              {
+                "id": "places/ChIJZ0fwevouCw0RzpW7WXHDp3s/photos/AWYs27y8TXLfTI6phN7gX6sRabvuBVvA3y_TFgvcYyKGZLWw1B-MhRUSuid6nBWlpRQ_3Q-KpO9-Dlsb_RSDd8-zOJsIr-vSf6qfw8yucNmh15H2bvjKq_LcRcCkBnI_ve_0u5Y5dtVB5jP_b9XbL-HLs0U_9Yq6eSZ6p60l",
+                "width": 3000,
+                "height": 4000
+              },
+              {
+                "id": "places/ChIJZ0fwevouCw0RzpW7WXHDp3s/photos/AWYs27w4WUfzdJkGorfEb7cxFMeAOM-Sc-6n_HLKg8owIXZrv41w_FBrt7UP20n1re53aMdUbMmY4yWn1zPPu33EcjsoEl-3dyG2pIysC8yXhkrQRr8JvhBe6z18PnrfakV6pEWJOqjXc7BDo1hUzz6kMr-1i2bofNYGjeXr",
+                "width": 3000,
+                "height": 4000
+              },
+              {
+                "id": "places/ChIJZ0fwevouCw0RzpW7WXHDp3s/photos/AWYs27w6Flva0gm5pwZRbI48prPOrBzzJjKJ3AP3p04oe2iK8ZRF2UZYtuF_t0qQyqHl-uA3fBwbPRgAAqQHtkBuRetuXBV6DbuOq5Yen1A9r2SSxNN99Z5b3JQ-hcLPoPyBgkRlP88HnNa0UxX_cXpk44kWNOoAY7npe5xc",
+                "width": 3600,
+                "height": 4800
+              },
+              {
+                "id": "places/ChIJZ0fwevouCw0RzpW7WXHDp3s/photos/AWYs27yGXUDQpq4O5KdTRD9I7T7x-7WAPPAjEUygeX6eD1wX-PYioheYGU38Xjeatbd7vFmqqXHSOFzJVVF0IlfcffgpWF6CBUjcJQUxo6tTUFgoPCWh8dvfplNM-idVeCldr28JOE2ns7ExzfHac5zm5OOmqGUGd_twuoCA",
+                "width": 3024,
+                "height": 4032
+              },
+              {
+                "id": "places/ChIJZ0fwevouCw0RzpW7WXHDp3s/photos/AWYs27zEqzQ__IRM2OgCVS_UB9RKMLa8fnl58IMvuT3FJn5zAwlTYYGDqry1kYM7t3SmgTrmHiccSrGSCVODGE4fC5tVr7OndlUGI7ORjClO609CaWriGiXBKMX09N8OjYfU6hEHh9EJUPYzSZy8Y-uxDiv4zv5BPKBFSRMt",
+                "width": 3024,
+                "height": 4032
+              },
+              {
+                "id": "places/ChIJZ0fwevouCw0RzpW7WXHDp3s/photos/AWYs27y9kOaaoJX859e6DC8kFIK5gFkFC72KBszyV0nPF7KkDHHvD9GRsluKz17immCUjtVA7obHwK_KW42l21ROsUj3w0xX1G7m1Ow1Y4Igb_usrbcalK4eUWZq8HSaneHbHbUhPLsVo2zoTfxcPAp4jnt5mzzARV-rjeoQ",
+                "width": 4032,
+                "height": 3024
+              },
+              {
+                "id": "places/ChIJZ0fwevouCw0RzpW7WXHDp3s/photos/AWYs27yyHYk2oelR8N3gVd2cYYf3zAF12hS-EZePKh2qZK63ph6YFs_FM7r2sBY2Yx-zfJQj_nWB7EgfNv4w2wXd4Wj37bpB9IhrOq7Yg4kdqfsXjzTo2mxvX0PnSM5cx6N5PICjhAAYHaMf59SuOjv3oU9W09xTzVeQnvKa",
+                "width": 2992,
+                "height": 2992
+              },
+              {
+                "id": "places/ChIJZ0fwevouCw0RzpW7WXHDp3s/photos/AWYs27wnkNvBQf5aV9ynzwdTYJZD97sY8WA1Wb6gCP4FgYSXS7GlAFu9A0YQ1s90L3EUA80XJ306OYvEmGaxVsLH7AgrJBqF4umMj6nO8giY2yv6drP0Uu749OszgMIFJjYhFO3Y9-c044DdhSwCzwLfe5YBtS2XISLjNE42",
+                "width": 3072,
+                "height": 4080
+              }
+            ]
+          }
         }
-      ]
+      ],
+      "locationInfo": {
+        "id": "ChIJB9kCZF4mCw0RDOqXzoCJVJE",
+        "photos": [
+          {
+            "id": "places/ChIJB9kCZF4mCw0RDOqXzoCJVJE/photos/AWYs27zA--qcquJgXeawM8I_-Wgme9aXPl4AiFiHHvY6sazmBplHoyg3rCa9U22OhBMedmEUNozfbXvZcCAVBTrYFNbHbNZosQsW5aRVPljnYCwWowFckdconF-eWCfMDycPgQbeHWjJuDNdKOjy89J3KDjFMhlO-mssMbW-",
+            "width": 1600,
+            "height": 1200
+          },
+          {
+            "id": "places/ChIJB9kCZF4mCw0RDOqXzoCJVJE/photos/AWYs27zeUyF1ewbTdwwVY_DP5nCl70lwkgySqQ6LWy3HI4TsrJoMKBG3uyNFTc_LlVcDRm_3p_nqs7Ncf0wNzIQ4rQD7vNBX8EyrIDaWNG_TAyDBpX6QacOeIB5Eqcb0mXGp67SBF0li8UJr2Ns3nhnglkrCkIGXGKl4UGcm",
+            "width": 1763,
+            "height": 1175
+          },
+          {
+            "id": "places/ChIJB9kCZF4mCw0RDOqXzoCJVJE/photos/AWYs27zh1YkDDK_-jvmbckBJjoJ26zcmo5izke1VjkgjF6whMFR7W78s-Ef28RJ0yoqZSWds-qw2d_bHPxNibH6-9BtqICyiQOcDX1snNPKqCVrR9vfjKHoAGmFuLU86OLJ4mSFwy_AtDoGosxxP6-98oKFqbkYRA5jzLfp3",
+            "width": 3024,
+            "height": 4032
+          },
+          {
+            "id": "places/ChIJB9kCZF4mCw0RDOqXzoCJVJE/photos/AWYs27yGS0JaLxlAMXXuzObe3sGkrSn6GtxjEF6MlFXI7tNxnUTvSt8g0mfIKroYRAZXsWDNDJ3XTzyONeMVCyjPRZihjyHfITu95CsD5e2x4VuEAPcgBITSR3cXLlnahErFxB_V4-xQSQnRCIhdPqkqexIcdgjm6Pw_ojrx",
+            "width": 720,
+            "height": 540
+          },
+          {
+            "id": "places/ChIJB9kCZF4mCw0RDOqXzoCJVJE/photos/AWYs27ytmXlogmzSsN08FpXK1E8Ao1CR2hw60Bf5bVvjn95bZITKOqWJ7B2rBL0DB2S9irasjVgtEu05knIAeEdgsXWO7pYJG3RnChlJOCGSJ4uybWGWEOpRZneLDrf98PPQr4KxevboLCK2eBgN8dBe1vDjz_W0sN38Nzfl",
+            "width": 675,
+            "height": 960
+          },
+          {
+            "id": "places/ChIJB9kCZF4mCw0RDOqXzoCJVJE/photos/AWYs27w1bgl1MQWbn6VnYIxfzCgpY7606yMbuZaWSZfDySc-JIymlbW0jL-FAr6d3R2LKEfw1O_MrYF5F7IWtxz1BEAcMBgaYUwE7XUBcjFi_berEg3y6QMZSYZi2uoLzow3fEZALU5_tkCuzCFBWLmBT3Wy4AIYgT6TMeqd",
+            "width": 2976,
+            "height": 3968
+          },
+          {
+            "id": "places/ChIJB9kCZF4mCw0RDOqXzoCJVJE/photos/AWYs27xBr3TCwPpzxhCupQuz6w0nC2c8joMZFkH2Gs1Ibu3pUBxqX6PQ6txe0xYvYvX2Xo11Z_LpyvenW67UklZPlYf4XLaW8OzDUAVMUKav6N0CTqbOgr_VFyTaW6Beuy1bf_MEZ28rFUc31HWXimoO5zzqKZKNmJ6t0RXt",
+            "width": 1080,
+            "height": 1920
+          },
+          {
+            "id": "places/ChIJB9kCZF4mCw0RDOqXzoCJVJE/photos/AWYs27xY3St3UCU48WjzMEJNODzV-2Ih70P8WDEz8Lb76NR216787s4tv4bIjO2QzYCWGXCc2qoYvHM-ZCOwhfUZ3rWrLN5_Hx9IbAJonUItD2MaV2llJmkNGp1fIrSp_GGBZurZ6pD8WHbwmYT6_bOa_o9dvqx1xiiDsBdK",
+            "width": 1080,
+            "height": 1458
+          },
+          {
+            "id": "places/ChIJB9kCZF4mCw0RDOqXzoCJVJE/photos/AWYs27xOnssiaN9e5iikJ7rJ-O0ZrR3AEPgVKfQfSkvHokNuUAZ374kLMMdqJ6wnXmVpU-pqX0cPdxZZjHAYdVvFF5R3TroXQ7hmzpdv3wipvGrlKqxoycDftyVVKT5lygHv9xmE6kVG-EUD817KKVVRehPt5JahjscJSzCY",
+            "width": 3000,
+            "height": 4000
+          },
+          {
+            "id": "places/ChIJB9kCZF4mCw0RDOqXzoCJVJE/photos/AWYs27wlB-VmTOKmDTG4lCYRv8vkl4oEq1NEHE2Uri8B-jOJuhuJN99ob-MI74ik6BmN3bwNEp6TQ5IumGS4Z_45iz7t4L7ZbHz6NgUrNxei42u049hCnXtYgHdJ-Tjflu2PHY_9_3Hxipb3bhNYVQ90dysK48sd8xKJnlDz",
+            "width": 1835,
+            "height": 892
+          }
+        ]
+      }
     },
     {
-      "title": "Marrakech",
-      "lat": 31.6295,
-      "lng": -7.9811,
-      "address": "Marrakech, Morocco",
-      "details": "Known for its historic medina, vibrant souks, and the famous Jemaa El-Fnaa square.",
+      "title": "Taroudant",
+      "lat": 30.4758,
+      "lng": -8.999,
+      "address": "Taroudant, Morocco",
+      "details": "Often referred to as 'Little Marrakech', Taroudant showcases traditional Moroccan architecture and vibrant souks.",
       "activities": [
         {
-          "title": "Explore Jemaa El-Fnaa",
-          "lat": 31.6258,
-          "lng": -7.9899,
-          "details": "The bustling square filled with street performers, food stalls, and local shops.",
-          "address": "Jemaa El-Fnaa, Marrakech, Morocco"
+          "title": "Visit the Taroudant Souk",
+          "lat": 30.4743,
+          "lng": -8.9796,
+          "details": "Explore the lively souk, where you can buy local handicrafts, spices, and textiles.",
+          "address": "Taroudant Souk, Morocco",
+          "locationInfo": {
+            "id": "ChIJP3k-BQhzsQ0RAulGd-31U7g",
+            "photos": [
+              {
+                "id": "places/ChIJP3k-BQhzsQ0RAulGd-31U7g/photos/AWYs27zIqDLNtGl_v2Xt6mK9A5eWqNEESEAAL7saXHoh2y3Z8hkKWfMNKXA1XnFp7oOErVLaUDgXOQbiiElh-x2U34OQrzIC7IcAz4lNhVcJoy7ql81pGqxHO0bxMh9lBzJW8yqh8SL8GG0rtiKiuALu2ocYQoCd29aENpil",
+                "width": 3024,
+                "height": 4032
+              },
+              {
+                "id": "places/ChIJP3k-BQhzsQ0RAulGd-31U7g/photos/AWYs27xQ1O23PaB10u7Lbkr_UJ24L1fgxt_254YxyhIispaoRL0cPfE95AGAnd-IBZQkrx_ij5g7nvkyf-JY1OlQ1hOLdde6d23Mwsm-pRp1x-G2zSJAeel52rGrEcD-tLEzeup10z7lCvP2Nd_b3zD6CyBBj3umBR8RIW09",
+                "width": 2736,
+                "height": 2736
+              },
+              {
+                "id": "places/ChIJP3k-BQhzsQ0RAulGd-31U7g/photos/AWYs27xeddqWW3C_5vUfGqF4TjinmY5Daky7qOZReIEsYXC5VSrUj-vXYf30n76pimujJfRLmuJ2g1tMvkmASjiZs906tZj1dk7El5vy6roh_DilmDb22kjMNmgljh0zuMsdUlWG-jAgiEzY6XP-ig6qJIXFAespVjVr0wfW",
+                "width": 4608,
+                "height": 3456
+              },
+              {
+                "id": "places/ChIJP3k-BQhzsQ0RAulGd-31U7g/photos/AWYs27xHWwRvk_HK7QBdAEYH2GFe17iI7afrToSNcd21srBX6dSBOZx3yDprdPBl6h-Y7ZGBiOmbQ8Ta575QpjkAeOgBBEfXbOmllIrYIX7k-iYGy20MzJLWXqi3AbKSETXG2Rrxo-iUTILu9B98bXNKz3Oi-v3aEe_nStyo",
+                "width": 3120,
+                "height": 4160
+              },
+              {
+                "id": "places/ChIJP3k-BQhzsQ0RAulGd-31U7g/photos/AWYs27wulD7H7CtQfudHOlBisxxBkxVzPmcNzfuE3V8NjGEozDMftL36wH_JkVSn5XGEzdM_XSuVQCIAxF0rTJC66-BBgNPohv8oV67AIBYA8XW1W40SgvMq7-z6TXh1L7432sxKa9bN6KEJzWM7vu3apCYyjOLlnKyldqVL",
+                "width": 3464,
+                "height": 4618
+              },
+              {
+                "id": "places/ChIJP3k-BQhzsQ0RAulGd-31U7g/photos/AWYs27xOMkuUGEJ0WXgjVOYoT0wPeCpuonKvWgh5_HJgAmQWkkoNJGDKN5cDnJpESw1E9jrTzQis10rRzdwGqKXsjWbHCS9tCIMVexNUUy4MS_mr1aDmBW2FH71eS7sOnVJK6XFfQCNRcki15zsJjzqPuBR0B7wub2DeWCGH",
+                "width": 4800,
+                "height": 3195
+              },
+              {
+                "id": "places/ChIJP3k-BQhzsQ0RAulGd-31U7g/photos/AWYs27xxd09YwL970qHJbrgE15XplTCrlJSC_wFDkrX082CUHQN3uUgaMcFxh24LX3b7gmDZ-BVRFt_GXYJDmfCLwqyhlVRSO2HsGZM3rl5dTJZBqV85i5xUOrO_dNmST2XuT9wXZpQYaBycTtQyoCyNGi_mZU6w4c71FHPt",
+                "width": 4800,
+                "height": 3199
+              },
+              {
+                "id": "places/ChIJP3k-BQhzsQ0RAulGd-31U7g/photos/AWYs27weMC6P0RPa2k1BaYp8Pvc_vM47wUaIobMir5Y154NmZu2n8t2W33LvUMxIpswxakTD20gctnybifR_SuHZduaTSIeYv1jl0GNZRCF9N13G4Hx95KV6egThBqvsGF23aefJWal4bwXeYd4fTG_EVs4orhntRo2FRBiZ",
+                "width": 2160,
+                "height": 3840
+              },
+              {
+                "id": "places/ChIJP3k-BQhzsQ0RAulGd-31U7g/photos/AWYs27wRCGun4pa36UqlxEGnZHWoamU1ouqEXUGvv20Hj6bGw0HImMlwNxO0yHEwSLxtXoift7zWz-fLymEwRoRIEUJt_z3JtN7hZa2MqnYxWutBdbPhRoBZSOCKXmeAo3HtrnxcPCux0Q_h1a28xY2L9nqmxwr-BvJM5JLn",
+                "width": 4032,
+                "height": 2268
+              },
+              {
+                "id": "places/ChIJP3k-BQhzsQ0RAulGd-31U7g/photos/AWYs27zXv3f6u4byWy-4RNHXjz4kOepKJVhJ60CpDAUDAcnqSbhgmrwu8t6SqW1mGM9GUCbGp0Pwu9CDgQC1A27xzGUNkIOQZ3KaB8HoyL6DPPGZ1q2jnkp0JQ2jlXJTNoyl9OqhSjjnNPtf1xbns-Kg4QT0VF_2BxqxcJyg",
+                "width": 2268,
+                "height": 4032
+              }
+            ]
+          }
         },
         {
-          "title": "Visit the Majorelle Garden",
-          "lat": 31.6295,
-          "lng": -7.9932,
-          "details": "A beautiful garden featuring exotic plants, fountains, and the Berber Museum.",
-          "address": "Majorelle Garden, Marrakech, Morocco"
-        },
-        {
-          "title": "Discover the Bahia Palace",
-          "lat": 31.6250,
-          "lng": -7.9869,
-          "details": "A stunning palace showcasing Moroccan architecture and beautiful gardens.",
-          "address": "Bahia Palace, Marrakech, Morocco"
+          "title": "Tour the City Walls",
+          "lat": 30.477,
+          "lng": -8.9799,
+          "details": "Walk along the historic city walls and enjoy fantastic views of the surrounding area.",
+          "address": "City Walls, Taroudant, Morocco",
+          "locationInfo": {
+            "id": "ChIJzUMYgamPsw0RB3mgLuD8IVQ",
+            "photos": [
+              {
+                "id": "places/ChIJzUMYgamPsw0RB3mgLuD8IVQ/photos/AWYs27wDtEDIXnOve8k0h7l2fI5QZXxuMfPBUn78VszWnfGGOvs8IHXMHRZeMWRYHY62peih7JAUdLqezEpVPBD3Afvj4twKAP4tyxC6vmVdlukFfMkiffy08tMLn5zPtHQbx9sA0mE2y_XmjFaEjieO6uZWot_u8KMWuDnN",
+                "width": 3781,
+                "height": 2964
+              },
+              {
+                "id": "places/ChIJzUMYgamPsw0RB3mgLuD8IVQ/photos/AWYs27wyxfxOXJ6hnqeIbqqc7DEhlNP_fuil0yBznfj3OcOtoSJDdCTBOoQOM7u8KwqC3tmE_GPbMUUiRyEtWro_Tlh-cQxbTOFZlqk2MpfmoTDTuSVemOous3yk5tLTsIwvi9fm4aPKMmvSxGmh76Q0oDfd-iOxgq_joEho",
+                "width": 3412,
+                "height": 2559
+              },
+              {
+                "id": "places/ChIJzUMYgamPsw0RB3mgLuD8IVQ/photos/AWYs27zx-wX9J_q_kZKZTN3ZF1Q0dul5vLoSQnJ9ewGmOpQ6Lwq-YfqCY5-DnJEbVSK3T5bfIN1nyIW2PpbLXES6dK670iFArRU_iZoerBFrDh25EAM5ohdFyG1b017d-Ji8fDl73G78COdZ2onRFV__CQRNGWATmBZQY60t",
+                "width": 2378,
+                "height": 1834
+              },
+              {
+                "id": "places/ChIJzUMYgamPsw0RB3mgLuD8IVQ/photos/AWYs27xwRcm0cFeAvxrk_yWXFp8j4JFRSPi_lsX2_CATSLtV9qJ1aCWNY8fZ76uUE5MJmH3hY98mfR3--WT8hLdd0pQf6PFFvZGSDy2vaJxsKiHOcZs36fvYFcgMIENDZBW6F5vZS9KLw79Iem0nPqfTvIVhMyZMTLsMCV0A",
+                "width": 2224,
+                "height": 2965
+              },
+              {
+                "id": "places/ChIJzUMYgamPsw0RB3mgLuD8IVQ/photos/AWYs27x9HSdkV-_jlaPMRp7oLXreTDlVkjuj0-ui4t94Vs5X278Y5-VPqZKU8cfpCSJDRjSeIaZTy7FTzk8zKdS-wXevOKO8xf2UCvPOTztPSkkP-5AeJdrLgHdekkQXT5xKzKubQONaR3spbEY9ljbbjYIAALtiSn2xPCOW",
+                "width": 2745,
+                "height": 2072
+              },
+              {
+                "id": "places/ChIJzUMYgamPsw0RB3mgLuD8IVQ/photos/AWYs27wDIYaF3cCnn2Ys57MGPhFaNNBqhP9yOUYTNE41dr0XvRW_-315HRc0h5RwupNbaHd1d5ap97jur6awTSG9T8zxfcp1G5NWOLCw8sNI4sntG-9I1Y4CTqQiDGvawPAkWPqtYvBxDYDjSCmyGqM5JzDpcrgBK9HOIZjm",
+                "width": 2113,
+                "height": 2915
+              },
+              {
+                "id": "places/ChIJzUMYgamPsw0RB3mgLuD8IVQ/photos/AWYs27y-qjz0GBghTy2La57lFGLpTlf3Af87rovPoGyEFxK2mFTxpfmd1qHL0wzXr1PRrHObItRoN7-FY47lriGQuicfZVS7SyM64jP6q_zOB8tlVCl7K1cuxBV8FW478Mp-AZe6nPjpL8nNXyxTYzetsjEX3d3Iw-OgXKJ6",
+                "width": 2208,
+                "height": 2974
+              },
+              {
+                "id": "places/ChIJzUMYgamPsw0RB3mgLuD8IVQ/photos/AWYs27w38IGEZYY8IpZWdZuKEB4_FNrUDU3iTYA7F-QDDzZKiGf530ScBhwkGiMxph3Phr_D1NjL4v4hLoy0ZLox-IQR2P08NuBeS2y4TrCpi-QCq5g7ZH1xF2wq2nJIM-b14ePGb-_v62oYDgOTcJnLTyCsEwy23TcBe5Gu",
+                "width": 2619,
+                "height": 3492
+              },
+              {
+                "id": "places/ChIJzUMYgamPsw0RB3mgLuD8IVQ/photos/AWYs27wT1P4N8qFGlJOKOYE4uyLI82dPa2PANHgcUaw9ZS0M_hqTr99eAnsSqm9762aZPTLpwoTsAg5EzHA1ovuVZp57iQ3wjaaiwxJE480ZwqA7yG5IkHdCwigX6IPtUC3a6UgueYyPpx4f80QL3XRXc9mV8tRgOyljk0mJ",
+                "width": 2893,
+                "height": 2169
+              },
+              {
+                "id": "places/ChIJzUMYgamPsw0RB3mgLuD8IVQ/photos/AWYs27ygT0lTmP5j9WPpcordubfatmdx0qVXQVbiM7cZ7TEFAIuT_7zS_PgCAu7aPDJ9D6kM9aSn9lyQLdNTzrICmBBer-VT0A9BzMTlK9aMWVbyzYuKQRmxDUMi7RiWPlBxNG_El9Snxll-vJprB1eOP4UCisVcSssW130u",
+                "width": 2840,
+                "height": 3786
+              }
+            ]
+          }
         }
-      ]
+      ],
+      "locationInfo": {
+        "id": "ChIJGXoekAlzsQ0ReiNQS0_fD5s",
+        "photos": [
+          {
+            "id": "places/ChIJGXoekAlzsQ0ReiNQS0_fD5s/photos/AWYs27w2VX3U9SyjgOTHgPz-pYTQ0bWOkjpw0IaFG27lpDxT1XmTTE0Q6_N5w4BAasAGFWgmU0et68rrobNxrxlIgUF9_rmLog4BlDfnX2d-MRSdj7iCX3b3mvLlmVWSh_vz4p0Aisn8eHay8Ool4ETqvtMaparxNOT1Xw-2",
+            "width": 720,
+            "height": 482
+          },
+          {
+            "id": "places/ChIJGXoekAlzsQ0ReiNQS0_fD5s/photos/AWYs27zpflgjEnnwbzuj3wX_Hp7sDMLVuThXL0Zn3mSR8rmqUQQOXvEIERuXCVynxF8s1mO9xMRPTxM7SmclWiMWCp_jrSR5pWlTqri9muPH1G1Yzt7rgwQC-1do6Q88aQvRj-7fKHarNrWkFzo50du4pA5aduAijV3qNGwY",
+            "width": 1200,
+            "height": 800
+          },
+          {
+            "id": "places/ChIJGXoekAlzsQ0ReiNQS0_fD5s/photos/AWYs27z--sbsoYcp7SJMbh20M01H5xsKlOAyMgF0NYkN4vk4dj4beCjBZwMwPJG00q3EvqR4txNodehpZJpNDkIHe_ZJ2CBJK8tIraYNGpL_muq4Ccdt0QEiPHFogP9J3RoeZdVO69BqfetXLv5F5831-6CCoCLTH2f1KpXo",
+            "width": 720,
+            "height": 477
+          },
+          {
+            "id": "places/ChIJGXoekAlzsQ0ReiNQS0_fD5s/photos/AWYs27zPbBCnp4I1mBHPmdWKDPy62bOPgxJXJMLUz8pTE1JxXNF2Ox1-aSXsURiBeXgMGH_2WY0qw_Po_1xdnLNNyyu2r93VmRnt4GdWn_G1BlY8dGS0vT4ssJRg1uFmVSTf36liPKxMG_-qP65B1eYW3onJ3llgpSIUsWtG",
+            "width": 4800,
+            "height": 3199
+          },
+          {
+            "id": "places/ChIJGXoekAlzsQ0ReiNQS0_fD5s/photos/AWYs27xrqhEGXeqNN1LBcYW-uZlh67mQioExV9Prp5-g5d-VlfJFY74GzSNyb6jNYlmIITOJzUm4oCeyn5faKWvAoye37k4tFKgCjqfct_iLr5ku6phDqxf_ucdPJ0HJjyKnHrNXCi8JStRJLXNQ5sEHGWH-eruHnUvvVg8Z",
+            "width": 720,
+            "height": 394
+          },
+          {
+            "id": "places/ChIJGXoekAlzsQ0ReiNQS0_fD5s/photos/AWYs27zJazLuttFcK_AGyF-68qrgKOHbNl52PqdXia9ZmutBChiVV_egaTOTic0kC2xjPdOBA7TJsLbK2LTrsr0ywEyKYmKv-yd9nJkgqzqOV4LW2Bh5_8PsNqiah_L4CQOjN3HSXg_UZ1bM486lilOVfOc62qw0HpXrrkBe",
+            "width": 721,
+            "height": 480
+          },
+          {
+            "id": "places/ChIJGXoekAlzsQ0ReiNQS0_fD5s/photos/AWYs27xo7K2lG2i8dRAwrBQoeN1U7bn2zYbNwP3pAgRPXhBTwIMFnQLxMAWoom6Os3KDqh0ONLFq-ykPTYMsX4YvvJzIGZjUlaRDdOacpGpXTEAaeCLp-8SJ4ykGXJhRZiVXI3v9HvEpgMW-MDwAbfRnoMWDrTL0Nw0r6v3z",
+            "width": 620,
+            "height": 400
+          },
+          {
+            "id": "places/ChIJGXoekAlzsQ0ReiNQS0_fD5s/photos/AWYs27xEYxS5kAQovllRgd0B6csBawYHCERH1FL28u6hF_CU3zaafurZNJO58pNqBr9yoj_AQEtwKO9kHezTDO-hp3HIxQIBxAZkgZNJxwZsIGPE_95dsJYfTtg7kj0DDTNysCFB7poOmSqHrpKBopUh8MobKe_3h7-s6e2U",
+            "width": 720,
+            "height": 598
+          },
+          {
+            "id": "places/ChIJGXoekAlzsQ0ReiNQS0_fD5s/photos/AWYs27yj6VD7ZNH5Kzg4K5CwFvUN5xOBFdR5WOAcUBQI5y3xQggTcewZvNfn-2BUguS8JY8pI8Kjpf9Y0SnUUg7-c1njCiJ3DE_M-YMIj1GtVjk30dmWZDsQGG5R81wZXxiCxRcOIJ-ZoP96937OYuLYjqDHRVWynrRrWqsa",
+            "width": 4800,
+            "height": 2700
+          },
+          {
+            "id": "places/ChIJGXoekAlzsQ0ReiNQS0_fD5s/photos/AWYs27yRNsCtowbJya3xJ-mLAoywiSFyjSo1i8IS0w0Pu4FIXPiRTn0YP9gAZoORR-N8TB__5iUrkCFKKCFESTnJ0g0ZrLT3YgVWOPOnBGUjU_85iDia2-Ky_a7vMuMdKeLnrYT2gtJoy32AicRS7sQb1H_XJzyGW-6Gz2M-",
+            "width": 720,
+            "height": 405
+          }
+        ]
+      }
     },
     {
       "title": "Agadir",
-      "lat": 30.4278,
+      "lat": 30.4271,
       "lng": -9.5982,
       "address": "Agadir, Morocco",
-      "details": "A modern resort city known for its beaches, surfing, and seafood restaurants.",
+      "details": "A coastal city known for its beaches and seaside promenade, perfect for relaxation and water activities.",
       "activities": [
         {
-          "title": "Relax on Agadir Beach",
-          "lat": 30.4214,
-          "lng": -9.5980,
-          "details": "Enjoy the sun and surf on one of Morocco's best coastal beaches.",
-          "address": "Agadir Beach, Agadir, Morocco"
+          "title": "Spend a Day at Agadir Beach",
+          "lat": 30.4269,
+          "lng": -9.5985,
+          "details": "Enjoy sunbathing, swimming, or trying out water sports at the popular Agadir beach.",
+          "address": "Agadir Beach, Morocco",
+          "locationInfo": {
+            "id": "ChIJP7wkiSK3sw0RFllDTpB5jzU",
+            "photos": [
+              {
+                "id": "places/ChIJP7wkiSK3sw0RFllDTpB5jzU/photos/AWYs27znZt21PXeIFNIznLx5xlCp8vYYee8l8LkO9KfWXIJLWs223ucLgkQjY3avZGxRm-Leh2dgjXc-2D8vFBwTeNaTllN0jjuCQ9mf425dI2gu5RjaU0BHpbPntZfjDh0watv1m-f-z-rXdmZpTIkPMO71O1edWaJZ4oSr",
+                "width": 4096,
+                "height": 3072
+              },
+              {
+                "id": "places/ChIJP7wkiSK3sw0RFllDTpB5jzU/photos/AWYs27xGQAudXsesYze0JSiTvI8hWWvLsQ-q7cQqc7O1t-l5Xf-CoqgV206-Daf0UW3KLl4C1hhQg8dBxIcmaWoGGCgwHWG48tMUl1EZnL_NwIFxBmNO4fJjkTzFRPGB22Me66alWFqJdXvR5aCuj-rPFDEd2sQeqUM7KeOR",
+                "width": 4000,
+                "height": 3000
+              },
+              {
+                "id": "places/ChIJP7wkiSK3sw0RFllDTpB5jzU/photos/AWYs27wEfodQ73LFEpsTbBbaWaH29bY6OHLatRHUWkOyVEE40ru1t32g6ht8Vv_M4dAV4_JXsuQRq3vMCXnMD8th_-tVihMa-oahH_A32FHD48x9jz12YfaPW0jMP6qf996VPR7Yg_FjgMtVXy1OXomtHufPnb2NBpMvFtVL",
+                "width": 2048,
+                "height": 1348
+              },
+              {
+                "id": "places/ChIJP7wkiSK3sw0RFllDTpB5jzU/photos/AWYs27wi-b9yZt2E4iYF4LwjGAupe3-SzNRbEQqFE09yQ_8MCjrmvth7gAHIeSpMJDWWWwmzaszyDzAjFIPY2cj87jbx9c971YMKodzpzP7UBxLRfOB_g-RcczPZjHk99c8egdWgV7EAE1o6UN9twYOURcE_81YH8ssMZrS1",
+                "width": 2688,
+                "height": 1512
+              },
+              {
+                "id": "places/ChIJP7wkiSK3sw0RFllDTpB5jzU/photos/AWYs27yEYJ-RkQMrMAFSHVdlVQwKQhkyual86Cvc4Yai_j_9dDIEicJI67JUezGXORycTwZLOD9S7LmUBNMaXtvcg4DW_K5_ptXfO1jMZk43sdvtFL26v_YsCIm_A_DeFk8D6rNAndrvr9kcU1_y8S6Pm_48xN_OAiq3Au-q",
+                "width": 4624,
+                "height": 3472
+              },
+              {
+                "id": "places/ChIJP7wkiSK3sw0RFllDTpB5jzU/photos/AWYs27x0FAIpuXXInpmLtn1ximuEZrlrOqcZFrdAMkYeuqLu2X2_WJpqrAE2HSGFwl_W74QniVa2zsJSuraxPgH87To06cxmGJDSPeW3XIfAjtXGVVpzSnLb81cK0NxkvHabS-5Nv7tX15NloVpLUpc1WTK_I1Ym03hhZPjq",
+                "width": 4032,
+                "height": 2268
+              },
+              {
+                "id": "places/ChIJP7wkiSK3sw0RFllDTpB5jzU/photos/AWYs27xW_7DHgAfuhsvkFfUWiogn3Fx0L1jc7RZKYKvD3kWw8RKEG3i-rrIxOB-6WTPt0tQjjU6V9a12h9kzodRXggJRq72DIq7RQj42AlpWigQegydSu4Nual5HxAVtALHLDEKXyPSijD_Q40QWdUgQ8BG6tV5oCpgyXAhk",
+                "width": 4000,
+                "height": 3000
+              },
+              {
+                "id": "places/ChIJP7wkiSK3sw0RFllDTpB5jzU/photos/AWYs27yNrStZvx3SLGcaI34MeRHoc-X1lGgaqAjB1D-sedk9gzJ1HfjqsvJM1oq5T5EjI_35lMi9QEFbMMlWPNk0mMZIpU44Ya8B4QApYRnwq-tuc_euivpSUjDk2SPTFnU7DFGrE3e4YuKCFSH2zXPWpwHpYkp0TgHAQQtL",
+                "width": 3072,
+                "height": 4096
+              },
+              {
+                "id": "places/ChIJP7wkiSK3sw0RFllDTpB5jzU/photos/AWYs27zh4ApxkipseohUPdDN5aqzzOeXEVUYdhzA-eanBoszWmGAH2zHBmKd-Tai4SY4qLR4TSTG3Rp76-qHCAwzsK-Ts_whKO5Da5GkedBaLCuK_sCbwmMN4AjbJe3BtiTZzc1VcpiR78pfEq1-QXDc_xaz9VechKdTryEG",
+                "width": 4032,
+                "height": 2268
+              },
+              {
+                "id": "places/ChIJP7wkiSK3sw0RFllDTpB5jzU/photos/AWYs27ynYxmLvHS8mOEdERxzgsqrPhOHi5H7S94kYYv0qL49lNRlSPDMHkTC2Z8csxMY1aUZ5yGxkX9ukzG8ip7RavY0Y8NmxU8GKTm5_-uPrhkjFyN50MSNNW4atXiW2MCxng17kxyg-aZE_ndxbo1iFjBWCLfVSMdm-W1b",
+                "width": 1080,
+                "height": 1920
+              }
+            ]
+          }
         },
         {
-          "title": "Visit the Agadir Oufella Ruins",
-          "lat": 30.4266,
-          "lng": -9.6018,
-          "details": "Explore the historical ruins that offer panoramic views of the city.",
-          "address": "Agadir Oufella, Agadir, Morocco"
-        },
-        {
-          "title": "Walk the Marina",
-          "lat": 30.4116,
-          "lng": -9.5987,
-          "details": "Stroll along the marina filled with cafes, shops, and views of the ocean.",
-          "address": "Marina, Agadir, Morocco"
+          "title": "Visit the Agadir Marina",
+          "lat": 30.428,
+          "lng": -9.5975,
+          "details": "Stroll along the marina and enjoy the chic shops and waterfront dining options.",
+          "address": "Agadir Marina, Morocco",
+          "locationInfo": {
+            "id": "ChIJ7eMwBOG3sw0R6YUoKW3mXUI",
+            "photos": [
+              {
+                "id": "places/ChIJ7eMwBOG3sw0R6YUoKW3mXUI/photos/AWYs27wHDkQ_CEv6Yh8BxGIuBrIW3y8Or-L7v24w2TT-x2CAs-rTHDFFNO8LkxLARQ9GiVB74q-MvzGxcm44fheKZFdLgnnhSb8DsWAw6dFGe589oRp3M5e9QPk-DahOjmWAIOqztLMY7dOmcRK4lKIqJ7EKBw5frcYCMTr4",
+                "width": 1280,
+                "height": 960
+              },
+              {
+                "id": "places/ChIJ7eMwBOG3sw0R6YUoKW3mXUI/photos/AWYs27xZHdFFV-npoUvg7pyWPmSq3mwdYiRdyP1VXSkwhunKpYx42ND54ZAicwHfGLmBfRkBOKmQT3DX37SijrUXBngPmqQ99v9lhED8xUmdHQVSnCQp40lxrSG3-oWbWeCZTlIdCmlLifA9vMajCzCErJQzjPhyiDphGFag",
+                "width": 1102,
+                "height": 842
+              },
+              {
+                "id": "places/ChIJ7eMwBOG3sw0R6YUoKW3mXUI/photos/AWYs27yo9pADaCmQYeJV8z4kNRTsSdDg_87MKt1yk5Hf8GDOqNp2eWIZPQU-j0fpxOZAT6dJKtKugw_5b-7-seezgWHEVqbpXQ1XGziJ7pv1_KpF1WbOBSLRh21dt5GpRzu_RA8kfo2SHzJwMEE5BF5PON6PXQyYRpSusZBg",
+                "width": 1000,
+                "height": 562
+              },
+              {
+                "id": "places/ChIJ7eMwBOG3sw0R6YUoKW3mXUI/photos/AWYs27z7vHm7fVikj9EAwQn0dkn9L-jf94XH8YibAgA3cM7rSIm094Oyi2XL-7maX5dGr6Jl_zz7fl52Yc-Srv0bl7k-g8Q4dm6hHkeLsr8NCBEjLhOoFaz_86AdPBslAEDHdqtzRcb3FtHSmGo7Sskgw_WoaePQvjvWzJgd",
+                "width": 4096,
+                "height": 2304
+              },
+              {
+                "id": "places/ChIJ7eMwBOG3sw0R6YUoKW3mXUI/photos/AWYs27yh_RLDB6enqB34_oc7i4VEZCWF5lNfDqP0ZzVFqnFOM9GZHRZCSuDw-CRMLC_radHebgJ4P-pWRcuaHoiStS9svpHQ5Fp9U1iJ5pScYyBxxTzQ_Iq0ZWEsJRTsAfNrNG53Xs0rcfySawiLh2WN8hhSGdUkfHHPOFLE",
+                "width": 4000,
+                "height": 2250
+              },
+              {
+                "id": "places/ChIJ7eMwBOG3sw0R6YUoKW3mXUI/photos/AWYs27wtd6xzfheqEmGc4YLtRBc-9zV6VKG8eEt0N38nEJjmbb0SvwCLdiTJds8xHo4On42JwCmkQZiLG0gfOFJcfqQAYcuglq7kUYxZOrvyS3T81BGn2jeojCIdlsQDXDVtMCyFXenjaJZ07-8lEZIQ72P47iPlUYR8Bfgm",
+                "width": 3024,
+                "height": 4032
+              },
+              {
+                "id": "places/ChIJ7eMwBOG3sw0R6YUoKW3mXUI/photos/AWYs27xOBWFsXS-QaltJsZzu7UaQXV70yPzmt6WHSFkWcgA0oyW-lEedWU_C3vLIl6dnKexJQhPu7bELJllFeweMIKZ9SlaXjNgLZHX46fnCIGJf1n29hxDaqhyEr5H3C8ImggKlFBezODjtqW8L8Mgwt8OJRGJIAzcz-aY_",
+                "width": 1068,
+                "height": 833
+              },
+              {
+                "id": "places/ChIJ7eMwBOG3sw0R6YUoKW3mXUI/photos/AWYs27zRLmRsqMUBT325Ta1LIOt2_qJ-4glAys5IsMO-uSHUH3RNYZsuWu_7JKB-riI34UBd20_4X3kEgnF8A7uWNtG_d8Mt1ZR1h33H8GoApmJgV_vgun8PASSFnUscXCTg54PwKBMkLSZ2TMLCnysSZPfwBFFiAgG-0JoO",
+                "width": 1125,
+                "height": 841
+              },
+              {
+                "id": "places/ChIJ7eMwBOG3sw0R6YUoKW3mXUI/photos/AWYs27yLbM6jRf1Oa7p9ol0HmSM4PemLQZYMvU_jpndUFEWJCFeeVGJcAEc4Dn5Lxr_IKFiSmC-U7hsd5oWTHPDHrRu-iK4zZfi-oSOJc43WYKZUm0sLvxt7t2vYEaM1TH9KTLtmHJcr8tPhWYQRv5FmqrK5yh6SfHsxorJM",
+                "width": 1125,
+                "height": 1501
+              },
+              {
+                "id": "places/ChIJ7eMwBOG3sw0R6YUoKW3mXUI/photos/AWYs27wYmOlgqkbrj-2M00UrcTZrvE7MgoVasHv1ILwcifIflo1x_r-dubTIlQiqJPH_NbToTSsNKs7qCO5Qgay-ul0PEEDLXCWD-JWChjmdSLCvdoU7hPm6QVmwpjpkqmjjPsKVZlAi7fJCImf2GpfLXJ0Xa7HHJo0JRGxH",
+                "width": 4000,
+                "height": 3000
+              }
+            ]
+          }
         }
-      ]
+      ],
+      "locationInfo": {
+        "id": "ChIJyRyt2um2sw0RdIT0i7fQ-Lw",
+        "photos": [
+          {
+            "id": "places/ChIJyRyt2um2sw0RdIT0i7fQ-Lw/photos/AWYs27yTXae8159Q2MiFluAH_guddBycFFwKRkPdLWDg0tDi6bnvuNO-Hye69xo1BBNvF6UQpQELG8EGqJnfRVYrEBOeIOQQX-MhGvWoSQ3tsy2kgKEc0nLqQjU_AlM8a27IGNLY8fmE2O5fQLtGeFKa07RAjTTEnYF-eQH1",
+            "width": 4000,
+            "height": 1868
+          },
+          {
+            "id": "places/ChIJyRyt2um2sw0RdIT0i7fQ-Lw/photos/AWYs27wDbzgY73rQbp0pLxEpYRVlbcaKYfJaUVoAmA8EKVqV3uY42qQS4WbXz056QhKYwC0Dfee9vm1md_kTX4wggIGfHSyOtisJdoETx8X_QDg6Y9VQdJLqlrlaCAXMot8R-6Ady_TLGIo5aq9S8khctozcEsDR1Q3jzhAY",
+            "width": 4032,
+            "height": 1908
+          },
+          {
+            "id": "places/ChIJyRyt2um2sw0RdIT0i7fQ-Lw/photos/AWYs27xEgsv3XJzRWsQ70hCkG29-1vYNsLA9MTH-hlAbbnPiUE-2CHNIPoNVpLc2SVFFhYLc6fDScxkdin4gzJopagpIi-gdDu1fi9ghoNTZoG-t9SLDJbIrMpwBgApwpeX2hIwGqVOiS9AnarZWr7kfgMw47T3_ctgQY5vt",
+            "width": 593,
+            "height": 395
+          },
+          {
+            "id": "places/ChIJyRyt2um2sw0RdIT0i7fQ-Lw/photos/AWYs27wNEeTv15R-W9c5SzLtwS65pnD_YZu_sHg50H0R9kjixd5MoWuywgThWuvN3eZ_Tk2CVB5bpVQJsgl6F6t13Y0o0fWnS24GtaWzJbeXU9w7EeU83qfErPdjY-Y8J1VhkXZ1OPGj1YL-drGFBVa15YUsZcJ_n6tRHneO",
+            "width": 4608,
+            "height": 2184
+          },
+          {
+            "id": "places/ChIJyRyt2um2sw0RdIT0i7fQ-Lw/photos/AWYs27we9t1XLNRF9Eq8vatv04FTAgA094wfkd36900PPjFoFjr3Vbb7NEfPivhuNlQgalG0D2Fg7-L3eQxoi5blfU996P2SHaNY1yPPKqokM9ZqHfzk6CvDGN-TMXJppftP5cunNbOipudJrEHEosPygCwbNLYhufioyFTm",
+            "width": 4800,
+            "height": 2700
+          },
+          {
+            "id": "places/ChIJyRyt2um2sw0RdIT0i7fQ-Lw/photos/AWYs27wkEVbQwFVGaFP4LCwldR-BXM1nRmLNZjDZWjQPKpmDW6uclXeg0jRM9ShIV6kNRN_fkis3a-G1TsIDGyQcW4xN3bcFZ2vfeW1ubnH9XCnKkLifahaICoqTtSKrD7OW8h6u3xzQVGxNOAZzkUnsqRxPQqHuh6x64Bfk",
+            "width": 550,
+            "height": 412
+          },
+          {
+            "id": "places/ChIJyRyt2um2sw0RdIT0i7fQ-Lw/photos/AWYs27yYuiud6uKYLyqjDA-FooazuWuLEGpskAqZe6DPLJBdfLfHlsbS0rxcnEBQre7jKsKBg-C38h1ic_0ri--u8sItZWpfoi9dCpN8PWzGZ2rAIoz5YB09n9xM-ko2amzxKytizk9Uzv_hSjn-9vtD0o2nrIspStAZPG42",
+            "width": 1960,
+            "height": 4032
+          },
+          {
+            "id": "places/ChIJyRyt2um2sw0RdIT0i7fQ-Lw/photos/AWYs27xOz6IZKis5hKK8WEzskXPDBvlBk1ckknH5YikuqR_Gn-y-59GYuBfVAc7xnwx5RZ_3S-nxrrNj6b9dfTxBHlKAMIB-nqaSNrUEl4NQVBVj8evk1ESOSuR_akPpfKwJpw3Mi0nmWWhKBOwDjwM1lCC61mDNfWz13WSo",
+            "width": 4160,
+            "height": 3120
+          },
+          {
+            "id": "places/ChIJyRyt2um2sw0RdIT0i7fQ-Lw/photos/AWYs27yM4ubugDV_Lk1Fw880PSbPCpEI10V6gCRdzyMacCRoYBu00Vg1vwBPF7AuXH6DfHt7IsyaszCPYplRwygfE0AxChYmHor0QxklQRaueelyusLBfu0rBsgpvgyDbDDn08cEwBe53mmwQL1x5lNT2YwluXauotJeYko5",
+            "width": 3000,
+            "height": 4000
+          },
+          {
+            "id": "places/ChIJyRyt2um2sw0RdIT0i7fQ-Lw/photos/AWYs27xZkxZax6bwy2DxwUihbP27IAq5k397LqUOmeLp_ssSuK8rplYoq8RCY6oAQR6gxid1NuT_w1IdJN01uRMIL2D77pSNX_tAc2_zjGa36f0TBEh4T1Pzgf73XpALgypkKYxgFVmgmJC7VPzEsTSaiTq7_kqTS7xUpS1w",
+            "width": 4160,
+            "height": 3120
+          }
+        ]
+      }
     }
   ]
 }

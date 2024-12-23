@@ -24,19 +24,7 @@
           </div>
           <Card>
             <template #header>
-              <div class="relative h-48 overflow-hidden rounded-t-lg">
-                <img
-                  v-if="slotProps.item.photos[0]"
-                  :src="slotProps.item.photos[0].getURI({ maxHeight: 1000 })"
-                  loading="lazy"
-                  class="w-full h-full object-cover"
-                />
-                <div
-                  class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full w-8 h-8 flex items-center justify-center"
-                >
-                  <i class="pi pi-camera text-primary"></i>
-                </div>
-              </div>
+              <StopPhoto :photos="slotProps.item.locationInfo.photos" />
             </template>
             <template #content>
               <div class="p-2 flex flex-col gap-4">
@@ -62,18 +50,16 @@
                             class="relative h-24 overflow-hidden rounded-t-lg"
                           >
                             <img
-                              v-if="activity.image"
-                              :src="activity.image"
+                              :src="
+                                getGooglePhotoUrl(
+                                  activity.locationInfo.photos[0],
+                                  config.public.GOOGLE_MAPS_API_KEY
+                                )
+                              "
                               :alt="activity.title"
                               loading="lazy"
                               class="w-full h-full object-cover"
                             />
-                            <div
-                              v-else
-                              class="w-full h-full bg-gray-100 flex items-center justify-center"
-                            >
-                              <i class="pi pi-image text-gray-400 text-xl"></i>
-                            </div>
                           </div>
                         </template>
                         <template #content>
@@ -103,6 +89,10 @@
 
 <script setup lang="ts">
 import type { Stop } from "@/types";
+import StopPhoto from "@/components/StopPhoto.vue";
+import getGooglePhotoUrl from "@/utils/getGooglePhotoUrl";
+const config = useRuntimeConfig();
+
 defineProps<{
   stops: Stop[];
   title: string;

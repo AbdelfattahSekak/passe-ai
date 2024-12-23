@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 import type { ResponseFormatJSONSchema } from "openai/resources/shared.mjs";
 import type { SearchFormData, Stop } from "@/types";
+import getGoogleLocationInfo from "../utils/getGoogleLocationInfo";
 
 const config = useRuntimeConfig();
 
@@ -144,6 +145,22 @@ export default defineEventHandler(async (event) => {
     const result = await getTripInference(body);
     if (result) {
       const tripData = JSON.parse(result) as { stops: Stop[] };
+
+      // Process each stop and its activities
+      for (const stop of tripData.stops) {
+        // Get location info for the stop
+        const stopLocationInfo = await getGoogleLocationInfo(stop.address);
+        stop.locationInfo = stopLocationInfo;
+
+        // Process activities for each stop
+        for (const activity of stop.activities) {
+          const activityLocationInfo = await getGoogleLocationInfo(
+            activity.address
+          );
+          activity.locationInfo = activityLocationInfo;
+        }
+      }
+
       return tripData;
     }
     return new Response("Bad Request", { status: 400 });
