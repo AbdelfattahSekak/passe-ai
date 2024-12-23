@@ -1,6 +1,8 @@
 import OpenAI from "openai";
 import type { ResponseFormatJSONSchema } from "openai/resources/shared.mjs";
-import type { SearchFormData, Stop } from "@/types";
+import type { SearchFormData, Trip } from "@/types";
+import getTripAdvisorLocationInfo from "@/utils/getTripAdvisorLocationInfo";
+import { v4 as uuidv4 } from "uuid";
 
 const config = useRuntimeConfig();
 
@@ -16,6 +18,10 @@ const responseFormat = {
     schema: {
       type: "object",
       properties: {
+        title: {
+          type: "string",
+          description: "A catchy title describing the overall trip.",
+        },
         stops: {
           type: "array",
           description: "A list of stops in the travel itinerary.",
@@ -87,7 +93,7 @@ const responseFormat = {
           },
         },
       },
-      required: ["stops"],
+      required: ["title", "stops"],
       additionalProperties: false,
     },
   },
@@ -143,8 +149,37 @@ export default defineEventHandler(async (event) => {
   try {
     const result = await getTripInference(body);
     if (result) {
-      const tripData = JSON.parse(result) as { stops: Stop[] };
-      return tripData;
+      const tripInference = JSON.parse(result) as Pick<Trip, "stops" | "title">;
+
+      // Create a flat array of promises for all location info requests
+      const locationPromises = tripInference.stops.flatMap((stop) => {
+        // Create promise for stop location info
+        const stopPromise = getTripAdvisorLocationInfo(stop.address).then(
+          (locationInfo) => {
+            stop.locationInfo = locationInfo;
+          }
+        );
+
+        // Create promises for all activities' location info
+        const activityPromises = stop.activities.map((activity) =>
+          getTripAdvisorLocationInfo(activity.address).then((locationInfo) => {
+            activity.locationInfo = locationInfo;
+          })
+        );
+
+        return [stopPromise, ...activityPromises];
+      });
+
+      // Wait for all location info requests to complete in parallel
+      await Promise.all(locationPromises);
+
+      return {
+        id: uuidv4(),
+        createdAt: new Date().toISOString(),
+        start: body.start,
+        destination: body.destination,
+        ...tripInference,
+      } satisfies Trip;
     }
     return new Response("Bad Request", { status: 400 });
   } catch (error) {

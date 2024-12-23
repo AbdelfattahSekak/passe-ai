@@ -1,11 +1,11 @@
 <template>
   <nav
-    class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm"
+    class="fixed top-0 left-0 right-0 z-50 h-[60px] bg-slate-50"
     role="navigation"
   >
     <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center h-[60px]">
-        <div class="flex-1">
+      <div class="flex items-center justify-between h-[60px]">
+        <div class="w-1/3">
           <NuxtLink
             to="/"
             class="flex mt-3 items-center"
@@ -18,7 +18,7 @@
           </NuxtLink>
         </div>
 
-        <div class="hidden md:flex items-center gap-12 flex-1">
+        <div class="hidden md:flex items-center justify-center gap-12 w-1/3">
           <NuxtLink
             to="/"
             class="font-medium text-base text-gray-900 hover:text-gray-700"
@@ -26,10 +26,6 @@
           >
             Home
           </NuxtLink>
-          <!-- <NuxtLink to="/saved-trips" class="font-medium text-base text-gray-900 hover:text-gray-700"
-            :class="{ 'text-primary hover:text-primary_dark': isActive('/saved-trips') }">
-            Saved Trips
-          </NuxtLink> -->
           <NuxtLink
             to="/about"
             class="font-medium text-base text-gray-900 hover:text-gray-700"
@@ -49,21 +45,7 @@
             Contact
           </NuxtLink>
         </div>
-        <div class="flex items-center gap-6 flex-1">
-          <!-- LOGIN AND REGISTER BUTTONS -->
-          <!-- <NuxtLink 
-            to="/login"
-            class="font-medium text-gray-900 hover:text-gray-700"
-          >
-            Login 
-          </NuxtLink>
-          <NuxtLink 
-            to="/register"
-            class="font-medium bg-primary text-white px-4 py-2 rounded-full hover:bg-gray-800"
-          >
-            Register
-          </NuxtLink> -->
-        </div>
+        <div class="w-1/3"></div>
       </div>
     </div>
   </nav>

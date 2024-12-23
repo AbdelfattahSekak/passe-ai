@@ -4,6 +4,7 @@ export interface Activity {
   lng: number;
   details: string;
   address: string;
+  locationInfo: LocationInfo;
 }
 
 export interface Stop {
@@ -13,15 +14,15 @@ export interface Stop {
   address: string;
   details: string;
   activities: Activity[];
-  photos: google.maps.places.Photo[];
+  locationInfo: LocationInfo;
 }
 
-export interface SavedTrip {
+export interface Trip {
   id: string;
   createdAt: string;
   start: string;
-  locationId?: string;
   destination: string;
+  title: string;
   stops: Stop[];
 }
 
@@ -31,17 +32,12 @@ export interface SearchFormData {
   nbStops: number;
 }
 
-export interface Location {
-  formatted_address: string;
-  place_id: string;
-  geometry: {
-    location: {
-      lat: number;
-      lng: number;
-    };
-  };
-}
-
-export type InferenceResponse = {
-  stops: Stop[];
+export type LocationPhoto = {
+  id: string;
+  url: string;
 };
+
+export interface LocationInfo {
+  id: string | null;
+  photos: LocationPhoto[];
+}

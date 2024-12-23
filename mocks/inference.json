@@ -1,124 +1,393 @@
 {
+  "id": "a2e8d9a4-1f32-46d7-9942-51cac0de2eca",
+  "createdAt": "2024-12-23T13:07:53.264Z",
+  "start": "Tanger, Morocco",
+  "destination": "Agadir, Morocco",
+  "title": "Discover the Coastal Wonders of Morocco",
   "stops": [
     {
       "title": "Tanger",
-      "lat": 35.7673,
-      "lng": -5.7995,
+      "lat": 35.7709,
+      "lng": -5.8099,
       "address": "Tanger, Morocco",
-      "details": "A vibrant coastal city known for its rich history and diverse culture. It is a great starting point for your journey to Agadir.",
+      "details": "A vibrant port city known for its rich cultural heritage and beautiful medina.",
       "activities": [
         {
-          "title": "Explore the Kasbah",
-          "lat": 35.7912,
-          "lng": -5.8057,
-          "details": "Visit this historic fortress offering stunning views of the sea and city.",
-          "address": "Kasbah, Tanger, Morocco"
+          "title": "Explore the medina",
+          "lat": 35.7745,
+          "lng": -5.8037,
+          "details": "Wander through the narrow lanes of the historic medina filled with shops and cafes.",
+          "address": "Medina of Tangier, Tangier, Morocco",
+          "locationInfo": {
+            "id": "481068",
+            "photos": [
+              {
+                "id": "399307978",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-o/17/cc/f4/ca/medina-of-tangier.jpg"
+              },
+              {
+                "id": "86264842",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-o/05/24/4c/0a/medina-of-tangier.jpg"
+              },
+              {
+                "id": "86264868",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-o/05/24/4c/24/medina-of-tangier.jpg"
+              },
+              {
+                "id": "86264857",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-o/05/24/4c/19/medina-of-tangier.jpg"
+              },
+              {
+                "id": "86264850",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-o/05/24/4c/12/medina-of-tangier.jpg"
+              }
+            ]
+          }
         },
         {
-          "title": "Visit the Caves of Hercules",
-          "lat": 35.7656,
-          "lng": -5.7990,
-          "details": "Legendary caves associated with Greek mythology, perfect for a short visit and photos.",
-          "address": "Caves of Hercules, Tanger, Morocco"
-        },
-        {
-          "title": "Stroll through the Medina",
-          "lat": 35.7750,
-          "lng": -5.8135,
-          "details": "Experience the vibrant souks and local craftsmanship in the heart of the city.",
-          "address": "Medina, Tanger, Morocco"
+          "title": "Visit the American Legation Museum",
+          "lat": 35.7725,
+          "lng": -5.8026,
+          "details": "A museum that showcases the history of American-Moroccan relations and features art exhibits.",
+          "address": "8 Rue d'Amerique, Tangier, Morocco",
+          "locationInfo": {
+            "id": "293737",
+            "photos": [
+              {
+                "id": "357385573",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-b/2560x500/15/4d/45/65/tangier.jpg"
+              },
+              {
+                "id": "421435445",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-o/19/1e/98/35/estupendo-dia-con-maravellosa.jpg"
+              },
+              {
+                "id": "384062187",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/16/e4/52/eb/ouverture-le-01-mai-2019.jpg"
+              },
+              {
+                "id": "357383527",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/15/4d/3d/67/tangier.jpg"
+              }
+            ]
+          }
         }
-      ]
+      ],
+      "locationInfo": {
+        "id": "293737",
+        "photos": [
+          {
+            "id": "357385573",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-b/2560x500/15/4d/45/65/tangier.jpg"
+          },
+          {
+            "id": "421435445",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-o/19/1e/98/35/estupendo-dia-con-maravellosa.jpg"
+          },
+          {
+            "id": "384062187",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/16/e4/52/eb/ouverture-le-01-mai-2019.jpg"
+          },
+          {
+            "id": "357383527",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/15/4d/3d/67/tangier.jpg"
+          }
+        ]
+      }
     },
     {
-      "title": "Chefchaouen",
-      "lat": 35.1719,
-      "lng": -5.2659,
-      "address": "Chefchaouen, Morocco",
-      "details": "Known as the Blue City, this picturesque town is famous for its blue-painted buildings and stunning mountain backdrop.",
+      "title": "Asilah",
+      "lat": 35.4665,
+      "lng": -6.0414,
+      "address": "Asilah, Morocco",
+      "details": "A charming coastal town known for its artistic vibe and stunning beaches.",
       "activities": [
         {
-          "title": "Walk in the Blue Streets",
-          "lat": 35.1710,
-          "lng": -5.2711,
-          "details": "Wander the iconic blue alleyways and take memorable photographs.",
-          "address": "Chefchaouen, Morocco"
+          "title": "Relax at the beach",
+          "lat": 35.4676,
+          "lng": -6.0412,
+          "details": "Enjoy the sun and sea on the beautiful beaches of Asilah.",
+          "address": "Plage Asilah, Asilah, Morocco",
+          "locationInfo": {
+            "id": "304012",
+            "photos": [
+              {
+                "id": "217159930",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-c/2560x500/0c/f1/98/fa/puerto-de-assilah.jpg"
+              },
+              {
+                "id": "482523985",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-o/1c/c2/bb/51/asilah-6.jpg"
+              },
+              {
+                "id": "443034467",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/1a/68/2b/63/larbi-tours-en-transport.jpg"
+              },
+              {
+                "id": "437629912",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/1a/15/b3/d8/arcila.jpg"
+              },
+              {
+                "id": "403620277",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-w/18/0e/c1/b5/the-best-vegetarian-food.jpg"
+              }
+            ]
+          }
         },
         {
-          "title": "Visit the Kasbah Museum",
-          "lat": 35.1712,
-          "lng": -5.2712,
-          "details": "Learn about the local history and culture in this charming museum.",
-          "address": "Kasbah Museum, Chefchaouen, Morocco"
-        },
-        {
-          "title": "Hike to the Spanish Mosque",
-          "lat": 35.1662,
-          "lng": -5.2679,
-          "details": "A scenic hike that offers a panoramic view of the blue town.",
-          "address": "Near Chefchaouen, Morocco"
+          "title": "Stroll through the art galleries",
+          "lat": 35.4668,
+          "lng": -6.0425,
+          "details": "Visit local art galleries showcasing the work of Moroccan artists.",
+          "address": "Asilah, Morocco",
+          "locationInfo": {
+            "id": "4799983",
+            "photos": [
+              {
+                "id": "127932839",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-o/07/a0/19/a7/asilah-medina.jpg"
+              },
+              {
+                "id": "776962888",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/2e/4f/83/48/caption.jpg"
+              },
+              {
+                "id": "776962893",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-w/2e/4f/83/4d/caption.jpg"
+              },
+              {
+                "id": "776962887",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-w/2e/4f/83/47/caption.jpg"
+              },
+              {
+                "id": "776962892",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/2e/4f/83/4c/caption.jpg"
+              }
+            ]
+          }
         }
-      ]
+      ],
+      "locationInfo": {
+        "id": "4799983",
+        "photos": [
+          {
+            "id": "127932839",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-o/07/a0/19/a7/asilah-medina.jpg"
+          },
+          {
+            "id": "776962888",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/2e/4f/83/48/caption.jpg"
+          },
+          {
+            "id": "776962893",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-w/2e/4f/83/4d/caption.jpg"
+          },
+          {
+            "id": "776962887",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-w/2e/4f/83/47/caption.jpg"
+          },
+          {
+            "id": "776962892",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/2e/4f/83/4c/caption.jpg"
+          }
+        ]
+      }
     },
     {
-      "title": "Marrakech",
-      "lat": 31.6295,
-      "lng": -7.9811,
-      "address": "Marrakech, Morocco",
-      "details": "Known for its historic medina, vibrant souks, and the famous Jemaa El-Fnaa square.",
+      "title": "Rabat",
+      "lat": 34.0209,
+      "lng": -6.8417,
+      "address": "Rabat, Morocco",
+      "details": "The capital city of Morocco, steeped in history and known for its landmarks.",
       "activities": [
         {
-          "title": "Explore Jemaa El-Fnaa",
-          "lat": 31.6258,
-          "lng": -7.9899,
-          "details": "The bustling square filled with street performers, food stalls, and local shops.",
-          "address": "Jemaa El-Fnaa, Marrakech, Morocco"
+          "title": "Visit the Hassan Tower",
+          "lat": 34.0205,
+          "lng": -6.8267,
+          "details": "Explore the ruins of this iconic minaret and enjoy the surrounding gardens.",
+          "address": "Boulevard Mohamed Lyazidi, Rabat, Morocco",
+          "locationInfo": {
+            "id": "293736",
+            "photos": [
+              {
+                "id": "104493031",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-o/06/3a/6f/e7/kasbah-des-oudaias.jpg"
+              },
+              {
+                "id": "355724116",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/15/33/eb/54/rabat.jpg"
+              },
+              {
+                "id": "777124850",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-w/2e/51/fb/f2/caption.jpg"
+              },
+              {
+                "id": "777124840",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/2e/51/fb/e8/caption.jpg"
+              },
+              {
+                "id": "777124845",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/2e/51/fb/ed/caption.jpg"
+              }
+            ]
+          }
         },
         {
-          "title": "Visit the Majorelle Garden",
-          "lat": 31.6295,
-          "lng": -7.9932,
-          "details": "A beautiful garden featuring exotic plants, fountains, and the Berber Museum.",
-          "address": "Majorelle Garden, Marrakech, Morocco"
-        },
-        {
-          "title": "Discover the Bahia Palace",
-          "lat": 31.6250,
-          "lng": -7.9869,
-          "details": "A stunning palace showcasing Moroccan architecture and beautiful gardens.",
-          "address": "Bahia Palace, Marrakech, Morocco"
+          "title": "Explore the Kasbah of the Udayas",
+          "lat": 34.0269,
+          "lng": -6.8367,
+          "details": "Wander through this ancient fortress with stunning views of the ocean.",
+          "address": "Kasbah des Oudayas, Rabat, Morocco",
+          "locationInfo": {
+            "id": "481071",
+            "photos": [
+              {
+                "id": "205984474",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-o/0c/47/12/da/oudayas-view-from-the.jpg"
+              },
+              {
+                "id": "126019731",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-o/07/82/e8/93/kasbha-de-los-oudayas.jpg"
+              },
+              {
+                "id": "104493031",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-o/06/3a/6f/e7/kasbah-des-oudaias.jpg"
+              },
+              {
+                "id": "20658530",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-o/01/3b/39/62/kasbah-des-oudaias.jpg"
+              },
+              {
+                "id": "622792247",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/25/1f/0e/37/kasbah-des-oudaias-view.jpg"
+              }
+            ]
+          }
         }
-      ]
+      ],
+      "locationInfo": {
+        "id": "23891194",
+        "photos": [
+          {
+            "id": "620978752",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/25/03/62/40/rabat-marriott.jpg"
+          },
+          {
+            "id": "620978736",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/25/03/62/30/rabat-marriott.jpg"
+          },
+          {
+            "id": "620978715",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/25/03/62/1b/rabat-marriott.jpg"
+          },
+          {
+            "id": "620978707",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/25/03/62/13/rabat-marriott.jpg"
+          },
+          {
+            "id": "620978780",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/25/03/62/5c/rabat-marriott.jpg"
+          }
+        ]
+      }
     },
     {
       "title": "Agadir",
       "lat": 30.4278,
-      "lng": -9.5982,
+      "lng": -9.598,
       "address": "Agadir, Morocco",
-      "details": "A modern resort city known for its beaches, surfing, and seafood restaurants.",
+      "details": "A resort city on the southern coast of Morocco known for its beach and surfing.",
       "activities": [
         {
           "title": "Relax on Agadir Beach",
-          "lat": 30.4214,
-          "lng": -9.5980,
-          "details": "Enjoy the sun and surf on one of Morocco's best coastal beaches.",
-          "address": "Agadir Beach, Agadir, Morocco"
+          "lat": 30.4285,
+          "lng": -9.5985,
+          "details": "Enjoy sunbathing and water sports on the beautiful sandy beach.",
+          "address": "Agadir Beach, Agadir, Morocco",
+          "locationInfo": {
+            "id": "305567",
+            "photos": [
+              {
+                "id": "363119394",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/15/a4/c3/22/allegro-agadir.jpg"
+              },
+              {
+                "id": "99364749",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-o/05/ec/2f/8d/club-marmara-agadir.jpg"
+              },
+              {
+                "id": "476125221",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-w/1c/61/18/25/protocolos-de-seguridad.jpg"
+              },
+              {
+                "id": "472790316",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/1c/2e/35/2c/allegro-agadir.jpg"
+              },
+              {
+                "id": "472790137",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/1c/2e/34/79/allegro-agadir.jpg"
+              }
+            ]
+          }
         },
         {
-          "title": "Visit the Agadir Oufella Ruins",
-          "lat": 30.4266,
-          "lng": -9.6018,
-          "details": "Explore the historical ruins that offer panoramic views of the city.",
-          "address": "Agadir Oufella, Agadir, Morocco"
-        },
-        {
-          "title": "Walk the Marina",
-          "lat": 30.4116,
-          "lng": -9.5987,
-          "details": "Stroll along the marina filled with cafes, shops, and views of the ocean.",
-          "address": "Marina, Agadir, Morocco"
+          "title": "Visit Agadir Oufella",
+          "lat": 30.428,
+          "lng": -9.6045,
+          "details": "Take a climb up to the translated hill to see panoramic views of the city.",
+          "address": "Agadir Oufella, Agadir, Morocco",
+          "locationInfo": {
+            "id": "481070",
+            "photos": [
+              {
+                "id": "376845502",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/16/76/34/be/agadir-kasbah.jpg"
+              },
+              {
+                "id": "727831388",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/2b/61/d3/5c/the-kasbah-s-platform.jpg"
+              },
+              {
+                "id": "727831386",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/2b/61/d3/5a/agadir-oufella-at-sunset.jpg"
+              },
+              {
+                "id": "727831377",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/2b/61/d3/51/a-number-of-signs-inside.jpg"
+              },
+              {
+                "id": "727831373",
+                "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/2b/61/d3/4d/the-audio-guide-allows.jpg"
+              }
+            ]
+          }
         }
-      ]
+      ],
+      "locationInfo": {
+        "id": "20829794",
+        "photos": [
+          {
+            "id": "765192692",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-o/2d/9b/e9/f4/caption.jpg"
+          },
+          {
+            "id": "777368243",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-w/2e/55/b2/b3/caption.jpg"
+          },
+          {
+            "id": "777368242",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-w/2e/55/b2/b2/caption.jpg"
+          },
+          {
+            "id": "777368241",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-w/2e/55/b2/b1/caption.jpg"
+          },
+          {
+            "id": "777368240",
+            "url": "https://media-cdn.tripadvisor.com/media/photo-w/2e/55/b2/b0/caption.jpg"
+          }
+        ]
+      }
     }
   ]
 }
