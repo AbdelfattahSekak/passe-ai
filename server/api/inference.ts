@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import type { ResponseFormatJSONSchema } from "openai/resources/shared.mjs";
 import type { SearchFormData, Stop } from "@/types";
-import getGoogleLocationInfo from "../utils/getGoogleLocationInfo";
+import getTripAdvisorLocationInfo from "../utils/getTripAdvisorLocationInfo";
 
 const config = useRuntimeConfig();
 
@@ -149,12 +149,12 @@ export default defineEventHandler(async (event) => {
       // Process each stop and its activities
       for (const stop of tripData.stops) {
         // Get location info for the stop
-        const stopLocationInfo = await getGoogleLocationInfo(stop.address);
+        const stopLocationInfo = await getTripAdvisorLocationInfo(stop.address);
         stop.locationInfo = stopLocationInfo;
 
         // Process activities for each stop
         for (const activity of stop.activities) {
-          const activityLocationInfo = await getGoogleLocationInfo(
+          const activityLocationInfo = await getTripAdvisorLocationInfo(
             activity.address
           );
           activity.locationInfo = activityLocationInfo;

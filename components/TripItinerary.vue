@@ -50,12 +50,7 @@
                             class="relative h-24 overflow-hidden rounded-t-lg"
                           >
                             <img
-                              :src="
-                                getGooglePhotoUrl(
-                                  activity.locationInfo.photos[0],
-                                  config.public.GOOGLE_MAPS_API_KEY
-                                )
-                              "
+                              :src="activity.locationInfo.photos[0].url"
                               :alt="activity.title"
                               loading="lazy"
                               class="w-full h-full object-cover"

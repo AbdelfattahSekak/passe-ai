@@ -36,6 +36,7 @@ export type PlacePhoto = {
   id: string;
   width: number;
   height: number;
+  url: string;  // Added this field for TripAdvisor photo URLs
 };
 
 export interface LocationInfo {
