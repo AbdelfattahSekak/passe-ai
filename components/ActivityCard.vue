@@ -8,12 +8,15 @@
         <div class="relative h-24 overflow-hidden rounded-t-lg">
           <img
             v-if="activity.locationInfo?.photos?.length"
-            :src="getGooglePhotoUrl(activity.locationInfo.photos[0], apiKey)"
+            :src="activity.locationInfo.photos[0].url"
             :alt="activity.title"
             loading="lazy"
             class="w-full h-full object-cover"
           />
-          <div v-else class="w-full h-full bg-gray-200 flex items-center justify-center">
+          <div
+            v-else
+            class="w-full h-full bg-gray-200 flex items-center justify-center"
+          >
             <i class="pi pi-image text-gray-400 text-2xl"></i>
           </div>
         </div>
@@ -33,16 +36,11 @@
 </template>
 
 <script setup lang="ts">
-import getGooglePhotoUrl from "~/utils/getGooglePhotoUrl";
 import type { Activity } from "~/types";
-
-const config = useRuntimeConfig();
 
 defineProps<{
   activity: Activity;
 }>();
-
-const apiKey = config.public.GOOGLE_MAPS_API_KEY;
 </script>
 
 <style scoped>

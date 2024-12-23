@@ -38,39 +38,11 @@
                     class="grid grid-cols-2 sm:grid-cols-3 gap-3"
                     role="list"
                   >
-                    <button
-                      v-for="activity in slotProps.item.activities"
-                      :key="activity.title"
-                      role="listitem"
-                      class="block w-full text-left transition-transform hover:scale-102 focus:scale-102"
-                    >
-                      <Card class="h-full">
-                        <template #header>
-                          <div
-                            class="relative h-24 overflow-hidden rounded-t-lg"
-                          >
-                            <img
-                              :src="activity.locationInfo.photos[0].url"
-                              :alt="activity.title"
-                              loading="lazy"
-                              class="w-full h-full object-cover"
-                            />
-                          </div>
-                        </template>
-                        <template #content>
-                          <div class="p-2">
-                            <h4
-                              class="font-medium text-base text-text-primary mb-1 line-clamp-1"
-                            >
-                              {{ activity.title }}
-                            </h4>
-                            <p class="text-xs text-text-secondary line-clamp-2">
-                              {{ activity.details }}
-                            </p>
-                          </div>
-                        </template>
-                      </Card>
-                    </button>
+                    <ActivityCard
+                      v-for="(activity, index) in slotProps.item.activities"
+                      :key="index"
+                      :activity="activity"
+                    />
                   </div>
                 </div>
               </div>
@@ -85,8 +57,6 @@
 <script setup lang="ts">
 import type { Stop } from "@/types";
 import StopPhoto from "@/components/StopPhoto.vue";
-import getGooglePhotoUrl from "@/utils/getGooglePhotoUrl";
-const config = useRuntimeConfig();
 
 defineProps<{
   stops: Stop[];

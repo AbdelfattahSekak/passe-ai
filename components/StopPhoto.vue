@@ -15,9 +15,6 @@
 
 <script setup lang="ts">
 import type { PlacePhoto } from "~/types";
-import getGooglePhotoUrl from "@/utils/getGooglePhotoUrl";
-
-const config = useRuntimeConfig();
 
 defineProps<{
   photos: PlacePhoto[];
