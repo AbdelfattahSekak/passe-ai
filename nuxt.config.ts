@@ -60,6 +60,8 @@ export default defineNuxtConfig({
       OPENAI_API_KEY: process.env.OPENAI_API_KEY || "",
       GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY || "",
       TRIPADVISOR_API_KEY: process.env.TRIPADVISOR_API_KEY || "",
+      SUPABASE_URL: process.env.SUPABASE_URL || "",
+      SUPABASE_KEY: process.env.SUPABASE_KEY || "",
     },
   },
   app: {
