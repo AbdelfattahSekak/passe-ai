@@ -1,18 +1,14 @@
 <template>
   <div class="bg-white flex flex-col min-h-screen">
-    <!-- Navbar is now outside the header container -->
     <TheNavbar />
 
-    <!-- Fixed header with lower z-index -->
     <div class="fixed top-[60px] left-0 right-0 z-40">
       <TheHeader>
         <SearchForm @submit="handleSearch" />
       </TheHeader>
     </div>
 
-    <!-- Main content with adjusted spacing -->
     <div class="mt-[calc(20vh+60px)]">
-      <!-- Offset for fixed header + navbar height -->
       <template v-if="!itinerary">
         <TripSuggestions @select="handleTripSelect" />
         <TravelIcons />
@@ -23,7 +19,6 @@
           class="relative flex flex-col sm:flex-col md:flex-row gap-4"
           role="main"
         >
-          <!-- Scrollable itinerary section -->
           <div
             class="w-full md:w-1/2 bg-white order-2 sm:order-2 md:order-1"
             role="complementary"
@@ -32,14 +27,12 @@
             <TripItinerary title="Your dream trip" :stops="itinerary.stops" />
           </div>
 
-          <!-- Fixed map section -->
           <div
             class="w-full md:w-1/2 order-1 sm:order-1 md:order-2"
             role="complementary"
             aria-label="Trip Map"
           >
             <div class="sticky top-[calc(20vh+60px)]">
-              <!-- Adjusted offset -->
               <TripMap :stops="itinerary.stops" />
             </div>
           </div>
@@ -50,32 +43,25 @@
 </template>
 
 <script setup lang="ts">
-import dummyData from "~/mocks/inference.json";
+// import dummyData from "~/mocks/inference.json";
 import { generateMetaTags } from "~/utils/seo";
-import type { SearchFormData, SavedTrip, InferenceResponse } from "~/types";
-import { v4 as uuidv4 } from "uuid";
+import type { SearchFormData, Trip } from "~/types";
 
-const itinerary = ref<SavedTrip | null>(null);
+const itinerary = ref<Trip | null>(null);
 
 const handleSearch = async (formData: SearchFormData) => {
   try {
-    // const result = (await $fetch("/api/inference", {
-    //   method: "POST",
-    //   body: formData,
-    // })) as InferenceResponse;
-    itinerary.value = {
-      id: uuidv4(),
-      createdAt: new Date().toISOString(),
-      start: formData.start,
-      destination: formData.destination,
-      ...dummyData,
-    };
+    const result = (await $fetch("/api/inference", {
+      method: "POST",
+      body: formData,
+    })) as Trip;
+    itinerary.value = result;
   } catch (error) {
     console.error("Error processing itinerary:", error);
   }
 };
 
-const handleTripSelect = async (trip: SavedTrip) => {};
+const handleTripSelect = async (trip: Trip) => {};
 
 useHead(
   generateMetaTags({

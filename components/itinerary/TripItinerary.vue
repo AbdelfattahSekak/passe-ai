@@ -56,7 +56,7 @@
 
 <script setup lang="ts">
 import type { Stop } from "@/types";
-import StopPhoto from "@/components/StopPhoto.vue";
+import StopPhoto from "~/components/itinerary/StopPhoto.vue";
 
 defineProps<{
   stops: Stop[];

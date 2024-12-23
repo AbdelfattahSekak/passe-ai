@@ -1,7 +1,8 @@
 import OpenAI from "openai";
 import type { ResponseFormatJSONSchema } from "openai/resources/shared.mjs";
-import type { SearchFormData, Stop } from "@/types";
-import getTripAdvisorLocationInfo from "../utils/getTripAdvisorLocationInfo";
+import type { SearchFormData, Trip } from "@/types";
+import getTripAdvisorLocationInfo from "@/utils/getTripAdvisorLocationInfo";
+import { v4 as uuidv4 } from "uuid";
 
 const config = useRuntimeConfig();
 
@@ -148,15 +149,12 @@ export default defineEventHandler(async (event) => {
   try {
     const result = await getTripInference(body);
     if (result) {
-      const tripData = JSON.parse(result) as { stops: Stop[] };
+      const tripInference = JSON.parse(result) as Pick<Trip, "stops" | "title">;
 
-      // Process each stop and its activities
-      for (const stop of tripData.stops) {
-        // Get location info for the stop
+      for (const stop of tripInference.stops) {
         const stopLocationInfo = await getTripAdvisorLocationInfo(stop.address);
         stop.locationInfo = stopLocationInfo;
 
-        // Process activities for each stop
         for (const activity of stop.activities) {
           const activityLocationInfo = await getTripAdvisorLocationInfo(
             activity.address
@@ -165,7 +163,13 @@ export default defineEventHandler(async (event) => {
         }
       }
 
-      return tripData;
+      return {
+        id: uuidv4(),
+        createdAt: new Date().toISOString(),
+        start: body.start,
+        destination: body.destination,
+        ...tripInference,
+      } satisfies Trip;
     }
     return new Response("Bad Request", { status: 400 });
   } catch (error) {

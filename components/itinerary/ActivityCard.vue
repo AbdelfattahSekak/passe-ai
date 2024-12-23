@@ -7,7 +7,7 @@
       <template #header>
         <div class="relative h-24 overflow-hidden rounded-t-lg">
           <img
-            v-if="activity.locationInfo?.photos?.length"
+            v-if="activity.locationInfo?.photos[0]"
             :src="activity.locationInfo.photos[0].url"
             :alt="activity.title"
             loading="lazy"

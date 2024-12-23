@@ -1,9 +1,9 @@
 import { ref, onMounted } from "vue";
 import { v4 as uuidv4 } from "uuid";
-import type { SavedTrip } from "~/types";
+import type { Trip } from "~/types";
 
 export const useSavedTrips = () => {
-  const savedTrips = ref<SavedTrip[]>([]);
+  const savedTrips = ref<Trip[]>([]);
 
   const loadTrips = () => {
     const stored = localStorage.getItem("savedTrips");
@@ -12,8 +12,8 @@ export const useSavedTrips = () => {
     }
   };
 
-  const saveTrip = (trip: Omit<SavedTrip, "id" | "createdAt">) => {
-    const newTrip: SavedTrip = {
+  const saveTrip = (trip: Omit<Trip, "id" | "createdAt">) => {
+    const newTrip: Trip = {
       id: uuidv4(),
       createdAt: new Date().toISOString(),
       ...trip,

@@ -15,8 +15,6 @@ export default async function getTripAdvisorLocationInfo(
       headers: { accept: "application/json" },
     });
 
-    console.log("Search response:", searchResponse.data);
-
     if (searchResponse.data.data?.[0]) {
       const location = searchResponse.data.data[0];
       const locationId = location.location_id;
@@ -32,8 +30,6 @@ export default async function getTripAdvisorLocationInfo(
         photos:
           photosResponse.data.data.map((photo: any) => ({
             id: photo.id.toString(),
-            width: photo.images.original.width,
-            height: photo.images.original.height,
             url: photo.images.original.url,
           })) || [],
       };

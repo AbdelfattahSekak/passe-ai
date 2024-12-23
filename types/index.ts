@@ -4,7 +4,7 @@ export interface Activity {
   lng: number;
   details: string;
   address: string;
-  locationInfo?: LocationInfo;
+  locationInfo: LocationInfo;
 }
 
 export interface Stop {
@@ -14,15 +14,15 @@ export interface Stop {
   address: string;
   details: string;
   activities: Activity[];
-  locationInfo?: LocationInfo;
+  locationInfo: LocationInfo;
 }
 
-export interface SavedTrip {
+export interface Trip {
   id: string;
   createdAt: string;
   start: string;
-  locationId?: string;
   destination: string;
+  title: string;
   stops: Stop[];
 }
 
@@ -32,18 +32,12 @@ export interface SearchFormData {
   nbStops: number;
 }
 
-export type PlacePhoto = {
+export type LocationPhoto = {
   id: string;
-  width: number;
-  height: number;
-  url: string;  // Added this field for TripAdvisor photo URLs
+  url: string;
 };
 
 export interface LocationInfo {
   id: string | null;
-  photos: PlacePhoto[];
+  photos: LocationPhoto[];
 }
-
-export type InferenceResponse = {
-  stops: Stop[];
-};

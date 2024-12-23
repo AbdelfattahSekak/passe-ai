@@ -1,6 +1,7 @@
 <template>
   <div class="relative h-48 overflow-hidden rounded-t-lg">
     <img
+      :if="photos[0]"
       :src="photos[0].url"
       loading="lazy"
       class="w-full h-full object-cover"
@@ -14,9 +15,9 @@
 </template>
 
 <script setup lang="ts">
-import type { PlacePhoto } from "~/types";
+import type { LocationPhoto } from "~/types";
 
 defineProps<{
-  photos: PlacePhoto[];
+  photos: LocationPhoto[];
 }>();
 </script>
