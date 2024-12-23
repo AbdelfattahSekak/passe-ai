@@ -4,7 +4,7 @@
     <div
       ref="mapContainer"
       id="map"
-      class="w-full h-[calc(100vh-20vh)]"
+      class="w-full h-[calc(100vh-20vh-60px)]"
       role="region"
       aria-label="Interactive Map"
     ></div>

@@ -22,7 +22,7 @@
               {{ slotProps.item.address }}
             </p>
           </div>
-          <Card>
+          <Card class="shadow-xl bg-gray-50">
             <template #header>
               <StopPhoto :photos="slotProps.item.locationInfo.photos" />
             </template>
