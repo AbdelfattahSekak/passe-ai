@@ -62,6 +62,8 @@ export default defineNuxtConfig({
       TRIPADVISOR_API_KEY: process.env.TRIPADVISOR_API_KEY || "",
       SUPABASE_URL: process.env.SUPABASE_URL || "",
       SUPABASE_KEY: process.env.SUPABASE_KEY || "",
+      UPSTASH_REDIS_URL: process.env.UPSTASH_REDIS_URL || "",
+      UPSTASH_REDIS_TOKEN: process.env.UPSTASH_REDIS_TOKEN || "",
     },
   },
   app: {

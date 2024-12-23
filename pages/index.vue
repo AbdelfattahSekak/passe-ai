@@ -51,10 +51,10 @@ const itinerary = ref<Trip | null>(null);
 
 const handleSearch = async (formData: SearchFormData) => {
   try {
-    // const result = (await $fetch("/api/inference", {
-    //   method: "POST",
-    //   body: formData,
-    // })) as Trip;
+    const result = (await $fetch("/api/inference", {
+      method: "POST",
+      body: formData,
+    })) as Trip;
     itinerary.value = dummyData;
   } catch (error) {
     console.error("Error processing itinerary:", error);
