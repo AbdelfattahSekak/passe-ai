@@ -24,7 +24,7 @@
             role="complementary"
             aria-label="Trip Itinerary"
           >
-            <TripItinerary title="Your dream trip" :stops="itinerary.stops" />
+            <TripItinerary :title="itinerary.title" :stops="itinerary.stops" />
           </div>
 
           <div

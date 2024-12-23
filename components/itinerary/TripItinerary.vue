@@ -1,7 +1,7 @@
 <template>
   <div class="p-4" role="region" aria-label="Trip Itinerary">
     <div class="mb-6">
-      <h1 class="text-3xl font-bold text-text-primary">{{ title }}</h1>
+      <h1 class="text-2xl font-bold text-text-primary">{{ title }}</h1>
     </div>
     <Timeline :value="stops" class="customized-timeline">
       <template #marker="slotProps">
@@ -16,7 +16,7 @@
       <template #content="slotProps">
         <div class="flex mb-10 flex-col gap-2">
           <div>
-            <h2 class="text-xl font-medium">{{ slotProps.item.title }}</h2>
+            <h2 class="text-xl font-bold">{{ slotProps.item.title }}</h2>
             <p class="text-sm text-text-secondary flex items-center gap-2 mt-1">
               <i class="pi pi-map-marker text-primary"></i>
               {{ slotProps.item.address }}

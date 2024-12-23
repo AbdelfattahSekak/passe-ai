@@ -7,6 +7,7 @@ export default async function getTripAdvisorLocationInfo(
   query: string
 ): Promise<LocationInfo> {
   try {
+    console.log("Getting location info for", query);
     // First, search for the location to get the location_id
     const searchUrl = `https://api.content.tripadvisor.com/api/v1/location/search?searchQuery=${encodeURIComponent(
       query
@@ -28,10 +29,12 @@ export default async function getTripAdvisorLocationInfo(
       return {
         id: locationId,
         photos:
-          photosResponse.data.data.map((photo: any) => ({
-            id: photo.id.toString(),
-            url: photo.images.original.url,
-          })) || [],
+          photosResponse.data.data
+            .filter((photo: any) => photo.images?.original?.url)
+            .map((photo: any) => ({
+              id: photo.id.toString(),
+              url: photo.images.original.url,
+            })) || [],
       };
     }
 
@@ -40,6 +43,7 @@ export default async function getTripAdvisorLocationInfo(
       photos: [],
     };
   } catch (error) {
+    console.error("Error getting location info:", error);
     if (error instanceof AxiosError) {
       console.error("Error getting location info:", error.response?.data);
     }

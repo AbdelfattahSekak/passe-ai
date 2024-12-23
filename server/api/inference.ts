@@ -151,17 +151,27 @@ export default defineEventHandler(async (event) => {
     if (result) {
       const tripInference = JSON.parse(result) as Pick<Trip, "stops" | "title">;
 
-      for (const stop of tripInference.stops) {
-        const stopLocationInfo = await getTripAdvisorLocationInfo(stop.address);
-        stop.locationInfo = stopLocationInfo;
+      // Create a flat array of promises for all location info requests
+      const locationPromises = tripInference.stops.flatMap((stop) => {
+        // Create promise for stop location info
+        const stopPromise = getTripAdvisorLocationInfo(stop.address).then(
+          (locationInfo) => {
+            stop.locationInfo = locationInfo;
+          }
+        );
 
-        for (const activity of stop.activities) {
-          const activityLocationInfo = await getTripAdvisorLocationInfo(
-            activity.address
-          );
-          activity.locationInfo = activityLocationInfo;
-        }
-      }
+        // Create promises for all activities' location info
+        const activityPromises = stop.activities.map((activity) =>
+          getTripAdvisorLocationInfo(activity.address).then((locationInfo) => {
+            activity.locationInfo = locationInfo;
+          })
+        );
+
+        return [stopPromise, ...activityPromises];
+      });
+
+      // Wait for all location info requests to complete in parallel
+      await Promise.all(locationPromises);
 
       return {
         id: uuidv4(),

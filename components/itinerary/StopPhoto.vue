@@ -2,7 +2,7 @@
   <div class="relative h-48 overflow-hidden rounded-t-lg">
     <img
       :if="photos[0]"
-      :src="photos[0].url"
+      :src="photos[0]?.url"
       loading="lazy"
       class="w-full h-full object-cover"
     />
