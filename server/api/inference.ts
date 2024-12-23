@@ -17,6 +17,10 @@ const responseFormat = {
     schema: {
       type: "object",
       properties: {
+        title: {
+          type: "string",
+          description: "A catchy title describing the overall trip.",
+        },
         stops: {
           type: "array",
           description: "A list of stops in the travel itinerary.",
@@ -88,7 +92,7 @@ const responseFormat = {
           },
         },
       },
-      required: ["stops"],
+      required: ["title", "stops"],
       additionalProperties: false,
     },
   },
