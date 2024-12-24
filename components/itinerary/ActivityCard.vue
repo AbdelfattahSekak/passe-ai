@@ -2,6 +2,7 @@
   <button
     role="listitem"
     class="block w-full text-left transition-transform hover:scale-102 focus:scale-102"
+    @click="showModal = true"
   >
     <Card class="h-full">
       <template #header>
@@ -32,6 +33,11 @@
         </div>
       </template>
     </Card>
+
+    <ActivityModal
+      v-model="showModal"
+      :activity="activity"
+    />
   </button>
 </template>
 
@@ -41,6 +47,8 @@ import type { Activity } from "~/types";
 defineProps<{
   activity: Activity;
 }>();
+
+const showModal = ref(false);
 </script>
 
 <style scoped>
