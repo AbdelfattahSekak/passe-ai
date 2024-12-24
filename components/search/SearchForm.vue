@@ -62,15 +62,19 @@ const form = ref<SearchFormData>({
 });
 
 // Populate form with current trip data if available
-watch(() => tripStore.currentTrip, (newTrip) => {
-  if (newTrip) {
-    form.value = {
-      start: newTrip.start,
-      destination: newTrip.destination,
-      nbStops: newTrip.nbStops,
-    };
-  }
-}, { immediate: true });
+watch(
+  () => tripStore.currentTrip,
+  (newTrip) => {
+    if (newTrip) {
+      form.value = {
+        start: newTrip.start,
+        destination: newTrip.destination,
+        nbStops: newTrip.nbStops,
+      };
+    }
+  },
+  { immediate: true }
+);
 
 const isFormValid = computed(() => {
   return form.value.nbStops >= 1 && form.value.nbStops <= 10;

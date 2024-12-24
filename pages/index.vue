@@ -38,7 +38,7 @@ async function handleSearch(formData: SearchFormData) {
     });
     const trip = response as Trip;
     tripStore.setTrip(trip);
-    router.push(`/trip/${trip.id}`);
+    await navigateTo(`/trip/${trip.id}`);
   } catch (err) {
     error.value = "Failed to create trip. Please try again.";
     console.error("Error creating trip:", err);

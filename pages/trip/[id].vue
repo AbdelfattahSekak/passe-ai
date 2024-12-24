@@ -1,5 +1,13 @@
 <template>
-  <div class="bg-white flex flex-col min-h-screen">
+  <FullScreenLoader
+    :show="loading"
+    title="Planning Your Adventure"
+    message="Crafting the perfect itinerary for you..."
+  />
+  <div
+    v-if="!loading && tripStore.currentTrip"
+    class="bg-white flex flex-col min-h-screen"
+  >
     <TheNavbar />
 
     <div class="fixed top-[60px] left-0 right-0 z-40">
@@ -8,13 +16,7 @@
       </TheHeader>
     </div>
 
-    <FullScreenLoader
-      :show="loading"
-      title="Planning Your Adventure"
-      message="Crafting the perfect itinerary for you..."
-    />
-
-    <div v-if="!loading && tripStore.currentTrip" class="mt-[calc(20vh+60px)]">
+    <div class="mt-[calc(20vh+60px)]">
       <main
         class="relative flex flex-col sm:flex-col md:flex-row gap-4"
         role="main"
@@ -79,14 +81,15 @@ async function loadTripData() {
 async function handleSearch(formData: SearchFormData) {
   try {
     loading.value = true;
-    const response = await $fetch("/api/trip", {
+    const response = await $fetch("/api/inference", {
       method: "POST",
       body: formData,
     });
-
-    const newTrip = response as Trip;
-    tripStore.setTrip(newTrip);
-    router.push(`/trip/${newTrip.id}`);
+    console.log("received", response);
+    const trip = response as Trip;
+    tripStore.setTrip(trip);
+    console.log("trip", tripStore.currentTrip);
+    await navigateTo(`/trip/${trip.id}`);
   } catch (err) {
     error.value = "Failed to create trip. Please try again.";
     console.error("Error creating trip:", err);

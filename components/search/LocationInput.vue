@@ -46,7 +46,7 @@ const props = defineProps<{
 
 const emit = defineEmits(["update:modelValue"]);
 
-const selectedLocation = ref("");
+const selectedLocation = ref(props.modelValue || "");
 const suggestions = ref<string[]>([]);
 const autocompleteService = ref<google.maps.places.AutocompleteService | null>(
   null
@@ -63,6 +63,8 @@ onMounted(async () => {
     "places"
   )) as google.maps.PlacesLibrary;
   autocompleteService.value = new AutocompleteService();
+  // Ensure the selectedLocation is synced with modelValue on mount
+  selectedLocation.value = props.modelValue;
 });
 
 watch(
