@@ -47,17 +47,30 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import type { SearchFormData } from "@/types";
+import { useTripStore } from "~/stores/useTripStore";
 
 const emit = defineEmits(["submit"]);
 const loading = ref(false);
+const tripStore = useTripStore();
 
 const form = ref<SearchFormData>({
   start: "",
   destination: "",
   nbStops: 3,
 });
+
+// Populate form with current trip data if available
+watch(() => tripStore.currentTrip, (newTrip) => {
+  if (newTrip) {
+    form.value = {
+      start: newTrip.start,
+      destination: newTrip.destination,
+      nbStops: newTrip.nbStops,
+    };
+  }
+}, { immediate: true });
 
 const isFormValid = computed(() => {
   return form.value.nbStops >= 1 && form.value.nbStops <= 10;

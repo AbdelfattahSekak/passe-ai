@@ -21,6 +21,7 @@ export interface Trip {
   id: string;
   createdAt: string;
   start: string;
+  nbStops: number;
   destination: string;
   title: string;
   stops: Stop[];

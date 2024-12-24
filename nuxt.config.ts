@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   modules: [
     "@nuxtjs/google-fonts",
     "@nuxtjs/tailwindcss",
@@ -56,9 +56,7 @@ export default defineNuxtConfig({
       include: ["ripple"],
     },
   },
-  pinia: {
-    autoImports: ['defineStore', 'storeToRefs'],
-  },
+
   runtimeConfig: {
     public: {
       GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY || "",

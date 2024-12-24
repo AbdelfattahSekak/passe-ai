@@ -29,6 +29,7 @@ export async function processInference(event: H3Event) {
       createdAt: new Date().toISOString(),
       start: body.start,
       destination: body.destination,
+      nbStops: body.nbStops,
       ...enrichedTrip,
     };
 
