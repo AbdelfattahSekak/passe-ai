@@ -4,7 +4,7 @@
 
     <div class="fixed top-[60px] left-0 right-0 z-40">
       <TheHeader>
-        <SearchForm @submit="handleSearch" />
+        <SearchForm v-model="searchParams" @submit="handleSearch" />
       </TheHeader>
     </div>
 
@@ -13,9 +13,35 @@
       title="Planning Your Adventure"
       message="Crafting the perfect itinerary for you..."
     />
-    <div class="mt-[calc(20vh+60px)]">
-      <TripSuggestions @select="handleTripSelect" />
-      <TravelIcons />
+
+    <div v-if="!loading && itinerary" class="mt-[calc(20vh+60px)]">
+      <main
+        class="relative flex flex-col sm:flex-col md:flex-row gap-4"
+        role="main"
+      >
+        <div
+          class="w-full md:w-1/2 bg-white order-2 sm:order-2 md:order-1"
+          role="complementary"
+          aria-label="Trip Itinerary"
+        >
+          <TripItinerary :title="itinerary.title" :stops="itinerary.stops" />
+        </div>
+
+        <div
+          class="w-full md:w-1/2 order-1 sm:order-1 md:order-2"
+          role="complementary"
+          aria-label="Trip Map"
+        >
+          <div class="sticky top-[calc(20vh+60px)]">
+            <TripMap :stops="itinerary.stops" />
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div v-if="error" class="mt-[calc(20vh+60px)] p-8 text-center">
+      <h2 class="text-2xl font-semibold text-gray-900 mb-4">{{ error }}</h2>
+      <Button @click="retryLoad" label="Try Again" class="p-button-primary" />
     </div>
   </div>
 </template>
@@ -24,37 +50,51 @@
 import { useSearchStore } from "~/stores/useSearchStore";
 import type { SearchFormData, Trip } from "~/types";
 
+const route = useRoute();
 const router = useRouter();
 const searchStore = useSearchStore();
+
+const loading = ref(true);
 const error = ref<string | null>(null);
-const loading = ref(false);
+const itinerary = ref<Trip | null>(null);
+const searchParams = computed(() => searchStore.searchParams);
+
+async function loadTripData() {
+  loading.value = true;
+  error.value = null;
+
+  try {
+    const response = await $fetch(`/api/trip/${route.params.id}`);
+    itinerary.value = response as Trip;
+  } catch (err) {
+    error.value = "Failed to load trip details. Please try again.";
+    console.error("Error loading trip:", err);
+  } finally {
+    loading.value = false;
+  }
+}
 
 async function handleSearch(formData: SearchFormData) {
   try {
-    // Store search parameters
-    searchStore.setSearchParams(formData);
-
-    // Create trip
-    const response = await $fetch("/api/inference", {
+    const response = await $fetch("/api/trip", {
       method: "POST",
       body: formData,
     });
 
-    const trip = response as Trip;
-    router.push(`/trip/${trip.id}`);
+    const newTrip = response as Trip;
+    router.push(`/trip/${newTrip.id}`);
   } catch (err) {
     error.value = "Failed to create trip. Please try again.";
     console.error("Error creating trip:", err);
   }
 }
 
-function handleTripSelect(trip: Trip) {
-  router.push(`/trip/${trip.id}`);
+function retryLoad() {
+  loadTripData();
 }
 
-// Clear search params when leaving the page
-onBeforeUnmount(() => {
-  searchStore.clearSearchParams();
+onMounted(() => {
+  loadTripData();
 });
 
 useHead(

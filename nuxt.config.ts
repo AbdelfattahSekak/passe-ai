@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@nuxtjs/tailwindcss",
     "@primevue/nuxt-module",
+    "@pinia/nuxt",
   ],
   css: [
     "@/assets/styles/main.scss",
@@ -29,6 +30,10 @@ export default defineNuxtConfig({
         path: "~/components/icons",
         pathPrefix: false,
       },
+      {
+        path: "~/components/loading",
+        pathPrefix: false,
+      },
     ],
   },
   primevue: {
@@ -51,7 +56,9 @@ export default defineNuxtConfig({
       include: ["ripple"],
     },
   },
-
+  pinia: {
+    autoImports: ['defineStore', 'storeToRefs'],
+  },
   runtimeConfig: {
     public: {
       GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY || "",

@@ -1,15 +1,14 @@
-import { H3Event } from 'h3';
-import { generateTripInference } from '../services/inferenceService';
-import { enrichLocationData } from '../services/locationService';
-import { validateRequestBody } from '../validators/requestValidator';
-import { logger } from '../../../utils/logger';
-import type { SearchFormData, Trip } from '~/types';
-import { v4 as uuidv4 } from 'uuid';
+import { H3Event } from "h3";
+import { generateTripInference } from "../services/inferenceService";
+import { enrichLocationData } from "../services/locationService";
+import { validateRequestBody } from "../validators/requestValidator";
+import { logger } from "../../../utils/logger";
+import type { SearchFormData, Trip } from "~/types";
 
 export async function processInference(event: H3Event) {
   try {
-    const body = await readBody(event) as SearchFormData;
-    
+    const body = (await readBody(event)) as SearchFormData;
+
     // Validate request body
     const validationError = validateRequestBody(body);
     if (validationError) {
@@ -27,17 +26,18 @@ export async function processInference(event: H3Event) {
 
     // Construct final response
     const response: Trip = {
-      id: uuidv4(),
       createdAt: new Date().toISOString(),
       start: body.start,
       destination: body.destination,
-      ...enrichedTrip
+      ...enrichedTrip,
     };
 
-    logger.info('Successfully processed inference request', { tripId: response.id });
+    logger.info("Successfully processed inference request", {
+      tripId: response.id,
+    });
     return response;
   } catch (error) {
-    logger.error('Error processing inference:', error);
+    logger.error("Error processing inference:", error);
     throw error;
   }
 }
