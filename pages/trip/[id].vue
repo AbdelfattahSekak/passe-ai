@@ -4,7 +4,7 @@
 
     <div class="fixed top-[60px] left-0 right-0 z-40">
       <TheHeader>
-        <SearchForm v-model="searchParams" @submit="handleSearch" />
+        <SearchForm @submit="handleSearch" />
       </TheHeader>
     </div>
 
@@ -14,7 +14,7 @@
       message="Crafting the perfect itinerary for you..."
     />
 
-    <div v-if="!loading && itinerary" class="mt-[calc(20vh+60px)]">
+    <div v-if="!loading && tripStore.currentTrip" class="mt-[calc(20vh+60px)]">
       <main
         class="relative flex flex-col sm:flex-col md:flex-row gap-4"
         role="main"
@@ -24,7 +24,10 @@
           role="complementary"
           aria-label="Trip Itinerary"
         >
-          <TripItinerary :title="itinerary.title" :stops="itinerary.stops" />
+          <TripItinerary
+            :title="tripStore.currentTrip.title"
+            :stops="tripStore.currentTrip.stops"
+          />
         </div>
 
         <div
@@ -33,7 +36,7 @@
           aria-label="Trip Map"
         >
           <div class="sticky top-[calc(20vh+60px)]">
-            <TripMap :stops="itinerary.stops" />
+            <TripMap :stops="tripStore.currentTrip.stops" />
           </div>
         </div>
       </main>
@@ -47,17 +50,15 @@
 </template>
 
 <script setup lang="ts">
-import { useSearchStore } from "~/stores/useSearchStore";
+import { useTripStore } from "~/stores/useTripStore";
 import type { SearchFormData, Trip } from "~/types";
 
 const route = useRoute();
 const router = useRouter();
-const searchStore = useSearchStore();
+const tripStore = useTripStore();
 
 const loading = ref(true);
 const error = ref<string | null>(null);
-const itinerary = ref<Trip | null>(null);
-const searchParams = computed(() => searchStore.searchParams);
 
 async function loadTripData() {
   loading.value = true;
@@ -65,7 +66,8 @@ async function loadTripData() {
 
   try {
     const response = await $fetch(`/api/trip/${route.params.id}`);
-    itinerary.value = response as Trip;
+    const trip = response as Trip;
+    tripStore.setTrip(trip);
   } catch (err) {
     error.value = "Failed to load trip details. Please try again.";
     console.error("Error loading trip:", err);
@@ -76,16 +78,20 @@ async function loadTripData() {
 
 async function handleSearch(formData: SearchFormData) {
   try {
+    loading.value = true;
     const response = await $fetch("/api/trip", {
       method: "POST",
       body: formData,
     });
 
     const newTrip = response as Trip;
+    tripStore.setTrip(newTrip);
     router.push(`/trip/${newTrip.id}`);
   } catch (err) {
     error.value = "Failed to create trip. Please try again.";
     console.error("Error creating trip:", err);
+  } finally {
+    loading.value = false;
   }
 }
 
@@ -94,7 +100,16 @@ function retryLoad() {
 }
 
 onMounted(() => {
+  console.log(tripStore.currentTrip);
+  if (tripStore.currentTrip && route.params.id === tripStore.currentTrip.id) {
+    loading.value = false;
+    return;
+  }
   loadTripData();
+});
+
+onBeforeUnmount(() => {
+  tripStore.clearTrip();
 });
 
 useHead(

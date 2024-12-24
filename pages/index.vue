@@ -21,40 +21,40 @@
 </template>
 
 <script setup lang="ts">
-import { useSearchStore } from "~/stores/useSearchStore";
+import { useTripStore } from "~/stores/useTripStore";
 import type { SearchFormData, Trip } from "~/types";
 
 const router = useRouter();
-const searchStore = useSearchStore();
+const tripStore = useTripStore();
 const error = ref<string | null>(null);
 const loading = ref(false);
 
 async function handleSearch(formData: SearchFormData) {
   try {
-    // Store search parameters
-    searchStore.setSearchParams(formData);
-
-    // Create trip
+    loading.value = true;
     const response = await $fetch("/api/inference", {
       method: "POST",
       body: formData,
     });
-
     const trip = response as Trip;
+    tripStore.setTrip(trip);
     router.push(`/trip/${trip.id}`);
   } catch (err) {
     error.value = "Failed to create trip. Please try again.";
     console.error("Error creating trip:", err);
+  } finally {
+    loading.value = false;
   }
 }
 
 function handleTripSelect(trip: Trip) {
+  tripStore.setTrip(trip);
   router.push(`/trip/${trip.id}`);
 }
 
-// Clear search params when leaving the page
+// Clear trip data when leaving the page
 onBeforeUnmount(() => {
-  searchStore.clearSearchParams();
+  tripStore.clearTrip();
 });
 
 useHead(
