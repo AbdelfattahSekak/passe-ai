@@ -7,7 +7,7 @@
       <template #marker="slotProps">
         <div class="flex items-center gap-4">
           <span
-            class="flex w-8 h-8 items-center justify-center bg-primary text-white rounded-full z-10 shadow-sm"
+            class="flex w-8 h-8 items-center justify-center bg-primary text-white rounded-full shadow-sm"
           >
             {{ slotProps.index + 1 }}
           </span>

@@ -37,9 +37,7 @@
           role="complementary"
           aria-label="Trip Map"
         >
-          <div class="sticky top-[calc(20vh+60px)]">
-            <TripMap :stops="tripStore.currentTrip.stops" />
-          </div>
+          <TripMap :stops="tripStore.currentTrip.stops" />
         </div>
       </main>
     </div>

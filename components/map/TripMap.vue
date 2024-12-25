@@ -1,13 +1,34 @@
 <template>
-  <div class="map-container">
-    <LoadingOverlay v-if="isCalculating" />
-    <div
-      ref="mapContainer"
-      id="map"
-      class="w-full h-[calc(100vh-20vh-60px)]"
-      role="region"
-      aria-label="Interactive Map"
-    ></div>
+  <div
+    :class="[
+      'transition-all duration-300 ease-in-out',
+      expanded
+        ? 'fixed top-[calc(20vh+60px)] left-0 right-0 z-50 bg-white'
+        : 'sticky top-[calc(20vh+60px)]',
+    ]"
+  >
+    <div class="map-container">
+      <LoadingOverlay v-if="isCalculating" />
+      <Button
+        @click="toggleExpand"
+        class="absolute top-4 left-4 z-10 bg-white"
+        :aria-label="expanded ? 'Collapse map' : 'Expand map'"
+        size="large"
+        raised
+        rounded
+        :icon="expanded ? 'pi pi-angle-right' : 'pi pi-angle-left'"
+      />
+      <div
+        ref="mapContainer"
+        id="map"
+        :class="[
+          'w-full transition-all duration-300',
+          'h-[calc(100vh-20vh-60px)]', // Keep consistent height in both modes
+        ]"
+        role="region"
+        aria-label="Interactive Map"
+      ></div>
+    </div>
   </div>
 </template>
 
@@ -22,6 +43,7 @@ const props = defineProps<{
   stops: Stop[];
 }>();
 
+const expanded = ref(false);
 const mapContainer = ref<HTMLElement | null>(null);
 const { map, error: mapError, initMap } = useMapInit();
 const { createStopMarkers, clearAllMarkers } = useMapMarkers();
@@ -55,6 +77,16 @@ async function calculateAndDisplayRoute(): Promise<void> {
   } finally {
     isCalculating.value = false;
   }
+}
+
+function toggleExpand() {
+  expanded.value = !expanded.value;
+  // Give the DOM time to update before resizing the map
+  setTimeout(() => {
+    if (map.value) {
+      google.maps.event.trigger(map.value, "resize");
+    }
+  }, 300);
 }
 
 onMounted(async () => {
