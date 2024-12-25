@@ -1,8 +1,10 @@
 <template>
   <div class="p-4" role="region" aria-label="Trip Itinerary">
-    <div class="mb-6 flex justify-between items-center">
+    <div class="mb-6">
       <h1 class="text-2xl font-bold text-text-primary">{{ title }}</h1>
-      <OpenInGoogleMapsButton :stops="stops" />
+      <div class="mt-2">
+        <OpenInGoogleMapsButton :stops="stops" />
+      </div>
     </div>
     <Timeline :value="stops" class="customized-timeline">
       <template #marker="slotProps">

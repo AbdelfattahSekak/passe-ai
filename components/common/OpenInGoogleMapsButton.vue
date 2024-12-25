@@ -1,25 +1,31 @@
 <template>
   <Button
     @click="openInGoogleMaps"
-    icon="pi pi-external-link"
     :label="label"
     :class="buttonClass"
     :disabled="!stops.length"
     aria-label="Open itinerary in Google Maps"
-  />
+  >
+    <template #icon>
+      <i class="pi pi-directions mr-2"></i>
+    </template>
+  </Button>
 </template>
 
 <script setup lang="ts">
 import type { Stop } from "@/types";
 
-const props = withDefaults(defineProps<{
-  stops: Stop[];
-  label?: string;
-  buttonClass?: string;
-}>(), {
-  label: 'Open in Google Maps',
-  buttonClass: 'p-button-secondary'
-});
+const props = withDefaults(
+  defineProps<{
+    stops: Stop[];
+    label?: string;
+    buttonClass?: string;
+  }>(),
+  {
+    label: "Get directions",
+    buttonClass: "p-button-text p-button-plain text-blue-600",
+  }
+);
 
 function generateGoogleMapsUrl(stops: Stop[]): string {
   if (!stops.length) return "";
@@ -32,10 +38,12 @@ function generateGoogleMapsUrl(stops: Stop[]): string {
 
   let waypoints = "";
   if (stops.length > 2) {
-    waypoints = "&waypoints=" + stops
-      .slice(1, -1)
-      .map((stop) => encodeURIComponent(stop.address))
-      .join("|");
+    waypoints =
+      "&waypoints=" +
+      stops
+        .slice(1, -1)
+        .map((stop) => encodeURIComponent(stop.address))
+        .join("|");
   }
 
   return `${baseUrl}${origin}${destination}${waypoints}&travelmode=driving`;
@@ -57,5 +65,23 @@ function openInGoogleMaps() {
 
 .p-button-secondary {
   transition: all 0.2s ease-in-out;
+}
+
+.p-button-text:hover {
+  background: transparent !important;
+  color: #003580 !important;
+}
+
+.p-button-text {
+  padding: 0;
+  color: #0071c2 !important;
+}
+
+.pi-directions {
+  color: #0071c2;
+}
+
+.pi-directions:hover {
+  color: #003580;
 }
 </style>
