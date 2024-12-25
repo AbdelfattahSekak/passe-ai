@@ -6,7 +6,7 @@
   >
     <Card class="h-full">
       <template #header>
-        <div class="relative h-14 overflow-hidden rounded-t-lg">
+        <div class="relative h-14 overflow-hidden rounded">
           <img
             v-if="activity.locationInfo?.photos[0]"
             :src="activity.locationInfo.photos[0].url"

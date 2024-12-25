@@ -2,7 +2,7 @@ import { H3Event } from "h3";
 import { generateTripInference } from "../services/inferenceService";
 import { enrichLocationData } from "../services/locationService";
 import { validateRequestBody } from "../validators/requestValidator";
-import { logger } from "../../../utils/logger";
+import { logger } from "@/server/utils/logger";
 import type { SearchFormData, Trip } from "~/types";
 
 export async function processInference(event: H3Event) {
