@@ -7,7 +7,7 @@ export default async function getTripAdvisorLocationInfo(
   query: string
 ): Promise<LocationInfo> {
   try {
-    console.log("Getting location info for", query);
+    logger.info("Getting location info for", { query });
     // First, search for the location to get the location_id
     const searchUrl = `https://api.content.tripadvisor.com/api/v1/location/search?searchQuery=${encodeURIComponent(
       query
