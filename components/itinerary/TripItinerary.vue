@@ -1,7 +1,8 @@
 <template>
   <div class="p-4" role="region" aria-label="Trip Itinerary">
-    <div class="mb-6">
+    <div class="mb-6 flex justify-between items-center">
       <h1 class="text-2xl font-bold text-text-primary">{{ title }}</h1>
+      <OpenInGoogleMapsButton :stops="stops" />
     </div>
     <Timeline :value="stops" class="customized-timeline">
       <template #marker="slotProps">
@@ -57,6 +58,7 @@
 <script setup lang="ts">
 import type { Stop } from "@/types";
 import StopPhoto from "~/components/itinerary/StopPhoto.vue";
+import OpenInGoogleMapsButton from "~/components/common/OpenInGoogleMapsButton.vue";
 
 defineProps<{
   stops: Stop[];
