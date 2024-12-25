@@ -2,8 +2,9 @@
   <div class="p-4" role="region" aria-label="Trip Itinerary">
     <div class="mb-6">
       <h1 class="text-2xl font-bold text-text-primary">{{ title }}</h1>
-      <div class="mt-2">
+      <div class="mt-2 flex items-center gap-4">
         <OpenInGoogleMapsButton :stops="stops" />
+        <ShareButton :itemTitle="title" itemType="trip" />
       </div>
     </div>
     <Timeline :value="stops" class="customized-timeline">
@@ -61,6 +62,7 @@
 import type { Stop } from "@/types";
 import StopPhoto from "~/components/itinerary/StopPhoto.vue";
 import OpenInGoogleMapsButton from "~/components/common/OpenInGoogleMapsButton.vue";
+import ShareButton from "~/components/common/ShareButton.vue";
 
 defineProps<{
   stops: Stop[];

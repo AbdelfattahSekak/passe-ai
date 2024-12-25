@@ -50,6 +50,9 @@ export default defineNuxtConfig({
         "ProgressSpinner",
         "AutoComplete",
         "Textarea",
+        "Toast",
+        "Menu",
+        "Dialog",
       ],
     },
     directives: {
@@ -69,7 +72,7 @@ export default defineNuxtConfig({
       SUPABASE_KEY: process.env.SUPABASE_KEY || "",
       UPSTASH_REDIS_URL: process.env.UPSTASH_REDIS_URL || "",
       UPSTASH_REDIS_TOKEN: process.env.UPSTASH_REDIS_TOKEN || "",
-      RATE_LIMIT_VALUE: process.env.RATE_LIMIT_VALUE || 1000,
+      RATE_LIMIT_VALUE: process.env.RATE_LIMIT_VALUE || 10,
     },
   },
   app: {

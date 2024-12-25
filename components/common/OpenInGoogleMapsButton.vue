@@ -1,9 +1,8 @@
 <template>
   <Button
     @click="openInGoogleMaps"
-    :label="label"
-    :class="buttonClass"
-    :disabled="!stops.length"
+    label="Get directions"
+    class="p-button-plain text-blue-600"
     aria-label="Open itinerary in Google Maps"
   >
     <template #icon>
@@ -15,18 +14,9 @@
 <script setup lang="ts">
 import type { Stop } from "@/types";
 
-const props = withDefaults(
-  defineProps<{
-    stops: Stop[];
-    label?: string;
-    buttonClass?: string;
-  }>(),
-  {
-    label: "Get directions",
-    buttonClass: "p-button-text p-button-plain text-blue-600",
-  }
-);
-
+const props = defineProps<{
+  stops: Stop[];
+}>();
 function generateGoogleMapsUrl(stops: Stop[]): string {
   if (!stops.length) return "";
 

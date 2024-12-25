@@ -4,7 +4,7 @@ import type { Stop, Trip } from "~/types";
 
 export async function enrichLocationData(tripData: string) {
   try {
-    const tripInference = JSON.parse(tripData) as Trip;
+    const tripInference = JSON.parse(tripData) as Pick<Trip, "stops" | "title">;
     const locationPromises = tripInference.stops.flatMap((stop: Stop) => {
       const promises = [
         enrichStopLocation(stop),

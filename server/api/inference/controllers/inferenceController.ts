@@ -25,16 +25,16 @@ export async function processInference(event: H3Event) {
     const enrichedTrip = await enrichLocationData(inferenceResult);
 
     // Construct final response
-    const response: Trip = {
+    const response = {
       createdAt: new Date().toISOString(),
       start: body.start,
       destination: body.destination,
       nbStops: body.nbStops,
       ...enrichedTrip,
-    };
+    } satisfies Omit<Trip, "id">;
 
     logger.info("Successfully processed inference request", {
-      tripId: response.id,
+      tripId: `${response.start}-${response.destination}-${response.createdAt}`,
     });
     return response;
   } catch (error) {
