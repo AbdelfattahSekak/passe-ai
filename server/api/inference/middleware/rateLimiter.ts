@@ -12,7 +12,10 @@ const redis = new Redis({
 
 const ratelimit = new Ratelimit({
   redis,
-  limiter: Ratelimit.slidingWindow(config.server.RATE_LIMIT_VALUE, "24 h"),
+  limiter: Ratelimit.slidingWindow(
+    Number(config.server.RATE_LIMIT_VALUE),
+    "24 h"
+  ),
   analytics: true,
   prefix: "@upstash/ratelimit:inference",
 });

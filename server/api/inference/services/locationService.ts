@@ -1,6 +1,6 @@
-import getTripAdvisorLocationInfo, {
+import getLocationInfo, {
   getNearbyActivities,
-} from "~/utils/getTripAdvisorLocationInfo";
+} from "~/server/utils/tripAdvisor";
 import { logger } from "@/server/utils/logger";
 import type { Stop, Trip } from "~/types";
 
@@ -21,7 +21,7 @@ export async function enrichLocationData(tripData: string) {
 async function enrichStopLocation(stop: Stop) {
   try {
     const [locationInfo, nearbyActivities] = await Promise.all([
-      getTripAdvisorLocationInfo(stop.address),
+      getLocationInfo(stop.address),
       getNearbyActivities(stop.lat, stop.lng),
     ]);
 

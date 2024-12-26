@@ -40,5 +40,28 @@ export type LocationPhoto = {
 
 export interface LocationInfo {
   id: string | null;
+  photos?: LocationPhoto[];
+  details?: LocationDetails;
+}
+
+export interface LocationDetails {
+  location_id: string;
+  name: string;
+  description: string;
+  web_url: string;
+  address_obj: {
+    street1: string;
+    street2: string;
+    city: string;
+    state: string;
+    country: string;
+    postalcode: string;
+    address_string: string;
+  };
+  latitude: string;
+  longitude: string;
+  rating: string;
+  website: string;
+  phone: string;
   photos: LocationPhoto[];
 }

@@ -1,9 +1,14 @@
 import axios, { AxiosError } from "axios";
-import type { LocationInfo, Activity, LocationPhoto } from "~/types";
+import type {
+  LocationInfo,
+  Activity,
+  LocationPhoto,
+  LocationDetails,
+} from "~/types";
 
 const config = useRuntimeConfig();
 
-export default async function getTripAdvisorLocationInfo(
+export default async function getLocationInfo(
   query: string
 ): Promise<LocationInfo> {
   try {
@@ -58,7 +63,6 @@ export async function getNearbyActivities(
 
     const activities = await Promise.all(
       response.data.data.map(async (item: any) => {
-        const photos = await getLocationPhotos(item.location_id);
         return {
           title: item.name,
           address: item.address_obj.address_string,
@@ -67,7 +71,6 @@ export async function getNearbyActivities(
           lng: item.longitude,
           locationInfo: {
             id: item.location_id,
-            photos,
           },
         } satisfies Activity;
       })
@@ -80,7 +83,9 @@ export async function getNearbyActivities(
   }
 }
 
-async function getLocationPhotos(locationId: string): Promise<LocationPhoto[]> {
+export async function getLocationPhotos(
+  locationId: string
+): Promise<LocationPhoto[]> {
   try {
     const photosUrl = `https://api.content.tripadvisor.com/api/v1/location/${locationId}/photos?language=en&key=${config.server.TRIPADVISOR_API_KEY}`;
     const photosResponse = await axios.get(photosUrl, {
@@ -96,5 +101,31 @@ async function getLocationPhotos(locationId: string): Promise<LocationPhoto[]> {
   } catch (error) {
     console.error("Error getting location photos:", error);
     return [];
+  }
+}
+
+export async function getLocationDetails(
+  locationId: string
+): Promise<LocationDetails | null> {
+  try {
+    const [details, photos] = await Promise.all([
+      axios.get(
+        `https://api.content.tripadvisor.com/api/v1/location/${locationId}/details?key=${config.server.TRIPADVISOR_API_KEY}`,
+        { headers: { accept: "application/json" } }
+      ),
+      getLocationPhotos(locationId),
+    ]);
+
+    if (!details.data) {
+      return null;
+    }
+
+    return {
+      ...details.data,
+      photos,
+    } as LocationDetails;
+  } catch (error) {
+    logger.error("Error getting location details:", error);
+    return null;
   }
 }
