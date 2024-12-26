@@ -11,20 +11,18 @@
       </template>
     </Button>
 
-    <Dialog v-model:visible="dialogVisible" modal :style="{ width: '550px' }">
+    <Dialog
+      :header="`Share ${itemType} with your friends and family`"
+      v-model:visible="dialogVisible"
+      modal
+      :style="{ width: '550px' }"
+    >
       <div class="flex flex-col items-center gap-6 p-4">
         <img
           src="@/assets/illustrations/share.svg"
           alt="Share illustration"
           class="w-48 h-48 object-contain"
         />
-
-        <div class="text-center">
-          <h2 class="text-2xl font-semibold mb-2">Share {{ itemTitle }}</h2>
-          <p class="text-gray-600 mb-6">
-            Share this {{ itemType }} with your friends and family
-          </p>
-        </div>
 
         <div class="w-full flex flex-col gap-4">
           <div class="w-full flex gap-2 p-4 surface-100 rounded-lg">
@@ -64,7 +62,7 @@ const props = withDefaults(
   }>(),
   {
     itemType: "trip",
-    shareUrl: "ss",
+    shareUrl: window.location.href,
   }
 );
 

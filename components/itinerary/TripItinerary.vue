@@ -4,7 +4,9 @@
       <h1 class="text-2xl font-bold text-text-primary">{{ title }}</h1>
       <div class="mt-2 flex items-center gap-4">
         <OpenInGoogleMapsButton :stops="stops" />
-        <ShareButton :itemTitle="title" itemType="trip" />
+        <client-only placeholder="loading...">
+          <ShareButton :itemTitle="title" itemType="trip" />
+        </client-only>
       </div>
     </div>
     <Timeline :value="stops" class="customized-timeline">
