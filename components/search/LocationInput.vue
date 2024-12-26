@@ -14,12 +14,14 @@
         ref="autoComplete"
         style="outline: none"
         :id="id"
+        forceSelection
         v-model="selectedLocation"
         :suggestions="suggestions"
+        completeOnFocus
         @complete="search"
         @item-select="handleSelect"
         :placeholder="placeholder"
-        :disabled="disabled"
+        :disabled="disabled || isLoadingLocation"
         class="w-full text-sm h-[30px]"
         :pt="{
           root: { class: 'w-full' },
@@ -51,20 +53,25 @@ const suggestions = ref<string[]>([]);
 const autocompleteService = ref<google.maps.places.AutocompleteService | null>(
   null
 );
+const geocoder = ref<google.maps.Geocoder | null>(null);
+const isLoadingLocation = ref(false);
 
 const autoComplete = ref();
 
 const focusInput = () => {
   autoComplete.value?.$el.querySelector("input").focus();
+
 };
 
 onMounted(async () => {
   const { AutocompleteService } = (await google.maps.importLibrary(
     "places"
   )) as google.maps.PlacesLibrary;
+  
   autocompleteService.value = new AutocompleteService();
-  // Ensure the selectedLocation is synced with modelValue on mount
+  geocoder.value = new google.maps.Geocoder();
   selectedLocation.value = props.modelValue;
+  
 });
 
 watch(
@@ -79,6 +86,10 @@ watch(selectedLocation, (newValue) => {
 });
 
 const search = async (event: { query: string }) => {
+  if (event.query === "") {
+    suggestions.value = ["📍 Use current location"];
+    return 
+  }
   if (!autocompleteService.value || !event.query) {
     suggestions.value = [];
     return;
@@ -97,7 +108,38 @@ const search = async (event: { query: string }) => {
   }
 };
 
+const getCurrentLocation = async () => {
+  try {
+    isLoadingLocation.value = true;
+    const position = await new Promise<GeolocationPosition>((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+
+    const result = await geocoder.value?.geocode({
+      location: {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      },
+    });
+
+    if (result?.results[0]) {
+      selectedLocation.value = result.results[0].formatted_address;
+      emit("update:modelValue", result.results[0].formatted_address);
+    }
+  } catch (error) {
+    console.error("Error getting current location:", error);
+  } finally {
+    isLoadingLocation.value = false;
+  }
+};
+
+
+
 const handleSelect = (event: { value: string }) => {
+  if (event.value === "📍 Use current location") {
+    getCurrentLocation();
+    return;
+  }
   emit("update:modelValue", event.value);
 };
 </script>
@@ -113,5 +155,9 @@ const handleSelect = (event: { value: string }) => {
 
 :deep(.p-autocomplete-item) {
   @apply px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer;
+}
+
+:deep(.p-autocomplete-item:first-child) {
+  @apply font-medium text-primary;
 }
 </style>
