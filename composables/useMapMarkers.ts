@@ -1,9 +1,10 @@
 import type { Activity, Stop } from "~/types";
 
-export function useMapMarkers() {
+export function useMapMarkers(map: Ref<google.maps.Map | null>) {
   const markers = ref<google.maps.marker.AdvancedMarkerElement[]>([]);
   const activityMarkers = ref<google.maps.marker.AdvancedMarkerElement[]>([]);
   const infoWindows = ref<google.maps.InfoWindow[]>([]);
+  const tripStore = useTripStore();
 
   function clearMarkers() {
     markers.value.forEach((marker) => marker.remove());
@@ -24,7 +25,6 @@ export function useMapMarkers() {
 
   async function createActivityMarker(
     activity: Activity,
-    stopIndex: number,
     map: google.maps.Map
   ) {
     const { AdvancedMarkerElement } = (await google.maps.importLibrary(
@@ -33,8 +33,14 @@ export function useMapMarkers() {
     const { InfoWindow } = (await google.maps.importLibrary(
       "maps"
     )) as google.maps.MapsLibrary;
-
-    if (!isValidCoordinate(activity.lat) || !isValidCoordinate(activity.lng)) {
+    const coordinates = {
+      lat: Number(activity.locationInfo.details!.latitude),
+      lng: Number(activity.locationInfo.details!.longitude),
+    };
+    if (
+      !isValidCoordinate(coordinates.lat) ||
+      !isValidCoordinate(coordinates.lng)
+    ) {
       console.warn("Invalid coordinates for activity:", activity);
       return;
     }
@@ -48,7 +54,7 @@ export function useMapMarkers() {
     `;
 
     const marker = new AdvancedMarkerElement({
-      position: { lat: Number(activity.lat), lng: Number(activity.lng) },
+      position: coordinates,
       map,
       content: markerContainer,
       title: activity.title,
@@ -200,12 +206,20 @@ export function useMapMarkers() {
 
     markers.value.push(marker);
     infoWindows.value.push(stopInfoWindow);
-
-    // Add activity markers
-    stop.activities.forEach((activity) => {
-      createActivityMarker(activity, index, map);
-    });
   };
+
+  //   Watch for changes in currentTrip and update markers
+  watchEffect(() => {
+    if (!tripStore.currentTrip || !tripStore.activitiesLoaded) return;
+    tripStore.currentTrip.stops.forEach((stop) => {
+      if (map.value) {
+        stop.activities.forEach((activity) => {
+          createActivityMarker(activity, map.value!);
+        });
+      }
+    });
+  });
+
   return {
     clearAllMarkers,
     createStopMarkers,

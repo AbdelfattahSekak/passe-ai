@@ -1,5 +1,6 @@
-import getLocationInfo, {
+import {
   getNearbyActivities,
+  getLocationInfo,
 } from "~/server/utils/tripAdvisor";
 import { logger } from "@/server/utils/logger";
 import type { Stop, Trip } from "~/types";
@@ -24,9 +25,10 @@ async function enrichStopLocation(stop: Stop) {
       getLocationInfo(stop.address),
       getNearbyActivities(stop.lat, stop.lng),
     ]);
-
-    stop.locationInfo = locationInfo;
-    stop.activities = nearbyActivities;
+    if (locationInfo) {
+      stop.locationInfo = locationInfo;
+      stop.activities = nearbyActivities;
+    }
   } catch (error) {
     logger.error(`Error enriching stop location: ${stop.title}`, error);
     throw error;

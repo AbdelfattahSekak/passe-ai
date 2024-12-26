@@ -1,4 +1,5 @@
 export interface Activity {
+  id: string;
   title: string;
   lat: number;
   lng: number;
@@ -8,6 +9,7 @@ export interface Activity {
 }
 
 export interface Stop {
+  id: string;
   title: string;
   lat: number;
   lng: number;
@@ -39,13 +41,12 @@ export type LocationPhoto = {
 };
 
 export interface LocationInfo {
-  id: string | null;
+  id: string;
   photos?: LocationPhoto[];
   details?: LocationDetails;
 }
 
 export interface LocationDetails {
-  location_id: string;
   name: string;
   description: string;
   web_url: string;
@@ -63,5 +64,4 @@ export interface LocationDetails {
   rating: string;
   website: string;
   phone: string;
-  photos: LocationPhoto[];
 }

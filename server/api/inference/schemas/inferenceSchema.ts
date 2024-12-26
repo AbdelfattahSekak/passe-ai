@@ -18,6 +18,10 @@ export const inferenceSchema: ResponseFormatJSONSchema = {
           items: {
             type: "object",
             properties: {
+              id: {
+                type: "string",
+                description: "A unique identifier for the stop.",
+              },
               title: {
                 type: "string",
                 description: "The title or name of the stop.",
@@ -37,7 +41,7 @@ export const inferenceSchema: ResponseFormatJSONSchema = {
                   "Detailed description including historical significance, cultural importance, and key attractions.",
               },
             },
-            required: ["title", "lat", "lng", "address", "details"],
+            required: ["title", "lat", "lng", "address", "details", "id"],
             additionalProperties: false,
           },
         },

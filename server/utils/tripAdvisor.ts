@@ -8,9 +8,9 @@ import type {
 
 const config = useRuntimeConfig();
 
-export default async function getLocationInfo(
+export async function getLocationInfo(
   query: string
-): Promise<LocationInfo> {
+): Promise<LocationInfo | null> {
   try {
     logger.info("Getting location info for", { query });
     const searchUrl = `https://api.content.tripadvisor.com/api/v1/location/search?searchQuery=${encodeURIComponent(
@@ -30,20 +30,13 @@ export default async function getLocationInfo(
         photos: locationPhotos,
       };
     }
-
-    return {
-      id: null,
-      photos: [],
-    };
+    return null;
   } catch (error) {
     console.error("Error getting location info:", error);
     if (error instanceof AxiosError) {
       console.error("Error getting location info:", error.response?.data);
     }
-    return {
-      id: null,
-      photos: [],
-    };
+    return null;
   }
 }
 
@@ -62,8 +55,9 @@ export async function getNearbyActivities(
     }
 
     const activities = await Promise.all(
-      response.data.data.map(async (item: any) => {
+      response.data.data.slice(0, 3).map(async (item: any) => {
         return {
+          id: item.location_id,
           title: item.name,
           address: item.address_obj.address_string,
           details: item.description,
@@ -106,7 +100,7 @@ export async function getLocationPhotos(
 
 export async function getLocationDetails(
   locationId: string
-): Promise<LocationDetails | null> {
+): Promise<LocationInfo | null> {
   try {
     const [details, photos] = await Promise.all([
       axios.get(
@@ -121,9 +115,10 @@ export async function getLocationDetails(
     }
 
     return {
-      ...details.data,
+      id: locationId,
+      details: details.data as LocationDetails,
       photos,
-    } as LocationDetails;
+    };
   } catch (error) {
     logger.error("Error getting location details:", error);
     return null;

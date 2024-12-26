@@ -8,7 +8,7 @@
       <template #header>
         <div class="relative h-14 overflow-hidden rounded">
           <img
-            v-if="activity.locationInfo?.photos[0]"
+            v-if="activity.locationInfo.photos?.[0]"
             :src="activity.locationInfo.photos[0].url"
             :alt="activity.title"
             loading="lazy"
@@ -37,7 +37,11 @@
       </template>
     </Card>
 
-    <ActivityModal v-model="showModal" :activity="activity" />
+    <ActivityModal
+      v-if="activity.locationInfo.photos"
+      v-model="showModal"
+      :activity="activity"
+    />
   </button>
 </template>
 

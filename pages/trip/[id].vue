@@ -54,7 +54,6 @@ import { useTripStore } from "~/stores/useTripStore";
 import type { SearchFormData, Trip } from "~/types";
 
 const route = useRoute();
-const router = useRouter();
 const tripStore = useTripStore();
 
 const loading = ref(true);
@@ -97,6 +96,13 @@ async function handleSearch(formData: SearchFormData) {
 function retryLoad() {
   loadTripData();
 }
+
+watch(tripStore, (trip) => {
+  if (tripStore.currentTrip && !tripStore.activitiesLoaded) {
+    tripStore.fetchAllActivitiesDetails();
+    tripStore.activitiesLoaded = true;
+  }
+});
 
 onMounted(() => {
   if (tripStore.currentTrip && route.params.id === tripStore.currentTrip.id) {

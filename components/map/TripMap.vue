@@ -46,7 +46,7 @@ const props = defineProps<{
 const expanded = ref(false);
 const mapContainer = ref<HTMLElement | null>(null);
 const { map, error: mapError, initMap } = useMapInit();
-const { createStopMarkers, clearAllMarkers } = useMapMarkers();
+const { createStopMarkers, clearAllMarkers } = useMapMarkers(map);
 const {
   directionsRenderer,
   isCalculating,
@@ -102,17 +102,17 @@ onMounted(async () => {
   }
 });
 
-watch(
-  () => props.stops,
-  (newStops) => {
-    if (newStops.length >= 2) {
-      calculateAndDisplayRoute();
-    } else if (directionsRenderer.value) {
-      directionsRenderer.value.setDirections(null);
-    }
-  },
-  { deep: true }
-);
+// watch(
+//   () => props.stops,
+//   (newStops) => {
+//     if (newStops.length >= 2) {
+//       calculateAndDisplayRoute();
+//     } else if (directionsRenderer.value) {
+//       directionsRenderer.value.setDirections(null);
+//     }
+//   },
+//   { deep: true }
+// );
 </script>
 
 <style lang="scss">
