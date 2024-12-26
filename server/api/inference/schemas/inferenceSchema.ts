@@ -18,29 +18,26 @@ export const inferenceSchema: ResponseFormatJSONSchema = {
           items: {
             type: "object",
             properties: {
-              title: { type: "string", description: "The title or name of the stop." },
+              title: {
+                type: "string",
+                description: "The title or name of the stop.",
+              },
               lat: { type: "number", description: "The latitude of the stop." },
-              lng: { type: "number", description: "The longitude of the stop." },
-              address: { type: "string", description: "The physical address of the stop." },
-              details: { type: "string", description: "Additional details about the stop." },
-              activities: {
-                type: "array",
-                description: "List of activities available at the stop.",
-                items: {
-                  type: "object",
-                  properties: {
-                    title: { type: "string", description: "The title or name of the activity." },
-                    lat: { type: "number", description: "The latitude of the activity." },
-                    lng: { type: "number", description: "The longitude of the activity." },
-                    details: { type: "string", description: "Additional details about the activity." },
-                    address: { type: "string", description: "The physical address of the activity." },
-                  },
-                  required: ["title", "lat", "lng", "details", "address"],
-                  additionalProperties: false,
-                },
+              lng: {
+                type: "number",
+                description: "The longitude of the stop.",
+              },
+              address: {
+                type: "string",
+                description: "The physical address of the stop.",
+              },
+              details: {
+                type: "string",
+                description:
+                  "Detailed description including historical significance, cultural importance, and key attractions.",
               },
             },
-            required: ["title", "lat", "lng", "address", "details", "activities"],
+            required: ["title", "lat", "lng", "address", "details"],
             additionalProperties: false,
           },
         },

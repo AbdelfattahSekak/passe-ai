@@ -1,43 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --primary-color: #FF5A5F;
-  --secondary-color: #00A699;
-  --text-color: #484848;
-  --text-color-secondary: #767676;
-  --tertiary-color: #645CBB;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Red Hat Display', sans-serif;
-  color: var(--text-color);
-  line-height: 1.6;
-  overflow-x: hidden;
-  width: 100vw;
-}
-
 ::-webkit-scrollbar {
   width: 7px;
 }
 
 ::-webkit-scrollbar-track {
   height: 80%;
-  background: rgb(240, 240, 240)
+  background: rgb(240, 240, 240);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FF5A5F;
+  background: #ff5a5f;
   border-radius: 10px;
 }
-
 
 .p-autocomplete {
   &-panel {
@@ -53,8 +26,6 @@ body {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-  }
+.p-card .p-card-body {
+  padding: 0;
 }

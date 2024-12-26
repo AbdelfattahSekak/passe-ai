@@ -1,6 +1,7 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
+
   modules: [
     "@nuxtjs/google-fonts",
     "@nuxtjs/tailwindcss",
@@ -32,6 +33,10 @@ export default defineNuxtConfig({
       },
       {
         path: "~/components/loading",
+        pathPrefix: false,
+      },
+      {
+        path: "~/composables",
         pathPrefix: false,
       },
     ],

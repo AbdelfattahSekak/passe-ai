@@ -3,7 +3,7 @@
     <Button
       @click="openShareDialog"
       label="Share"
-      class="p-button-text p-button-plain text-blue-600"
+      class="p-button-text p-button-plain text-blue-600 hover:bg-blue-50 transition-colors duration-200"
       aria-label="Share itinerary"
     >
       <template #icon>
@@ -11,32 +11,42 @@
       </template>
     </Button>
 
-    <Dialog v-model:visible="dialogVisible" modal>
-      <template #header>
-        <div class="inline-flex items-center gap-3 p-2">
-          <h2 class="text-xl font-semibold m-0">Share {{ itemTitle }}</h2>
-        </div>
-      </template>
+    <Dialog v-model:visible="dialogVisible" modal :style="{ width: '550px' }">
+      <div class="flex flex-col items-center gap-6 p-4">
+        <img
+          src="@/assets/illustrations/share.svg"
+          alt="Share illustration"
+          class="w-48 h-48 object-contain"
+        />
 
-      <div class="flex flex-col gap-4 p-2 w-full">
-        <div class="flex items-center gap-2">
-          <i class="pi pi-share-alt text-xl text-primary"></i>
-          <label class="">Share link with anyone</label>
+        <div class="text-center">
+          <h2 class="text-2xl font-semibold mb-2">Share {{ itemTitle }}</h2>
+          <p class="text-gray-600 mb-6">
+            Share this {{ itemType }} with your friends and family
+          </p>
         </div>
-        <div class="w-full flex gap-2 p-3 surface-100">
-          <InputText
-            size="large"
-            type="text"
-            :value="shareUrl"
-            disabled
-            fluid
-          />
-          <Button
-            @click="copyToClipboard"
-            outlined
-            :icon="copied ? 'pi pi-check' : 'pi pi-copy'"
-            :label="copied ? 'Copied!' : 'Copy'"
-          />
+
+        <div class="w-full flex flex-col gap-4">
+          <div class="w-full flex gap-2 p-4 surface-100 rounded-lg">
+            <InputText
+              ref="urlInput"
+              size="large"
+              type="text"
+              :value="shareUrl"
+              readonly
+              class="flex-1 p-2"
+            />
+            <Button
+              @click="copyToClipboard"
+              severity="secondary"
+              :class="[
+                'transition-all duration-200',
+                copied ? 'p-button-success' : 'p-button-primary',
+              ]"
+              :icon="copied ? 'pi pi-check' : 'pi pi-copy'"
+              :label="copied ? 'Copied!' : 'Copy link'"
+            />
+          </div>
         </div>
       </div>
     </Dialog>
@@ -54,7 +64,7 @@ const props = withDefaults(
   }>(),
   {
     itemType: "trip",
-    shareUrl: document.location.href,
+    shareUrl: "ss",
   }
 );
 
@@ -79,4 +89,12 @@ async function copyToClipboard() {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.p-dialog {
+  @apply rounded-xl overflow-hidden;
+}
+
+.p-inputtext {
+  @apply border-none;
+}
+</style>
