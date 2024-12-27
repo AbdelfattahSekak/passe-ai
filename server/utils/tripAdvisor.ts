@@ -43,7 +43,7 @@ export async function getLocationInfo(
 export async function getNearbyActivities(
   lat: number,
   lng: number,
-  category: "attractions" | "restaurants" | "hotels" | "goes"
+  category: "attractions" | "restaurants" | "hotels" | "geos"
 ): Promise<Activity[]> {
   try {
     const url = `https://api.content.tripadvisor.com/api/v1/location/nearby_search?latLong=${lat}%2C${lng}&category=${category}&language=en&key=${config.server.TRIPADVISOR_API_KEY}`;
@@ -64,6 +64,7 @@ export async function getNearbyActivities(
           details: item.description,
           lat: item.latitude,
           lng: item.longitude,
+          category,
           locationInfo: {
             id: item.location_id,
           },

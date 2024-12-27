@@ -21,13 +21,16 @@ export async function enrichLocationData(tripData: string) {
 
 async function enrichStopLocation(stop: Stop) {
   try {
-    const [locationInfo, nearbyActivities] = await Promise.all([
-      getLocationInfo(stop.address),
-      getNearbyActivities(stop.lat, stop.lng, "hotels"),
-    ]);
+    const [locationInfo, nearbyHotels, nearbyRestaurants, nearbyGeos] =
+      await Promise.all([
+        getLocationInfo(stop.address),
+        getNearbyActivities(stop.lat, stop.lng, "hotels"),
+        getNearbyActivities(stop.lat, stop.lng, "restaurants"),
+        getNearbyActivities(stop.lat, stop.lng, "geos"),
+      ]);
     if (locationInfo) {
       stop.locationInfo = locationInfo;
-      stop.activities = nearbyActivities;
+      stop.activities = [...nearbyHotels, ...nearbyRestaurants, ...nearbyGeos];
     }
   } catch (error) {
     logger.error(`Error enriching stop location: ${stop.title}`, error);

@@ -6,6 +6,7 @@ export interface Activity {
   details: string;
   address: string;
   locationInfo: LocationInfo;
+  category: "hotels" | "restaurants" | "geos" | "attractions";
 }
 
 export interface Stop {

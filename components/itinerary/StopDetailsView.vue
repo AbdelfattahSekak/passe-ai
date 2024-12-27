@@ -8,7 +8,7 @@
       raised
       rounded
     />
-    
+
     <div class="flex-1 flex flex-col gap-6">
       <div>
         <h2 class="text-2xl font-bold mb-2">{{ stop.title }}</h2>
@@ -22,10 +22,36 @@
       </div>
 
       <div>
-        <h3 class="font-semibold mb-4">Activities</h3>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4" role="list">
+        <h3 class="font-semibold mb-4">Geos</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-1" role="list">
           <ActivityCard
-            v-for="(activity, index) in stop.activities"
+            v-for="(activity, index) in stop.activities.filter(
+              (e) => e.category === 'geos'
+            )"
+            :key="index"
+            :activity="activity"
+          />
+        </div>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-4">Eats</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-1" role="list">
+          <ActivityCard
+            v-for="(activity, index) in stop.activities.filter(
+              (e) => e.category === 'restaurants'
+            )"
+            :key="index"
+            :activity="activity"
+          />
+        </div>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-4">Stays</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-1" role="list">
+          <ActivityCard
+            v-for="(activity, index) in stop.activities.filter(
+              (e) => e.category === 'hotels'
+            )"
             :key="index"
             :activity="activity"
           />
