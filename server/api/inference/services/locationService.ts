@@ -23,7 +23,7 @@ async function enrichStopLocation(stop: Stop) {
   try {
     const [locationInfo, nearbyActivities] = await Promise.all([
       getLocationInfo(stop.address),
-      getNearbyActivities(stop.lat, stop.lng),
+      getNearbyActivities(stop.lat, stop.lng, "hotels"),
     ]);
     if (locationInfo) {
       stop.locationInfo = locationInfo;

@@ -214,9 +214,10 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
       value.size < tripStore.currentTrip.stops.length
     ) {
       const loadedStopIdsArray = Array.from(tripStore.loadedStopIds);
+      const stop = tripStore.currentTrip.stops.find(
+        (stop) => stop.id === loadedStopIdsArray.at(-1)
+      );
 
-      const stop =
-        tripStore.currentTrip.stops[Number(loadedStopIdsArray.at(-1)) - 1];
       if (!stop) return;
       stop.activities.forEach((activity) => {
         createActivityMarker(activity, map.value!);

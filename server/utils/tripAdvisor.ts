@@ -42,10 +42,11 @@ export async function getLocationInfo(
 
 export async function getNearbyActivities(
   lat: number,
-  lng: number
+  lng: number,
+  category: "attractions" | "restaurants" | "hotels" | "goes"
 ): Promise<Activity[]> {
   try {
-    const url = `https://api.content.tripadvisor.com/api/v1/location/nearby_search?latLong=${lat}%2C${lng}&category=attractions&language=en&key=${config.server.TRIPADVISOR_API_KEY}`;
+    const url = `https://api.content.tripadvisor.com/api/v1/location/nearby_search?latLong=${lat}%2C${lng}&category=${category}&language=en&key=${config.server.TRIPADVISOR_API_KEY}`;
     const response = await axios.get(url, {
       headers: { accept: "application/json" },
     });
