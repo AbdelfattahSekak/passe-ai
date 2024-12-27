@@ -1,8 +1,8 @@
 <template>
   <div class="relative overflow-hidden rounded-t-lg">
-    <div class="grid grid-cols-3 gap-1 h-[250px]">
+    <div class="grid grid-cols-3 gap-1 h-[200px]">
       <!-- Main large photo -->
-      <div class="col-span-2 relative h-[250px]">
+      <div class="col-span-2 relative h-[200px]">
         <img
           v-if="photos[0]"
           :src="photos[0].url"
@@ -17,7 +17,7 @@
         </div>
       </div>
       <!-- Two smaller photos stacked with equal height -->
-      <div class="grid grid-rows-2 gap-1 h-[250px]">
+      <div class="grid grid-rows-2 gap-1 h-[200px]">
         <div class="relative">
           <img
             v-if="photos[1]"

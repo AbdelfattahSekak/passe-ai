@@ -49,7 +49,7 @@
 <script setup lang="ts">
 import { ref, computed, watch } from "vue";
 import type { SearchFormData } from "@/types";
-import { useTripStore } from "~/stores/useTripStore";
+import { useTripStore } from "~/stores/trip";
 
 const emit = defineEmits(["submit"]);
 const loading = ref(false);
@@ -88,5 +88,3 @@ const handleSubmit = () => {
   loading.value = false;
 };
 </script>
-
-

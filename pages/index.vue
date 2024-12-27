@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTripStore } from "~/stores/useTripStore";
+import { useTripStore } from "~/stores/trip";
 import type { SearchFormData, Trip } from "~/types";
 
 const router = useRouter();

@@ -5,7 +5,6 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
   const activityMarkers = ref<google.maps.marker.AdvancedMarkerElement[]>([]);
   const infoWindows = ref<google.maps.InfoWindow[]>([]);
   const tripStore = useTripStore();
-
   function clearMarkers() {
     markers.value.forEach((marker) => marker.remove());
     markers.value = [];
@@ -209,15 +208,20 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
   };
 
   //   Watch for changes in currentTrip and update markers
-  watchEffect(() => {
-    if (!tripStore.currentTrip || !tripStore.activitiesLoaded) return;
-    tripStore.currentTrip.stops.forEach((stop) => {
-      if (map.value) {
-        stop.activities.forEach((activity) => {
-          createActivityMarker(activity, map.value!);
-        });
-      }
-    });
+  watch(tripStore.loadedStopIds, (value) => {
+    if (
+      tripStore.currentTrip &&
+      value.size < tripStore.currentTrip.stops.length
+    ) {
+      const loadedStopIdsArray = Array.from(tripStore.loadedStopIds);
+
+      const stop =
+        tripStore.currentTrip.stops[Number(loadedStopIdsArray.at(-1)) - 1];
+      if (!stop) return;
+      stop.activities.forEach((activity) => {
+        createActivityMarker(activity, map.value!);
+      });
+    }
   });
 
   return {

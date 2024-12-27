@@ -36,6 +36,7 @@ import StopDetailsView from "~/components/itinerary/StopDetailsView.vue";
 import ItineraryHeader from "./ItineraryHeader.vue";
 import { useMapStore } from "~/stores/map";
 
+const tripStore = useTripStore();
 const currentView = ref<"list" | "details">("list");
 const selectedStop = ref<Stop | null>(null);
 
@@ -44,11 +45,12 @@ const mapStore = useMapStore();
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
 };
 
-const showStopDetails = (stop: Stop) => {
+const showStopDetails = async (stop: Stop) => {
+  tripStore.fetchStopActivities(stop.id);
   selectedStop.value = stop;
   currentView.value = "details";
   mapStore.setFocusedStop(stop);

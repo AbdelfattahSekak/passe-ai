@@ -22,7 +22,7 @@
         role="main"
       >
         <div
-          class="w-full md:w-1/2 bg-white order-2 sm:order-2 md:order-1"
+          class="w-full md:w-3/5 bg-white order-2 sm:order-2 md:order-1"
           role="complementary"
           aria-label="Trip Itinerary"
         >
@@ -33,7 +33,7 @@
         </div>
 
         <div
-          class="w-full md:w-1/2 order-1 sm:order-1 md:order-2"
+          class="w-full md:w-2/5 order-1 sm:order-1 md:order-2"
           role="complementary"
           aria-label="Trip Map"
         >
@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTripStore } from "~/stores/useTripStore";
+import { useTripStore } from "~/stores/trip";
 import type { SearchFormData, Trip } from "~/types";
 
 const route = useRoute();
@@ -96,13 +96,6 @@ async function handleSearch(formData: SearchFormData) {
 function retryLoad() {
   loadTripData();
 }
-
-watch(tripStore, (trip) => {
-  if (tripStore.currentTrip && !tripStore.activitiesLoaded) {
-    tripStore.fetchAllActivitiesDetails();
-    tripStore.activitiesLoaded = true;
-  }
-});
 
 onMounted(() => {
   if (tripStore.currentTrip && route.params.id === tripStore.currentTrip.id) {
