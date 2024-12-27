@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center gap-6 cursor-pointer" @click="focusInput">
+  <div class="flex items-center gap-2 cursor-pointer" @click="focusInput">
     <i
       class="pi pi-map-marker text-gray-900 border-[3px] rounded-full p-3 text-sm"
     ></i>
@@ -27,7 +27,7 @@
           root: { class: 'w-full' },
           input: {
             class:
-              'w-full outline-none bg-transparent rounded-lg shadow-none text-gray-900',
+              'w-full outline-none bg-transparent rounded-lg shadow-none text-gray-900 font-semibold',
           },
         }"
       />
@@ -60,18 +60,16 @@ const autoComplete = ref();
 
 const focusInput = () => {
   autoComplete.value?.$el.querySelector("input").focus();
-
 };
 
 onMounted(async () => {
   const { AutocompleteService } = (await google.maps.importLibrary(
     "places"
   )) as google.maps.PlacesLibrary;
-  
+
   autocompleteService.value = new AutocompleteService();
   geocoder.value = new google.maps.Geocoder();
   selectedLocation.value = props.modelValue;
-  
 });
 
 watch(
@@ -88,7 +86,7 @@ watch(selectedLocation, (newValue) => {
 const search = async (event: { query: string }) => {
   if (event.query === "") {
     suggestions.value = ["📍 Use current location"];
-    return 
+    return;
   }
   if (!autocompleteService.value || !event.query) {
     suggestions.value = [];
@@ -111,9 +109,11 @@ const search = async (event: { query: string }) => {
 const getCurrentLocation = async () => {
   try {
     isLoadingLocation.value = true;
-    const position = await new Promise<GeolocationPosition>((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject);
-    });
+    const position = await new Promise<GeolocationPosition>(
+      (resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+      }
+    );
 
     const result = await geocoder.value?.geocode({
       location: {
@@ -132,8 +132,6 @@ const getCurrentLocation = async () => {
     isLoadingLocation.value = false;
   }
 };
-
-
 
 const handleSelect = (event: { value: string }) => {
   if (event.value === "📍 Use current location") {

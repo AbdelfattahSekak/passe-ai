@@ -1,12 +1,15 @@
 <template>
-  <div class="relative flex">
+  <div class="flex gap-3">
     <Button
       icon="pi pi-arrow-left"
-      class="p-button-rounded p-button-text mb-4"
+      class="bg-white"
       @click="$emit('back')"
       aria-label="Return to itinerary"
+      raised
+      rounded
     />
-    <div class="flex flex-col gap-6">
+    
+    <div class="flex-1 flex flex-col gap-6">
       <div>
         <h2 class="text-2xl font-bold mb-2">{{ stop.title }}</h2>
         <p class="text-sm text-text-secondary flex items-center gap-2 mb-4">
