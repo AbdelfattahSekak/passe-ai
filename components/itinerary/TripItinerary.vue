@@ -1,7 +1,6 @@
 <template>
   <div class="p-4" role="region" aria-label="Trip Itinerary">
     <ItineraryHeader :title="title" :stops="stops" />
-    <Divider />
     <Transition name="fade" mode="out-in">
       <div v-if="currentView === 'list'" key="list">
         <Timeline :value="stops" class="customized-timeline">
@@ -42,10 +41,18 @@ const selectedStop = ref<Stop | null>(null);
 
 const mapStore = useMapStore();
 
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
+
 const showStopDetails = (stop: Stop) => {
   selectedStop.value = stop;
   currentView.value = "details";
   mapStore.setFocusedStop(stop);
+  scrollToTop();
 };
 
 const returnToList = () => {
