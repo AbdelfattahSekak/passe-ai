@@ -13,7 +13,7 @@
       title="Planning Your Adventure"
       message="Crafting the perfect itinerary for you..."
     />
-    <div class="mt-[calc(20vh+60px)]">
+    <div class="mt-[calc(15vh+60px)]">
       <TripSuggestions @select="handleTripSelect" />
       <TravelIcons />
     </div>

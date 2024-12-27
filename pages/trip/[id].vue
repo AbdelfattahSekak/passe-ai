@@ -16,7 +16,7 @@
       </TheHeader>
     </div>
 
-    <div class="mt-[calc(20vh+60px)]">
+    <div class="mt-[calc(15vh+60px)]">
       <main
         class="relative flex flex-col sm:flex-col md:flex-row gap-4"
         role="main"
@@ -42,7 +42,7 @@
       </main>
     </div>
 
-    <div v-if="error" class="mt-[calc(20vh+60px)] p-8 text-center">
+    <div v-if="error" class="mt-[calc(15vh+60px)] p-8 text-center">
       <h2 class="text-2xl font-semibold text-gray-900 mb-4">{{ error }}</h2>
       <Button @click="retryLoad" label="Try Again" class="p-button-primary" />
     </div>

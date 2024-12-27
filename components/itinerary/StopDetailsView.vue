@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-3">
+  <div class="flex gap-3 mb-50">
     <Button
       icon="pi pi-arrow-left"
       class="bg-white"

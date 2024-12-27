@@ -1,9 +1,9 @@
 <template>
   <header
-    class="h-[20vh] flex flex-col items-center justify-center bg-slate-50 border-b-1 w-full sh shadow-sm"
+    class="h-[15vh] flex flex-col items-center justify-center bg-slate-50 border-b-1 w-full sh shadow-sm"
     role="banner"
   >
-    <h1 class="text-[32px] font-bold mb-4 sm:mb-4 text-black tracking-tight">
+    <h1 class="text-[28px] font-bold mb-2 sm:mb-2 text-black tracking-tight">
       Your Next Adventure Awaits
     </h1>
     <slot></slot>

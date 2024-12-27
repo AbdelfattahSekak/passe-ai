@@ -3,8 +3,8 @@
     :class="[
       'transition-all duration-300 ease-in-out',
       expanded
-        ? 'fixed top-[calc(20vh+60px)] left-0 right-0 z-50 bg-white'
-        : 'sticky top-[calc(20vh+60px)]',
+        ? 'fixed top-[calc(15vh+60px)] left-0 right-0 z-50 bg-white'
+        : 'sticky top-[calc(15vh+60px)]',
     ]"
   >
     <div class="map-container">
@@ -23,7 +23,7 @@
         id="map"
         :class="[
           'w-full transition-all duration-300',
-          'h-[calc(100vh-20vh-60px)]', // Keep consistent height in both modes
+          'h-[calc(100vh-15vh-60px)]', // Keep consistent height in both modes
         ]"
         role="region"
         aria-label="Interactive Map"
