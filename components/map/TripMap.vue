@@ -38,6 +38,7 @@ import type { Stop } from "~/types";
 import { useMapInit } from "~/composables/useMapInit";
 import { useMapMarkers } from "~/composables/useMapMarkers";
 import { useMapRoutes } from "~/composables/useMapRoutes";
+import { useMapAnimations } from "~/composables/useMapAnimations";
 import { useMapStore } from "~/stores/map";
 
 const props = defineProps<{
@@ -58,6 +59,8 @@ const {
 } = useMapRoutes();
 
 const mapStore = useMapStore();
+
+const { animateViewToPosition, animateViewToBounds } = useMapAnimations();
 
 async function calculateAndDisplayRoute(): Promise<void> {
   if (props.stops.length < 2) return;
@@ -101,38 +104,7 @@ function focusOnStop(stop: Stop) {
     lng: stop.lng,
   };
 
-  map.value.panTo(position);
-
-  // Smooth zoom animation
-  const currentZoom = map.value.getZoom();
-  const targetZoom = 15;
-
-  if (currentZoom !== targetZoom) {
-    smoothZoom(map.value, targetZoom, currentZoom!);
-  }
-}
-
-function smoothZoom(
-  map: google.maps.Map,
-  targetZoom: number,
-  currentZoom: number
-) {
-  const step = 0.5;
-  const interval = 50; // milliseconds
-
-  if (currentZoom < targetZoom) {
-    const newZoom = Math.min(currentZoom + step, targetZoom);
-    map.setZoom(newZoom);
-    if (newZoom < targetZoom) {
-      setTimeout(() => smoothZoom(map, targetZoom, newZoom), interval);
-    }
-  } else if (currentZoom > targetZoom) {
-    const newZoom = Math.max(currentZoom - step, targetZoom);
-    map.setZoom(newZoom);
-    if (newZoom > targetZoom) {
-      setTimeout(() => smoothZoom(map, targetZoom, newZoom), interval);
-    }
-  }
+  animateViewToPosition(map.value, position);
 }
 
 function resetView() {
@@ -143,44 +115,7 @@ function resetView() {
     bounds.extend({ lat: stop.lat, lng: stop.lng });
   });
 
-  // Get the center point of the bounds
-  const center = bounds.getCenter();
-
-  // First smoothly pan to the center
-  map.value.panTo(center);
-
-  // Then animate the zoom level
-  const targetZoom = getIdealZoomLevel(bounds);
-  const currentZoom = map.value.getZoom();
-
-  setTimeout(() => {
-    smoothZoom(map.value, targetZoom, currentZoom);
-  }, 300); // Small delay to let the pan animation complete
-}
-
-function getIdealZoomLevel(bounds: google.maps.LatLngBounds): number {
-  if (!map.value) return 12;
-
-  const mapDiv = map.value.getDiv();
-  const width = mapDiv.offsetWidth;
-  const height = mapDiv.offsetHeight;
-
-  const ne = bounds.getNorthEast();
-  const sw = bounds.getSouthWest();
-
-  // Calculate the ideal zoom level based on the bounds and map size
-  const GLOBE_WIDTH = 256; // a constant in Google's map projection
-  const latAngle = ne.lat() - sw.lat();
-  const lngAngle = ne.lng() - sw.lng();
-
-  const latZoom = Math.floor(
-    Math.log((height * 360) / latAngle / GLOBE_WIDTH) / Math.LN2
-  );
-  const lngZoom = Math.floor(
-    Math.log((width * 360) / lngAngle / GLOBE_WIDTH) / Math.LN2
-  );
-
-  return Math.min(latZoom, lngZoom) - 1; // Subtract 1 to add some padding
+  animateViewToBounds(map.value, bounds);
 }
 
 watch(
@@ -215,18 +150,6 @@ onMounted(async () => {
     resetView();
   }
 });
-
-// watch(
-//   () => props.stops,
-//   (newStops) => {
-//     if (newStops.length >= 2) {
-//       calculateAndDisplayRoute();
-//     } else if (directionsRenderer.value) {
-//       directionsRenderer.value.setDirections(null);
-//     }
-//   },
-//   { deep: true }
-// );
 </script>
 
 <style lang="scss">
