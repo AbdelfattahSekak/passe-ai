@@ -33,14 +33,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch, toRaw } from "vue";
 import type { Stop } from "~/types";
 import { useMapInit } from "~/composables/useMapInit";
 import { useMapMarkers } from "~/composables/useMapMarkers";
 import { useMapRoutes } from "~/composables/useMapRoutes";
+import { useMapStore } from "~/stores/map";
 
 const props = defineProps<{
   stops: Stop[];
+  focusedStop?: Stop;
 }>();
 
 const expanded = ref(false);
@@ -54,6 +56,8 @@ const {
   initDirections,
   calculateRoute,
 } = useMapRoutes();
+
+const mapStore = useMapStore();
 
 async function calculateAndDisplayRoute(): Promise<void> {
   if (props.stops.length < 2) return;
@@ -89,6 +93,115 @@ function toggleExpand() {
   }, 300);
 }
 
+function focusOnStop(stop: Stop) {
+  if (!map.value) return;
+
+  const position = {
+    lat: stop.lat,
+    lng: stop.lng,
+  };
+
+  map.value.panTo(position);
+
+  // Smooth zoom animation
+  const currentZoom = map.value.getZoom();
+  const targetZoom = 15;
+
+  if (currentZoom !== targetZoom) {
+    smoothZoom(map.value, targetZoom, currentZoom!);
+  }
+}
+
+function smoothZoom(
+  map: google.maps.Map,
+  targetZoom: number,
+  currentZoom: number
+) {
+  const step = 0.5;
+  const interval = 50; // milliseconds
+
+  if (currentZoom < targetZoom) {
+    const newZoom = Math.min(currentZoom + step, targetZoom);
+    map.setZoom(newZoom);
+    if (newZoom < targetZoom) {
+      setTimeout(() => smoothZoom(map, targetZoom, newZoom), interval);
+    }
+  } else if (currentZoom > targetZoom) {
+    const newZoom = Math.max(currentZoom - step, targetZoom);
+    map.setZoom(newZoom);
+    if (newZoom > targetZoom) {
+      setTimeout(() => smoothZoom(map, targetZoom, newZoom), interval);
+    }
+  }
+}
+
+function resetView() {
+  if (!map.value || props.stops.length < 2) return;
+
+  const bounds = new google.maps.LatLngBounds();
+  props.stops.forEach((stop) => {
+    bounds.extend({ lat: stop.lat, lng: stop.lng });
+  });
+
+  // Get the center point of the bounds
+  const center = bounds.getCenter();
+
+  // First smoothly pan to the center
+  map.value.panTo(center);
+
+  // Then animate the zoom level
+  const targetZoom = getIdealZoomLevel(bounds);
+  const currentZoom = map.value.getZoom();
+
+  setTimeout(() => {
+    smoothZoom(map.value, targetZoom, currentZoom);
+  }, 300); // Small delay to let the pan animation complete
+}
+
+function getIdealZoomLevel(bounds: google.maps.LatLngBounds): number {
+  if (!map.value) return 12;
+
+  const mapDiv = map.value.getDiv();
+  const width = mapDiv.offsetWidth;
+  const height = mapDiv.offsetHeight;
+
+  const ne = bounds.getNorthEast();
+  const sw = bounds.getSouthWest();
+
+  // Calculate the ideal zoom level based on the bounds and map size
+  const GLOBE_WIDTH = 256; // a constant in Google's map projection
+  const latAngle = ne.lat() - sw.lat();
+  const lngAngle = ne.lng() - sw.lng();
+
+  const latZoom = Math.floor(
+    Math.log((height * 360) / latAngle / GLOBE_WIDTH) / Math.LN2
+  );
+  const lngZoom = Math.floor(
+    Math.log((width * 360) / lngAngle / GLOBE_WIDTH) / Math.LN2
+  );
+
+  return Math.min(latZoom, lngZoom) - 1; // Subtract 1 to add some padding
+}
+
+watch(
+  () => mapStore.shouldResetView,
+  (shouldReset) => {
+    if (shouldReset) {
+      resetView();
+      mapStore.clearResetFlag();
+    }
+  }
+);
+
+watch(
+  () => mapStore.focusedStop,
+  (newStop) => {
+    if (newStop) {
+      focusOnStop(newStop);
+    }
+  }
+);
+
 onMounted(async () => {
   if (!mapContainer.value) return;
 
@@ -98,7 +211,8 @@ onMounted(async () => {
   await initDirections(mapInstance);
 
   if (props.stops.length >= 2) {
-    calculateAndDisplayRoute();
+    await calculateAndDisplayRoute();
+    resetView();
   }
 });
 

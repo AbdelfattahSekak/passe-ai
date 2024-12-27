@@ -35,23 +35,32 @@ import type { Stop } from "@/types";
 import StopCard from "~/components/itinerary/StopCard.vue";
 import StopDetailsView from "~/components/itinerary/StopDetailsView.vue";
 import ItineraryHeader from "./ItineraryHeader.vue";
+import { useMapStore } from "~/stores/map";
 
 const currentView = ref<"list" | "details">("list");
 const selectedStop = ref<Stop | null>(null);
 
+const mapStore = useMapStore();
+
 const showStopDetails = (stop: Stop) => {
   selectedStop.value = stop;
   currentView.value = "details";
+  mapStore.setFocusedStop(stop);
 };
 
 const returnToList = () => {
   currentView.value = "list";
   selectedStop.value = null;
+  mapStore.resetMapView();
 };
 
 defineProps<{
   stops: Stop[];
   title: string;
+}>();
+
+defineEmits<{
+  "focus-stop": [Stop];
 }>();
 </script>
 
