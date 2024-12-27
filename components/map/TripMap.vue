@@ -137,6 +137,25 @@ watch(
   }
 );
 
+// Add this watch effect after other watch statements
+watch(
+  () => mapStore.hoveredStopId,
+  (hoveredId) => {
+    if (!map.value) return;
+    
+    // Find the marker element for the hovered stop
+    const markerElements = document.querySelectorAll('.marker-label');
+    markerElements.forEach((element, index) => {
+      const stop = props.stops[index];
+      if (stop.id === hoveredId) {
+        element.classList.add('hover');
+      } else {
+        element.classList.remove('hover');
+      }
+    });
+  }
+);
+
 onMounted(async () => {
   if (!mapContainer.value) return;
 
@@ -226,6 +245,13 @@ onMounted(async () => {
     transform: scale(1.1);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
     background-color: #e41e26;
+  }
+
+  &.hover {
+    transform: scale(1.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    background-color: #e41e26;
+    animation: bounce 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 }
 
@@ -392,6 +418,15 @@ onMounted(async () => {
   100% {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.3);
   }
 }
 </style>
