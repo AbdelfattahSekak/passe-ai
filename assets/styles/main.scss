@@ -15,3 +15,10 @@
 .p-card .p-card-body {
   padding: 0;
 }
+.p-tablist-content {
+  .p-tab-active {
+    background: white;
+    color: black;
+    border-bottom: 2px solid;
+  }
+}

@@ -3,14 +3,12 @@
     <Button
       @click="openShareDialog"
       label="Share"
-      class="p-button-text p-button-plain text-blue-600 hover:bg-blue-50 transition-colors duration-200"
       aria-label="Share itinerary"
       size="small"
-    >
-      <template #icon>
-        <i class="pi pi-share-alt mr-2"></i>
-      </template>
-    </Button>
+      text
+      icon="pi pi-share-alt"
+      severity="info"
+    />
 
     <Dialog
       :header="`Share ${itemType} with your friends and family`"

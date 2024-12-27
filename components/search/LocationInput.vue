@@ -23,13 +23,7 @@
         :placeholder="placeholder"
         :disabled="disabled || isLoadingLocation"
         class="w-full text-sm h-[30px]"
-        :pt="{
-          root: { class: 'w-full' },
-          input: {
-            class:
-              'w-full outline-none bg-transparent rounded-lg shadow-none text-gray-900 font-semibold',
-          },
-        }"
+        inputClass="w-full bg-red-100 outline-none bg-transparent rounded-lg shadow-none text-gray-900 font-semibold bg-red-600"
       />
     </div>
   </div>

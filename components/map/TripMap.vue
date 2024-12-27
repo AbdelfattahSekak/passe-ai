@@ -7,7 +7,7 @@
         : 'sticky top-[calc(15vh+60px)]',
     ]"
   >
-    <div class="map-container">
+    <div class="map-container flex">
       <LoadingOverlay v-if="isCalculating" />
       <Button
         @click="toggleExpand"
@@ -142,15 +142,15 @@ watch(
   () => mapStore.hoveredStopId,
   (hoveredId) => {
     if (!map.value) return;
-    
+
     // Find the marker element for the hovered stop
-    const markerElements = document.querySelectorAll('.marker-label');
+    const markerElements = document.querySelectorAll(".marker-label");
     markerElements.forEach((element, index) => {
       const stop = props.stops[index];
       if (stop.id === hoveredId) {
-        element.classList.add('hover');
+        element.classList.add("hover");
       } else {
-        element.classList.remove('hover');
+        element.classList.remove("hover");
       }
     });
   }
@@ -172,6 +172,9 @@ onMounted(async () => {
 </script>
 
 <style lang="scss">
+.p-button {
+  position: absolute;
+}
 .map-container {
   position: relative;
   width: 100%;
@@ -422,7 +425,8 @@ onMounted(async () => {
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1.2);
   }
   50% {

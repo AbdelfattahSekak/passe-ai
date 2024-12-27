@@ -1,14 +1,13 @@
 <template>
   <Button
+    text
+    size="small"
     @click="openInGoogleMaps"
     label="Get directions"
-    class="p-button-plain text-blue-600"
     aria-label="Open itinerary in Google Maps"
-  >
-    <template #icon>
-      <i class="pi pi-directions mr-2"></i>
-    </template>
-  </Button>
+    icon="pi pi-directions"
+    severity="info"
+  />
 </template>
 
 <script setup lang="ts">
@@ -46,32 +45,3 @@ function openInGoogleMaps() {
   }
 }
 </script>
-
-<style scoped>
-.p-button-secondary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.p-button-secondary {
-  transition: all 0.2s ease-in-out;
-}
-
-.p-button-text:hover {
-  background: transparent !important;
-  color: #003580 !important;
-}
-
-.p-button-text {
-  padding: 0;
-  color: #0071c2 !important;
-}
-
-.pi-directions {
-  color: #0071c2;
-}
-
-.pi-directions:hover {
-  color: #003580;
-}
-</style>

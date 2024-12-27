@@ -1,6 +1,6 @@
 <template>
   <div
-    class="cursor-pointer"
+    class="cursor-pointer mb-6"
     @mouseenter="handleHover(true)"
     @mouseleave="handleHover(false)"
     @click="$emit('showDetails', stop)"
@@ -19,12 +19,10 @@
       <template #content>
         <div class="p-2 flex flex-col gap-4">
           <p class="text-text-primary">{{ stop.details }}</p>
-          <Divider />
-          <Button severity="secondary" label="View More Details" />
+          <Button text severity="secondary" label="View More Details" />
         </div>
       </template>
     </Card>
-    <Divider />
   </div>
 </template>
 

@@ -21,42 +21,78 @@
         <p>{{ stop.details }}</p>
       </div>
 
-      <div>
-        <h3 class="font-semibold mb-4">Geos</h3>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-1" role="list">
-          <ActivityCard
-            v-for="(activity, index) in stop.activities.filter(
-              (e) => e.category === 'geos'
-            )"
-            :key="index"
-            :activity="activity"
+      <Tabs value="attractions">
+        <TabList>
+          <Tab value="attractions">
+            <div class="flex items-center gap-2">
+              <i class="pi pi-compass"></i>
+              <span>Attractions</span>
+              <Badge :value="getActivitiesByCategory('geos').length" /></div
+          ></Tab>
+          <Tab value="restaurants">
+            <div class="flex items-center gap-2">
+              <i class="pi pi-ticket"></i>
+              <span>Restaurants</span>
+              <Badge :value="getActivitiesByCategory('restaurants').length" />
+            </div>
+          </Tab>
+          <Tab value="hotels">
+            <div class="flex items-center gap-2">
+              <i class="pi pi-home"></i>
+              <span>Hotels</span>
+              <Badge :value="getActivitiesByCategory('hotels').length" /></div
+          ></Tab>
+        </TabList>
+        <TabPanel value="attractions">
+          <div
+            v-if="getActivitiesByCategory('geos').length"
+            class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4"
+          >
+            <ActivityCard
+              v-for="activity in getActivitiesByCategory('geos')"
+              :key="activity.id"
+              :activity="activity"
+            />
+          </div>
+          <EmptyState
+            v-else
+            icon="pi-compass"
+            message="No attractions found nearby"
           />
-        </div>
-      </div>
-      <div>
-        <h3 class="font-semibold mb-4">Eats</h3>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-1" role="list">
-          <ActivityCard
-            v-for="(activity, index) in stop.activities.filter(
-              (e) => e.category === 'restaurants'
-            )"
-            :key="index"
-            :activity="activity"
+        </TabPanel>
+
+        <TabPanel value="restaurants">
+          <div
+            v-if="getActivitiesByCategory('restaurants').length"
+            class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4"
+          >
+            <ActivityCard
+              v-for="activity in getActivitiesByCategory('restaurants')"
+              :key="activity.id"
+              :activity="activity"
+            />
+          </div>
+          <EmptyState
+            v-else
+            icon="pi-ticket"
+            message="No restaurants found nearby"
           />
-        </div>
-      </div>
-      <div>
-        <h3 class="font-semibold mb-4">Stays</h3>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-1" role="list">
-          <ActivityCard
-            v-for="(activity, index) in stop.activities.filter(
-              (e) => e.category === 'hotels'
-            )"
-            :key="index"
-            :activity="activity"
-          />
-        </div>
-      </div>
+        </TabPanel>
+
+        <TabPanel value="hotels">
+          <div
+            v-if="getActivitiesByCategory('hotels').length"
+            class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4"
+          >
+            <ActivityCard
+              v-for="activity in getActivitiesByCategory('hotels')"
+              :key="activity.id"
+              :activity="activity"
+            />
+          </div>
+          <EmptyState v-else icon="pi-home" message="No hotels found nearby" />
+        </TabPanel>
+      </Tabs>
     </div>
   </div>
 </template>
@@ -65,11 +101,17 @@
 import type { Stop } from "@/types";
 import StopPhoto from "~/components/itinerary/StopPhoto.vue";
 
-defineProps<{
+const props = defineProps<{
   stop: Stop;
 }>();
 
 defineEmits<{
   back: [];
 }>();
+
+const getActivitiesByCategory = (category: string) => {
+  return props.stop.activities.filter((e) => e.category === category);
+};
 </script>
+
+<style scoped></style>

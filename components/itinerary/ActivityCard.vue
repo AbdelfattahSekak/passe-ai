@@ -1,12 +1,8 @@
 <template>
-  <button
-    role="listitem"
-    class="block w-full max-w-[120px] text-left transition-transform hover:scale-102 focus:scale-102"
-    @click="showModal = true"
-  >
-    <Card class="h-full">
+  <button role="listitem" @click="showModal = true">
+    <Card class="h-full border-none hover:shadow-lg transition-shadow">
       <template #header>
-        <div class="relative h-14 overflow-hidden rounded">
+        <div class="relative h-32 overflow-hidden">
           <img
             v-if="activity.locationInfo.photos?.[0]"
             :src="activity.locationInfo.photos[0].url"
@@ -18,21 +14,36 @@
             v-else
             class="w-full h-full bg-gray-200 flex items-center justify-center"
           >
-            <i class="pi pi-image text-gray-400 text-xl"></i>
+            <i class="pi pi-image text-gray-400 text-2xl"></i>
+          </div>
+          <div
+            v-if="activity.locationInfo.details?.rating"
+            class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-2"
+          >
+            <div class="flex items-center gap-1">
+              <i class="pi pi-star-fill text-yellow-400 text-xs"></i>
+              <span class="text-white text-xs font-medium">
+                {{ activity.locationInfo.details?.rating || "N/A" }}
+              </span>
+            </div>
           </div>
         </div>
       </template>
       <template #content>
-        <div class="p-1">
-          <h4
-            class="font-medium text-xs text-text-primary min-h-[2.5rem] overflow-hidden"
-          >
-            <span
-              class="line-clamp-2 [-webkit-box-orient:vertical] [-webkit-line-clamp:2] [display:-webkit-box]"
-            >
-              {{ activity.title }}
-            </span>
+        <div class="p-3 flex flex-col gap-2">
+          <h4 class="font-medium text-sm text-text-primary line-clamp-2">
+            {{ activity.title }}
           </h4>
+          <p class="text-xs text-gray-500 line-clamp-2">
+            {{ activity.address }}
+          </p>
+          <div class="flex items-center gap-2 mt-1">
+            <Tag
+              :severity="getCategoryStyle(activity.category)"
+              :value="formatCategory(activity.category)"
+              rounded
+            />
+          </div>
         </div>
       </template>
     </Card>
@@ -53,13 +64,24 @@ defineProps<{
 }>();
 
 const showModal = ref(false);
+
+const formatCategory = (category: string) => {
+  const map: Record<string, string> = {
+    geos: "Attraction",
+    restaurants: "Restaurant",
+    hotels: "Hotel",
+  };
+  return map[category] || category;
+};
+
+const getCategoryStyle = (category: string) => {
+  const map: Record<string, string> = {
+    geos: "info",
+    restaurants: "warning",
+    hotels: "success",
+  };
+  return map[category] || "info";
+};
 </script>
 
-<style scoped>
-.hover\:scale-102:hover {
-  transform: scale(1.02);
-}
-.focus\:scale-102:focus {
-  transform: scale(1.02);
-}
-</style>
+<style scoped></style>

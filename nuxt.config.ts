@@ -1,3 +1,5 @@
+import theme from "./theme";
+
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
@@ -10,7 +12,7 @@ export default defineNuxtConfig({
   ],
   css: [
     "@/assets/styles/main.scss",
-    "primevue/resources/themes/aura-light-green/theme.css",
+    // "primevue/resources/themes/aura-light-green/theme.css",
     "primeicons/primeicons.css",
   ],
   components: {
@@ -44,8 +46,15 @@ export default defineNuxtConfig({
   primevue: {
     options: {
       ripple: true,
-      inputStyle: "filled",
+      inputVariant: "filled",
+      theme: {
+        preset: theme,
+        options: {
+          darkModeSelector: "",
+        },
+      },
     },
+
     components: {
       include: [
         "Button",
@@ -58,6 +67,10 @@ export default defineNuxtConfig({
         "Toast",
         "Menu",
         "Dialog",
+        "Tabs",
+        "TabPanels",
+        "TabPanel",
+        "Tab",
       ],
     },
     directives: {
