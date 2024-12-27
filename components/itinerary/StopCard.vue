@@ -17,51 +17,24 @@
         <Button
           severity="secondary"
           label="View More Details"
-          @click="showModal = true"
+          @click="$emit('showDetails', stop)"
         />
       </div>
     </template>
   </Card>
   <Divider />
-
-  <Dialog
-    v-model:visible="showModal"
-    modal
-    header="Stop Details"
-    :style="{ width: '90vw', maxWidth: '768px' }"
-  >
-    <div class="flex flex-col gap-6">
-      <div>
-        <h3 class="font-semibold mb-4">About</h3>
-        <p>{{ stop.details }}</p>
-      </div>
-
-      <div>
-        <h3 class="font-semibold mb-4 flex items-center gap-2">Activities</h3>
-        <div
-          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
-          role="list"
-        >
-          <ActivityCard
-            v-for="(activity, index) in stop.activities"
-            :key="index"
-            :activity="activity"
-          />
-        </div>
-      </div>
-    </div>
-  </Dialog>
 </template>
 
 <script setup lang="ts">
 import type { Stop } from "@/types";
 import StopPhoto from "~/components/itinerary/StopPhoto.vue";
-import { ref } from "vue";
 import Divider from "primevue/divider";
 
 defineProps<{
   stop: Stop;
 }>();
 
-const showModal = ref(false);
+defineEmits<{
+  showDetails: [stop: Stop];
+}>();
 </script>

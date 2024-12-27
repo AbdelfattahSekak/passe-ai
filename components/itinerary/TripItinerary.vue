@@ -1,36 +1,49 @@
 <template>
   <div class="p-4" role="region" aria-label="Trip Itinerary">
-    <div class="mb-6">
-      <h1 class="text-2xl font-bold text-text-primary">{{ title }}</h1>
-      <div class="mt-2 flex items-center gap-4">
-        <OpenInGoogleMapsButton :stops="stops" />
-        <client-only placeholder="loading...">
-          <ShareButton :itemTitle="title" itemType="trip" />
-        </client-only>
-      </div>
+    <ItineraryHeader :title="title" :stops="stops" />
+    <div v-if="currentView === 'list'">
+      <Timeline :value="stops" class="customized-timeline">
+        <template #marker="slotProps">
+          <div class="flex items-center gap-4">
+            <span
+              class="flex w-8 h-8 items-center justify-center bg-primary text-white rounded-full shadow-sm"
+            >
+              {{ slotProps.index + 1 }}
+            </span>
+          </div>
+        </template>
+        <template #content="slotProps">
+          <StopCard @showDetails="showStopDetails" :stop="slotProps.item" />
+        </template>
+      </Timeline>
     </div>
-    <Timeline :value="stops" class="customized-timeline">
-      <template #marker="slotProps">
-        <div class="flex items-center gap-4">
-          <span
-            class="flex w-8 h-8 items-center justify-center bg-primary text-white rounded-full shadow-sm"
-          >
-            {{ slotProps.index + 1 }}
-          </span>
-        </div>
-      </template>
-      <template class="mt-100" #content="slotProps">
-        <StopCard :stop="slotProps.item" />
-      </template>
-    </Timeline>
+
+    <StopDetailsView
+      v-else-if="currentView === 'details'"
+      :stop="selectedStop!"
+      @back="returnToList"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import type { Stop } from "@/types";
-import OpenInGoogleMapsButton from "~/components/common/OpenInGoogleMapsButton.vue";
-import ShareButton from "~/components/common/ShareButton.vue";
 import StopCard from "~/components/itinerary/StopCard.vue";
+import StopDetailsView from "~/components/itinerary/StopDetailsView.vue";
+import ItineraryHeader from "./ItineraryHeader.vue";
+
+const currentView = ref<"list" | "details">("list");
+const selectedStop = ref<Stop | null>(null);
+
+const showStopDetails = (stop: Stop) => {
+  selectedStop.value = stop;
+  currentView.value = "details";
+};
+
+const returnToList = () => {
+  currentView.value = "list";
+  selectedStop.value = null;
+};
 
 defineProps<{
   stops: Stop[];
@@ -46,7 +59,6 @@ defineProps<{
 }
 
 .customized-timeline .p-timeline-event-content {
-  margin-left: 1rem;
 }
 
 .hover\:scale-102:hover {
