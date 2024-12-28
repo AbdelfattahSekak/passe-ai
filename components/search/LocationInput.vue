@@ -11,8 +11,8 @@
       >
 
       <AutoComplete
+        variant="outlined"
         ref="autoComplete"
-        style="outline: none"
         :id="id"
         forceSelection
         v-model="selectedLocation"
@@ -23,7 +23,7 @@
         :placeholder="placeholder"
         :disabled="disabled || isLoadingLocation"
         class="w-full text-sm h-[30px]"
-        inputClass="w-full bg-red-100 outline-none bg-transparent rounded-lg shadow-none text-gray-900 font-semibold bg-red-600"
+        inputClass="w-full border-none bg-red-100 outline-none bg-transparent rounded-lg shadow-none text-gray-900 font-semibold bg-red-600"
       />
     </div>
   </div>
@@ -151,5 +151,9 @@ const handleSelect = (event: { value: string }) => {
 
 :deep(.p-autocomplete-item:first-child) {
   @apply font-medium text-primary;
+}
+
+.p-inputtext {
+  background: red;
 }
 </style>

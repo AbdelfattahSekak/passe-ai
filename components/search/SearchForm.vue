@@ -1,5 +1,7 @@
 <template>
-  <div class="bg-white max-w-[1000px] h-[70px] px-4 py-1 rounded-full">
+  <div
+    class="bg-white max-w-[1000px] h-[70px] px-4 py-1 rounded-full border border-gray-200/80"
+  >
     <form
       @submit.prevent="handleSubmit"
       class="flex flex-col md:flex-row items-center gap-4 md:gap-6"
@@ -36,7 +38,7 @@
           size="large"
           :loading="loading"
           :disabled="!isFormValid"
-          icon="pi pi-search"
+          icon="pi pi-search text-white"
         />
       </div>
     </form>

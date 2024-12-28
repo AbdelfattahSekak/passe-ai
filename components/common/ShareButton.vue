@@ -2,12 +2,10 @@
   <div>
     <Button
       @click="openShareDialog"
-      label="Share"
       aria-label="Share itinerary"
       size="small"
-      text
+      severity="secondary"
       icon="pi pi-share-alt"
-      severity="info"
     />
 
     <Dialog

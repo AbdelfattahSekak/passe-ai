@@ -12,7 +12,7 @@
         {{ stop.address }}
       </p>
     </div>
-    <Card class="shadow-l mt-2 bg-gray-50">
+    <Card class="mt-2">
       <template #header>
         <StopPhoto :photos="stop.locationInfo?.photos || []" />
       </template>

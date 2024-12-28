@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4" role="region" aria-label="Trip Itinerary">
+  <div class="p-4 z-10" role="region" aria-label="Trip Itinerary">
     <ItineraryHeader :title="title" :stops="stops" />
     <Transition name="fade" mode="out-in">
       <div v-if="currentView === 'list'" key="list">

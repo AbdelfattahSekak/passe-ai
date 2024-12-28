@@ -1,5 +1,3 @@
-import theme from "./theme";
-
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
@@ -10,11 +8,7 @@ export default defineNuxtConfig({
     "@primevue/nuxt-module",
     "@pinia/nuxt",
   ],
-  css: [
-    "@/assets/styles/main.scss",
-    // "primevue/resources/themes/aura-light-green/theme.css",
-    "primeicons/primeicons.css",
-  ],
+  css: ["@/assets/styles/main.scss", "primeicons/primeicons.css"],
   components: {
     dirs: [
       {
@@ -47,12 +41,7 @@ export default defineNuxtConfig({
     options: {
       ripple: true,
       inputVariant: "filled",
-      theme: {
-        preset: theme,
-        options: {
-          darkModeSelector: "",
-        },
-      },
+      theme: "none",
     },
 
     components: {

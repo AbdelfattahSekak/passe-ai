@@ -2,11 +2,10 @@
   <div class="flex gap-3 mb-50">
     <Button
       icon="pi pi-arrow-left"
-      class="bg-white"
       @click="$emit('back')"
       aria-label="Return to itinerary"
-      raised
       rounded
+      outlined
     />
 
     <div class="flex-1 flex flex-col gap-6">
@@ -17,8 +16,9 @@
           {{ stop.address }}
         </p>
         <StopPhoto :photos="stop.locationInfo?.photos || []" class="mb-6" />
-        <h3 class="font-semibold mb-4">About</h3>
-        <p>{{ stop.details }}</p>
+        <Panel header="About">
+          <p>{{ stop.details }}</p>
+        </Panel>
       </div>
 
       <Tabs value="attractions">
@@ -46,7 +46,7 @@
         <TabPanel value="attractions">
           <div
             v-if="getActivitiesByCategory('geos').length"
-            class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4"
+            class="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4"
           >
             <ActivityCard
               v-for="activity in getActivitiesByCategory('geos')"
@@ -64,7 +64,7 @@
         <TabPanel value="restaurants">
           <div
             v-if="getActivitiesByCategory('restaurants').length"
-            class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4"
+            class="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4"
           >
             <ActivityCard
               v-for="activity in getActivitiesByCategory('restaurants')"
@@ -82,7 +82,7 @@
         <TabPanel value="hotels">
           <div
             v-if="getActivitiesByCategory('hotels').length"
-            class="grid grid-cols-2 md:grid-cols-3 gap-4 p-4"
+            class="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4"
           >
             <ActivityCard
               v-for="activity in getActivitiesByCategory('hotels')"

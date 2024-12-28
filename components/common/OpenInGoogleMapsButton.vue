@@ -1,6 +1,6 @@
 <template>
   <Button
-    text
+    variant="outlined"
     size="small"
     @click="openInGoogleMaps"
     label="Get directions"

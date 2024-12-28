@@ -9,7 +9,7 @@
   >
     <div class="map-container flex">
       <LoadingOverlay v-if="isCalculating" />
-      <Button
+      <!-- <Button
         @click="toggleExpand"
         class="absolute top-4 left-4 z-10 bg-white"
         :aria-label="expanded ? 'Collapse map' : 'Expand map'"
@@ -17,7 +17,7 @@
         raised
         rounded
         :icon="expanded ? 'pi pi-angle-right' : 'pi pi-angle-left'"
-      />
+      /> -->
       <div
         ref="mapContainer"
         id="map"
