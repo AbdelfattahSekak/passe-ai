@@ -27,7 +27,9 @@
             <div class="flex items-center gap-2">
               <i class="pi pi-compass"></i>
               <span>Attractions</span>
-              <Badge :value="getActivitiesByCategory('geos').length" /></div
+              <Badge
+                :value="getActivitiesByCategory('attractions').length"
+              /></div
           ></Tab>
           <Tab value="restaurants">
             <div class="flex items-center gap-2">
@@ -45,11 +47,11 @@
         </TabList>
         <TabPanel value="attractions">
           <div
-            v-if="getActivitiesByCategory('geos').length"
+            v-if="getActivitiesByCategory('attractions').length"
             class="grid grid-cols-2 md:grid-cols-3 gap-4 pt-4"
           >
             <ActivityCard
-              v-for="activity in getActivitiesByCategory('geos')"
+              v-for="activity in getActivitiesByCategory('attractions')"
               :key="activity.id"
               :activity="activity"
             />
@@ -98,7 +100,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Stop } from "@/types";
+import type { ActivityCatergory, Stop } from "@/types";
 import StopPhoto from "~/components/itinerary/StopPhoto.vue";
 
 const props = defineProps<{
@@ -109,7 +111,7 @@ defineEmits<{
   back: [];
 }>();
 
-const getActivitiesByCategory = (category: string) => {
+const getActivitiesByCategory = (category: ActivityCatergory) => {
   return props.stop.activities.filter((e) => e.category === category);
 };
 </script>

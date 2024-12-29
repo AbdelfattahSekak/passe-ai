@@ -1,14 +1,12 @@
 <template>
   <Button
-    variant="outlined"
+    text
     size="small"
     @click="openInGoogleMaps"
     label="Get directions"
     aria-label="Open itinerary in Google Maps"
-    icon="pi pi-directions"
-  >
-    Get Directions
-  </Button>
+    icon="pi pi-directions-alt"
+  />
 </template>
 
 <script setup lang="ts">

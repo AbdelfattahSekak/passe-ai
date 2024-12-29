@@ -63,9 +63,6 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
       ariaLabel: activity.title,
       content: `
         <div class="info-window-content p-4 relative">
-          <button class="info-window-close absolute -right-2 -top-2 w-6 h-6 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-100">
-            <i class="pi pi-times text-gray-600 text-xs"></i>
-          </button>
           <div class="flex flex-col gap-3">
             ${
               activity.locationInfo?.photos?.[0]
@@ -92,7 +89,7 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
                 }
               </div>
               <p class="text-sm text-gray-600">${
-                activity.locationInfo.details?.description
+                activity.locationInfo.details?.description || ""
               }</p>
             </div>
             ${

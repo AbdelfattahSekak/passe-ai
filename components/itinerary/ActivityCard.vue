@@ -83,7 +83,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Activity } from "~/types";
+import type { Activity, ActivityCatergory } from "~/types";
 
 const { activity } = defineProps<{
   activity: Activity;
@@ -91,7 +91,7 @@ const { activity } = defineProps<{
 
 const showModal = ref(false);
 
-const formatCategory = (category: string) => {
+const formatCategory = (category: ActivityCatergory) => {
   const map: Record<string, string> = {
     geos: "Attraction",
     restaurants: "Restaurant",

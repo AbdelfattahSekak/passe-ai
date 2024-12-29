@@ -26,7 +26,7 @@ async function enrichStopLocation(stop: Stop) {
         getLocationInfo(stop.address),
         getNearbyActivities(stop.lat, stop.lng, "hotels"),
         getNearbyActivities(stop.lat, stop.lng, "restaurants"),
-        getNearbyActivities(stop.lat, stop.lng, "geos"),
+        getNearbyActivities(stop.lat, stop.lng, "attractions"),
       ]);
     if (locationInfo) {
       stop.locationInfo = locationInfo;

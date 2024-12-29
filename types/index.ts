@@ -1,5 +1,12 @@
 import type { TripAdvisorActvityDetails } from "./tripAdvisor";
 export type { TripAdvisorActvityDetails } from "./tripAdvisor";
+
+export type ActivityCatergory =
+  | "hotels"
+  | "restaurants"
+  | "geos"
+  | "attractions";
+
 export interface Activity {
   id: string;
   title: string;
@@ -8,7 +15,7 @@ export interface Activity {
   details: string;
   address: string;
   locationInfo: LocationInfo;
-  category: "hotels" | "restaurants" | "geos" | "attractions";
+  category: ActivityCatergory;
 }
 
 export interface Stop {
