@@ -135,7 +135,7 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
             <div>
               ${
                 stop.locationInfo?.photos?.[0]
-                  ? `<img src="${stop.locationInfo.photos[0].url}" alt="${stop.title}" class="w-full h-48 object-cover">`
+                  ? `<img src="${stop.locationInfo.photos[0].url}" alt="${stop.title}" class="w-full h-32 object-cover">`
                   : ""
               }
             </div>
