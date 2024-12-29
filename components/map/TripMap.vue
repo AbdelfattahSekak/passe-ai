@@ -206,6 +206,10 @@ onMounted(async () => {
   animation-delay: -0.16s;
 }
 
+.gm-style-iw {
+  padding: 0;
+}
+
 .gm-style-iw-ch span {
   @apply font-semibold text-primary;
 }
@@ -299,7 +303,6 @@ onMounted(async () => {
 
 // Custom InfoWindow styles
 .gm-style .gm-style-iw-c {
-  padding: 16px;
   border-radius: 12px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 

@@ -122,43 +122,37 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
 
     // Create stop info window content
     const createStopContent = () => {
-      const activitiesList = stop.activities
-        .map(
-          (activity) => `
-          <li class="stop-activity-item">
-            <i class="pi pi-star text-blue-500"></i>
-            <span>${activity.title}</span>
-          </li>
-        `
-        )
-        .join("");
-
       return `
-        <div class="stop-info-window">
-          <h3 class="stop-title">Stop ${index + 1}: ${stop.title}</h3>
-          ${
-            stop.details
-              ? `<p class="stop-description">${stop.details}</p>`
-              : ""
-          }
-          ${
-            stop.activities.length
-              ? `
-            <div class="activities-section">
-              <h4 class="activities-title">Activities</h4>
-              <ul class="activities-list">
-                ${activitiesList}
-              </ul>
+        <div class="stop-info-window p-4">
+          <div class="flex flex-col gap-2">
+            <h2 class="text-xl font-bold">${stop.title}</h2>
+            <p class="text-sm text-text-secondary flex items-center gap-2">
+              <i class="pi pi-map-marker text-primary"></i>
+              ${stop.address}
+            </p>
+          </div>
+          <div class="mt-2">
+            <div>
+              ${
+                stop.locationInfo?.photos?.[0]
+                  ? `<img src="${stop.locationInfo.photos[0].url}" alt="${stop.title}" class="w-full h-48 object-cover">`
+                  : ""
+              }
             </div>
-          `
-              : ""
-          }
+            <div >
+              <div class="p-2 flex flex-col gap-4">
+                <p class="text-text-primary">${stop.details}</p>
+               
+              </div>
+            </div>
+          </div>
         </div>
       `;
     };
 
     const stopInfoWindow = new InfoWindow({
       content: createStopContent(),
+      maxWidth: 320,
       pixelOffset: new google.maps.Size(0, -20),
     });
 

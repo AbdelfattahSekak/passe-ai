@@ -23,7 +23,7 @@
         :placeholder="placeholder"
         :disabled="disabled || isLoadingLocation"
         class="w-full text-sm h-[30px]"
-        inputClass="w-full border-none bg-red-100 outline-none bg-transparent rounded-lg shadow-none text-gray-900 font-semibold bg-red-600"
+        inputClass="p-0 w-full border-none bg-red-100 outline-none bg-transparent rounded-lg shadow-none text-gray-900 font-semibold bg-red-600"
       />
     </div>
   </div>
@@ -154,6 +154,5 @@ const handleSelect = (event: { value: string }) => {
 }
 
 .p-inputtext {
-  background: red;
 }
 </style>
