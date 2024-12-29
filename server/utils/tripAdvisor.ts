@@ -3,7 +3,7 @@ import type {
   LocationInfo,
   Activity,
   LocationPhoto,
-  LocationDetails,
+  TripAdvisorActvityDetails,
 } from "~/types";
 
 const config = useRuntimeConfig();
@@ -118,7 +118,7 @@ export async function getLocationDetails(
 
     return {
       id: locationId,
-      details: details.data as LocationDetails,
+      details: details.data as TripAdvisorActvityDetails,
       photos,
     };
   } catch (error) {
