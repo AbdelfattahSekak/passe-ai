@@ -82,6 +82,18 @@ export default defineNuxtConfig({
       RATE_LIMIT_VALUE: process.env.RATE_LIMIT_VALUE || 10,
     },
   },
+  googleFonts: {
+    families: {
+      Roboto: true,
+      Inter: [400, 700],
+      "Josefin+Sans": true,
+      Lato: [100, 300],
+      Raleway: {
+        wght: [100, 400],
+        ital: [100],
+      },
+    },
+  },
   app: {
     head: {
       htmlAttrs: {

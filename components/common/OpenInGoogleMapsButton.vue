@@ -6,8 +6,9 @@
     label="Get directions"
     aria-label="Open itinerary in Google Maps"
     icon="pi pi-directions"
-    severity="info"
-  />
+  >
+    Get Directions
+  </Button>
 </template>
 
 <script setup lang="ts">
