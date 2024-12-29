@@ -272,7 +272,6 @@ onMounted(async () => {
 }
 
 .activity-marker-inner {
-  background: #2196f3;
   color: white;
   width: 36px;
   height: 36px;
@@ -287,7 +286,6 @@ onMounted(async () => {
 
   &:hover {
     transform: scale(1.15);
-    background: #1976d2;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   }
 
@@ -366,5 +364,24 @@ onMounted(async () => {
   50% {
     transform: scale(1.3);
   }
+}
+
+.activity-marker-attractions {
+  background: rgba(168, 85, 247, 0.9);
+  color: white;
+}
+
+.activity-marker-restaurants {
+  background: rgba(245, 158, 11, 0.9);
+  color: white;
+}
+
+.activity-marker-hotels {
+  background: rgba(16, 185, 129, 0.9);
+  color: white;
+}
+
+.activity-marker .pi {
+  font-size: 1rem;
 }
 </style>

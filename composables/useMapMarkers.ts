@@ -1,4 +1,4 @@
-import type { Activity, Stop } from "~/types";
+import type { Activity, ActivityCatergory, Stop } from "~/types";
 
 export function useMapMarkers(map: Ref<google.maps.Map | null>) {
   const markers = ref<google.maps.marker.AdvancedMarkerElement[]>([]);
@@ -44,11 +44,24 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
       return;
     }
 
+    const getCategoryIcon = (category: ActivityCatergory): string => {
+      switch (category) {
+        case "attractions":
+          return "pi-compass";
+        case "restaurants":
+          return "pi-ticket";
+        case "hotels":
+          return "pi-home";
+        default:
+          return "pi-map-marker";
+      }
+    };
+
     const markerContainer = document.createElement("div");
-    markerContainer.className = "activity-marker";
+    markerContainer.className = `activity-marker`;
     markerContainer.innerHTML = `
-      <div class="activity-marker-inner">
-          <i class="pi pi-star"></i>
+      <div class="activity-marker-inner activity-marker-${activity.category}">
+          <i class="pi ${getCategoryIcon(activity.category)}"></i>
       </div>
     `;
 

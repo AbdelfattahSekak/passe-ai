@@ -121,15 +121,10 @@ const formatReviewCount = (count: string) => {
 };
 
 const handleClick = (event: MouseEvent) => {
-  // If ctrl/cmd key is pressed or middle mouse button, let the browser handle it
-
   event.preventDefault();
   if (activity.locationInfo.details?.web_url) {
     window.open(activity.locationInfo.details.web_url, "_blank");
   }
-
-  //   // Regular click shows the modal
-  //   showModal.value = true;
 };
 </script>
 
