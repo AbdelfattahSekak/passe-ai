@@ -62,9 +62,50 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
     const infoWindow = new InfoWindow({
       ariaLabel: activity.title,
       content: `
-        <div class="info-window-content">
-          <h3>${activity.title}</h3>
-          <p>${activity.details}</p>
+        <div class="info-window-content p-4 relative">
+          <button class="info-window-close absolute -right-2 -top-2 w-6 h-6 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-100">
+            <i class="pi pi-times text-gray-600 text-xs"></i>
+          </button>
+          <div class="flex flex-col gap-3">
+            ${
+              activity.locationInfo?.photos?.[0]
+                ? `<img src="${activity.locationInfo.photos[0].url}" 
+                   alt="${activity.title}" 
+                   class="w-full h-32 object-cover rounded-lg">`
+                : ""
+            }
+            <div>
+              <h3 class="text-lg font-bold mb-1">${activity.title}</h3>
+              <div class="flex items-center gap-2 mb-2">
+                ${
+                  activity.locationInfo.details?.rating
+                    ? `<div class="flex items-center gap-1">
+                    <i class="pi pi-star-fill text-yellow-500"></i>
+                    <span class="text-sm font-medium">${activity.locationInfo.details.rating}</span>
+                  </div>`
+                    : ""
+                }
+                ${
+                  activity.locationInfo.details?.price_level
+                    ? `<span class="text-emerald-600 font-medium">${activity.locationInfo.details.price_level}</span>`
+                    : ""
+                }
+              </div>
+              <p class="text-sm text-gray-600">${
+                activity.locationInfo.details?.description
+              }</p>
+            </div>
+            ${
+              activity.locationInfo.details?.web_url
+                ? `<a href="${activity.locationInfo.details.web_url}" 
+                  target="_blank" 
+                  class="text-sm text-primary hover:underline mt-2 flex items-center gap-1">
+                <i class="pi pi-external-link"></i>
+                View more details
+              </a>`
+                : ""
+            }
+          </div>
         </div>
       `,
       pixelOffset: new google.maps.Size(0, -10),
@@ -94,6 +135,27 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
     infoWindow.addListener("closeclick", () => {
       isOpen = false;
       markerContainer.classList.remove("pulse");
+    });
+
+    // Add map click listener
+    map.addListener("click", () => {
+      if (isOpen) {
+        infoWindow.close();
+        isOpen = false;
+        markerContainer.classList.remove("pulse");
+      }
+    });
+
+    // Update the domready listener to handle the custom close button
+    infoWindow.addListener("domready", () => {
+      const closeButton = document.querySelector(".info-window-close");
+      if (closeButton) {
+        closeButton.addEventListener("click", () => {
+          infoWindow.close();
+          isOpen = false;
+          markerContainer.classList.remove("pulse");
+        });
+      }
     });
 
     activityMarkers.value.push(marker);
@@ -195,6 +257,15 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
     stopInfoWindow.addListener("closeclick", () => {
       isInfoWindowOpen = false;
       markerElement.classList.remove("active");
+    });
+
+    // Add map click listener
+    map.addListener("click", () => {
+      if (isInfoWindowOpen) {
+        stopInfoWindow.close();
+        isInfoWindowOpen = false;
+        markerElement.classList.remove("active");
+      }
     });
 
     markers.value.push(marker);
