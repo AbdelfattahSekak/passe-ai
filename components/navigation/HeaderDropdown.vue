@@ -18,8 +18,8 @@
     >
       <div
         v-show="isOpen"
+        ref="dropdown"
         class="absolute right-0 mt-1 w-48 rounded-lg bg-white/95 py-1 shadow-lg border border-gray-100 backdrop-blur-sm"
-        @click.outside="isOpen = false"
       >
         <NuxtLink
           v-for="item in menuItems"
@@ -37,12 +37,18 @@
 </template>
 
 <script setup lang="ts">
+import { onClickOutside } from "@vueuse/core";
+
 const isOpen = ref(false);
+const dropdown = ref<HTMLElement | null>(null);
+
+onClickOutside(dropdown, () => {
+  isOpen.value = false;
+});
 
 const menuItems = [
   { label: "Home", path: "/", icon: "pi pi-home" },
   { label: "About", path: "/about", icon: "pi pi-info-circle" },
   { label: "Contact", path: "/contact", icon: "pi pi-envelope" },
-  { label: "Help", path: "/help", icon: "pi pi-question-circle" },
 ];
 </script>
