@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-200">
+  <div class="min-h-screen">
     <slot />
     <TheFooter />
   </div>
