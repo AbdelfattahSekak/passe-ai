@@ -3,7 +3,11 @@
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="text-center mb-12">
-      <h1 class="text-4xl font-bold mb-4">Get in Touch</h1>
+      <h1
+        class="text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent"
+      >
+        Get in Touch
+      </h1>
       <p class="text-lg text-gray-600 max-w-2xl mx-auto">
         Have questions about planning your next adventure? We're here to help
         make your road trip dreams come true.

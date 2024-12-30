@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white h-auto pr-1 border border-gray-200/80 hover:border-gray-300 transition-all duration-300 max-w-[900px] rounded-full"
+    class="bg-white h-auto pr-1 border border-gray-100 max-w-[900px] rounded-full"
   >
     <form
       @submit.prevent="handleSubmit"
