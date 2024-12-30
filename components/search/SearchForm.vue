@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white h-auto px-4 py-3 md:py-1 rounded-xl border border-gray-200/80 hover:border-gray-300 transition-all duration-300 max-w-[900px]"
+    class="bg-white h-auto pr-1 border border-gray-200/80 hover:border-gray-300 transition-all duration-300 max-w-[900px] rounded-full"
   >
     <form
       @submit.prevent="handleSubmit"
@@ -41,13 +41,9 @@
         type="submit"
         :loading="loading"
         :disabled="!isFormValid"
-        class="min-w-[90px] md:w-auto px-4 transition-all duration-300"
-      >
-        <template #icon>
-          <i class="pi pi-search text-white mr-2 text-sm"></i>
-        </template>
-        <span class="text-white text-sm">Search</span>
-      </Button>
+        class="md:w-auto px-4 transition-all duration-300"
+        icon="pi pi-search"
+      />
     </form>
   </div>
 </template>

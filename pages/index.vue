@@ -1,5 +1,6 @@
 <template>
   <div class="bg-white flex flex-col min-h-screen">
+    <TheNavbar />
     <TheHeader>
       <SearchForm @submit="handleSearch" />
     </TheHeader>

@@ -1,10 +1,8 @@
 <template>
   <div
-    class="fixed z-40 px-4 py-1 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm"
+    class="fixed flex z-40 px-4 py-1 w-full h-[100px] border-b border-gray-100 shadow-sm bg-gradient-to-b from-slate-50/95 to-white/80 backdrop-blur-md"
   >
-    <div
-      class="max-w-[1400px] mx-auto relative flex items-center justify-center"
-    >
+    <div class="my-auto w-full relative flex items-center justify-center">
       <!-- Logo -->
       <NuxtLink
         to="/"

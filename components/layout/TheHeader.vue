@@ -1,6 +1,6 @@
 <template>
   <header
-    class="min-h-[40vh] flex flex-col items-center justify-center bg-gradient-to-b from-slate-50/95 to-white/80 backdrop-blur-md w-full relative"
+    class="min-h-[30vh] flex flex-col items-center justify-center bg-gradient-to-b from-slate-50/95 to-white/80 backdrop-blur-md w-full relative"
     role="banner"
   >
     <div class="text-center max-w-3xl px-4 mx-auto">

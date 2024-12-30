@@ -7,7 +7,10 @@
   >
     <div class="flex flex-col gap-2">
       <h2 class="text-xl font-bold">{{ stop.title }}</h2>
-      <p class="text-sm text-text-secondary flex items-center gap-2">
+      <p 
+        class="text-sm text-text-secondary flex items-center gap-2 hover:text-primary cursor-pointer"
+        @click.stop="openInGoogleMaps"
+      >
         <i class="pi pi-map-marker text-primary"></i>
         {{ stop.address }}
       </p>
@@ -44,5 +47,11 @@ defineEmits<{
 
 function handleHover(isHovered: boolean) {
   mapStore.setHoveredStop(isHovered ? props.stop.id : null);
+}
+
+function openInGoogleMaps() {
+  const encodedAddress = encodeURIComponent(props.stop.address);
+  const url = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+  window.open(url, '_blank');
 }
 </script>
