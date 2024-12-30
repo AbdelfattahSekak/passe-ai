@@ -1,14 +1,14 @@
 <template>
   <div
-    class="cursor-pointer mb-6"
+    class="cursor-pointer mb-6 max-w-xl"
     @mouseenter="handleHover(true)"
     @mouseleave="handleHover(false)"
     @click="$emit('showDetails', stop)"
   >
     <div class="flex flex-col gap-2">
       <h2 class="text-xl font-bold">{{ stop.title }}</h2>
-      <p 
-        class="text-sm text-text-secondary flex items-center gap-2 hover:text-primary cursor-pointer"
+      <p
+        class="text-sm text-gray-400 flex items-center gap-2 hover:text-primary cursor-pointer"
         @click.stop="openInGoogleMaps"
       >
         <i class="pi pi-map-marker text-primary"></i>
@@ -32,7 +32,6 @@
 <script setup lang="ts">
 import type { Stop } from "@/types";
 import StopPhoto from "~/components/itinerary/StopPhoto.vue";
-import Divider from "primevue/divider";
 import { useMapStore } from "~/stores/map";
 
 const mapStore = useMapStore();
@@ -52,6 +51,6 @@ function handleHover(isHovered: boolean) {
 function openInGoogleMaps() {
   const encodedAddress = encodeURIComponent(props.stop.address);
   const url = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
-  window.open(url, '_blank');
+  window.open(url, "_blank");
 }
 </script>
