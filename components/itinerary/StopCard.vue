@@ -1,28 +1,35 @@
 <template>
   <div
-    class="cursor-pointer mb-6 max-w-xl"
+    class="cursor-pointer mb-32 max-w-xl"
     @mouseenter="handleHover(true)"
     @mouseleave="handleHover(false)"
     @click="$emit('showDetails', stop)"
   >
     <div class="flex flex-col gap-2">
       <h2 class="text-xl font-bold">{{ stop.title }}</h2>
-      <p
-        class="text-sm text-gray-400 flex items-center gap-2 hover:text-primary cursor-pointer"
-        @click.stop="openInGoogleMaps"
-      >
-        <i class="pi pi-map-marker text-primary"></i>
-        {{ stop.address }}
-      </p>
     </div>
-    <Card class="mt-2">
+    <Card class="border-none shadow-none mt-2">
       <template #header>
-        <StopPhoto :photos="stop.locationInfo?.photos || []" />
+        <div class="relative h-[200px] overflow-hidden rounded-xl">
+          <StopPhoto
+            :photos="stop.locationInfo?.photos || []"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
       </template>
+
       <template #content>
-        <div class="p-2 flex flex-col gap-4">
-          <p class="text-text-primary">{{ stop.details }}</p>
-          <Button text severity="secondary" label="View More Details" />
+        <div class="flex mt-2 flex-col gap-4">
+          <p
+            class="text-sm text-gray-400 flex items-center gap-2 hover:text-primary cursor-pointer"
+            @click.stop="openInGoogleMaps"
+          >
+            <i class="pi pi-map-marker text-primary"></i>
+            {{ stop.address }}
+          </p>
+          <div class="space-y-2">
+            <p class="text-gray-600">{{ stop.details }}</p>
+          </div>
         </div>
       </template>
     </Card>
