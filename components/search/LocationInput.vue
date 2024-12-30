@@ -152,7 +152,4 @@ const handleSelect = (event: { value: string }) => {
 :deep(.p-autocomplete-item:first-child) {
   @apply font-medium text-primary;
 }
-
-.p-inputtext {
-}
 </style>

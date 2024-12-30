@@ -206,7 +206,7 @@ onMounted(async () => {
   animation-delay: -0.16s;
 }
 
-.gm-style-iw {
+.gm-style-iw.gm-style-iw-c {
   padding: 0;
 }
 
