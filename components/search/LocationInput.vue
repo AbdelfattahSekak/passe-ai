@@ -1,14 +1,27 @@
 <template>
-  <div class="flex items-center gap-2 cursor-pointer" @click="focusInput">
-    <i
-      class="pi pi-map-marker text-gray-900 border-[3px] rounded-full p-3 text-sm"
-    ></i>
-    <div class="flex flex-col justify-center items-start w-full border-r">
+  <div
+    class="flex items-center gap-3 cursor-pointer group hover:bg-gray-50/50 p-2 rounded-xl transition-colors duration-200"
+    @click="focusInput"
+  >
+    <div class="relative">
+      <i
+        class="pi pi-map-marker text-primary border-2 border-primary/20 rounded-full p-2 text-sm group-hover:scale-110 transition-transform duration-200"
+      ></i>
+      <div
+        v-if="isLoadingLocation"
+        class="absolute inset-0 flex items-center justify-center"
+      >
+        <i class="pi pi-spinner animate-spin text-primary"></i>
+      </div>
+    </div>
+
+    <div class="flex flex-col justify-center items-start w-full min-w-0">
       <label
         :for="id"
-        class="block text-sm text-gray-900 mt-2 cursor-pointer"
-        >{{ label }}</label
+        class="block text-sm font-medium text-gray-700 cursor-pointer"
       >
+        {{ label }}
+      </label>
 
       <AutoComplete
         variant="outlined"
@@ -22,8 +35,10 @@
         @item-select="handleSelect"
         :placeholder="placeholder"
         :disabled="disabled || isLoadingLocation"
-        class="w-full text-sm h-[30px]"
-        inputClass="p-0 w-full border-none bg-red-100 outline-none bg-transparent rounded-lg shadow-none text-gray-900 font-semibold bg-red-600"
+        class="w-full text-sm"
+        :inputClass="`p-0 w-full border-none outline-none bg-transparent rounded-lg shadow-none 
+          text-gray-900 font-normal placeholder:text-gray-400 placeholder:font-normal truncate
+          ${disabled ? 'cursor-not-allowed opacity-60' : ''}`"
       />
     </div>
   </div>
@@ -138,18 +153,22 @@ const handleSelect = (event: { value: string }) => {
 
 <style scoped>
 :deep(.p-autocomplete-panel) {
-  @apply mt-1 bg-white rounded-lg shadow-lg border border-gray-200;
+  @apply mt-2 bg-white rounded-xl shadow-lg border border-gray-200;
 }
 
 :deep(.p-autocomplete-items) {
-  @apply py-1;
+  @apply py-2;
 }
 
 :deep(.p-autocomplete-item) {
-  @apply px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer;
+  @apply px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer transition-colors duration-150;
 }
 
 :deep(.p-autocomplete-item:first-child) {
-  @apply font-medium text-primary;
+  @apply font-medium text-primary border-b border-gray-100 mb-1;
+}
+
+:deep(.p-autocomplete-loader) {
+  @apply right-2;
 }
 </style>

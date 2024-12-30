@@ -1,27 +1,31 @@
 <template>
   <div
-    class="bg-white max-w-[1000px] h-[70px] px-4 py-1 rounded-full border border-gray-200/80"
+    class="bg-white m-auto max-w-[1000px] h-auto md:h-[80px] px-6 py-4 md:py-2 rounded-2xl border border-gray-200/80 shadow-sm hover:shadow-md transition-all duration-300"
   >
     <form
       @submit.prevent="handleSubmit"
-      class="flex flex-col md:flex-row items-center gap-4 md:gap-6"
+      class="flex flex-col md:flex-row items-stretch md:items-center gap-6"
     >
-      <div class="w-full md:flex-1">
+      <div class="flex-1 min-w-[200px]">
         <LocationInput
           id="start"
-          label="Starting Point"
+          label="From"
           v-model="form.start"
-          placeholder="Paris, France"
+          placeholder="e.g. Paris, France"
           :disabled="loading"
         />
       </div>
 
-      <div class="w-full md:flex-1">
+      <div class="hidden md:flex items-center">
+        <i class="pi pi-arrow-right text-gray-400"></i>
+      </div>
+
+      <div class="flex-1 min-w-[200px]">
         <LocationInput
           id="destination"
-          label="Destination"
+          label="To"
           v-model="form.destination"
-          placeholder="Marakech, Morocco"
+          placeholder="e.g. Marrakech, Morocco"
           :disabled="loading"
         />
       </div>
@@ -29,18 +33,21 @@
       <StopsInput
         v-model="form.nbStops"
         :disabled="loading"
-        class="w-full md:w-auto"
+        class="w-full min-w-[250px]"
       />
-      <div class="-mr-3">
-        <Button
-          rounded
-          type="submit"
-          size="large"
-          :loading="loading"
-          :disabled="!isFormValid"
-          icon="pi pi-search text-white"
-        />
-      </div>
+
+      <Button
+        rounded
+        type="submit"
+        :loading="loading"
+        :disabled="!isFormValid"
+        class="min-w-[100px] md:w-auto px-6 transition-all duration-300"
+      >
+        <template #icon>
+          <i class="pi pi-search text-white mr-2"></i>
+        </template>
+        <span class="text-white">Search</span>
+      </Button>
     </form>
   </div>
 </template>

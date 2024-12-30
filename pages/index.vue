@@ -1,8 +1,6 @@
 <template>
   <div class="bg-white flex flex-col min-h-screen">
-    <TheNavbar />
-
-    <div class="fixed top-[60px] left-0 right-0 z-40">
+    <div class="top-[60px] left-0 right-0 z-40">
       <TheHeader>
         <SearchForm @submit="handleSearch" />
       </TheHeader>
@@ -13,10 +11,19 @@
       title="Planning Your Adventure"
       message="Crafting the perfect itinerary for you..."
     />
-    <div class="mt-[calc(15vh+60px)]">
-      <TripSuggestions @select="handleTripSelect" />
-      <TravelIcons />
-    </div>
+
+    <main class="mt-[calc(15vh+60px)]">
+      <section aria-labelledby="suggested-trips-heading">
+        <TripSuggestions @select="handleTripSelect" />
+      </section>
+
+      <section aria-labelledby="features-heading" class="py-12">
+        <h2 id="features-heading" class="text-3xl font-bold text-center mb-8">
+          Plan Smarter with AI
+        </h2>
+        <TravelIcons />
+      </section>
+    </main>
   </div>
 </template>
 
@@ -59,10 +66,36 @@ onBeforeUnmount(() => {
 
 useHead(
   generateMetaTags({
-    title: "AI-Powered Road Trip Planner",
+    title: "AI Road Trip Planner - Create Your Perfect Journey",
     description:
-      "Plan your perfect road trip with Passe.ai. Our AI-powered itinerary builder helps you discover hidden gems and create unforgettable memories.",
+      "Plan your dream road trip with our AI-powered itinerary builder. Get personalized routes, discover hidden gems, and find the best stops along the way.",
     path: "/",
+    keywords: [
+      "personalized road trip",
+      "smart route planning",
+      "travel itinerary generator",
+      "road trip stops",
+      "travel optimization",
+    ],
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      name: "Passe.ai",
+      description:
+        "AI-powered road trip planner helping travelers create personalized itineraries.",
+      applicationCategory: "TravelApplication",
+      operatingSystem: "Web",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      author: {
+        "@type": "Organization",
+        name: "Passe.ai",
+        url: "https://passe.ai",
+      },
+    },
   })
 );
 

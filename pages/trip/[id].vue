@@ -8,12 +8,8 @@
     v-if="!loading && tripStore.currentTrip"
     class="bg-white flex flex-col min-h-screen"
   >
-    <TheNavbar />
-
     <div class="fixed top-[60px] left-0 right-0 z-40">
-      <TheHeader>
-        <SearchForm @submit="handleSearch" />
-      </TheHeader>
+      <SearchForm @submit="handleSearch" />
     </div>
 
     <div class="mt-[calc(15vh+60px)]">
