@@ -5,7 +5,7 @@
   >
     <div class="text-center max-w-3xl px-4 mx-auto">
       <h1
-        class="text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-300 bg-clip-text text-transparent"
+        class="text-5xl font-bold mb-6 bg-gradient-to-r from-primary-800 to-primary-400 bg-clip-text text-transparent"
       >
         Discover Your Perfect Travel Experience
       </h1>

@@ -7,7 +7,7 @@
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div>
           <h1
-            class="text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent"
+            class="text-5xl font-bold mb-6 bg-gradient-to-r from-primary-800 to-primary-400 bg-clip-text text-transparent"
           >
             About Passe.ai
           </h1>
