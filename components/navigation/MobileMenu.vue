@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <!-- Hamburger Button -->
@@ -49,7 +48,9 @@
                 <NuxtLink
                   :to="item.path"
                   class="flex items-center py-3 px-4 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
-                  :class="{ 'bg-gray-100 dark:bg-gray-800': isActive(item.path) }"
+                  :class="{
+                    'bg-gray-100 dark:bg-gray-800': isActive(item.path),
+                  }"
                   @click="closeMenu"
                 >
                   <i :class="['pi mr-3', item.icon]"></i>
@@ -65,9 +66,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useRoute } from 'vue-router';
-import { navigationItems } from '~/config/navigation';
+import { ref } from "vue";
+import { useRoute } from "vue-router";
+import { navigationItems } from "~/config/navigation";
 
 const isOpen = ref(false);
 const route = useRoute();
@@ -75,15 +76,15 @@ const route = useRoute();
 const toggleMenu = () => {
   isOpen.value = !isOpen.value;
   if (isOpen.value) {
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   } else {
-    document.body.style.overflow = '';
+    document.body.style.overflow = "";
   }
 };
 
 const closeMenu = () => {
   isOpen.value = false;
-  document.body.style.overflow = '';
+  document.body.style.overflow = "";
 };
 
 const isActive = (path: string) => route.path === path;
@@ -93,6 +94,6 @@ watch(() => route.path, closeMenu);
 
 // Clean up on component unmount
 onUnmounted(() => {
-  document.body.style.overflow = '';
+  document.body.style.overflow = "";
 });
 </script>

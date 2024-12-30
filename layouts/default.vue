@@ -1,6 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
-    <TheNavbar />
+  <div class="min-h-screen bg-gray-200">
     <slot />
     <TheFooter />
   </div>

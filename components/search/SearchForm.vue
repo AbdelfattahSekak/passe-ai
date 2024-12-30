@@ -1,12 +1,12 @@
 <template>
   <div
-    class="bg-white m-auto max-w-[1000px] h-auto md:h-[80px] px-6 py-4 md:py-2 rounded-2xl border border-gray-200/80 shadow-sm hover:shadow-md transition-all duration-300"
+    class="bg-white h-auto px-4 py-3 md:py-1 rounded-xl border border-gray-200/80 hover:border-gray-300 transition-all duration-300 max-w-[900px]"
   >
     <form
       @submit.prevent="handleSubmit"
-      class="flex flex-col md:flex-row items-stretch md:items-center gap-6"
+      class="flex flex-col md:flex-row items-stretch md:items-center gap-4 md:gap-3"
     >
-      <div class="flex-1 min-w-[200px]">
+      <div class="flex-1 min-w-[180px]">
         <LocationInput
           id="start"
           label="From"
@@ -17,10 +17,10 @@
       </div>
 
       <div class="hidden md:flex items-center">
-        <i class="pi pi-arrow-right text-gray-400"></i>
+        <i class="pi pi-arrow-right text-gray-400 text-sm"></i>
       </div>
 
-      <div class="flex-1 min-w-[200px]">
+      <div class="flex-1 min-w-[180px]">
         <LocationInput
           id="destination"
           label="To"
@@ -33,7 +33,7 @@
       <StopsInput
         v-model="form.nbStops"
         :disabled="loading"
-        class="w-full min-w-[250px]"
+        class="w-full min-w-[200px]"
       />
 
       <Button
@@ -41,12 +41,12 @@
         type="submit"
         :loading="loading"
         :disabled="!isFormValid"
-        class="min-w-[100px] md:w-auto px-6 transition-all duration-300"
+        class="min-w-[90px] md:w-auto px-4 transition-all duration-300"
       >
         <template #icon>
-          <i class="pi pi-search text-white mr-2"></i>
+          <i class="pi pi-search text-white mr-2 text-sm"></i>
         </template>
-        <span class="text-white">Search</span>
+        <span class="text-white text-sm">Search</span>
       </Button>
     </form>
   </div>

@@ -1,10 +1,8 @@
 <template>
   <div class="bg-white flex flex-col min-h-screen">
-    <div class="top-[60px] left-0 right-0 z-40">
-      <TheHeader>
-        <SearchForm @submit="handleSearch" />
-      </TheHeader>
-    </div>
+    <TheHeader>
+      <SearchForm @submit="handleSearch" />
+    </TheHeader>
 
     <FullScreenLoader
       :show="loading"
@@ -12,7 +10,7 @@
       message="Crafting the perfect itinerary for you..."
     />
 
-    <main class="mt-[calc(15vh+60px)]">
+    <main>
       <section aria-labelledby="suggested-trips-heading">
         <TripSuggestions @select="handleTripSelect" />
       </section>
