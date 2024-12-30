@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white h-auto pr-1 border border-gray-100 max-w-[900px] rounded-full"
+    class="bg-white h-auto pr-1 border border-gray-300 max-w-[900px] rounded-full"
   >
     <form
       @submit.prevent="handleSubmit"
@@ -38,6 +38,7 @@
 
       <Button
         rounded
+        size="large"
         type="submit"
         :loading="loading"
         :disabled="!isFormValid"

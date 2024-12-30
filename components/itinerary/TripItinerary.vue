@@ -1,31 +1,40 @@
 <template>
   <div class="p-8 z-10" role="region" aria-label="Trip Itinerary">
     <ItineraryHeader :title="title" :stops="stops" />
-    <Transition name="fade" mode="out-in">
-      <div v-if="currentView === 'list'" key="list">
-        <Timeline :value="stops" class="customized-timeline">
-          <template #marker="slotProps">
-            <div class="flex items-center gap-4">
-              <span
-                class="flex w-8 h-8 items-center justify-center bg-primary text-white rounded-full shadow-sm"
-              >
-                {{ slotProps.index + 1 }}
-              </span>
-            </div>
-          </template>
-          <template #content="slotProps">
-            <StopCard @showDetails="showStopDetails" :stop="slotProps.item" />
-          </template>
-        </Timeline>
-      </div>
+    <div class="relative">
+      <Transition name="slide">
+        <div
+          v-show="currentView === 'list'"
+          key="list"
+          class="transition-wrapper"
+        >
+          <Timeline :value="stops" class="customized-timeline">
+            <template #marker="slotProps">
+              <div class="flex items-center gap-4">
+                <span
+                  class="flex w-8 h-8 items-center justify-center bg-primary text-white rounded-full shadow-sm"
+                >
+                  {{ slotProps.index + 1 }}
+                </span>
+              </div>
+            </template>
+            <template #content="slotProps">
+              <StopCard @showDetails="showStopDetails" :stop="slotProps.item" />
+            </template>
+          </Timeline>
+        </div>
+      </Transition>
 
-      <StopDetailsView
-        v-else-if="currentView === 'details'"
-        key="details"
-        :stop="selectedStop!"
-        @back="returnToList"
-      />
-    </Transition>
+      <Transition name="slide">
+        <div
+          v-if="currentView === 'details'"
+          key="details"
+          class="transition-wrapper"
+        >
+          <StopDetailsView :stop="selectedStop!" @back="returnToList" />
+        </div>
+      </Transition>
+    </div>
   </div>
 </template>
 
@@ -61,6 +70,7 @@ const returnToList = () => {
   currentView.value = "list";
   selectedStop.value = null;
   mapStore.resetMapView();
+  console.log("returnToList");
 };
 
 defineProps<{
@@ -107,6 +117,61 @@ defineEmits<{
 
 .fade-enter-to,
 .fade-leave-from {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.slide-enter-to,
+.slide-leave-from {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Add these new styles */
+.transition-wrapper {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  backface-visibility: hidden;
+}
+
+.transition-wrapper:not(.slide-leave-active) {
+  position: relative;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s ease;
+}
+
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.slide-enter-to,
+.slide-leave-from {
   opacity: 1;
   transform: translateX(0);
 }
