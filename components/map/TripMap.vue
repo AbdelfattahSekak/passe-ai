@@ -56,7 +56,7 @@ const {
   error: routeError,
   initDirections,
   calculateRoute,
-} = useMapRoutes();
+} = useMapRoutes(map);
 
 const mapStore = useMapStore();
 
@@ -383,5 +383,72 @@ onMounted(async () => {
 
 .activity-marker .pi {
   font-size: 1rem;
+}
+
+.route-info-content {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 5px 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: scale(0.95); // Slightly reduced from 1.0
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: scale(1);
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .route-info-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: system-ui, -apple-system, sans-serif;
+    
+    span:first-child {
+      font-size: 11px;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+    
+    .route-info-header {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      
+      i {
+        font-size: 14px; // Reduced from 16px
+        color: #666;
+      }
+      
+      span {
+        font-size: 14px; // Reduced from 16px
+        font-weight: 600;
+        color: #1a1a1a;
+      }
+    }
+    
+    span:last-child {
+      font-size: 12px; // Reduced from 14px
+      color: #666;
+      margin-top: 1px;
+    }
+  }
+}
+
+// Add this to the existing animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(0.95); // Match the new scale
+  }
+}
+
+.route-info-marker {
+  animation: fadeIn 0.3s ease forwards;
 }
 </style>
