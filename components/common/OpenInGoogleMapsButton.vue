@@ -3,7 +3,7 @@
     text
     size="small"
     @click="openInGoogleMaps"
-    label="Get directions"
+    label="Directions"
     aria-label="Open itinerary in Google Maps"
     icon="pi pi-directions-alt"
   />
