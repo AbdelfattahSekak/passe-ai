@@ -203,21 +203,6 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
               ${stop.address}
             </p>
           </div>
-          <div class="mt-2">
-            <div>
-              ${
-                stop.locationInfo?.photos?.[0]
-                  ? `<img src="${stop.locationInfo.photos[0].url}" alt="${stop.title}" class="w-full h-32 object-cover">`
-                  : ""
-              }
-            </div>
-            <div >
-              <div class="p-2 flex flex-col gap-4">
-                <p class="text-text-primary">${stop.details}</p>
-               
-              </div>
-            </div>
-          </div>
         </div>
       `;
     };

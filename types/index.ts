@@ -26,7 +26,7 @@ export interface Stop {
   address: string;
   details: string;
   activities: Activity[];
-  locationInfo: LocationInfo;
+  placeDetails?: google.maps.places.Place
 }
 
 export interface Trip {

@@ -17,7 +17,7 @@
           <i class="pi pi-map-marker text-primary"></i>
           {{ stop.address }}
         </p>
-        <StopPhoto :photos="stop.locationInfo?.photos || []" class="mb-6" />
+        <StopPhoto :photos="stop.placeDetails?.photos || []" class="mb-6" />
         <Panel @click="displayBasic = true" header="About">
           <p>{{ stop.details }}</p>
         </Panel>
@@ -99,33 +99,6 @@
       </Tabs>
     </div>
   </div>
-  <div class="card flex justify-center">
-    <Gallery
-      v-model:visible="displayBasic"
-      :value="stop.locationInfo?.photos || []"
-      :responsiveOptions="responsiveOptions"
-      :numVisible="9"
-      containerStyle="max-width: 50%"
-      :circular="true"
-      :fullScreen="true"
-      :showItemNavigators="true"
-    >
-      <template #item="slotProps">
-        <img
-          :src="slotProps.item.itemImageSrc"
-          :alt="slotProps.item.alt"
-          style="width: 100%; display: block"
-        />
-      </template>
-      <template #thumbnail="slotProps">
-        <img
-          :src="slotProps.item.thumbnailImageSrc"
-          :alt="slotProps.item.alt"
-          style="display: block"
-        />
-      </template>
-    </Gallery>
-  </div>
 </template>
 
 <script setup lang="ts">
@@ -136,24 +109,6 @@ const props = defineProps<{
   stop: Stop;
 }>();
 
-const responsiveOptions = ref([
-  {
-    breakpoint: "1500px",
-    numVisible: 5,
-  },
-  {
-    breakpoint: "1024px",
-    numVisible: 3,
-  },
-  {
-    breakpoint: "768px",
-    numVisible: 2,
-  },
-  {
-    breakpoint: "560px",
-    numVisible: 1,
-  },
-]);
 const displayBasic = ref(false);
 defineEmits<{
   back: [];

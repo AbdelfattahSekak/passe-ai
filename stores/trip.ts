@@ -5,6 +5,7 @@ export const useTripStore = defineStore("trip", () => {
   const currentTrip = ref<Trip | null>(null);
   const activitiesLoaded = ref<boolean>(false);
   const loadedStopIds = ref<Set<string>>(new Set());
+  const loadedPlaceIds = ref<Set<string>>(new Set());
 
   function setTrip(trip: Trip) {
     currentTrip.value = trip;
@@ -52,6 +53,21 @@ export const useTripStore = defineStore("trip", () => {
     loadedStopIds.value.add(stopId);
   }
 
+  async function fetchStopPlaceDetails(stopId: string) {
+    if (!currentTrip.value || loadedPlaceIds.value.has(stopId)) return;
+
+    const stop = currentTrip.value.stops.find((s) => s.id === stopId);
+    if (!stop) return;
+
+    const { fetchPlaceDetails } = usePlaceDetails();
+    const placeDetails = await fetchPlaceDetails(stop.address);
+
+    if (placeDetails) {
+      stop.placeDetails = placeDetails;
+      loadedPlaceIds.value.add(stopId);
+    }
+  }
+
   return {
     loadedStopIds,
     activitiesLoaded,
@@ -59,5 +75,7 @@ export const useTripStore = defineStore("trip", () => {
     setTrip,
     clearTrip,
     fetchStopActivities,
+    loadedPlaceIds,
+    fetchStopPlaceDetails,
   };
 });

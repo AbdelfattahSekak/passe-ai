@@ -5,7 +5,7 @@
       <div class="col-span-2 relative h-[200px]">
         <img
           v-if="photos[0]"
-          :src="photos[0].url"
+          :src="photos[0].getURI({ maxWidth: 800, maxHeight: 800 })"
           loading="lazy"
           class="w-full h-full object-cover"
         />
@@ -21,7 +21,7 @@
         <div class="relative">
           <img
             v-if="photos[1]"
-            :src="photos[1].url"
+            :src="photos[1].getURI({ maxWidth: 400, maxHeight: 400 })"
             loading="lazy"
             class="w-full h-full object-cover"
           />
@@ -35,7 +35,7 @@
         <div class="relative">
           <img
             v-if="photos[2]"
-            :src="photos[2].url"
+            :src="photos[2].getURI({ maxWidth: 400, maxHeight: 400 })"
             loading="lazy"
             class="w-full h-full object-cover"
           />
@@ -57,9 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import type { LocationPhoto } from "~/types";
-
 defineProps<{
-  photos: LocationPhoto[];
+  photos: google.maps.places.Photo[];
 }>();
 </script>

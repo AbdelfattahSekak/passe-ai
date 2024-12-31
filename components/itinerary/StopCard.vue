@@ -12,7 +12,7 @@
       <template #header>
         <div class="relative h-[200px] overflow-hidden rounded-xl">
           <StopPhoto
-            :photos="stop.locationInfo?.photos || []"
+            :photos="stop.placeDetails?.photos || []"
             class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
         </div>
@@ -25,7 +25,7 @@
             @click.stop="openInGoogleMaps"
           >
             <i class="pi pi-map-marker text-primary"></i>
-            {{ stop.address }}
+            {{ stop.placeDetails?.displayName || stop.address }}
           </p>
           <div class="space-y-2">
             <p class="text-gray-600">{{ stop.details }}</p>
@@ -40,8 +40,10 @@
 import type { Stop } from "@/types";
 import StopPhoto from "~/components/itinerary/StopPhoto.vue";
 import { useMapStore } from "~/stores/map";
+import { useTripStore } from "~/stores/trip";
 
 const mapStore = useMapStore();
+const tripStore = useTripStore();
 
 const props = defineProps<{
   stop: Stop;
@@ -50,6 +52,10 @@ const props = defineProps<{
 defineEmits<{
   showDetails: [stop: Stop];
 }>();
+
+onMounted(async () => {
+  await tripStore.fetchStopPlaceDetails(props.stop.id);
+});
 
 function handleHover(isHovered: boolean) {
   mapStore.setHoveredStop(isHovered ? props.stop.id : null);
