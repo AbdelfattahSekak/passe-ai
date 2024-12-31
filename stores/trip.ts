@@ -1,11 +1,13 @@
 import { defineStore } from "pinia";
-import type { Trip } from "~/types";
+import type { Stop, Trip } from "~/types";
 
 export const useTripStore = defineStore("trip", () => {
+  const mapStore = useMapStore();
   const currentTrip = ref<Trip | null>(null);
   const activitiesLoaded = ref<boolean>(false);
   const loadedStopIds = ref<Set<string>>(new Set());
   const loadedPlaceIds = ref<Set<string>>(new Set());
+  const selectedStop = ref<Stop | null>(null);
 
   function setTrip(trip: Trip) {
     currentTrip.value = trip;
@@ -14,6 +16,23 @@ export const useTripStore = defineStore("trip", () => {
   function clearTrip() {
     currentTrip.value = null;
     loadedStopIds.value.clear();
+  }
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  
+  function setSelectedStop(stop: Stop | null) {
+    selectedStop.value = stop;
+    if (stop) {
+      mapStore.setFocusedStop(stop);
+      scrollToTop();
+    } else {
+      mapStore.resetMapView();
+    }
   }
 
   async function fetchStopActivities(stopId: string) {
@@ -69,6 +88,8 @@ export const useTripStore = defineStore("trip", () => {
   }
 
   return {
+    setSelectedStop,
+    selectedStop,
     loadedStopIds,
     activitiesLoaded,
     currentTrip,

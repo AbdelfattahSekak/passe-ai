@@ -4,7 +4,7 @@
     <div class="relative">
       <Transition name="slide">
         <div
-          v-show="currentView === 'list'"
+          v-show="!tripStore.selectedStop"
           key="list"
           class="transition-wrapper"
         >
@@ -27,11 +27,14 @@
 
       <Transition name="slide">
         <div
-          v-if="currentView === 'details'"
+          v-if="tripStore.selectedStop"
           key="details"
           class="transition-wrapper"
         >
-          <StopDetailsView :stop="selectedStop!" @back="returnToList" />
+          <StopDetailsView
+            :stop="tripStore.selectedStop!"
+            @back="returnToList"
+          />
         </div>
       </Transition>
     </div>
@@ -43,33 +46,16 @@ import type { Stop } from "@/types";
 import StopCard from "~/components/itinerary/StopCard.vue";
 import StopDetailsView from "~/components/itinerary/StopDetailsView.vue";
 import ItineraryHeader from "./ItineraryHeader.vue";
-import { useMapStore } from "~/stores/map";
 
 const tripStore = useTripStore();
-const currentView = ref<"list" | "details">("list");
-const selectedStop = ref<Stop | null>(null);
-
-const mapStore = useMapStore();
-
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
 
 const showStopDetails = async (stop: Stop) => {
   tripStore.fetchStopActivities(stop.id);
-  selectedStop.value = stop;
-  currentView.value = "details";
-  mapStore.setFocusedStop(stop);
-  scrollToTop();
+  tripStore.setSelectedStop(stop);
 };
 
 const returnToList = () => {
-  currentView.value = "list";
-  selectedStop.value = null;
-  mapStore.resetMapView();
+  tripStore.setSelectedStop(null);
 };
 
 defineProps<{

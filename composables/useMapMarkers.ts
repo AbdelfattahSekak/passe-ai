@@ -5,6 +5,7 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
   const activityMarkers = ref<google.maps.marker.AdvancedMarkerElement[]>([]);
   const infoWindows = ref<google.maps.InfoWindow[]>([]);
   const tripStore = useTripStore();
+
   function clearMarkers() {
     markers.value.forEach((marker) => marker.remove());
     markers.value = [];
@@ -225,6 +226,7 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
     let isInfoWindowOpen = false;
 
     marker.addListener("click", () => {
+      tripStore.setSelectedStop(stop);
       // Close all other info windows first
       infoWindows.value.forEach((window) => window.close());
 
