@@ -42,36 +42,42 @@ export function useMapRoutes(map: Ref<google.maps.Map | null>) {
       content: element,
     });
 
-    console.log("marker", marker);
-
     routeInfoMarkers.value.push(marker);
   }
 
-  async function findMidpointOfPath(leg: google.maps.DirectionsLeg): Promise<google.maps.LatLng> {
+  async function findMidpointOfPath(
+    leg: google.maps.DirectionsLeg
+  ): Promise<google.maps.LatLng> {
     const steps = leg.steps;
     let totalDistance = 0;
-    steps.forEach(step => totalDistance += step.distance?.value || 0);
-    
+    steps.forEach((step) => (totalDistance += step.distance?.value || 0));
+
     let distanceCovered = 0;
     for (let i = 0; i < steps.length; i++) {
       const step = steps[i];
       distanceCovered += step.distance?.value || 0;
-      
+
       if (distanceCovered >= totalDistance / 2) {
         // Find the precise midpoint within this step
         const path = step.path;
         if (!path || path.length < 2) return step.start_location;
-        
+
         let stepDistance = 0;
         for (let j = 1; j < path.length; j++) {
-          const segmentDistance = google.maps.geometry.spherical.computeDistanceBetween(
-            path[j-1],
-            path[j]
-          );
+          const segmentDistance =
+            google.maps.geometry.spherical.computeDistanceBetween(
+              path[j - 1],
+              path[j]
+            );
           if (stepDistance + segmentDistance >= step.distance!.value / 2) {
             // Interpolate the exact midpoint
-            const fraction = (step.distance!.value / 2 - stepDistance) / segmentDistance;
-            return google.maps.geometry.spherical.interpolate(path[j-1], path[j], fraction);
+            const fraction =
+              (step.distance!.value / 2 - stepDistance) / segmentDistance;
+            return google.maps.geometry.spherical.interpolate(
+              path[j - 1],
+              path[j],
+              fraction
+            );
           }
           stepDistance += segmentDistance;
         }

@@ -70,7 +70,6 @@ const returnToList = () => {
   currentView.value = "list";
   selectedStop.value = null;
   mapStore.resetMapView();
-  console.log("returnToList");
 };
 
 defineProps<{
