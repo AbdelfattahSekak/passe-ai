@@ -194,25 +194,25 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
     markerElement.textContent = String(index + 1);
 
     // Create stop info window content
-    const createStopContent = () => {
-      return `
-        <div class="stop-info-window p-4">
-          <div class="flex flex-col gap-2">
-            <h2 class="text-xl font-bold">${stop.title}</h2>
-            <p class="text-sm text-text-secondary flex items-center gap-2">
-              <i class="pi pi-map-marker text-primary"></i>
-              ${stop.address}
-            </p>
-          </div>
-        </div>
-      `;
-    };
+    // const createStopContent = () => {
+    //   return `
+    //     <div class="stop-info-window p-4">
+    //       <div class="flex flex-col gap-2">
+    //         <h2 class="text-xl font-bold">${stop.title}</h2>
+    //         <p class="text-sm text-text-secondary flex items-center gap-2">
+    //           <i class="pi pi-map-marker text-primary"></i>
+    //           ${stop.address}
+    //         </p>
+    //       </div>
+    //     </div>
+    //   `;
+    // };
 
-    const stopInfoWindow = new InfoWindow({
-      content: createStopContent(),
-      maxWidth: 320,
-      pixelOffset: new google.maps.Size(0, -20),
-    });
+    // const stopInfoWindow = new InfoWindow({
+    //   content: createStopContent(),
+    //   maxWidth: 320,
+    //   pixelOffset: new google.maps.Size(0, -20),
+    // });
 
     const marker = new AdvancedMarkerElement({
       position: { lat: Number(stop.lat), lng: Number(stop.lng) },
@@ -230,15 +230,15 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
       // Close all other info windows first
       infoWindows.value.forEach((window) => window.close());
 
-      if (!isInfoWindowOpen) {
-        stopInfoWindow.open(map, marker);
-        isInfoWindowOpen = true;
-        markerElement.classList.add("active");
-      } else {
-        stopInfoWindow.close();
-        isInfoWindowOpen = false;
-        markerElement.classList.remove("active");
-      }
+      //   if (!isInfoWindowOpen) {
+      //     stopInfoWindow.open(map, marker);
+      //     isInfoWindowOpen = true;
+      //     markerElement.classList.add("active");
+      //   } else {
+      //     stopInfoWindow.close();
+      //     isInfoWindowOpen = false;
+      //     markerElement.classList.remove("active");
+      //   }
 
       // Toggle activity markers
       activityMarkersVisible = !activityMarkersVisible;
@@ -251,22 +251,22 @@ export function useMapMarkers(map: Ref<google.maps.Map | null>) {
       });
     });
 
-    stopInfoWindow.addListener("closeclick", () => {
-      isInfoWindowOpen = false;
-      markerElement.classList.remove("active");
-    });
+    // stopInfoWindow.addListener("closeclick", () => {
+    //   isInfoWindowOpen = false;
+    //   markerElement.classList.remove("active");
+    // });
 
-    // Add map click listener
-    map.addListener("click", () => {
-      if (isInfoWindowOpen) {
-        stopInfoWindow.close();
-        isInfoWindowOpen = false;
-        markerElement.classList.remove("active");
-      }
-    });
+    // // Add map click listener
+    // map.addListener("click", () => {
+    //   if (isInfoWindowOpen) {
+    //     stopInfoWindow.close();
+    //     isInfoWindowOpen = false;
+    //     markerElement.classList.remove("active");
+    //   }
+    // });
 
-    markers.value.push(marker);
-    infoWindows.value.push(stopInfoWindow);
+    // markers.value.push(marker);
+    // infoWindows.value.push(stopInfoWindow);
   };
 
   //   Watch for changes in currentTrip and update markers
