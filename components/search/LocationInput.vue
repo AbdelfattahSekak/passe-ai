@@ -5,14 +5,13 @@
   >
     <div class="relative">
       <i
+        v-if="isLoadingLocation"
+        class="pi pi-spinner animate-spin text-primary border-2 border-primary/20 rounded-full p-2 text-sm group-hover:scale-110 transition-transform duration-200"
+      ></i>
+      <i
+        v-else
         class="pi pi-map-marker text-primary border-2 border-primary/20 rounded-full p-2 text-sm group-hover:scale-110 transition-transform duration-200"
       ></i>
-      <div
-        v-if="isLoadingLocation"
-        class="absolute inset-0 flex items-center justify-center"
-      >
-        <i class="pi pi-spinner animate-spin text-primary"></i>
-      </div>
     </div>
 
     <div class="flex flex-col justify-center items-start w-full min-w-0">
@@ -32,7 +31,7 @@
         :suggestions="suggestions"
         completeOnFocus
         @complete="search"
-        @item-select="handleSelect"
+        @option-select="handleSelect"
         :placeholder="placeholder"
         :disabled="disabled || isLoadingLocation"
         class="w-full text-sm"
@@ -88,10 +87,6 @@ watch(
   }
 );
 
-watch(selectedLocation, (newValue) => {
-  emit("update:modelValue", newValue);
-});
-
 const search = async (event: { query: string }) => {
   if (event.query === "") {
     suggestions.value = ["📍 Use current location"];
@@ -145,30 +140,10 @@ const getCurrentLocation = async () => {
 const handleSelect = (event: { value: string }) => {
   if (event.value === "📍 Use current location") {
     getCurrentLocation();
-    return;
+  } else {
+    emit("update:modelValue", event.value);
   }
-  emit("update:modelValue", event.value);
 };
 </script>
 
-<style scoped>
-:deep(.p-autocomplete-panel) {
-  @apply mt-2 bg-white rounded-xl shadow-lg border border-gray-200;
-}
-
-:deep(.p-autocomplete-items) {
-  @apply py-2;
-}
-
-:deep(.p-autocomplete-item) {
-  @apply px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer transition-colors duration-150;
-}
-
-:deep(.p-autocomplete-item:first-child) {
-  @apply font-medium text-primary border-b border-gray-100 mb-1;
-}
-
-:deep(.p-autocomplete-loader) {
-  @apply right-2;
-}
-</style>
+<style scoped></style>

@@ -80,7 +80,12 @@ watch(
 );
 
 const isFormValid = computed(() => {
-  return form.value.nbStops >= 1 && form.value.nbStops <= 10;
+  return (
+    form.value.nbStops >= 1 &&
+    form.value.nbStops <= 10 &&
+    form.value.start &&
+    form.value.destination
+  );
 });
 
 const handleSubmit = () => {
