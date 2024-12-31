@@ -1,0 +1,61 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success!",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "search": "Search",
+    "noResults": "No results found",
+    "required": "Required"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "trips": "My Trips",
+    "settings": "Settings"
+  },
+  "home": {
+    "title": "Discover Your Perfect Travel Experience",
+    "subtitle": "Plan your perfect road trip with personalized recommendations and smart route optimization",
+    "cta": "Start Planning",
+    "features": {
+      "title": "Plan Smarter with AI",
+      "route": {
+        "title": "Smart Route Planning",
+        "description": "Optimize your journey with AI-powered route suggestions"
+      },
+      "discover": {
+        "title": "Hidden Gems",
+        "description": "Discover unique locations off the beaten path"
+      },
+      "time": {
+        "title": "Time Optimization",
+        "description": "Make the most of your travel time with efficient scheduling"
+      }
+    }
+  },
+  "search": {
+    "start": "From",
+    "destination": "To",
+    "stops": "Number of stops",
+    "startPlaceholder": "e.g. Paris, France",
+    "destinationPlaceholder": "e.g. Marrakech, Morocco"
+  },
+  "trip": {
+    "details": "Trip Details",
+    "stops": "Stops",
+    "activities": "Activities",
+    "directions": "Get directions",
+    "share": "Share",
+    "save": "Save Trip",
+    "delete": "Delete Trip",
+    "edit": "Edit Trip"
+  }
+}

@@ -3,7 +3,7 @@
     <NuxtLink
       v-for="item in navigationItems"
       :key="item.path"
-      :to="item.path"
+      :to="localePath(item.path)"
       class="flex items-center gap-2 py-2 text-gray-700 hover:text-primary transition-colors duration-200"
       :class="{ 'text-primary': isActive(item.path) }"
     >
@@ -16,6 +16,7 @@
 import { useRoute } from "vue-router";
 import { navigationItems } from "~/config/navigation";
 
+const localePath = useLocalePath();
 const route = useRoute();
 const isActive = (path: string) => route.path === path;
 </script>

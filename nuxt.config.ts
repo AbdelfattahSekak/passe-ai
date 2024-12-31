@@ -1,12 +1,38 @@
+import { generateStaticRoutes } from "./utils/seo/generateStaticRoutes";
+
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
+  nitro: {
+    ...generateStaticRoutes(),
+    prerender: {
+      // Additional prerender options
+      crawlLinks: true,
+      routes: ["/sitemap.xml"],
+      ignore: ["/api/**"],
+    },
+  },
 
+  routeRules: {
+    // Static pages
+    "/": { prerender: true },
+    "/about": { prerender: true },
+    "/contact": { prerender: true },
+    "/privacy": { prerender: true },
+    "/terms": { prerender: true },
+
+    // Dynamic pages
+    "/trip/**": { isr: true }, // Incremental Static Regeneration
+
+    // API routes
+    "/api/**": { cors: true },
+  },
   modules: [
     "@nuxtjs/google-fonts",
     "@nuxtjs/tailwindcss",
     "@primevue/nuxt-module",
     "@pinia/nuxt",
+    "@nuxtjs/i18n",
   ],
   css: ["@/assets/styles/main.scss", "primeicons/primeicons.css"],
   components: {
@@ -79,7 +105,7 @@ export default defineNuxtConfig({
       SUPABASE_KEY: process.env.SUPABASE_KEY || "",
       UPSTASH_REDIS_URL: process.env.UPSTASH_REDIS_URL || "",
       UPSTASH_REDIS_TOKEN: process.env.UPSTASH_REDIS_TOKEN || "",
-      RATE_LIMIT_VALUE: process.env.RATE_LIMIT_VALUE || 10,
+      RATE_LIMIT_VALUE: process.env.RATE_LIMIT_VALUE || "10",
     },
   },
   googleFonts: {
@@ -93,6 +119,12 @@ export default defineNuxtConfig({
         ital: [100],
       },
     },
+  },
+  i18n: {
+    strategy: "prefix_except_default",
+    defaultLocale: "en",
+    locales: ["en"],
+    vueI18n: "./i18n.config.ts",
   },
   app: {
     head: {

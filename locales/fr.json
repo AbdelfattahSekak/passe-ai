@@ -1,0 +1,61 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "success": "Succès !",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "search": "Rechercher",
+    "noResults": "Aucun résultat trouvé",
+    "required": "Obligatoire"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "contact": "Contact",
+    "trips": "Mes Voyages",
+    "settings": "Paramètres"
+  },
+  "home": {
+    "title": "Votre Assistant de Voyage IA",
+    "subtitle": "Planifiez votre road trip parfait avec des recommandations personnalisées et une optimisation intelligente des itinéraires",
+    "cta": "Commencer à Planifier",
+    "features": {
+      "title": "Planifiez Plus Intelligemment avec l'IA",
+      "route": {
+        "title": "Planification Intelligente d'Itinéraire",
+        "description": "Optimisez votre voyage avec des suggestions d'itinéraires alimentées par l'IA"
+      },
+      "discover": {
+        "title": "Trésors Cachés",
+        "description": "Découvrez des lieux uniques hors des sentiers battus"
+      },
+      "time": {
+        "title": "Optimisation du Temps",
+        "description": "Profitez au maximum de votre temps de voyage avec une planification efficace"
+      }
+    }
+  },
+  "search": {
+    "start": "De",
+    "destination": "À",
+    "stops": "Nombre d'arrêts",
+    "startPlaceholder": "ex: Paris, France",
+    "destinationPlaceholder": "ex: Marrakech, Maroc"
+  },
+  "trip": {
+    "details": "Détails du Voyage",
+    "stops": "Arrêts",
+    "activities": "Activités",
+    "directions": "Obtenir l'itinéraire",
+    "share": "Partager",
+    "save": "Sauvegarder le Voyage",
+    "delete": "Supprimer le Voyage",
+    "edit": "Modifier le Voyage"
+  }
+}

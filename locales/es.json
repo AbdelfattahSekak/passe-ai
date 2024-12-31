@@ -1,0 +1,61 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Se produjo un error",
+    "success": "¡Éxito!",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "close": "Cerrar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "search": "Buscar",
+    "noResults": "No se encontraron resultados",
+    "required": "Requerido"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "trips": "Mis Viajes",
+    "settings": "Configuración"
+  },
+  "home": {
+    "title": "Tu Asistente de Viaje con IA",
+    "subtitle": "Planifica tu viaje por carretera perfecto con recomendaciones personalizadas y optimización inteligente de rutas",
+    "cta": "Empezar a Planificar",
+    "features": {
+      "title": "Planifica de Forma más Inteligente con IA",
+      "route": {
+        "title": "Planificación Inteligente de Rutas",
+        "description": "Optimiza tu viaje con sugerencias de rutas impulsadas por IA"
+      },
+      "discover": {
+        "title": "Joyas Ocultas",
+        "description": "Descubre lugares únicos fuera de los caminos trillados"
+      },
+      "time": {
+        "title": "Optimización del Tiempo",
+        "description": "Aprovecha al máximo tu tiempo de viaje con una programación eficiente"
+      }
+    }
+  },
+  "search": {
+    "start": "Desde",
+    "destination": "Hasta",
+    "stops": "Número de paradas",
+    "startPlaceholder": "ej: Madrid, España",
+    "destinationPlaceholder": "ej: Barcelona, España"
+  },
+  "trip": {
+    "details": "Detalles del Viaje",
+    "stops": "Paradas",
+    "activities": "Actividades",
+    "directions": "Obtener direcciones",
+    "share": "Compartir",
+    "save": "Guardar Viaje",
+    "delete": "Eliminar Viaje",
+    "edit": "Editar Viaje"
+  }
+}

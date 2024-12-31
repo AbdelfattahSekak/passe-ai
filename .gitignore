@@ -29,3 +29,7 @@ yarn-error.log*
 # Cache directories
 .cache
 .temp
+
+
+playwright-report
+test-results
