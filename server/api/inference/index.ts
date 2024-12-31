@@ -4,6 +4,7 @@ import { processInference } from "./controllers/inferenceController";
 import { logger } from "@/server/utils/logger";
 import { supabase } from "~/server/supabase";
 
+
 export default defineEventHandler(async (event) => {
   try {
     const rateLimitResult = await handleRateLimit(event);

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-3 mb-50">
+  <div class="flex gap-3">
     <Button
       icon="pi pi-arrow-left"
       @click="$emit('back')"
@@ -7,6 +7,7 @@
       text
       rounded
       severity="secondary"
+      class="ml-[-10px]"
     />
 
     <div class="flex-1 flex flex-col gap-6">

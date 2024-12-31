@@ -106,6 +106,7 @@ export default defineNuxtConfig({
       UPSTASH_REDIS_URL: process.env.UPSTASH_REDIS_URL || "",
       UPSTASH_REDIS_TOKEN: process.env.UPSTASH_REDIS_TOKEN || "",
       RATE_LIMIT_VALUE: process.env.RATE_LIMIT_VALUE || "10",
+      TRIP_TABLE_NAME: process.env.TRIP_TABLE_NAME || "dev_trips",
     },
   },
   googleFonts: {
