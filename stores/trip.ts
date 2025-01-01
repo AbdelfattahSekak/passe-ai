@@ -1,6 +1,26 @@
 import { defineStore } from "pinia";
 import type { Stop, Trip } from "~/types";
 
+const fetchPlaceDetails = async (address: string) => {
+  const { Place } = (await google.maps.importLibrary(
+    "places"
+  )) as google.maps.PlacesLibrary;
+  try {
+    const request = {
+      textQuery: address,
+      fields: ["photos"],
+      language: "en-US",
+      maxResultCount: 1,
+    };
+    const { places } = await Place.searchByText(request);
+    const place = places?.[0] || null;
+    return place;
+  } catch (error) {
+    console.error("Error fetching place details:", error);
+    return null;
+  }
+};
+
 export const useTripStore = defineStore("trip", () => {
   const mapStore = useMapStore();
   const currentTrip = ref<Trip | null>(null);
@@ -24,7 +44,7 @@ export const useTripStore = defineStore("trip", () => {
       behavior: "smooth",
     });
   };
-  
+
   function setSelectedStop(stop: Stop | null) {
     selectedStop.value = stop;
     if (stop) {
@@ -78,7 +98,6 @@ export const useTripStore = defineStore("trip", () => {
     const stop = currentTrip.value.stops.find((s) => s.id === stopId);
     if (!stop) return;
 
-    const { fetchPlaceDetails } = usePlaceDetails();
     const placeDetails = await fetchPlaceDetails(stop.address);
 
     if (placeDetails) {

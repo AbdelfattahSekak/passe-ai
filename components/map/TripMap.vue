@@ -404,30 +404,30 @@ onMounted(async () => {
     flex-direction: column;
     align-items: center;
     font-family: system-ui, -apple-system, sans-serif;
-    
+
     span:first-child {
       font-size: 11px;
       font-weight: 600;
       color: #1a1a1a;
     }
-    
+
     .route-info-header {
       display: flex;
       align-items: center;
       gap: 5px;
-      
+
       i {
         font-size: 14px; // Reduced from 16px
         color: #666;
       }
-      
+
       span {
         font-size: 14px; // Reduced from 16px
         font-weight: 600;
         color: #1a1a1a;
       }
     }
-    
+
     span:last-child {
       font-size: 12px; // Reduced from 14px
       color: #666;
