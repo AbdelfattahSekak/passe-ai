@@ -12,6 +12,7 @@
       <template #header>
         <div class="relative h-[200px] overflow-hidden rounded-xl">
           <StopPhoto
+            :isModalOpens="false"
             :photos="stop.placeDetails?.photos || []"
             class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />

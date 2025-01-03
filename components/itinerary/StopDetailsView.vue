@@ -17,7 +17,7 @@
           <i class="pi pi-map-marker text-primary"></i>
           {{ stop.address }}
         </p>
-        <StopPhoto :photos="stop.placeDetails?.photos || []" class="mb-6" />
+        <StopPhoto :photos="stop.placeDetails?.photos || []" class="mb-6" :isModalOpens="true" />
         <Panel @click="displayBasic = true" header="About">
           <p>{{ stop.details }}</p>
         </Panel>
