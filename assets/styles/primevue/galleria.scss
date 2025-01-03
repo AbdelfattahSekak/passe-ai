@@ -1,0 +1,18 @@
+.galleria {
+    .p-galleria-close-button {
+        position: absolute !important;
+    }
+    height: 100% !important;
+    .p-galleria-content {
+        height: 100% !important;
+
+        .p-galleria-items-container {
+            height: 100% !important;
+
+            .p-galleria-items>button {
+                position: absolute !important;
+                top: 55%;
+            }
+        }
+    }
+}
